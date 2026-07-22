@@ -1,0 +1,31 @@
+<h3 class="bbHeading" id="-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet"><div style="text-align: justify">3.8. config/<a href="https://www.leafmc.one/docs/config/gale-world-defaults#gale-world-default-config" target="_blank" class="link link--external" rel="noreferrer">gale-world-defaults.yml</a> - thiết đặt cần thiết​</div></h3><h4 class="bbHeading" id="-gale-world-defaults-yml-gameplay-mechanics-entities-can-random-stroll-into-non-ticking-chunks-true"><div style="text-align: justify">gale-world-defaults.yml/gameplay-mechanics.entities-can-random-stroll-into-non-ticking-chunks:true​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: false</code><br>
+Mob chỉ dám đi dạo trong khu vực đang hoạt động, đến biên giới nơi không có Chunk hoạt động là chúng nó tự quay đầu lại.​</div><hr><h4 class="bbHeading" id="-gale-world-defaults-yml-reduced-intervals-check-stuck-in-wall"><div style="text-align: justify">gale-world-defaults.yml/reduced-intervals.check-stuck-in-wall​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: 30</code><br>
+Bình thường, Minecraft cực kỳ lo xa. Cứ mỗi tích tắc , server lại phải đi hỏi từng thực thể một cùng một câu hỏi: <i>"Ê, mày có đang bị kẹt đầu vào tường không? Có nghẹt thở không để tao còn trừ máu?"</i>. Nếu server bạn có hàng nghìn con Mob, việc đi hỏi thăm liên tục như thế sẽ khiến CPU bị quá tải và bắt đầu thở oxy theo đúng nghĩa đen. Điều chỉnh thiết lập này, đồng nghĩa với việc thay đổi cách Dân làng học nghề, nên nhất định nên lưu tâm.​</div><hr><h4 class="bbHeading" id="-gale-world-defaults-yml-entity-wake-up-duration-ratio-standard-deviation"><div style="text-align: justify">gale-world-defaults.yml/entity-wake-up-duration-ratio-standard-deviation​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: 0.3</code><br>
+Khi bạn có cả đống thực thể đang ở trạng thái ngủ đông để tiết kiệm tài nguyên, nếu có chuyện gì đó xảy ra như người chơi đi tới gần khiến tất cả cùng <b>"bừng tỉnh" vào cùng 1 tick</b>, CPU của bạn sẽ bị sốc nhiệt - Lag-spike vì phải xử lý quá nhiều AI cùng lúc. Thay vì để 100 con Mob cùng dậy lúc 7:00 sáng, thiết đặt sẽ phân phối chuẩn lại giờ dậy của chúng nó ra.​</div><ul>
+<li><div style="text-align: justify">Con thì dậy lúc 6:58, con thì 7:01, con thì 7:02...​</div></li>
+<li><div style="text-align: justify">Cái số <b><code class="bbCodeInline">0.3</code></b> chính là độ "lệch" của báo thức. Càng cao thì giờ dậy càng rải rác.​</div></li>
+</ul><div style="text-align: justify">Máy chủ sẽ không bị những pha khựng cực khó chịu khi một khu Farm lớn đột ngột hoạt động trở lại. Mọi thứ diễn ra mượt mà, im lặng như cách bạn stalk người yêu cũ trên Threads vậy.​</div><hr><h3 class="bbHeading" id="-3-8-config-gale-global-yml">3.8. config/gale-global.yml​</h3><h4 class="bbHeading" id="-use-xor-shift-random">use-xor-shift-random​</h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>small-optimizations:
+  reduced-intervals:
+    increase-time-statistics: 200
+    update-entity-line-of-sight: 10
+  use-xor-shift-random:
+    elytra-firework-speed: true
+    entity-wake-up-duration: true
+    generate-tree-with-bukkit-api: true</code></pre>
+</div>
+</div><div style="text-align: justify">Trong Minecraft, mọi thứ từ tốc độ bay đến lúc Mob thức dậy đều dùng thuật toán ngẫu nhiên (Random). Thuật toán mặc định của Java hơi "cồng kềnh", cònXORShift là phiên bản nhanh hơn, nhẹ hơn rất nhiều.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<span style="font-size: 18px">Gặp vấn đề hiệu năng liên quan tới LeafMC? Nhất định phải tham gia <a href="https://discord.com/invite/gfgAwdSEuM" target="_blank" class="link link--external" rel="noreferrer">LeafMC Discord</a> nhé.ᐟ.ᐟ</span>
+</div>
+
+</div>
+</blockquote><hr>

@@ -1,0 +1,88 @@
+---
+title: Lộ trình Server Minecraft
+description: Toàn bộ nội dung gốc về phát triển và tối ưu hiệu năng máy chủ Minecraft dành cho người mới.
+slug: /
+template: doc
+editUrl: false
+lastUpdated: 2026-07-22
+tableOfContents: false
+head:
+  - tag: meta
+    attrs:
+      property: og:title
+      content: Lộ trình Server Minecraft
+  - tag: meta
+    attrs:
+      property: og:description
+      content: Toàn bộ bài viết gốc của Minh về phát triển và tối ưu máy chủ Minecraft.
+  - tag: meta
+    attrs:
+      name: theme-color
+      content: '#15803d'
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import GuideLanding from '../../components/GuideLanding.astro';
+import LegacyAnchorRedirect from '../../components/LegacyAnchorRedirect.astro';
+import PageEnhancements from '../../components/PageEnhancements.astro';
+
+<PageEnhancements />
+<LegacyAnchorRedirect />
+
+<div class="guide-hero guide-hero--original">
+  <div class="guide-hero__content">
+    <span class="guide-eyebrow"><i></i> Nguyên tác · Post #343982</span>
+    <h1>Lộ trình Server <em>Minecraft</em></h1>
+    <div class="guide-lede">
+      Lộ trình đầy đủ từ kiến thức nền, lựa chọn hạ tầng đến cấu hình, plugin và vận hành thực tế.
+      Nội dung nguyên tác được tổ chức lại theo cấu trúc tài liệu để dễ tra cứu và áp dụng từng bước.
+    </div>
+    <div class="guide-actions">
+      <a class="guide-action guide-action--primary" href="./00-thuat-ngu/">Đọc từ đầu <span>→</span></a>
+      <a class="guide-action" href="./03-thiet-dat/">Đi tới phần thiết đặt</a>
+    </div>
+  </div>
+  <div class="server-console" aria-label="Thống kê nội dung bài gốc">
+    <div class="server-console__bar"><span></span><span></span><span></span><small>source.integrity</small></div>
+    <div class="server-console__status"><i></i> COMPLETE</div>
+    <div class="server-console__metrics">
+      <div><span>TOPICS</span><strong>152</strong><small>đề mục</small></div>
+      <div><span>TABLES</span><strong>47</strong><small>nguyên bản</small></div>
+      <div><span>CODE</span><strong>44</strong><small>đoạn mã</small></div>
+    </div>
+    <div class="server-console__chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="server-console__log"><span>✓</span> Không còn nội dung bị lược bỏ</div>
+  </div>
+  <div class="guide-meta">
+    <span><strong>09</strong> phần</span>
+    <span><strong>346</strong> hình</span>
+    <span><strong>11</strong> tệp đính kèm</span>
+    <a href="./nguyen-tac/">Kho nguyên tác ↗</a>
+  </div>
+</div>
+
+<Aside type="note" title="Phạm vi biên tập">
+  Nội dung kỹ thuật của **Minh — TranNhatMinhxD / bạngáitôiđátôi**, đăng trên MineVN ngày 22/04/2026, vẫn được giữ đầy đủ.
+  Bản docs chỉ chuẩn hóa cấp tiêu đề, khoảng cách, bảng, code và các thành phần tương tác; ba tiêu đề chỉ chứa ảnh được chuyển thành hình phân cách có ngữ nghĩa phù hợp hơn.
+</Aside>
+
+<section class="reading-map" aria-labelledby="reading-map-title">
+  <div class="reading-map__head">
+    <div>
+      <span class="reading-map__eyebrow">Lộ trình đề xuất</span>
+      <h2 id="reading-map-title">Đọc theo ba giai đoạn</h2>
+    </div>
+    <p>Bài viết rất dài. Nếu mới bắt đầu, hãy đọc tuần tự và chỉ chỉnh cấu hình sau khi đã hiểu tác động.</p>
+  </div>
+  <div class="reading-map__phases">
+    <a href="./00-thuat-ngu/"><span>01</span><strong>Nắm nền tảng</strong><small>Thuật ngữ, mục tiêu, phần mềm, host và nhân sự · Phần 0–2</small></a>
+    <a href="./03-thiet-dat/"><span>02</span><strong>Thiết đặt có kiểm chứng</strong><small>JVM, server.properties, Paper, Purpur, Leaf và Gale · Phần 3</small></a>
+    <a href="./04-tich-hop/"><span>03</span><strong>Mở rộng & vận hành</strong><small>Plugin, bảo mật, lỗi thường gặp và hướng phát triển · Phần 4–8</small></a>
+  </div>
+  <div class="reading-map__rule">
+    <strong>Nguyên tắc thực hành</strong>
+    <span>Sao lưu trước khi sửa, thay đổi từng nhóm nhỏ, đo lại bằng Spark và luôn đối chiếu tài liệu đúng phiên bản phần mềm đang chạy.</span>
+  </div>
+</section>
+
+<GuideLanding />

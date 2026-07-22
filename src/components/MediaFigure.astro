@@ -1,0 +1,47 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  source?: string;
+  width?: number;
+  height?: number;
+  decorative?: boolean;
+  eager?: boolean;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  source,
+  width,
+  height,
+  decorative = false,
+  eager = false,
+} = Astro.props;
+---
+
+<figure class:list={['media-figure', { 'media-figure--decorative': decorative }]}>
+  <a href={src} target="_blank" rel="noreferrer" aria-label={decorative ? undefined : `Mở ảnh lớn: ${alt}`}>
+    <img
+      src={src}
+      alt={decorative ? '' : alt}
+      width={width}
+      height={height}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  </a>
+  {(caption || source) && (
+    <figcaption>
+      {caption}
+      {source && (
+        <>
+          {' · '}
+          <a href={source} target="_blank" rel="noreferrer">Nguồn</a>
+        </>
+      )}
+    </figcaption>
+  )}
+</figure>

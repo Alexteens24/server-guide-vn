@@ -1,0 +1,81 @@
+<h3 class="bbHeading" id="-3-6-purpur-yml-thiet-dat-can-thiet"><div style="text-align: justify">3.6. <a href="https://purpurmc.org/docs/purpur/" target="_blank" class="link link--external" rel="noreferrer">purpur.yml</a> - thiết đặt cần thiết​</div></h3><div style="text-align: justify">Nếu <b>Spigot</b> là đời đầu, <b>Paper</b> là "quốc dân" giúp server mượt hơn, thì <b>Purpur</b> chính là phiên bản "độ" hết nấc dành cho những chủ server muốn nắm toàn quyền sinh sát trong tay. Purpur nhanh, nhẹ và quan trọng nhất là <b>"tùy biến sâu đến mức không tưởng"</b>.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Việc gì phải cài thêm Plugins khi bạn có thể chỉnh thẳng trong Config?​</div>
+</div>
+
+</div>
+</blockquote><hr><h4 class="bbHeading" id="-purpur-yml-use-alternate-keepalive"><div style="text-align: justify">purpur.yml/use-alternate-keepalive​</div></h4><div style="text-align: justify"><b><code class="bbCodeInline">use-alternate-keepalive: true</code></b> <img src="__BASE__media/source/124-B-5558b60c.gif" class="smilie" loading="lazy" alt="B-)" title="Sành điệu B-)" decoding="async"><br>
+Keepalive truyền thống:​</div><ul>
+<li><div style="text-align: justify"><b>Kiểu cũ (Vanilla/Paper):</b> Server gửi 1 gói tin "Alo, Vũ à?" (keepalive packet). Nếu chẳng may mạng nhà bạn bị "lag nhẹ" đúng lúc đó làm gói tin bị thất lạc (packet loss), máy chủ sẽ phũ phàng kết luận: "À, Vũ đây rồi" và đá văng bạn ra với dòng chữ <i><code class="bbCodeInline">Timed Out</code></i> đầy ức chế.​</div></li>
+<li><div style="text-align: justify"><b>Purpur:</b> Server sẽ gửi liên tục mỗi giây 1 gói tin. Nó cực kỳ "kiên trì" luôn, gửi ròng rã trong 30 giây, chỉ cần bạn phản hồi lại <b>duy nhất 1 gói bất kỳ</b> trong số 30 cái đó, server sẽ hiểu là "À, mạng hơi lag tí thôi nhưng vẫn ổn áp" và giữ bạn ở lại.​</div></li>
+</ul><div style="text-align: justify">Khi máy chủ bạn còn nhỏ mà người chơi hay than phiền là "mạng nhà em chập chờn quá", thiết lập này sẽ giúp trải nghiệm mượt mà hơn hẳn, giảm hẳn mấy ca "bay màu" vô lý.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Nếu máy chủ đằng ấy đang dùng Reverse proxy xịn xò như <a href="https://tcpshield.com/" target="_blank" class="link link--external" rel="noreferrer">TCPShield</a> hoặc các bộ lọc Aggressive DDoS Filter/Scrubbing gắt gao để chống <a href="https://viettelidc.com.vn/tin-tuc/ddos-la-gi-tat-tan-tat-nhung-dieu-nguoi-dung-nen-biet-ve-tan-cong-ddos" target="_blank" class="link link--external" rel="noreferrer">DDoS </a>mà bật cái này lên, khả năng cao là người chơi sẽ không vào được hoặc bị lỗi kết nối linh tinh. TCPShield có cách xử lý gói tin riêng để bảo mật, nên khi Purpur gửi đống packet liên tục như thế, hệ thống phòng thủ có thể lầm tưởng máy chủ đang bị tấn công ấy <img src="__BASE__media/source/005-D-ef8315a7.gif" class="smilie" loading="lazy" alt=":D" title="Cười nhe răng :D" decoding="async">​</div>
+</div>
+
+</div>
+</blockquote><hr><h4 class="bbHeading" id="-purpur-yml-zombie-aggressive-towards-villager-when-lagging"><div style="text-align: justify">purpur.yml/zombie.aggressive-towards-villager-when-lagging​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: false</code><br>
+Zombie biết điều khi tps tụt xuống dưới mức <code class="bbCodeInline">lagging-threshold</code> trong <code class="bbCodeInline">purpur.yml</code>. Đám Zombie sẽ tự động "giả mù", ngừng đuổi đánh dân làng để giảm tải cho CPU​</div><hr><h4 class="bbHeading" id="-purpur-yml-entities-can-use-portals"><div style="text-align: justify">purpur.yml/entities-can-use-portals​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+Có thể dùng chung với <a href="https://modrinth.com/plugin/vertical_dimensions/versions" target="_blank" class="link link--external" rel="noreferrer"><span style="font-size: 18px"><span style="color: rgb(41, 105, 176)">Vertical Dimensions</span></span></a> / <a href="https://modrinth.com/plugin/entityportallock" target="_blank" class="link link--external" rel="noreferrer"><span style="font-size: 18px">EntityPortalLock</span></a> để chặn vật thể di chuyển qua các chiều không gian. Khi bật <code class="bbCodeInline">false</code>, chỉ có người chơi mới được đi qua cổng địa ngục hay cổng End, còn đám Mob khác làm gì có tuổi. Điều này sẽ làm hỏng các Farm sử dụng cổng Nether và LagMachine như:<br>
+<div class="bbImageWrapper" title="1780488738749.webp">
+<img src="__BASE__media/source/136-1780488738749-8e500880.webp" class="bbImage" style="" alt="1780488738749.webp" title="1780488738749.webp" width="1920" height="1080" loading="lazy" decoding="async">
+</div></div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><th><div style="text-align: center">Gold Farm​</div></th><th><div style="text-align: center">Wither Skeleton Farm​</div></th><th><div style="text-align: center">Chunk Loader​</div></th></tr><tr><td style="width: 33.3333%"><div class="bbImageWrapper" title="1000010340.jpg">
+<img src="__BASE__media/source/137-1000010340-5e244e88.jpg" class="bbImage" style="" alt="1000010340.jpg" title="" width="2560" height="1440" loading="lazy" decoding="async">
+</div></td><td style="width: 33.3333%"><div class="bbImageWrapper" title="maxresdefault.jpg">
+<img src="__BASE__media/source/138-maxresdefault-9a73ec47.jpg" class="bbImage" style="" alt="maxresdefault.jpg" title="" width="1280" height="720" loading="lazy" decoding="async">
+</div></td><td style="width: 33.3333%"><div class="bbImageWrapper" title="maxresdefault.jpg">
+<img src="__BASE__media/source/139-maxresdefault-eeccb668.jpg" class="bbImage" style="width: 323px" alt="maxresdefault.jpg" title="" width="1280" height="720" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><hr><h4 class="bbHeading" id="-villager-lobotomize-enabled"><div style="text-align: justify">villager.lobotomize.enabled​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>      villager:
+        can-pick-up-loot: default
+        ridable: false
+        ridable-in-water: true
+        controllable: true
+        attributes:
+          max_health: 90.0
+          scale: 0.4
+          tempt_range: 4.0
+        follow-emerald-blocks: false
+        can-be-leashed: true
+        can-breed: true
+        breeding-delay-ticks: 9000
+        clerics-farm-warts: false
+        cleric-wart-farmers-throw-warts-at-villagers: true
+        mob-griefing-override: default
+        takes-damage-from-water: false
+        allow-trading: true
+        always-drop-exp: false
+        minimum-demand: 0
+        lobotomize:
+          enabled: true
+          check-interval: 1200
+          wait-until-trade-locked: false
+        display-trade-item: true
+        spawn-iron-golem:
+          radius: 0
+          limit: 8
+        search-radius:
+          acquire-poi: 16
+          nearest-bed-sensor: 16</code></pre>
+</div>
+</div><div style="text-align: justify">Bạn sẽ phẫu thuật thùy não cho dân làng, làm cho chúng ngou đi khi rúc vào góc tối. Một khi bạn giải phóng không gian cho ổng đi lại được, thì não sẽ tự động tải lại, vừa mượt máy chủ vừa đỡ nhức đầu. Riêng phần <code class="bbCodeInline">acquire-poi</code> thay vì đi tìm giường hay bàn làm việc ở tận đẩu tận đâu, chúng chỉ được phép tìm trong một bán kính nhỏ (tầm 16 block). Giới hạn vòng tròn quan hệ này giúp CPU không phải tính toán đường đi quá xa nè.​</div><hr>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify"><span style="font-size: 22px">Còn lại, nên tìm hiểu thêm trong <a href="https://purpurmc.org/docs/" target="_blank" class="link link--external" rel="noreferrer">Docs của Purpur</a>, quản trị viên có thể thay đổi trực tiếp kích thước động vật, cho phép bọt biển hút dung nham, tăng bán kính Beacon, điều chỉnh sát thương TNT/End_Crystal, khiến bắn cung khó chài ia? hay thay đổi độ bền Elytra sử dụng... Nhất định <b>nên thử! <img src="__BASE__media/source/012-anime1-2772104b.png" class="smilie" loading="lazy" alt=":anime1:" title="smug :anime1:" decoding="async"></b></span>​</div>
+</div>
+
+</div>
+</blockquote><hr>

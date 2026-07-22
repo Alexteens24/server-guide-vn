@@ -1,0 +1,462 @@
+<h3 class="bbHeading" id="-3-5-paper-configs-tep-thiet-dat-can-thiet"><div style="text-align: justify">3.5. PAPER configs - tệp thiết đặt cần thiết​</div></h3><div style="text-align: justify">Thư mục <b>config</b> giờ sẽ chứa các file cấu hình mặc định và cấu hình chung của máy chủ Paper, nằm ngay trong thư mục gốc của Minecraft.​</div><ul>
+<li><div style="text-align: justify">Tệp <code class="bbCodeInline">paper-global.yml</code> bao gồm toàn bộ các thiết lập áp dụng chung cho toàn máy chủ.​</div></li>
+<li><div style="text-align: justify">Tệp <code class="bbCodeInline">paper-world-defaults.yml</code> chứa cấu hình mặc định cho tất cả các thế giới - world.​</div></li>
+</ul><div style="text-align: justify">Ngoài ra, mỗi <i><span style="color: rgb(26, 188, 156)">world/world_nether/world_the_end</span></i> sẽ tự tạo một tệp riêng, lấy tên là <i><span style="color: rgb(26, 188, 156)"><code class="bbCodeInline">paper-world.yml</code></span></i> trong thư mục của nó. Bạn có thể chỉnh tệp này để ghi đè cấu hình cho từng world cụ thể, đường dẫn sẽ là <code class="bbCodeInline">/[tên_world]/paper-world.yml</code>​</div><h4 class="bbHeading" id="-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-1-paper-world-defaults-yml"><div style="text-align: justify"><span style="color: rgb(85, 57, 130)">˚˖ ᵎᵎ 3.5.1. PAPER-WORLD-DEFAULTS.YML</span>​</div></h4><h4 class="bbHeading" id="-anti-xray-co-ban"><div style="text-align: justify">Anti-xray cơ bản​</div></h4><div style="text-align: justify">Toàn bộ thiết đặt bạn cần cùng giải thích các khái niệm đã có sẵn tại <a href="https://docs.papermc.io/paper/anti-xray/" target="_blank" class="link link--external" rel="noreferrer">https://docs.papermc.io/paper/anti-xray/</a>​</div><div class="bbImageWrapper" title="anti-xray-overworld.CWzmAZnN_Z4wNiq.webp">
+<img src="__BASE__media/source/118-anti-xray-overworld.CWzmAZnN_Z4wNiq-46ad60fa.webp" class="bbImage" style="width: 506px" alt="anti-xray-overworld.CWzmAZnN_Z4wNiq.webp" title="" width="1668" height="938" loading="lazy" decoding="async">
+</div><br>
+<div style="text-align: justify"><img src="__BASE__media/source/081-3-6e2e37fb.png" class="smilie" loading="lazy" alt="<3" title="<3 <3" decoding="async"> .ᐟ Để mình chia sẻ nhẹ kiến thức, giải thích cho đằng ấy hiểu tại sao cái tính năng này nó vừa là "cứu tinh" mà cũng vừa là "kẻ hủy diệt" băng thông nhé. Viễn cảnh xảy ra giữa các lựa chọn:​</div><ol>
+<li><div style="text-align: justify">Tại sao Anti-Xray lại làm Server phình to? <img class="smilie smilie--emoji" alt="❕" src="__BASE__media/source/119-media-ede89d0d.png" title="White exclamation mark :grey_exclamation:" loading="lazy" width="72" height="72" decoding="async">​</div></li>
+</ol><div style="text-align: justify">Bình thường, dữ liệu của Minecraft được nén lại rất gọn gàng vì các khối giống nhau nằm cạnh nhau. Nhưng khi quản trị viên bật Anti-Xray với <code class="bbCodeInline">Engine Mode 2</code>, máy chủ sẽ tung hỏa mù bằng cách nhồi nhét một đống đồ giả vào các khối đá.​</div><ul>
+<li><div style="text-align: justify"><b>Kết quả:</b> Dữ liệu trở nên "lộn xộn" - Entropy cao, thuật toán nén không thể làm gọn nó được nữa. Gói tin gửi đi nặng đô hơn hẳn. Nếu máy chủ có trên 100 con dân cùng trực tuyến, đường truyền mạng sẽ sớm "ét ô ét" vì quá tải dữ liệu, dẫn đến tình trạng ping nhảy vpop mỗi khi người chơi đổi world hoặc đăng nhập<img class="smilie smilie--emoji" alt="❕" src="__BASE__media/source/119-media-ede89d0d.png" title="White exclamation mark :grey_exclamation:" loading="lazy" width="72" height="72" decoding="async">​</div></li>
+</ul><ol>
+<li><div style="text-align: justify">"Hackers" vẫn có cửa thoát.ᐟ​</div></li>
+</ol>Đừng tưởng bật Anti-Xray là vô đối nhé, mấy bạn pháp sư Trung Hoa hay dùng <a href="https://seedcrackerx.com/" target="_blank" class="link link--external" rel="noreferrer">SeedcrackerX </a>vẫn có thể lách luật cực mượt:<br>
+<ul>
+<li><div style="text-align: justify">Anti-Xray chỉ che giấu trong một tầm nhất định để đỡ lag, hack xịn vẫn có thể "soi" được quặng thật ở ngoài tầm che phủ đó.​</div></li>
+<li><div style="text-align: justify"><b>Seed Reversing (Dò hạt giống): </b>Đây là đòn "chí mạng" kết liễu mọi hệ thống anti-xray, nếu tụi nó mò được World-Seed, coi như xong đời. Thần dân của máy chủ bạn sẽ biết chính xác tọa độ Diamond/Ancient Debris nằm ở đâu mà không cần máy chủ phải gửi dữ liệu quặng về.​</div></li>
+</ul>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify"><b><span style="font-size: 18px">Đề xuất:</span></b><span style="font-size: 18px"> Quản trị viên phải đổi <code class="bbCodeInline">feature-seeds</code> trong Paper và cả mấy cái <code class="bbCodeInline">structure-seed</code> trong <code class="bbCodeInline">spigot.yml</code> + <code class="bbCodeInline">paper-world-defaults.yml/feature-seeds.generate-random-seeds-for-all</code> + <code class="bbCodeInline">leaf/fast-biome-manager-seed-obfuscation</code> + <code class="bbCodeInline">leaf/secure-seed</code> thì mới gọi là có chút "phòng thủ" nhá.</span>​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: justify"><ol>
+<li><div style="text-align: justify">Cái bẫy "Quặng lộ thiên" (Ores Exposed to Air)​</div></li>
+</ol>Mặc định thì các Engine sẽ không giấu quặng nằm cạnh không khí - Air trong hang vì sợ lỗi hiển thị. Nếu quản trị viên cố chấp thêm <code class="bbCodeInline">air</code> vào danh sách <code class="bbCodeInline">hidden-blocks</code> để giấu triệt để:​</div><ul>
+<li><div style="text-align: justify"><b>Mặt tốt:</b> Chống x-ray tuyệt đối, kể cả trong hang.​</div></li>
+<li><div style="text-align: justify"><b>Mặt tối:</b> Máy tính của người chơi sẽ phải gồng mình từ Hiệu năng tới Tốc độ mạng tính toán, để vẽ đống quặng giả đó xung quanh hang động, hệ quả là fps của người chơi sẽ tụt dốc không phanh. Đừng để người chơi phải thốt lên <span style="color: rgb(184, 49, 47)"><b>"Server lag ỉa" với Bedrock bị ăn kick liên hồi</b></span> chỉ vì bạn quá mạnh tay với tụi X-ray nhé.ᐟ​</div></li>
+</ul><ol>
+<li><div style="text-align: justify">Cứu tinh + Giải pháp thay thế​</div></li>
+</ol><div style="text-align: justify"><code class="bbCodeInline">Engine-mode 1</code>tạo điều kiện cho máy tính người chơi giảm mạnh phần tính toán với khu vực Chunk mới <img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async">dù vậy, cũng khá dễ để các pháp sư x-ray bypass vượt qua, thay vì phụ thuộc hoàn toàn vào Anti-Xray và làm khổ cái băng thông, đằng ấy nên:​</div><ul>
+<li><b>Dùng Plugin Tracking: </b><a href="https://modrinth.com/plugin/coreprotect" target="_blank" class="link link--external" rel="noreferrer">CoreProtect </a>hoặc mấy cái plugin chuyên ghi chép tốc độ đào quặng của thần dân là chân ái. Cứ ai đào quá nhiều Diamond trong thời gian ngắn là bế đi luôn cho nhanh.<br>
+<div style="text-align: justify"><ul>
+<li><div style="text-align: justify"><code class="bbCodeInline">/co rollback action:-block exclude:stone,deepslate,dirt,gravel,andesite,diorite,granite radius:20 time:2h #preview</code>​</div></li>
+<li><div style="text-align: justify"><a href="https://alessiodp.com/oreannouncer" target="_blank" class="link link--external" rel="noreferrer">OreAnnouncer</a> đào thế nào cũng sẽ bị tình nghi.<br>
+<div class="bbImageWrapper" title="image1.07j_bq_wr5sp2.gif">
+<img src="__BASE__media/source/120-image1.07j_bq_wr5sp2-7237faaf.gif" class="bbImage" style="width: 319px" alt="image1.07j_bq_wr5sp2.gif" title="" width="600" height="350" loading="lazy" decoding="async">
+</div></div></li>
+<li><div style="text-align: justify"><a href="https://modrinth.com/plugin/minertrack" target="_blank" class="link link--external" rel="noreferrer">MinerTrack Anti xray</a> áp dụng thuật toán trí tuệ nhân tạo loại xịn để xác định người chơi tự hủy.<br>
+<div class="bbImageWrapper" title="8c9ccc951e5baf6a4181154f499a0fab30749a74.png">
+<img src="__BASE__media/source/121-8c9ccc951e5baf6a4181154f499a0fab30749a74-8ca5e834.png" class="bbImage" style="" alt="8c9ccc951e5baf6a4181154f499a0fab30749a74.png" title="" width="581" height="82" loading="lazy" decoding="async">
+</div></div></li>
+<li><div style="text-align: justify"><a href="https://github.com/Alexteens24/RayTraceAntiXray" target="_blank" class="link link--external" rel="noreferrer">RayTraceAntiXray</a> sử dụng sức mạnh của PacketEvent để chặn quặng lộ thiên.<br>
+<div class="bbImageWrapper" title="1781050077969.webp">
+<img src="__BASE__media/source/122-1781050077969-812715bb.webp" class="bbImage" style="" alt="1781050077969.webp" title="1781050077969.webp" width="1536" height="1024" loading="lazy" decoding="async">
+</div></div></li>
+<li><div style="text-align: justify"><a href="https://modrinth.com/plugin/lanternxr" target="_blank" class="link link--external" rel="noreferrer">Lantern [Anti-Xray]</a> - cũng là chiếc Plugin Premium mình rất thích để phát triển thêm, sử dụng thuật toán học máy <a href="https://catboost.ai/" target="_blank" class="link link--external" rel="noreferrer">CatBoost</a> (Categorical Boosting) để phân tích 19 hành vi đào quặng của người chơi, tỉ lệ chuẩn 90%.​</div><div class="bbImageWrapper" title="1777429544703.webp">
+<img src="__BASE__media/source/123-1777429544703-a4ab618a.webp" class="bbImage" style="" alt="1777429544703.webp" title="1777429544703.webp" width="1272" height="158" loading="lazy" decoding="async">
+</div></li>
+</ul></div></li>
+<li><b>24/7 ngồi soi người chơi:</b> Không có cái máy nào thay thế được sự tinh đời của Admin đâu ạ (*＞ω＜*)♡</li>
+</ul><span style="font-size: 18px"><span style="color: rgb(209, 72, 65)"><b>Overworld</b></span></span> thiết đặt:<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>anticheat:
+  anti-xray:
+    enabled: true
+    engine-mode: 1
+    hidden-blocks:
+    - diamond_ore
+    - deepslate_diamond_ore
+    - emerald_ore
+    - deepslate_emerald_ore
+    - gold_ore
+    - deepslate_gold_ore
+    - raw_gold_block
+    lava-obscures: false
+    max-block-height: 64
+    replacement-blocks:
+    - stone
+    - deepslate
+    update-radius: 2</code></pre>
+</div>
+</div><span style="font-size: 18px"><b><span style="color: rgb(209, 72, 65)">Nether:</span></b></span><br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>anticheat:
+  anti-xray:
+    enabled: true
+    engine-mode: 3
+    hidden-blocks:
+    - nether_gold_ore
+    - ancient_debris
+    - nether_quartz_ore
+    - gilded_blackstone
+    lava-obscures: false
+    max-block-height: 128
+    replacement-blocks:
+    - basalt
+    - blackstone
+    - gravel
+    - netherrack
+    - soul_sand
+    - soul_soil
+    update-radius: 2</code></pre>
+</div>
+</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-entities-tracking-range-y">paper-world-defaults.yml/entities.tracking-range-y​</h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất
+tracking-range-y:
+  animal: 30
+  display: 160
+  enabled: true
+  misc: 160
+  monster: 32
+  other: 160
+  player: 256</code></pre>
+</div>
+</div>Tương tự <code class="bbCodeInline">entity-tracking-range</code> của <code class="bbCodeInline">spigot.yml</code> nhưng theo chiều dọc (Y).​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-entities-spawning-despawn-ranges"><b>paper-world-defaults.yml/entities.spawning.despawn-ranges</b>​</h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất:
+      ambient:
+        hard: 72
+        soft: 30
+      axolotls:
+        hard: 72
+        soft: 30
+      creature:
+        hard: 72
+        soft: 30
+      misc:
+        hard: 72
+        soft: 30
+      monster:
+        hard: 72
+        soft: 30
+      underground_water_creature:
+        hard: 72
+        soft: 30
+      water_ambient:
+        hard: 72
+        soft: 30
+      water_creature:
+        hard: 72
+        soft: 30</code></pre>
+</div>
+</div><div style="text-align: justify">Tùy chọn này quy định khoảng cách mà mob bắt đầu có khả năng tự biến mất (soft) hoặc bị xóa ngay lập tức (hard). Nếu muốn chỉnh riêng khoảng cách despawn theo chiều ngang và dọc, bạn cần thêm cấu hình trong mục <i><code class="bbCodeInline">monster.hard</code></i> như sau:<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>despawn-ranges:
+monster:
+  hard: horizontal:
+  default vertical:
+default soft: default</code></pre>
+</div>
+</div><br>
+Người chơi đông, máy chủ phần cứng yếu thì thiết lập này cực kỳ quan trọng, nếu <code class="bbCodeInline">simulation-distance</code> bạn đặt &lt; 10, thì <code class="bbCodeInline">mob-spawn-range</code> tại <code class="bbCodeInline">spigot.yml</code> = <code class="bbCodeInline">(simulation-distance - 1)</code>. Đồng thời, <code class="bbCodeInline">despawn-ranges.hard.horizontal</code> nên đặt bằng <code class="bbCodeInline">(simulation-distance - 1) × 16</code>. Giá trị theo chiều dọc - horizontal nên giữ mặc định (128 trong Vanilla), phần lớn các hướng dẫn Farm trên mạng người chơi tìm được đều dựa trên mức này, bảng minh họa:​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><th><div style="text-align: center">simulation-distance​</div></th><th><div style="text-align: center">mob-spawn-range​</div></th><th><div style="text-align: center">despawn-range.hard.horizontal​</div></th></tr><tr><td style="width: 33.3333%"><div style="text-align: center">10 (Vanilla)​</div></td><td style="width: 33.3333%"><div style="text-align: center">8 (Vanilla)​</div></td><td style="width: 33.3333%"><div style="text-align: center">128 (Vanilla)​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">9​</div></td><td style="width: 33.3333%"><div style="text-align: center">8​</div></td><td style="width: 33.3333%"><div style="text-align: center">128​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">8​</div></td><td style="width: 33.3333%"><div style="text-align: center">7​</div></td><td style="width: 33.3333%"><div style="text-align: center">112​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">7​</div></td><td style="width: 33.3333%"><div style="text-align: center">6​</div></td><td style="width: 33.3333%"><div style="text-align: center">96​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">6​</div></td><td style="width: 33.3333%"><div style="text-align: center">5​</div></td><td style="width: 33.3333%"><div style="text-align: center">80​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">5​</div></td><td style="width: 33.3333%"><div style="text-align: center">4​</div></td><td style="width: 33.3333%"><div style="text-align: center">64​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">4​</div></td><td style="width: 33.3333%"><div style="text-align: center">3​</div></td><td style="width: 33.3333%"><div style="text-align: center">48​</div></td></tr><tr><td style="width: 33.3333%"><div style="text-align: center">3 (khum nên)​</div></td><td style="width: 33.3333%"><div style="text-align: center">3​</div></td><td style="width: 33.3333%"><div style="text-align: center">36 (khum khuyến khích)​</div></td></tr></tbody></table>
+</div>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>despawn-ranges:
+      ambient:
+        hard: 32
+        soft: 16
+      axolotls:
+        hard: 32
+        soft: 16
+      creature:
+        hard: 48
+        soft: 16
+      misc:
+        hard: 48
+        soft: 16
+      monster:
+        hard:
+          horizontal: 96
+          vertical: 48
+        soft: 30
+      underground_water_creature:
+        hard: 48
+        soft: 16
+      water_ambient:
+        hard: 48
+        soft: 16
+      water_creature:
+        hard: 48
+        soft: 16</code></pre>
+</div>
+</div><hr><h4 class="bbHeading" id="-paper-world-defaults-entities-spawning-despawn-time"><div style="text-align: justify"><b>paper-world-defaults/entities.spawning.despawn-time</b>​</div></h4><div style="text-align: justify"><img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async"> Paper cho phép bạn thiết lập thời gian biến mất riêng cho từng loại thực thể <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Entity.html" target="_blank" class="link link--external" rel="noreferrer">Entity</a>, bên cạnh các quy tắc Despawn mặc định của Vanilla.<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Gợi ý:
+despawn-time:
+llama_spit: 1200
+snowball: 800
+fireball: 1200
+dragon_fireball: 1200
+small_fireball: 1200
+arrow: 3000
+shulker_bullet: 3000
+wither_skull: 3000</code></pre>
+</div>
+</div><code class="bbCodeInline">despawn-time</code> + <code class="bbCodeInline">entity-per-chunk-save-limit</code> + <code class="bbCodeInline">alt-item-despawn-rate</code> sẽ tạo thành một Combo cơ bản giúp chặn được LagMachine <img src="__BASE__media/source/124-B-5558b60c.gif" class="smilie" loading="lazy" alt="B-)" title="Sành điệu B-)" decoding="async">​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-chunks-entity-per-chunk-save-limit"><div style="text-align: justify"><b>paper-world-defaults.yml/chunks.entity-per-chunk-save-limit</b>​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>entity-per-chunk-save-limit:
+    area_effect_cloud: 8
+    armor_stand: 14
+    arrow: 20
+    dragon_fireball: 3
+    egg: 18
+    ender_pearl: 5
+    fireball: 5
+    firework_rocket: 8
+    lingering_potion: 8
+    shulker_bullet: 6
+    small_fireball: 12
+    snowball: 12
+    spectral_arrow: 10
+    splash_potion: 8
+    trident: 10
+    wither_skull: 3</code></pre>
+</div>
+</div>Giới hạn này rất quan trọng vì nó giúp ngăn máy chủ bị đứng khi cố tải một chunk chứa quá nhiều thực thể dạng đạn (projectile). Quay ngược lại về khái niệm LagMachine trong mục <b><span style="color: rgb(26, 188, 156)">3.1.2. Fundamentals - Nền tảng</span></b> để xem lại nhé.<br>
+<hr><h4 class="bbHeading" id="-paper-world-defaults-yml-entities-spawning-alt-item-despawn-rate"><div style="text-align: justify"><b>paper-world-defaults.yml/entities.spawning.alt-item-despawn-rate</b>​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>alt-item-despawn-rate:
+      enabled: true
+      items:
+        arrow: 300
+        bone: 600
+        bone_meal: 300
+        cactus: 300
+        cobbled_deepslate: 600
+        cobblestone: 300
+        deepslate: 300
+        dirt: 300
+        egg: 300
+        ender_pearl: 90
+        feather: 300
+        gravel: 300
+        gunpowder: 1200
+        ink_sac: 900
+        leather: 300
+        netherrack: 120
+        oak_leaves: 300
+        rotten_flesh: 300
+        scaffolding: 600
+        slime_ball: 1200
+        stick: 300
+        string: 1200
+        sugar_cane: 300
+    count-all-mobs-for-spawning: false
+    creative-arrow-despawn-rate: '60'</code></pre>
+</div>
+</div><div style="text-align: justify"><br>
+Danh sách này cho phép bạn thay đổi thời gian biến mất (tính bằng tick) riêng cho từng loại vật phẩm, nhanh hơn hoặc chậm hơn so với mặc định. Bạn có thể dùng tùy chọn này kết hợp với <code class="bbCodeInline">paper-world-defaults.yml/merge-radius</code> để tối ưu hiệu năng, thay vì phải dùng các Plugin/Skript chuyên dọn dẹp ClearLag xàm chó trên mạng. Lý do sẽ giải thích chi tiết hơn ở <a href="https://github.com/HSGamer/list-of-shame-mcvn" target="_blank" class="link link--external" rel="noreferrer">https://github.com/HSGamer/list-of-shame-mcvn</a>​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-collisions-max-entity-collisions"><div style="text-align: justify"><b>paper-world-defaults.yml/collisions.max-entity-collisions</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Gợi ý: 8</code> Giá trị này giúp xác định số lượng Entity tối đa được tính vào việc máy chủ xử lý va chạm Hitbox. Khi đạt đến ngưỡng này, máy chủ sẽ ngừng xử lý thêm các va chạm khác.​</div><div class="bbImageWrapper" title="300px-Entities%27_hitboxes_comparison.png">
+<img src="__BASE__media/source/125-300px-Entities-27_hitboxes_comparison-ff99a439.png" class="bbImage" style="" alt="300px-Entities%27_hitboxes_comparison.png" title="" width="300" height="169" loading="lazy" decoding="async">
+</div><br>
+<br>
+<div style="text-align: justify">Không nên đặt &lt; <code class="bbCodeInline">3</code> -- Farm của người chơi vẫn cần hệ thống va chạm này để hoạt động đúng.​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 50.0000%"><div class="bbImageWrapper" title="maxresdefault.jpg">
+<img src="__BASE__media/source/126-maxresdefault-ff7f54da.jpg" class="bbImage" style="" alt="maxresdefault.jpg" title="" width="1280" height="720" loading="lazy" decoding="async">
+</div></td><td style="width: 50.0000%"><div class="bbImageWrapper" title="maxresdefault.jpg">
+<img src="__BASE__media/source/127-maxresdefault-711e31eb.jpg" class="bbImage" style="" alt="maxresdefault.jpg" title="" width="1280" height="720" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><div style="text-align: justify">Dù vậy, chớ nhầm lẫn giữa <code class="bbCodeInline">gamerule maxEntityCramming</code> và <code class="bbCodeInline">collisions.max-entity-collisions</code>.​</div><ul>
+<li><div style="text-align: justify">Gamerule <i>maxEntityCramming</i> quy định số lượng Entity tối đa có thể dồn vô một góc trước khi bắt đầu nhận sát thương “ngạt”. Bạn có thể chỉnh tay bằng lệnh: <code class="bbCodeInline">/gamerule maxEntityCramming [số] (mặc định là 24)</code>​</div></li>
+</ul><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-collisions-fix-climbing-bypassing-cramming-rule"><div style="text-align: justify"><b>paper-world-defaults.yml/collisions.fix-climbing-bypassing-cramming-rule</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">fix-climbing-bypassing-cramming-rule: true</code><br>
+Tùy chọn này quyết định việc các Entity có khả năng leo trèo sẽ bị tính vào giới hạn nhồi vào một góc - <code class="bbCodeInline">gamerule maxEntityCramming</code> hay không.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-entities-spawning-per-player-mob-spawn"><div style="text-align: justify"><b>paper-world-defaults.yml/entities.spawning.per-player-mob-spawn</b>​</div></h4><div style="text-align: justify">Đã giải thích ở phần <code class="bbCodeInline">bukkit.yml/spawn-limit</code> --&gt; luôn để phần này thành <code class="bbCodeInline">true</code>. Trong Vanilla bình thường, máy chủ có một con số tổng (ví dụ: <code class="bbCodeInline">70</code> quái vật cho toàn bộ server). Thuật toán sẽ quét tất cả các Chunks xung quanh mọi người chơi để tìm chỗ sinh quái.​</div><ul>
+<li><div style="text-align: justify"><b>Anh Nguyễn Văn A (ngồi chơi ở Nether Waste):</b> Có hàng nghìn khối có thể sinh quái (Air blocks trên nóc Nether). Máy chủ quét đâu cũng thấy chỗ trống, quái vật sẽ "spam" liên tục quanh ổng.​</div></li>
+<li><div style="text-align: justify"><b>Chị Dậu (đứng camp tại Nether Ceiling):</b> Cổ đã dày công bao phủ mọi nơi quái xuất hiện bằng Slab, chỉ chừa lại một chỗ trống nhỏ xíu mong rằng sẽ thu được kết quả Farm tốt đẹp ở đây. Cơ mà tỷ lệ máy chủ quét trúng miếng sàn này cực thấp so với không gian bao la quanh người chơi ngồi chơi ở trên.​</div></li>
+</ul><div style="text-align: justify"><b>Kết quả:</b> Player A vô tình "hút" hết giới hạn 70 con quái đó, khiến máy chủ thông báo "Hết chỗ chứa rồi!", và Player B đứng ở Farm Wither cả tiếng đồng hồ mà không thấy một con nào xuất hiện.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-chunks-prevent-moving-into-unloaded-chunks"><div style="text-align: justify"><b>paper-world-defaults.yml/chunks.prevent-moving-into-unloaded-chunks</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+Chặn người chơi di chuyển vào khu vực chưa được tải, nếu cho phép đi vô là thuật toán sẽ dồn mọi nguồn lực để tải cho xong khu vực này --&gt; dẫn tới tình trạng đói tài nguyên ở chỗ khác --&gt; tụt tps toàn máy chủ.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-misc-redstone-implementation"><div style="text-align: justify"><b>paper-world-defaults.yml/misc.redstone-implementation</b>​</div></h4><div style="text-align: justify">Để đạt được điểm cân bằng hoàn hảo nhất giữa việc giữ nguyên trải nghiệm Vanilla và tối ưu hóa hiệu năng máy chủ, quản trị viên nên chọn <b>ALTERNATE_CURRENT</b>.<br>
+Lựa chọn <code class="bbCodeInline">VANILLA</code> gốc vốn có thuật toán xử lý tín hiệu bụi đá đỏ rất cồng kềnh, tạo ra vô số các cập nhật khối (block updates) đệ quy vô nghĩa, gây tụt tps thê thảm khi máy chủ có các cỗ máy Redstone lớn nhấp nháy liên tục. Trong khi đó, <code class="bbCodeInline">ALTERNATE_CURRENT</code> (hiện đang là "tiêu chuẩn vàng" được cộng đồng Dev khuyên dùng) là một thuật toán tối ưu hóa triệt để lượng lag dư thừa này, nhưng điểm đáng giá nhất là nó giữ nguyên hành vi của 99% các hệ thống redstone thông thường.<br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/128-www.youtube-19f96a43.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=XjjXYrMK4qw" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+The Problem with PaperMC
+</a>
+</p>
+<div class="contentRow-snippet">I am frequently confronted with complaints about the contraptions I share not working on certain multiplayer servers. In this video we will discover the prob...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div>
+Người chơi của bạn sẽ cảm thấy mọi thứ hoạt động y hệt Vanilla, trừ khi họ là những dân chơi hệ kỹ thuật (Technical Player) chuyên xây dựng các cỗ máy Farm cực kỳ khắt khe, phụ thuộc vào thứ tự cập nhật khối siêu nhỏ (update-order) của bản gốc. So với `<a href="https://bugs.mojang.com/browse/MC-81098?focusedCommentId=420777#comment-420777" target="_blank" class="link link--external" rel="noreferrer">EIGENCRAFT</a>` (một thuật toán tối ưu đã khá cũ), <a href="https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md" target="_blank" class="link link--external" rel="noreferrer">Alternate Current</a> là giải pháp hiện đại, mượt mà và ít gây lỗi vặt nhất cho các máy chủ SMP hiện tại.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-environment-treasure-maps"><div style="text-align: justify"><b>paper-world-defaults.yml/environment.treasure-maps</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: false</code><br>
+Lý do khiến bản đồ kho báu (treasure maps) trở thành "sát thủ" tiêu tốn tài nguyên máy chủ nằm ở cơ chế <b>tìm kiếm cấu trúc (structure lookup)</b> trên luồng xử lý chính (Main Thread). Khi một người chơi mở rương chứa bản đồ hoặc giao dịch với dân làng, máy chủ không chỉ đơn giản là đưa ra một vật phẩm bản đồ bình thường; Minecraft sẽ phải ngay lập tức quét một vùng không gian khổng lồ với bán kính lên tới <span style="color: rgb(147, 101, 184)"><b><code class="bbCodeInline">~1100 khối</code></b></span> chỉ để tìm kiếm tọa độ của một rương kho báu <i><u>chưa từng được khám phá</u></i>. Quá trình này cực kỳ nặng nề vì hai yếu tố:​</div><ul>
+<li><div style="text-align: justify">Nếu khu vực đó chưa được tạo (un-generated chunks), máy chủ buộc phải tính toán trước các thuật toán tạo địa hình và cấu trúc công trình ngầm chỉ để xác định xem rương có nằm ở đó hay không;​</div></li>
+<li><div style="text-align: justify">Toàn bộ quá trình tìm kiếm này thường chặn đứng mọi hoạt động khác của máy chủ cho đến khi có kết quả. Nếu rương ở quá xa hoặc địa hình phức tạp, việc tính toán có thể kéo dài hàng trăm ms, gây ra các cú giật Lag hoặc thậm chí khiến hệ thống Watchdog của Paper tại <code class="bbCodeInline">spigot.yml</code> tự động tắt máy chủ vì tưởng là bị treo.​</div></li>
+</ul><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-chunks-max-auto-save-chunks-per-tick"><div style="text-align: justify"><b>paper-world-defaults.yml/chunks.max-auto-save-chunks-per-tick</b>​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>chunks:
+  auto-save-interval: default
+  delay-chunk-unloads-by: 15s
+  fixed-chunk-inhabited-time: -1
+  flush-regions-on-save: false
+  max-auto-save-chunks-per-tick: 15</code></pre>
+</div>
+</div>Tham số <b><code class="bbCodeInline">max-auto-save-chunks-per-tick</code></b> trong <code class="bbCodeInline">paper-global.yml</code> thực chất là <b>van tiết lưu - throttle</b> cho hệ thống I/O của đĩa cứng. Đây là một trong những thiết lập nguy hiểm nhất vì nó trực tiếp can thiệp vào cách máy chủ xả dữ liệu từ RAM xuống ổ cứng và cũng cực kỳ cần thiết khi người chơi thường xuyên của máy chủ bạn tăng lên. Thử hình dung quá trình này như một dây chuyền sản xuất nhé:<br>
+<ul>
+<li><div style="text-align: justify"><b>Chunks modified (trong RAM):</b> Là sản phẩm đang chờ đóng gói.​</div></li>
+<li><div style="text-align: justify"><b>Auto-save interval:</b> Là thời gian quy định cho một đợt vận chuyển (mặc định thường là 6000 ticks ~ 5 phút).​</div></li>
+<li><div style="text-align: justify"><b>max-auto-save-chunks-per-tick:</b> Là tốc độ băng chuyền vận chuyển sản phẩm ra kho (ổ cứng).​</div></li>
+</ul><div style="text-align: justify">Cái bẫy nằm ở đây:​</div><ul>
+<li><div style="text-align: justify">Nếu đặt giá trị quá cao: Ép khô ổ cứng (đặc biệt nếu dùng HDD hoặc SSD rẻ tiền) phải ghi quá nhiều dữ liệu cùng lúc, dẫn đến hiện tượng <b>Disk I/O Latency</b>. Máy chủ sẽ bị khựng - freeze trong vài ms hoặc lâu hơn mỗi khi đến chu kỳ save, khiến tps tụt thảm hại.​</div></li>
+<li><div style="text-align: justify">Nếu đặt giá trị quá thấp: Máy chủ không kịp đẩy dữ liệu ra ổ cứng trước khi chu kỳ save tiếp theo bắt đầu. Dữ liệu tồn đọng trong RAM ngày càng nhiều, dẫn đến tình trạng dồn hàng tắc nghẽn. Khi RAM đầy hoặc đến ngưỡng giới hạn, máy chủ sẽ cố gắng "xả" toàn bộ số khu vực khổng lồ đó cùng một lúc, gây ra cú lag kinh hoàng, thậm chí làm sập máy chủ do Watchdog phát hiện phản hồi quá chậm.​</div></li>
+</ul><div style="text-align: justify">Công thức <code class="bbCodeInline">max-auto-save-chunks-per-tick</code> * <code class="bbCodeInline">auto-save-interval</code> ≥ <code class="bbCodeInline">total loaded chunks that requires save</code> chính là bài toán cân bằng lưu lượng chuẩn nhất. Cần tham khảo thêm <code class="bbCodeInline">max-auto-save-chunks-per-tick</code> tại <a href="https://discord.com/invite/papermc" target="_blank" class="link link--external" rel="noreferrer">PaperMC discord</a> khi mà số lượng người chơi máy chủ thường xuyên <b><span style="color: rgb(85, 57, 130)">&gt;40</span></b>.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-tick-rates"><div style="text-align: justify"><b>paper-world-defaults.yml/tick-rates</b>​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>tick-rates:
+  behavior:
+    villager:
+      validatenearbypoi: 120
+  container-update: 3
+  dry-farmland: 90
+  grass-spread: 45
+  mob-spawner: 18
+  sensor:
+    villager:
+      secondarypoisensor: 240
+  wet-farmland: 28</code></pre>
+</div>
+</div><div style="text-align: justify">Máy chủ lớn, nhiều Farm nông sản/Spawner sẽ cần ưu tiên giá trị này, từ thời gian đất khô dần tới cỏ lan mỗi tick.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-environment-optimize-explosions"><div style="text-align: justify"><b>paper-world-defaults.yml/environment.optimize-explosions</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code> Tất cả những vật phẩm có thể gây nổ, sẽ được Paper sử dụng thuật toán tối ưu hóa riêng.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-entities-armor-stands"><div style="text-align: justify"><b>paper-world-defaults.yml/entities.armor-stands</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: false</code><br>
+Tắt hết mấy dạng LagMachine sử dụng Armor-stand dồn ứ một góc, đồng thời làm hỏng những máy Farm chuyên dụng sử dụng Armor-stand như<br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/129-www.youtube-e9bd7f8d.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=CFLFbkVt1XM" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+Best Way to Travel in the End: Ice Highways with Guardrails
+</a>
+</p>
+<div class="contentRow-snippet">update of the Frostwalker ice generator. now generates additional guardrails on the side for extra safety.boats on ice can reach almost 40 blocks/sec. That's...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div></div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-tick-rates-2">paper-<b>world-defaults</b>.yml/tick-rates​</h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>  behavior:
+    villager:
+      validatenearbypoi: 60
+      acquirepoi: 120
+  sensor:
+    villager:
+      secondarypoisensor: 80
+      nearestbedsensor: 80
+      villagerbabiessensor: 40
+      playersensor: 40
+      nearestlivingentitysensor: 40</code></pre>
+</div>
+</div>Trong Minecraft, dân làng không chỉ đứng chơi. Cứ mỗi vài tick, "bộ não" của chúng lại phải chạy một loạt các kiểm tra, Một khi máy chủ tràn ngập dân làng, máy chủ bắt đầu gào thét khi hàng loạt sự kiện này xảy ra, Lag bắt đầu xuất hiện:<br>
+<ul>
+<li><div style="text-align: justify">Sensor: "Xung quanh có cái giường nào không?", "Thằng thợ rèn kia đang ở đâu?", "Có zombie không?"​</div></li>
+<li><div style="text-align: justify">Behavior: "Đi ngủ thôi", "Đi làm việc thôi", "Đi buôn chuyện nào", "Nhận nghề ở đâu ấy nhỉ?"​</div></li>
+</ul><div style="text-align: justify"><code class="bbCodeInline">acquirepoi</code>(Acquire Point of Interest) là hành động dân làng đi tìm các điểm quan trọng như giường, bàn làm việc hoặc chuông, Thay vì để chúng kiểm tra mỗi giây một lần gây lag, quản trị viên tăng con số này lên là dân làng sẽ lười kiểm tra hơn, CPU được nghỉ ngơi nhiều hơn == Dân làng hơi "đần" tí, đôi khi chúng đứng ngơ ra một lúc mới tìm thấy cái giường/bàn làm việc ngay trước mặt.​</div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-lootables"><div style="text-align: justify">paper-world-defaults.yml/lootables​</div></h4><div style="text-align: justify">Hệ thống <code class="bbCodeInline">lootables</code> của Paper là một công cụ tuyệt vời để giữ cho tài nguyên trong thế giới (như rương ở Dungeon, Desert Temple, End City...) không bao giờ bị cạn kiệt, đặc biệt hữu ích cho các máy chủ SMP đông người tồn tại lâu dài. Nếu quản trị viên muốn tạo ra một nền kinh tế mà người chơi phải liên tục khám phá nhưng không thể "cắm trại" tại một chỗ để Farm rương, hãy thử thiết lập này nhé:​</div>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>lootables:
+  auto-replenish: true
+  max-refills: -1
+  refresh-max: 6d
+  refresh-min: 1d
+  reset-seed-on-fill: true
+  restrict-player-reloot: true
+  restrict-player-reloot-time: 7d
+  retain-unlooted-shulker-box-loot-table-on-non-player-break: true</code></pre>
+</div>
+</div><div style="text-align: justify">Việc hiểu rõ các kịch bản này sẽ giúp bạn giải đáp thắc mắc của người chơi khi họ thấy rương "lúc có đồ lúc không":​</div><ol>
+<li><div style="text-align: justify">Đã lấy rùi: Người chơi cần chờ ít nhất X ngày mới Loot lại được rương đã lấy, người mới thì khum cần.​</div></li>
+<li><div style="text-align: justify">Vấn đề "Rác": Nếu nhét đầy rác vô rương, khỏi còn chỗ mà thêm đồ mới.​</div></li>
+<li><div style="text-align: justify">Cơ chế cộng dồn: Nếu người chơi A chỉ lấy đồ ngon và để lại đồ thừa, người chơi B đến sau sẽ nhận được: <code class="bbCodeInline">Đồ thừa của A + Đồ mới của B</code> -- rương sẽ ngày càng đầy cho đến khi có người dọn sạch.​</div></li>
+</ol><div style="text-align: justify">Chỉ rương sinh ra tự nhiên mới có tác dụng. Nếu người chơi phá rương để lấy gỗ, rương đó vĩnh viễn biến mất khỏi hệ thống hồi đồ.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Nhớ thông báo lên Discord: <b>"Rương tự nhiên sẽ tự hồi đồ sau mỗi X ngày nếu khum bị phá nhen".</b> Cơ chế này giúp bảo tồn tài nguyên thế giới cực tốt mà quản trị viên không cần phải khởi tạo dữ liệu bản đồ thường xuyên. Hay ở chỗ, những máy chủ mới tại Việt Nam như <a href="https://vietrealm.com/" target="_blank" class="link link--external" rel="noreferrer">VietRealms</a>, có thể kết hợp song song TerraLith datapack chuyên tạo địa hình mới + Skript Nexo + API của Terra Plugin (thông qua Java/Kotlin) cùng <a href="https://github.com/IrisDimensions" target="_blank" class="link link--external" rel="noreferrer">IrisDimensions</a> cho ra công trình tùy chỉnh, liên tục tạo lại rương đồ tùy chỉnh mới và vô hạn nội dung trong máy chủ. Mỗi tội cần phải yêu môn Toán do rất nặng về kiến thức.​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: justify"><div class="bbImageWrapper" title="68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e742e636f6d2f33393234383530322f3137303933343637382d32666630613239372d323863322d343363372d386231652d6434636334323462613330342e706e67">
+<img src="__BASE__media/source/130-68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e-6204d2d2.png" class="bbImage" style="" alt="68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e742e636f6d2f33393234383530322f3137303933343637382d32666630613239372d323863322d343363372d386231652d6434636334323462613330342e706e67" title="" width="1114" height="597" loading="lazy" decoding="async">
+</div></div><hr><h4 class="bbHeading" id="-paper-world-defaults-yml-feature-seeds-generate-random-seeds-for-all"><div style="text-align: justify"><b>paper-world-defaults.yml/feature-seeds.generate-random-seeds-for-all</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+Cơ chế sản sinh sub-seed ngẫu nhiên cho máy chủ, tính năng này thường được gọi là <b>Feature Seed Randomization</b> (Ngẫu nhiên hóa hạt giống tính năng). Các công cụ như <a href="https://seedcrackerx.com/" target="_blank" class="link link--external" rel="noreferrer"><b>SeedcrackerX</b></a> có thể phân tích vị trí các loại công trình, cấu trúc quặng hoặc cây cối để tính toán ngược lại hạt giống Seed gốc của thế giới. Một khi có được Seed, người chơi có thể dùng các trang web như <a href="https://www.chunkbase.com/" target="_blank" class="link link--external" rel="noreferrer"><i>Chunkbase</i> </a>để biết chính xác vị trí mọi loại quặng, mọi công trình hiếm, gây mất cân bằng nghiêm trọng. Tùy chọn này sẽ thay đổi "hạt giống con" (sub-seed), khiến các công cụ đó trả về kết quả sai lệch hoàn toàn. Mỗi tội nếu bạn dọn dẹp dung lượng ổ đĩa định kỳ như máy chủ mình, là sẽ gặp lỗi như ảnh:​</div><br>
+<div class="bbImageWrapper" title="QkQte.jpg">
+<img src="__BASE__media/source/131-QkQte-23e09a5c.jpg" class="bbImage" style="width: 635px" alt="QkQte.jpg" title="" width="1920" height="1040" loading="lazy" decoding="async">
+</div><br>
+Kết hợp với LeafMC đã tích hợp sẵn <a href="https://www.leafmc.one/docs/config/leaf-global" target="_blank" class="link link--external" rel="noreferrer">Mã hóa 1024bit hạt giống</a>, đảm bảo không thể lần ra được.<br>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<b>⚠︎ Tips</b> Quản trị viên phải đổi <code class="bbCodeInline">feature-seeds</code> trong Paper và cả mấy cái <code class="bbCodeInline">structure-seed</code> trong <code class="bbCodeInline">spigot.yml</code> + <code class="bbCodeInline">paper-world-defaults.yml/feature-seeds.generate-random-seeds-for-all</code> + <code class="bbCodeInline">leaf/fast-biome-manager-seed-obfuscation</code> + <code class="bbCodeInline">leaf/secure-seed</code> thì mới gọi là có chút "phòng thủ" nhá <img src="__BASE__media/source/081-3-6e2e37fb.png" class="smilie" loading="lazy" alt="<3" title="<3 <3" decoding="async">
+</div>
+
+</div>
+</blockquote><hr>

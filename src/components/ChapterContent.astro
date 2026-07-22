@@ -1,0 +1,132 @@
+---
+import * as cheerio from 'cheerio';
+import fragmentManifest from '../data/chapter-fragments.json';
+import guide from '../data/guide-pages.json';
+import { headingOverrides, normalizeHeadingTitle } from '../utils/guide-format';
+
+interface Props {
+  fragmentId: string;
+  removeFirstHeading?: boolean;
+}
+
+const { fragmentId, removeFirstHeading = true } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const rawFragments = import.meta.glob('../data/chapters/*.html', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>;
+const raw = rawFragments[`../data/chapters/${fragmentId}.html`];
+if (!raw) throw new Error(`Không tìm thấy fragment nội dung: ${fragmentId}`);
+
+const fragments = fragmentManifest.items;
+const pages = guide.pages;
+const currentFragment = fragments.find((item) => item.id === fragmentId);
+const pageByFragment = new Map(
+  pages.filter((page) => page.fragment).map((page) => [page.fragment, page]),
+);
+const ownerByAnchor = new Map<string, (typeof fragments)[number]>();
+for (const fragment of fragments) {
+  for (const anchor of fragment.anchors) ownerByAnchor.set(anchor, fragment);
+}
+
+const $ = cheerio.load(raw, {}, false);
+
+// Chỉ chuẩn hóa bản docs khi render. Fragment lưu trữ và trang nguyên tác không đổi.
+function cleanTextNodes(node: any, preserve = false) {
+  const shouldPreserve = preserve || ['pre', 'code'].includes(node.tagName);
+  for (const child of node.children || []) {
+    if (child.type === 'text' && !shouldPreserve) {
+      child.data = child.data
+        .replace(/[\u200B-\u200D\uFEFF]/g, '')
+        .replace(/[ \t]+\n/g, '\n');
+    } else if (child.children) {
+      cleanTextNodes(child, shouldPreserve);
+    }
+  }
+}
+cleanTextNodes($.root()[0]);
+
+function stripHeadingNumber(node: any, pattern: RegExp) {
+  for (const child of node.children || []) {
+    if (child.type === 'text' && pattern.test(child.data)) {
+      child.data = child.data.replace(pattern, '');
+      return true;
+    }
+    if (child.children && stripHeadingNumber(child, pattern)) return true;
+  }
+  return false;
+}
+
+$('h2,h3,h4').each((_, element) => {
+  const heading = $(element);
+  const id = heading.attr('id') || '';
+  const override = headingOverrides[id];
+  if (override) {
+    heading.text(override);
+  } else if (!heading.find('a, img').length) {
+    heading.text(normalizeHeadingTitle(id, heading.text()));
+  }
+
+  const title = heading.text().replace(/\s+/g, ' ').trim();
+  const match = title.match(/^(\d+(?:\.\d+){0,2})\.?\s*/);
+  if (match) {
+    heading.attr('data-section-number', match[1]);
+    heading.addClass('has-section-number');
+    stripHeadingNumber(element, new RegExp(`^${match[0].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
+  }
+  if (/\.ya?ml\b|server\.properties|[\w-]+\.[\w-]+(?:\.[\w-]+)+/i.test(title)) {
+    heading.addClass('is-config-heading');
+  }
+});
+
+if (removeFirstHeading) $('h2,h3,h4').first().remove();
+
+// XenForo dùng div cho hầu hết đoạn văn. Đổi các node top-level thuần văn bản
+// thành paragraph để khoảng cách, điều hướng và trình đọc màn hình nhất quán hơn.
+$.root().children('div').each((_, element) => {
+  const block = $(element);
+  if (block.attr('class') || block.find('div,ul,ol,table,blockquote,pre,h2,h3,h4,figure,iframe').length) return;
+  const text = block.text().replace(/\s+/g, ' ').trim();
+  if (text === '---') {
+    block.replaceWith('<hr class="original-separator" />');
+    return;
+  }
+  if (!text) return;
+  const paragraph = $('<p class="original-paragraph"></p>');
+  for (const [name, value] of Object.entries(element.attribs || {})) {
+    if (name !== 'style') paragraph.attr(name, value);
+  }
+  paragraph.html(block.html() || '');
+  if (/^\s*\[\?\]/.test(text)) paragraph.addClass('original-callout original-callout--info');
+  else if (/^\s*\[!\]/.test(text)) paragraph.addClass('original-callout original-callout--warning');
+  else if (/^\s*➥/.test(text)) paragraph.addClass('original-callout original-callout--takeaway');
+  block.replaceWith(paragraph);
+});
+
+$('a[href^="#"]').each((_, element) => {
+  const link = $(element);
+  const anchor = (link.attr('href') || '').slice(1);
+  if (!anchor) return;
+  const canonicalPage = pages.find((page) => !page.parent && page.id === anchor);
+  if (canonicalPage) {
+    link.attr('href', `${base}${canonicalPage.slug}/`);
+    link.removeAttr('target rel');
+    return;
+  }
+  const owner = ownerByAnchor.get(anchor);
+  const ownerPage = owner && pageByFragment.get(owner.id);
+  if (!owner || !ownerPage) return;
+
+  if (owner.id === fragmentId && anchor !== currentFragment?.firstHeadingId) return;
+  const suffix = anchor === owner.firstHeadingId ? '' : `#${anchor}`;
+  link.attr('href', `${base}${ownerPage.slug}/${suffix}`);
+  link.removeAttr('target rel');
+});
+
+const html = $.html().replaceAll('__BASE__', base);
+---
+
+<article class="original-post guide-fragment" set:html={html} />

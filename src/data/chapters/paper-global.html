@@ -1,0 +1,224 @@
+<h4 class="bbHeading" id="-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml"><div style="text-align: justify"><span style="color: rgb(85, 57, 130)">˚˖ ᵎᵎ 3.5.2 PAPER-GLOBAL.YML</span>​</div></h4><div style="text-align: justify">Vẫn đang quằn quại giữa đống file <code class="bbCodeInline">.yml</code> của Paper đó hả<img src="__BASE__media/source/007-media-b0b541ee.gif" class="smilie" loading="lazy" alt=":-@" title="Blah blah :-@" decoding="async">? Để mình "khai sáng" cho cái tư duy này một chút, chứ để đằng ấy tự mò chắc tới mùa quýt sang năm vẫn chưa xong cái máy chủ bất ổn này mất <img src="__BASE__media/source/005-D-ef8315a7.gif" class="smilie" loading="lazy" alt=":D" title="Cười nhe răng :D" decoding="async"><br>
+Nếu ở đằng trước, <code class="bbCodeInline">paper-world-defaults.yml</code> là Khuôn mẫu cho đám đệ tử của từng thế giới <code class="bbCodeInline">world/ world_nether/ world_the_end </code>học theo, thì <code class="bbCodeInline">paper-global.yml</code> chính là Nóc nhà của cả hệ thống <img class="smilie smilie--emoji" alt="❕" src="__BASE__media/source/119-media-ede89d0d.png" title="White exclamation mark :grey_exclamation:" loading="lazy" width="72" height="72" decoding="async"> Thằng này chính là <b>Tổng Tư Lệnh,</b> quản lý những thứ mang tính chất vĩ mô, ảnh hưởng đến toàn bộ cái máy chủ từ đầu đến cuối mà không phân biệt World nào cả. Những thiết lập ở đây một khi đã chỉnh là áp dụng cho cả server, không có chuyện "con yêu con ghét" giữa các thế giới đâu nha<img class="smilie smilie--emoji" alt="❕" src="__BASE__media/source/119-media-ede89d0d.png" title="White exclamation mark :grey_exclamation:" loading="lazy" width="72" height="72" decoding="async">​</div><h4 class="bbHeading" id="-paper-global-yml-chunk-loading-advanced"><div style="text-align: justify"><span style="color: rgb(85, 57, 130)"><b>paper-global.yml/chunk-loading-advanced</b></span>​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>chunk-loading-advanced:
+  auto-config-send-distance: true
+  player-max-concurrent-chunk-generates: 3
+  player-max-concurrent-chunk-loads: 9
+chunk-loading-basic:
+  player-max-chunk-generate-rate: -1.0
+  player-max-chunk-load-rate: 75 - 85.0
+  player-max-chunk-send-rate: 50 - 65.0
+chunk-system:
+  io-threads: 2 hoặc 40% CPU Threads bạn có
+  worker-threads: 3 hoặc 55% CPU Threads bạn có</code></pre>
+</div>
+</div><div style="text-align: justify">Đằng ấy cứ tưởng tượng việc tải khu vực mới tựa như như việc order trà sữa vậy, máy chủ là quán, còn người chơi là khách. Nếu khách đặt quá nhanh mà quán làm không kịp thì "toang" là cái chắc <img src="__BASE__media/source/008-media-078d6a40.gif" class="smilie" loading="lazy" alt=":(" title="Buồn :(" decoding="async"> .ᐟ <code class="bbCodeInline">player-max-concurrent-chunk-generates</code> + <code class="bbCodeInline">player-max-chunk-generate-rate</code> == tạo mới Chunk (generation), đây là một trong những vấn đề cực hình của quản trị viên khi thiết đặt này tiêu tốn một lượng vô cùng lớn tài nguyên CPU chỉ để máy chủ vừa chạy vừa "vắt óc" suy nghĩ xem địa hình tiếp theo trông thế nào.<br>
+<div class="bbImageWrapper" title="1784115966874.webp">
+<img src="__BASE__media/source/132-1784115966874-52455818.webp" class="bbImage" style="" alt="1784115966874.webp" title="1784115966874.webp" width="523" height="430" loading="lazy" decoding="async">
+</div></div><br>
+Nếu người chơi bay vèo vèo bằng Elytra vào vùng đất mới chưa có ai đi vô, máy chủ sẽ khóc thét <img src="__BASE__media/source/133-media-5ca1caa7.gif" class="smilie" loading="lazy" alt=":((" title="Khóc :((" decoding="async"> Quản trị viên nên rước trước <a href="https://modrinth.com/plugin/chunky" target="_blank" class="link link--external" rel="noreferrer"><b>Chunky</b></a> / <a href="https://github.com/Kishku7/Chunksmith" target="_blank" class="link link--external" rel="noreferrer">Chunksmith</a> để tạo sẵn (Pre-generate) toàn bộ bản đồ thường xuyên có thần dân cư trú, trước khi mở cửa máy chủ. Khi đó, thần dân bay qua giống như việc lấy dữ liệu từ ổ cứng ra thôi, nhẹ nhàng hơn hẳn. Vài viễn cảnh và hướng giải quyết đối với tốc độ tải thế giới:<br>
+<div style="text-align: justify"><div class="bbImageWrapper" title="1776634683611.webp">
+<img src="__BASE__media/source/071-1776634683611-279b2fa9.webp" class="bbImage" style="" alt="1776634683611.webp" title="1776634683611.webp" width="1310" height="92" loading="lazy" decoding="async">
+</div></div><ol>
+<li><div style="text-align: justify">Bắt bệnh cho đường truyền và phần cứng ⤷ Nếu đã Pre-gen mà vẫn lag, thì khả năng cao là do những thiết đặt trở về trước của máy chủ có vấn đề:<br>
+<b>˚˖ ᵎᵎ Anti-Xray:</b><br>
+Như mình đã nói tại <code class="bbCodeInline">paper-world-default.yml</code><code class="bbCodeInline">engine-mode 2</code> làm dữ liệu phình to ra, thử thay đổi sang <code class="bbCodeInline">mode-1</code> hoặc <code class="bbCodeInline">mode-3</code> xem có mượt hơn không nhé.<br>
+<br>
+<b>˚˖ ᵎᵎ Netty Threads:</b><br>
+Nếu dùng <code class="bbCodeInline">/spark health --thread *</code> mà thấy mấy cái luồng Netty đỏ lừ, hãy cân nhắc tăng <code class="bbCodeInline">netty-threads</code> trong <code class="bbCodeInline">spigot.yml</code> (nhưng chỉ khi CPU đằng ấy còn dư sức thôi nhá) .ᐟ<br>
+<br>
+<b>˚˖ ᵎᵎ Disk I/O</b>: Nếu dùng ổ cứng HDD thời "đồ đá" hoặc nhà cung cấp host rẻ tiền bị giới hạn tốc độ ghi, thì việc tải chunk sẽ chậm như rùa bò ạ<img class="smilie smilie--emoji" alt="❕" src="__BASE__media/source/119-media-ede89d0d.png" title="White exclamation mark :grey_exclamation:" loading="lazy" width="72" height="72" decoding="async">​</div></li>
+<li>Hung thần Elytra<br>
+Mấy bạn trẻ bây giờ thích bay cao bay xa bằng Elytra và pháo hoa, làm máy chủ phải gửi hàng nghìn chunks một lúc. Cách xử lý thì có phần hơi suc' vat^. tí, bạn có thể tham khảo cách máy chủ mình đang áp dụng:<br>
+<br>
+➜ <b>Thiết lập nền kinh tế elytra</b>: biến Elytra thành vật phẩm kinh tế quý hiếm, tăng giá trị cho những người chơi đã bỏ công sức săn lùng elytra trong End, ví dụ như:<ul>
+<li><a href="https://wiki.gpplugins.com/economyshopgui" target="_blank" class="link link--external" rel="noreferrer">EconomyShopGUI Premium</a>: Giới hạn vật phẩm Elytra được BÁN ra mỗi tuần và tăng 70% giá theo sức mua của người chơi.<ul>
+<li><div style="text-align: justify">Mẫu đọc tham khảo tại docs <a href="https://wiki.gpplugins.com/economyshopgui/file-configuration/config.yml#dynamic-pricing" target="_blank" class="link link--external" rel="noreferrer">https://wiki.gpplugins.com/economyshopgui/file-configuration/config.yml#dynamic-pricing</a>​</div></li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>'8':
+material: ELYTRA
+        buy: 2888888 # Giá trị ngang ngửa 36 tiếng chơi liên tục của người chơi
+        stock-limit-global: 3
+        dynamic-pricing:
+          enabled: true
+          side: BUY
+          min-price: 2888888
+          max-price: 8888888
+        breakpoints:
+          - threshold-global-bought-percent: 0.3
+            buy-price: 5555555
+          - threshold-global-bought-percent: 0.7
+            buy-price: 8888888
+        refill-stock: true
+        displaylore:
+          - "&amp;7Hàng giới hạn &amp;f3 cái/tuần&amp;7."
+          - "&amp;7Khi có người mua, kho toàn cầu sẽ giảm."
+restock-cron: "0 40 4 ? * SUN"</code></pre>
+</div>
+</div><div style="text-align: justify">➜ Không Giữ kho đồ - <b>keep_Inventory</b> tại các khu vực The End.<br>
+➜ Sử dụng Plugin/Datapack thay đổi cơ chế sản sinh địa hình hoặc Elytra của khu vực The End <img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async">​</div>➜˚˖ ᵎᵎ <code class="bbCodeInline">purpur.yml/world-settings.default.gameplay-mechanics.elytra</code> thiết đặt như sau:<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>elytra:
+        damage-per-second: 1.8
+        damage-multiplied-by-speed: 0.7
+        damage-per-boost:
+          firework: 1.9
+          trident: 1.8
+        kinetic-damage: true</code></pre>
+</div>
+</div><code class="bbCodeInline">damage-per-second</code> + <code class="bbCodeInline">damage-multiplied-by-speed</code> + <code class="bbCodeInline">damage-per-boost</code> giúp im lặng giảm độ bền của vật phẩm Elytra khi sử dụng, theo cách không một thần dân nào để ý được.<br>
+<br>
+➜˚˖ ᵎᵎ Nếu máy chủ bạn có cài <a href="https://modrinth.com/plugin/lagfixer" target="_blank" class="link link--external" rel="noreferrer">LagFixer</a>, thì có thêm modules như <code class="bbCodeInline">AbilityLimiter.yml</code> giúp giảm tốc độ + mất thêm độ bền Elytra khi bay trong không gian:<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>AbilityLimiter:
+  enabled: true
+  worlds:
+    - '*'
+  values:
+    elytra_boost:
+      cooldown: 0.5
+      speed_multiplier: 0.75
+      additional_durability_loss: 1
+    trident_riptide:
+      cooldown: 1
+      speed_multiplier: 0.85
+      additional_durability_loss: 5</code></pre>
+</div>
+</div><hr>3. Khi người chơi Bedrock bị văng thường xuyên hoặc Ping cao Đôi khi không phải do máy chủ, mà do... máy quá yếu:<br>
+<ul>
+<li><div style="text-align: justify"><b>Client "cùi bắp":</b> Paper gửi chunks nhanh đến mức máy người chơi không xử lý kịp, bảo tụi nó giảm <b>view-distance</b> xuống hoặc cài mấy cái mod tối ưu hiệu năng ạ. Cực kỳ khuyến khích <a href="https://modrinth.com/modpack/fabulously-optimized" target="_blank" class="link link--external" rel="noreferrer">Fabulously Optimized</a> hoặc <a href="https://modrinth.com/modpack/thong-nhat-optimized" target="_blank" class="link link--external" rel="noreferrer">Thong Nhat Optimized</a>​</div></li>
+</ul><div style="text-align: justify">4. Phương pháp "<a href="https://www.spigotmc.org/threads/need-help-with-a-binary-search.147139/" target="_blank" class="link link--external" rel="noreferrer">Binary Search</a>" cho Plugin/Datapack<br>
+Dò xem Plugins/Datapack nào ảnh hưởng tới cách máy chủ vận hành, chia đôi danh sách plugin ra. Chạy thử 1 nửa. Nếu hết lag thì lỗi nằm ở nửa kia. Tiếp tục chia đôi nửa bị lỗi cho đến khi tìm ra "kẻ phản diện".ᐟ​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Đừng bao giờ nghe ba cái hướng dẫn tào lao trên mạng rồi chỉnh thông số linh tinh. Nếu không hiểu mình đang làm gì, tốt nhất hãy giữ nguyên mặc định hoặc lên kênh <code class="bbCodeInline">#paper-help</code> tại <a href="https://discord.com/invite/papermc" target="_blank" class="link link--external" rel="noreferrer">PaperMC</a> mà hỏi các bậc tiền bối nhé <img src="__BASE__media/source/081-3-6e2e37fb.png" class="smilie" loading="lazy" alt="<3" title="<3 <3" decoding="async">​</div>
+</div>
+
+</div>
+</blockquote><hr><h4 class="bbHeading" id="-paper-global-yml-item-validation-book"><div style="text-align: justify"><b>paper-global.yml/item-validation.book</b>​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>item-validation:
+  book:
+    author: 256
+    page: 8192
+    title: 256
+  book-size:
+    page-max: 100
+    total-multiplier: 2.0
+  display-name: 256
+  lore-line: 512
+  resolve-selectors-in-books: false</code></pre>
+</div>
+</div>Đây là phần siêu dễ bị lợi dụng để nhân bản đồ, cũng hay ảnh hưởng tới Datapack nhất. Các thông số trên sẽ bảo vệ máy chủ bạn khỏi <a href="https://www.youtube.com/watch?v=vn9WROAv2Xw" target="_blank" class="link link--external" rel="noreferrer">BookDupe</a>, hoặc cần thiết thì triển ngay <a href="https://modrinth.com/plugin/packetbooks" target="_blank" class="link link--external" rel="noreferrer">PacketBooks</a> plugin cho tiện việc sao lưu dữ liệu từng quyển sách của người chơi.<br>
+<hr><h4 class="bbHeading" id="-paper-global-yml-block-updates-disable-noteblock-updates"><div style="text-align: justify">paper-global.yml/block-updates.disable-noteblock-updates​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: false</code><br>
+Đây là tùy chỉnh tắt đi tính năng cập nhật nốt nhạc của khối NoteBlock, Note Block sẽ trở nên "điếc" hoàn toàn với thế giới xung quanh. <code class="bbCodeInline">100%</code> làm hỏng máy Farm người chơi khi quản trị viên bật tính năng này, bù lại những plugins chuyên tạo gói tài nguyên như <a href="https://www.nexomc.com/" target="_blank" class="link link--external" rel="noreferrer">Nexo</a> / <a href="https://github.com/Xiao-MoMi/craft-engine" target="_blank" class="link link--external" rel="noreferrer">Craft-Engine</a> sẽ sử dụng được <code class="bbCodeInline">1024</code> trạng thái của NoteBlock để tạo ra những vật phẩm/khối tùy chỉnh đa dạng.<br>
+<div class="bbImageWrapper" title="premade-png.673076">
+<img src="__BASE__media/source/134-premade-png.673076-9a24f88d.webp" class="bbImage" style="" alt="premade-png.673076" title="" width="1500" height="627" loading="lazy" decoding="async">
+</div></div><hr><h4 class="bbHeading" id="-paper-global-yml-packet-limiter"><div style="text-align: justify">paper-global.yml/packet-limiter​</div></h4><div style="text-align: justify">Giải thích rõ hơn từng khái niệm tại: <a href="https://minecraft.wiki/w/Java_Edition_protocol/Packets" target="_blank" class="link link--external" rel="noreferrer">https://minecraft.wiki/w/Java_Edition_protocol/Packets</a>​</div>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Dành cho bản &lt;1.21.x
+packet-limiter:
+  all-packets:
+    action: KICK
+    interval: 7.0
+    max-packet-rate: 500.0 # Giảm từ 3000 xuống 500. (500 là mức an toàn được PaperMC khuyến nghị).
+    kick-message: &lt;red&gt;&lt;lang:disconnect.exceeded_packet_rate&gt;
+  overrides:
+    ServerboundCommandSuggestionPacket:
+      action: DROP
+      interval: 1.0
+      max-packet-rate: 30.0 # Nâng nhẹ lên 30 để người chơi gõ phím nhanh không bị khựng gợi ý chat.
+    ServerboundPlaceRecipePacket:
+      action: DROP
+      interval: 4.0 # Đổi chu kỳ đo lường về 4 giây để xử lý linh hoạt hơn.
+      max-packet-rate: 18.0 # Cho phép 18 lần click sách chế tạo/giây. Hack thường spam hàng trăm lần/s mới gây lag + chơi tay nhanh.</code></pre>
+</div>
+</div>Cái <code class="bbCodeInline">packet-limiter</code> này chính là lớp giáp đầu tiên bảo vệ máy chủ khỏi mấy thanh niên thích dùng bản hack để gửi hàng triệu yêu cầu - packets tí hon về máy chủ trong một giây nhằm làm sập hệ thống Exploit/DoS. Dễ hiểu, cơ chế này hoạt động như một cái máy lọc: Bạn đặt ra một hạn ngạch, ví dụ <code class="bbCodeInline">500</code> packets trong mỗi <code class="bbCodeInline">7</code> giây. Nếu người chơi nào vượt quá ngưỡng này, máy chủ sẽ thực hiện hành động chính là <code class="bbCodeInline">KICK </code>để tống cổ kẻ tình nghi ra khỏi máy chủ ngay lập tức trước khi kịp làm nghẽn CPU<img class="smilie smilie--emoji" alt="❕" src="__BASE__media/source/119-media-ede89d0d.png" title="White exclamation mark :grey_exclamation:" loading="lazy" width="72" height="72" decoding="async"> Điểm đáng nói nằm ở chỗ <code class="bbCodeInline">overrides</code>. Minecraft có một số thao tác đặc biệt như <code class="bbCodeInline">ServerboundPlaceRecipePacke</code> , khi người chơi nhấn từng vật phẩm bàn chế tạo một cách siêu nhanh, sẽ rất dễ thành ra spam để gây Lag toàn bộ cư dân khác. Việc tách riêng hệ thống này ra để kiểm soát chặt hơn, giúp quản trị viên chặn đứng các bản hack "Recipe Crash" mà không làm ảnh hưởng đến trải nghiệm của những người chơi chân chính khác .ᐟ<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>&gt; Máy chủ mình
+packet-limiter:
+  kick-message: &lt;red&gt;&lt;lang:disconnect.exceeded_packet_rate&gt;
+  limits:
+    all:
+      action: KICK
+      interval: 7.0
+      max-packet-rate: 500.0
+    ServerboundCommandSuggestionPacket:
+      action: DROP
+      interval: 1.0
+      max-packet-rate: 30.0
+    ServerboundPlaceRecipePacket:
+      action: DROP
+      interval: 4.0
+      max-packet-rate: 18.0</code></pre>
+</div>
+</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Lớp giáp thứ hai, có thể kể đến các Plugins như <a href="https://builtbybit.com/resources/lpx-antipacketexploit.15709/" target="_blank" class="link link--external" rel="noreferrer">LPX</a> hoặc <a href="https://modrinth.com/plugin/anarchyexploitfixes" target="_blank" class="link link--external" rel="noreferrer">AnarchyExploitFixes</a> / <a href="https://builtbybit.com/resources/exploitfixer-anti-crash-dupe-plugin.26463/" target="_blank" class="link link--external" rel="noreferrer">ExploitFixer</a> bảo vệ toàn diện máy chủ bạn khi đạt ngưỡng 40+ người chơi.​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: justify">Giải thích chi tiết tại:<br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/135-www.youtube-9dcb9d35.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=jlktcgxUWBY" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+The Minecraft Exploit That Broke 2b2t
+</a>
+</p>
+<div class="contentRow-snippet">Today on the oldest anarchy server in Minecraft we'll discuss The Minecraft Exploit That Broke 2b2t, how it worked, and the chaos that followed!My Twitter: h...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div></div><hr>

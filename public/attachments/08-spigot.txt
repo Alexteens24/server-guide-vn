@@ -1,0 +1,246 @@
+# This is the Spigot configuration file for Paper.
+# As you can see, there's tons to configure. Some options may impact gameplay, so use
+# with caution, and make sure you know what each option does before configuring.
+#
+# If you need help with the configuration or have any questions related to Paper,
+# join us in our Discord or check the docs page.
+#
+# File Reference: https://docs.papermc.io/paper/reference/spigot-configuration/
+# Docs: https://docs.papermc.io/
+# Discord: https://discord.gg/papermc
+# Website: https://papermc.io/
+
+advancements:
+  disable-saving: false
+  disabled:
+  - minecraft:story/disabled
+messages:
+  whitelist: Bạn không nằm trong danh sách trắng của server!
+  unknown-command: Lệnh không hợp lệ!
+  server-full: Server đã đầy!
+  outdated-client: Bạn đang sử dụng phiên bản không hợp lệ! Vui lòng sử dụng {0}
+  outdated-server: Bạn đang sử dụng phiên bản không hợp lệ! Vui lòng sử dụng {0}
+  restart: Server đang khởi động lại, bạn chờ xíu nhen~
+settings:
+  save-user-cache-on-stop-only: true
+  sample-count: 2
+  bungeecord: false
+  player-shuffle: 0
+  user-cache-size: 1000
+  moved-wrongly-threshold: 177013.0
+  moved-too-quickly-multiplier: 177013.0
+  timeout-time: 180
+  restart-on-crash: true
+  restart-script: ./start.sh
+  netty-threads: 4
+  attribute:
+    maxAbsorption:
+      max: 2048.0
+    maxHealth:
+      max: 9999.0
+    movementSpeed:
+      max: 2048.0
+    attackDamage:
+      max: 2048.0
+  log-villager-deaths: false
+  log-named-deaths: false
+  debug: false
+commands:
+  tab-complete: 0
+  send-namespaced: false
+  log: false
+  spam-exclusions:
+  - /function
+  silent-commandblock-console: true
+  replace-commands:
+  - setblock
+  - summon
+  - testforblock
+  - tellraw
+  enable-spam-exclusions: false
+world-settings:
+  default:
+    seed-village: 10387312
+    seed-desert: 14357617
+    seed-igloo: 14357618
+    seed-jungle: 14
+    seed-swamp: 14357620
+    seed-monument: 10387313
+    seed-shipwreck: 165
+    seed-ocean: 14357621
+    seed-outpost: 165
+    seed-endcity: 1038
+    seed-slime: 987234911
+    seed-nether: 3008
+    seed-mansion: 1039
+    seed-fossil: 14357921
+    seed-portal: 34222645
+    seed-ancientcity: 113
+    seed-trailruins: 83469867
+    seed-trialchambers: 94251327
+    seed-buriedtreasure: 10387320
+    seed-mineshaft: default
+    seed-stronghold: default
+    below-zero-generation-in-existing-chunks: true
+    view-distance: 10
+    simulation-distance: 7
+    thunder-chance: 1000000
+    merge-radius:
+      item: 4.0
+      exp: 6.0
+    mob-spawn-range: 6
+    item-despawn-rate: 4000
+    arrow-despawn-rate: 300
+    trident-despawn-rate: 1200
+    zombie-aggressive-towards-villager: false
+    nerf-spawner-mobs: true
+    enable-zombie-pigmen-portal-spawns: false
+    wither-spawn-sound-radius: 0
+    end-portal-sound-radius: 0
+    hanging-tick-frequency: 100
+    unload-frozen-chunks: true
+    growth:
+      wheat-modifier: 300
+      carrot-modifier: 300
+      potato-modifier: 300
+      beetroot-modifier: 300
+      netherwart-modifier: 300
+      melon-modifier: 400
+      pumpkin-modifier: 0
+      cane-modifier: 500
+      cactus-modifier: 500
+      bamboo-modifier: 500
+      kelp-modifier: 500
+      mushroom-modifier: 300
+      vine-modifier: 300
+      twistingvines-modifier: 300
+      weepingvines-modifier: 300
+      cavevines-modifier: 300
+      sapling-modifier: 200
+      sweetberry-modifier: 300
+      cocoa-modifier: 300
+      torchflower-modifier: 300
+      pitcherplant-modifier: 300
+      glowberry-modifier: 300
+    entity-activation-range:
+      animals: 8
+      monsters: 24
+      raiders: 6
+      misc: 20
+      water: 5
+      villagers: 24
+      flying-monsters: 48
+      wake-up-inactive:
+        animals-max-per-tick: 2
+        animals-every: 2400
+        animals-for: 60
+        monsters-max-per-tick: 4
+        monsters-every: 600
+        monsters-for: 60
+        villagers-max-per-tick: 1
+        villagers-every: 12400
+        villagers-for: 90
+        flying-monsters-max-per-tick: 4
+        flying-monsters-every: 200
+        flying-monsters-for: 60
+      villagers-work-immunity-after: 200
+      villagers-work-immunity-for: 100
+      villagers-active-for-panic: true
+      tick-inactive-villagers: false
+      ignore-spectators: true
+    entity-tracking-range:
+      players: 128
+      animals: 48
+      monsters: 48
+      misc: 160
+      display: 160
+      other: 160
+    ticks-per:
+      hopper-transfer: 8
+      hopper-check: 8
+    hopper-amount: 32
+    hopper-can-load-chunks: false
+    dragon-death-sound-radius: 0
+    hunger:
+      jump-walk-exhaustion: 0.05
+      jump-sprint-exhaustion: 0.2
+      combat-exhaustion: 0.15
+      regen-exhaustion: 6.0
+      swim-multiplier: 0.01
+      sprint-multiplier: 0.1
+      other-multiplier: 0.0
+    max-tnt-per-tick: 100
+    max-tick-time:
+      tile: 5000
+      entity: 5000
+    verbose: false
+  worldeditregentempworld:
+    verbose: false
+  world_nether:
+    below-zero-generation-in-existing-chunks: false
+    simulation-distance: 3
+    thunder-chance: 1000000
+    merge-radius:
+      item: 4.0
+      exp: 6.0
+    mob-spawn-range: 3
+    item-despawn-rate: 4000
+    arrow-despawn-rate: 300
+    trident-despawn-rate: 1200
+    zombie-aggressive-towards-villager: false
+    nerf-spawner-mobs: true
+    enable-zombie-pigmen-portal-spawns: false
+    wither-spawn-sound-radius: 0
+    end-portal-sound-radius: 0
+    hanging-tick-frequency: 100
+    unload-frozen-chunks: true
+    growth:
+      wheat-modifier: 300
+      carrot-modifier: 300
+      potato-modifier: 300
+      beetroot-modifier: 300
+      netherwart-modifier: 300
+      melon-modifier: 400
+      pumpkin-modifier: 400
+      cane-modifier: 500
+      cactus-modifier: 500
+      bamboo-modifier: 500
+      kelp-modifier: 500
+      mushroom-modifier: 300
+      vine-modifier: 300
+      twistingvines-modifier: 300
+      weepingvines-modifier: 300
+      cavevines-modifier: 300
+      sapling-modifier: 200
+      sweetberry-modifier: 300
+      cocoa-modifier: 300
+      torchflower-modifier: 300
+      pitcherplant-modifier: 300
+      glowberry-modifier: 300
+    entity-activation-range:
+      animals: 0
+      monsters: 8
+      raiders: 6
+      misc: 12
+      water: 5
+      villagers: 6
+      flying-monsters: 12
+    entity-tracking-range:
+      players: 256
+      animals: 16
+      monsters: 24
+      misc: 16
+      display: 12
+      other: 256
+    ticks-per:
+      hopper-transfer: 8
+      hopper-check: 8
+    hopper-amount: 16
+    hopper-can-load-chunks: false
+    dragon-death-sound-radius: 0
+players:
+  disable-saving: false
+config-version: 12
+stats:
+  disable-saving: false
+  forced-stats: {}

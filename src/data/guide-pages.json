@@ -1,0 +1,248 @@
+{
+  "verifiedAt": "2026-07-22",
+  "pages": [
+    {
+      "id": "glossary",
+      "slug": "00-thuat-ngu",
+      "number": "00",
+      "title": "Mục lục & thuật ngữ",
+      "description": "Các khái niệm nền tảng như tick, TPS, MSPT, tải xử lý và điểm nghẽn.",
+      "fragment": "glossary",
+      "parent": null,
+      "prerequisites": ["Chưa cần kinh nghiệm vận hành máy chủ"],
+      "outcomes": ["Đọc đúng các chỉ số hiệu năng", "Phân biệt TPS với MSPT"]
+    },
+    {
+      "id": "intro",
+      "slug": "01-mo-dau",
+      "number": "01",
+      "title": "Mở đầu",
+      "description": "Mục tiêu, phạm vi và cách sử dụng lộ trình mà không tối ưu theo cảm tính.",
+      "fragment": "intro",
+      "parent": null,
+      "prerequisites": ["Đã đọc phần thuật ngữ"],
+      "outcomes": ["Hiểu giới hạn của cấu hình mẫu", "Biết vì sao cần đo trước khi chỉnh"]
+    },
+    {
+      "id": "preparation",
+      "slug": "02-chuan-bi",
+      "number": "02",
+      "title": "Chuẩn bị nền móng",
+      "description": "Công cụ, phần mềm máy chủ, hạ tầng, hosting và nhân sự cần chuẩn bị.",
+      "fragment": "preparation",
+      "parent": null,
+      "prerequisites": ["Biết sử dụng terminal ở mức cơ bản"],
+      "outcomes": ["Chọn đúng phần mềm máy chủ", "Đánh giá host và nguồn lực vận hành"]
+    },
+    {
+      "id": "setup",
+      "slug": "03-thiet-dat",
+      "number": "03",
+      "title": "Thiết đặt hiệu năng",
+      "description": "Từ JVM đến các tệp cấu hình Paper, Purpur, Leaf và Gale.",
+      "fragment": null,
+      "parent": null,
+      "prerequisites": ["Có bản sao lưu máy chủ", "Có môi trường thử nghiệm tách khỏi máy chủ chính"],
+      "outcomes": ["Thiết lập số đo gốc", "Thay đổi cấu hình theo từng nhóm có kiểm chứng"]
+    },
+    {
+      "id": "setup-jvm",
+      "slug": "03-thiet-dat/jvm-nen-tang",
+      "number": "3.1",
+      "title": "JVM & thiết lập nền tảng",
+      "description": "Cờ khởi động JVM, nguyên tắc cấp RAM và thiết lập máy chủ ban đầu.",
+      "fragment": "setup-intro",
+      "parent": "setup",
+      "prerequisites": ["Xác định phiên bản Java mà phần mềm máy chủ yêu cầu"],
+      "outcomes": ["Khởi động máy chủ bằng Java phù hợp", "Tránh sao chép JVM flags thiếu kiểm chứng"],
+      "overviewOnly": true
+    },
+    {
+      "id": "server-properties",
+      "slug": "03-thiet-dat/server-properties",
+      "number": "3.2",
+      "title": "server.properties",
+      "description": "Khoảng nhìn, mô phỏng, nén mạng, RCON và các thiết đặt nền tảng.",
+      "fragment": "server-properties",
+      "parent": "setup",
+      "prerequisites": ["Máy chủ đã chạy và sinh server.properties"],
+      "outcomes": ["Cân bằng khoảng nhìn với tải", "Bảo vệ hoặc vô hiệu hóa RCON đúng cách"]
+    },
+    {
+      "id": "bukkit-yml",
+      "slug": "03-thiet-dat/bukkit-yml",
+      "number": "3.3",
+      "title": "bukkit.yml",
+      "description": "Mob cap, ticks-per và aliases trong cấu hình Bukkit.",
+      "fragment": "bukkit-yml",
+      "parent": "setup",
+      "prerequisites": ["Đã thiết lập server.properties"],
+      "outcomes": ["Điều chỉnh spawn có kiểm soát", "Hiểu tác động của ticks-per"]
+    },
+    {
+      "id": "spigot-yml",
+      "slug": "03-thiet-dat/spigot-yml",
+      "number": "3.4",
+      "title": "spigot.yml",
+      "description": "Activation range, merge radius, network threads và thiết đặt theo world.",
+      "fragment": "spigot-yml",
+      "parent": "setup",
+      "prerequisites": ["Có số đo Spark trước thay đổi"],
+      "outcomes": ["Nhận biết thiết đặt ảnh hưởng gameplay", "Tránh giảm tải bằng cách phá cơ chế game"]
+    },
+    {
+      "id": "paper-world",
+      "slug": "03-thiet-dat/paper-world-defaults",
+      "number": "3.5.1",
+      "title": "Paper world defaults",
+      "description": "Anti-xray, spawning, chunk, collision, redstone và tick rate theo world.",
+      "fragment": "paper-world",
+      "parent": "setup",
+      "prerequisites": ["Dùng Paper hoặc fork tương thích"],
+      "outcomes": ["Xác định cấu hình theo world", "Kiểm chứng key trước khi áp dụng"]
+    },
+    {
+      "id": "paper-global",
+      "slug": "03-thiet-dat/paper-global",
+      "number": "3.5.2",
+      "title": "Paper global",
+      "description": "Chunk loading, item validation, block update và packet limiter toàn máy chủ.",
+      "fragment": "paper-global",
+      "parent": "setup",
+      "prerequisites": ["Dùng Paper hoặc fork tương thích"],
+      "outcomes": ["Cấu hình giới hạn packet", "Đánh giá rủi ro của thiết đặt global"]
+    },
+    {
+      "id": "purpur-yml",
+      "slug": "03-thiet-dat/purpur-yml",
+      "number": "3.6",
+      "title": "purpur.yml",
+      "description": "Keepalive, portal, villager và các tùy biến gameplay của Purpur.",
+      "fragment": "purpur-yml",
+      "parent": "setup",
+      "prerequisites": ["Máy chủ đang chạy Purpur"],
+      "outcomes": ["Tách tối ưu hiệu năng khỏi thay đổi gameplay", "Đối chiếu cấu hình Purpur hiện hành"]
+    },
+    {
+      "id": "leaf-global",
+      "slug": "03-thiet-dat/leaf-global",
+      "number": "3.7",
+      "title": "Leaf global",
+      "description": "Async features, region format, spawner, secure seed và DAB trong Leaf.",
+      "fragment": "leaf-global",
+      "parent": "setup",
+      "prerequisites": ["Hiểu trạng thái stable/experimental của build Leaf"],
+      "outcomes": ["Chọn tính năng async theo rủi ro", "Không dùng experimental build mù quáng"]
+    },
+    {
+      "id": "gale",
+      "slug": "03-thiet-dat/gale",
+      "number": "3.8",
+      "title": "Gale configs",
+      "description": "Thiết đặt world và global dành cho Gale hoặc fork còn tương thích.",
+      "fragment": "gale",
+      "parent": "setup",
+      "prerequisites": ["Xác nhận fork đang dùng còn hỗ trợ key tương ứng"],
+      "outcomes": ["Đọc cấu hình Gale theo phạm vi", "Phát hiện key đã đổi hoặc bị loại bỏ"]
+    },
+    {
+      "id": "integrations",
+      "slug": "04-tich-hop",
+      "number": "04",
+      "title": "Plugin & tích hợp",
+      "description": "Lựa chọn plugin, datapack, công cụ và cách tránh tự tạo bottleneck.",
+      "fragment": "integrations-intro",
+      "parent": null,
+      "prerequisites": ["Máy chủ nền đã chạy ổn định"],
+      "outcomes": ["Đánh giá nhu cầu trước khi cài plugin", "Thiết lập quy trình thử nghiệm tích hợp"]
+    },
+    {
+      "id": "plugins",
+      "slug": "04-tich-hop/plugins",
+      "number": "4.1",
+      "title": "Danh mục plugin",
+      "description": "Plugin nền tảng, gameplay, bảo mật, quản trị và trải nghiệm người chơi.",
+      "fragment": "plugins",
+      "parent": "integrations",
+      "prerequisites": ["Có máy chủ thử nghiệm để kiểm tra plugin"],
+      "outcomes": ["Chọn plugin theo nhu cầu", "Kiểm tra phụ thuộc và khả năng tương thích"]
+    },
+    {
+      "id": "datapack",
+      "slug": "04-tich-hop/datapack",
+      "number": "4.2",
+      "title": "Datapack",
+      "description": "Vai trò, chi phí xử lý và cách đánh giá datapack trước khi triển khai.",
+      "fragment": "datapack",
+      "parent": "integrations",
+      "prerequisites": ["Biết sao lưu thế giới"],
+      "outcomes": ["Đánh giá datapack bằng profiler", "Gỡ datapack an toàn hơn"]
+    },
+    {
+      "id": "admin-mistakes",
+      "slug": "04-tich-hop/sai-lam-quan-tri",
+      "number": "4.3",
+      "title": "Sai lầm quản trị thường gặp",
+      "description": "Tình huống thực tế về plugin, cấu hình, cơ sở dữ liệu, log và quy trình vận hành.",
+      "fragment": "admin-mistakes",
+      "parent": "integrations",
+      "prerequisites": ["Đã vận hành hoặc thử nghiệm một máy chủ"],
+      "outcomes": ["Nhận diện phản mẫu vận hành", "Tạo danh sách kiểm tra và phương án hoàn tác"]
+    },
+    {
+      "id": "useful-websites",
+      "slug": "04-tich-hop/website-huu-ich",
+      "number": "4.4",
+      "title": "Website hữu ích",
+      "description": "Các công cụ và nguồn tra cứu hỗ trợ quản trị máy chủ.",
+      "fragment": "useful-websites",
+      "parent": "integrations",
+      "prerequisites": ["Không có"],
+      "outcomes": ["Biết nguồn tra cứu khi cần chẩn đoán"]
+    },
+    {
+      "id": "free-options",
+      "slug": "05-mien-phi",
+      "number": "05",
+      "title": "Phương án miễn phí",
+      "description": "Cách tiếp cận khi ngân sách plugin và cấu hình còn hạn chế.",
+      "fragment": "free-options",
+      "parent": null,
+      "prerequisites": ["Xác định nhu cầu tối thiểu của máy chủ"],
+      "outcomes": ["Ưu tiên đúng khoản đầu tư", "Dùng giải pháp miễn phí có chọn lọc"]
+    },
+    {
+      "id": "operations",
+      "slug": "06-van-hanh",
+      "number": "06",
+      "title": "Vận hành an toàn",
+      "description": "Những thói quen, rủi ro và bài học thực tế khi duy trì máy chủ.",
+      "fragment": "operations",
+      "parent": null,
+      "prerequisites": ["Có quyền quản trị và quy trình sao lưu"],
+      "outcomes": ["Giảm thay đổi không kiểm soát", "Tạo quy trình sao lưu, đo đạc và hoàn tác"]
+    },
+    {
+      "id": "next",
+      "slug": "07-tiep-theo",
+      "number": "07",
+      "title": "Sau 1–3 tháng",
+      "description": "Các hướng phát triển tiếp theo sau khi máy chủ đã có nền tảng ổn định.",
+      "fragment": "next",
+      "parent": null,
+      "prerequisites": ["Đã có dữ liệu vận hành thực tế"],
+      "outcomes": ["Lập lộ trình tiếp theo", "Chọn hướng học theo điểm nghẽn thực tế"]
+    },
+    {
+      "id": "references",
+      "slug": "08-tham-khao",
+      "number": "08",
+      "title": "Tài liệu tham khảo",
+      "description": "Nguồn đọc bổ sung và toàn bộ tệp cấu hình đính kèm từ bài gốc.",
+      "fragment": "references",
+      "parent": null,
+      "prerequisites": ["Không có"],
+      "outcomes": ["Truy cập nguồn chuyên sâu", "Tải các cấu hình mẫu để đối chiếu"]
+    }
+  ]
+}

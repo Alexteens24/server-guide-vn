@@ -1,0 +1,33 @@
+{
+  "name": "lo-trinh-server-minecraft",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "start": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "media:verify": "node scripts/verify-media.mjs",
+    "media:import": "node scripts/import-media.mjs",
+    "content:import": "node scripts/import-original-post.mjs",
+    "content:verify": "node scripts/verify-original-post.mjs",
+    "guide:verify": "node scripts/verify-guide.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.41.3",
+    "astro": "7.1.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "cheerio": "^1.2.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "overrides": {
+    "sharp": "0.35.3"
+  }
+}

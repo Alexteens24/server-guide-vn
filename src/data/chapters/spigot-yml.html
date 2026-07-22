@@ -1,0 +1,232 @@
+<h3 class="bbHeading" id="-3-4-spigot-yml-thiet-dat-can-thiet"><div style="text-align: justify">3.4. <a href="https://docs.papermc.io/paper/reference/spigot-configuration/" target="_blank" class="link link--external" rel="noreferrer">spigot.yml</a> - thiết đặt cần thiết​</div></h3><div style="text-align: justify">Theo tài liệu tham khảo của Paper, sự khác biệt cốt lõi giữa <code class="bbCodeInline">bukkit.yml</code> và <code class="bbCodeInline">spigot.yml</code> nằm ở nguồn gốc kế thừa và phạm vi điều phối hệ thống: Trong khi <code class="bbCodeInline">bukkit.yml</code> đóng vai trò là tệp cấu hình nền tảng chứa các thiết lập di sản từ <a href="https://getbukkit.org/download/craftbukkit" target="_blank" class="link link--external" rel="noreferrer">CraftBukkit</a>, thì <code class="bbCodeInline">spigot.yml</code> lại tập trung vào các lớp tối ưu hóa hiệu suất và tính năng mở rộng chuyên sâu do <a href="https://www.spigotmc.org/wiki/spigot-maven/" target="_blank" class="link link--external" rel="noreferrer">Spigot</a> phát triển. Trong phân cấp cấu hình của Paper, việc hiểu rõ ranh giới này là điều kiện tiên quyết để quản trị viên kiểm soát luồng Logic từ các tham số máy chủ cơ bản cho đến các tinh chỉnh hiệu năng phức tạp trước khi áp dụng các lớp tối ưu đặc thù trong <code class="bbCodeInline">paper-global.yml</code> và <code class="bbCodeInline">paper-world-defaults.yml</code>.​</div><hr><h4 class="bbHeading" id="-world-settings-default-view-distance"><div style="text-align: justify">world-settings.default.view-distance​</div></h4><div style="text-align: justify"><code class="bbCodeInline">view-distance: default</code><br>
+<code class="bbCodeInline">simulation-distance: default</code><br>
+Hai tùy chọn này dùng để ghi đè lên các giá trị tương ứng trong tệp <code class="bbCodeInline">server.properties</code> bạn đã nhập ở trên. Nếu bạn nhập một giá trị cụ thể ở đây, máy chủ sẽ dùng giá trị đó thay vì giá trị trong <code class="bbCodeInline">server.properties</code>. Ngoài ra, quản trị viên cũng có thể tạo cấu hình riêng cho từng <i><span style="color: rgb(26, 188, 156)">world/world_nether/world_the_end</span></i> để mỗi thế giới có <code class="bbCodeInline">view-distance</code> và <code class="bbCodeInline">simulation-distance</code> khác nhau.​</div><div class="bbImageWrapper" title="1776693344004.webp">
+<img src="__BASE__media/source/108-1776693344004-29ed2e59.webp" class="bbImage" style="" alt="1776693344004.webp" title="1776693344004.webp" width="520" height="115" loading="lazy" decoding="async">
+</div><br>
+<hr><h4 class="bbHeading" id="-spigot-yml-world-settings-default-mob-spawn-range"><div style="text-align: justify"><b>spigot.yml/world-settings.default.mob-spawn-range</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: simulation-distance - 1</code><br>
+Tùy chọn này xác định phạm vi (tính theo Chunks) xung quanh người chơi mà máy chủ sẽ thử triệu hồi thực thể. Như đã nói ở phần <code class="bbCodeInline">spawn-limit</code> trong <code class="bbCodeInline">bukkit.yml</code>, bạn có thể chỉnh giá trị này để thay đổi cảm giác mật độ quái nhiều hay ít.<br>
+<b>Nguyên tắc chung:</b> Nên đặt tối đa bằng <code class="bbCodeInline">simulation-distance - 1</code> và tối thiểu là 3, vì những mobs nằm ngoài <code class="bbCodeInline">simulation-distance</code> hoặc sát rìa sẽ không được xử lý (tick), gần như “đứng yên” và trông đần thật sự. Nếu bạn đang dùng <code class="bbCodeInline">simulation-distance</code> mặc định == 10, thì có thể linh hoạt chỉnh <code class="bbCodeInline">mob-spawn-range</code> trong khoảng từ 3 - 8 mà không cần quá cứng nhắc theo quy tắc trên. Nếu đặt <code class="bbCodeInline">mob-spawn-range</code> cao hơn <code class="bbCodeInline">simulation-distance</code>, thực thể sẽ cố xuất hiện ở những khu vực mà máy chủ không xử lý, khiến bạn cảm giác máy chủ chẳng có gì cả. Vì vậy, việc chọn giá trị phù hợp là rất quan trọng để giữ trải nghiệm người chơi ổn định.​</div><hr><h4 class="bbHeading" id="-spigot-yml-world-settings-default-nerf-spawner-mobs"><div style="text-align: justify"><b>spigot.yml/world-settings.default.nerf-spawner-mobs</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+Tùy chọn này giúp tắt não <img src="__BASE__media/source/109-ah-1098a8e2.png" class="smilie" loading="lazy" alt=":ah:" title="Ahhhh :ah:" decoding="async"> của các thực thể được sinh ra từ lồng triệu hồi - <a href="https://minecraft.wiki/w/Monster_Spawner" target="_blank" class="link link--external" rel="noreferrer">Spawner</a>.​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 39.23%"><div style="text-align: justify">Nếu máy chủ của bạn cho phép người chơi lượm được <code class="bbCodeInline">spawner</code> á, việc bật tùy chọn này sẽ góp phần giảm Lag đi đáng kể.<br>
+Đồng thời, quản trị viên cũng nên bật thêm <code class="bbCodeInline">spawner-nerfed-mobs-should-jump</code> trong tệp <code class="bbCodeInline">paper-world-defaults.yml</code> để quái vẫn có thể nhảy, giúp một số dạng Mob Farm tiếp tục hoạt động, tránh làm người chơi khóc lóc <img src="__BASE__media/source/110-t16-34f73c1a.png" class="smilie" loading="lazy" alt=":t16:" title="16 :t16:" decoding="async"> <div class="bbImageWrapper" title="gPabp.jpg">
+<img src="__BASE__media/source/111-gPabp-cc2dc3a9.jpg" class="bbImage" style="width: 428px" alt="gPabp.jpg" title="" width="1054" height="994" loading="lazy" decoding="async">
+</div></div></td><td style="width: 60.6799%"><div style="text-align: justify"><b><span style="color: rgb(209, 72, 65)">[!?]</span></b> Việc dùng Silk Touch để lấy Spawner nghe thú vị thật, nhưng khi nhiều Spawner tập trung lại một chỗ, chúng rất dễ trở thành nguồn gây <b>Lag cực lớn</b> cho máy chủ. Để đảm bảo hiệu năng lâu dài, tốt nhất vẫn nên hạn chế số lượng trong một khu vực hoặc tắt hẳn tính năng này.​</div><div class="bbImageWrapper" title="1776699950887.webp">
+<img src="__BASE__media/source/112-1776699950887-96a6c182.webp" class="bbImage" style="width: 565px" alt="1776699950887.webp" title="1776699950887.webp" width="631" height="257" loading="lazy" decoding="async">
+</div> <div class="bbImageWrapper" title="1777429496756.webp">
+<img src="__BASE__media/source/113-1777429496756-1b91ca80.webp" class="bbImage" style="" alt="1777429496756.webp" title="1777429496756.webp" width="1130" height="583" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><hr><b>spigot.yml/world-settings.default.entity-tracking-range</b><br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất:
+player: 48
+animals: 48
+monsters: 48
+misc: 32
+other: 64</code></pre>
+</div>
+</div>Tùy chọn này quyết định khoảng cách (tính bằng block) mà thực thể sẽ được theo dõi và gửi về phía Client để người chơi có thể nhìn thấy.<br>
+<div style="text-align: justify"><div class="bbImageWrapper" title="render-sheep.png">
+<img src="__BASE__media/source/114-render-sheep-eea9bcaa.png" class="bbImage" style="" alt="render-sheep.png" title="" width="3840" height="1080" loading="lazy" decoding="async">
+</div>Paper cung cấp các thiết lập này để bạn chủ động kiểm soát khoảng cách hiển thị từng loại thực thể, thay vì mặc định <code class="bbCodeInline">simulation-distance - 1</code>. Máy chủ mình chuyên về <code class="bbCodeInline">CustomContent/ Modpack/ Datapack</code> tức phần cứng phải đủ mạnh --&gt; do đó, mình có thể tăng không vượt quá mức <code class="bbCodeInline">(simulation-distance - 1) × 16</code> để tránh gây ảnh hưởng xấu đến hiệu năng:<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code> entity-tracking-range:
+players: 128
+animals: 32
+monsters: 32
+misc: 160
+display: 160
+other: 160</code></pre>
+</div>
+</div>Spark sẽ giúp bạn liệt kê mức độ ảnh hưởng theo danh mục <code class="bbCodeInline">chunk provider tick</code>:​</div><ul>
+<li><div style="text-align: justify"><code class="bbCodeInline">tracker stage 1</code> là quá trình theo dõi entity​</div></li>
+<li><div style="text-align: justify"><code class="bbCodeInline">tracker stage 2</code> là quá trình gửi cập nhật entity đến client​</div></li>
+</ul><div style="text-align: justify">Nếu <code class="bbCodeInline">chunk provider tick</code> chiếm nhiều tài nguyên, bạn nên ưu tiên giảm tổng số Entity tại <code class="bbCodeInline">bukkit.yml</code> trước, sau đó giảm <code class="bbCodeInline">simulation-distance</code>. Nếu vẫn chưa cải thiện, lúc đó mới cân nhắc giảm <code class="bbCodeInline">entity-tracking-range</code> như giải pháp cuối cùng.​</div><div class="bbImageWrapper" title="1776634683611.webp">
+<img src="__BASE__media/source/071-1776634683611-279b2fa9.webp" class="bbImage" style="" alt="1776634683611.webp" title="1776634683611.webp" width="1310" height="92" loading="lazy" decoding="async">
+</div><br>
+<div style="text-align: justify">Ngoài ra, Paper cho phép bạn chỉnh riêng khoảng cách theo trục dọc (Y) của thực thể trong trong tệp <code class="bbCodeInline">paper-world-defaults.yml</code> tại mục <code class="bbCodeInline">entities.tracking-range-y</code>. Việc này, giúp bạn kiểm soát cách thực thể xuất hiện hoặc biến mất nhanh hơn theo chiều cao. Các nhóm Entity trong <code class="bbCodeInline">entity-tracking-range</code> được chia như sau:​</div><div style="margin-left: 20px"><ol>
+<li>player: người chơi</li>
+<li>monster: quái vật</li>
+<li>animal: dân làng, sinh vật dưới nước và động vật</li>
+<li>misc: item frame, tranh, bảng, vật phẩm rơi, kinh nghiệm</li>
+<li>display: các entity dạng hiển thị của các Plugin chuyên tạo gói tài nguyên</li>
+<li>other: tất cả những gì không nằm trong các nhóm trên (ví dụ: armor_stand, end_crystal)</li>
+</ol></div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Đảm bảo thay đổi <code class="bbCodeInline">spigot.yml/entity-activation-range</code> với giá trị tương đương <code class="bbCodeInline">entity-tracking-range</code> để quái khum bị ngou trước khi xuất hiện trước mặt ngừi chơi nhen <img src="__BASE__media/source/005-D-ef8315a7.gif" class="smilie" loading="lazy" alt=":D" title="Cười nhe răng :D" decoding="async">​</div>
+</div>
+
+</div>
+</blockquote><h4 class="bbHeading" id="-spigot-yml-world-settings-default-entity-activation-range"><div style="text-align: justify">spigot.yml/world-settings.default.entity-activation-range​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Máy chủ mình:
+entity-activation-range:
+animals: 8
+monsters: 24
+raiders: 6
+misc: 20
+water: 5
+villagers: 24
+flying-monsters: 48</code></pre>
+</div>
+</div><br>
+<img src="__BASE__media/source/012-anime1-2772104b.png" class="smilie" loading="lazy" alt=":anime1:" title="smug :anime1:" decoding="async">Phần này cực quan trọng vì <b>ảnh hưởng lớn</b> tới các dạng máy Farm phổ biến trong máy chủ của bạn. Tùy chọn <code class="bbCodeInline">entity-activation-range</code> quyết định khoảng cách (tính bằng block) mà thực thể có dùng được não, có vận động gân cốt được hay không. Những Entity nằm ngoài phạm vi này tồn tại như một bóng ma vật vờ không ai để ý tới. Bất kỳ thay đổi nào trong tệp <code class="bbCodeInline">spigot.yml/world-settings.default.entity-activation-range.wake-up-inactive</code> sẽ khiến các dạng máy Farm như Sắt, Dân làng trao đổi sách tự động, Nuôi nhốt Động vật... thay đổi mạnh về sản lượng. Băng ghi hình giải thích chi tiết tại:​</div>
+<div>
+<a href="https://www.youtube.com/watch?v=UBg8wPtk35U" class="link link--external" target="_blank" rel="noreferrer">
+https://www.youtube.com/watch?v=UBg8wPtk35U
+</a>
+</div>
+<hr><h4 class="bbHeading" id="-spigot-yml-world-settings-default-entity-activation-range-wake-up-inactive"><div style="text-align: justify">spigot.yml/world-settings.default.entity-activation-range.wake-up-inactive​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code> Đề xuất:
+wake-up-inactive:
+  animals-max-per-tick: 3
+  animals-every: 2400
+  animals-for: 90
+  monsters-max-per-tick: 8
+  monsters-every: 800
+  monsters-for: 100
+  villagers-max-per-tick: 1
+    villagers-every: 12400
+    villagers-for: 40
+  flying-monsters-max-per-tick: 4
+  flying-monsters-every: 1600
+  flying-monsters-for: 100
+    villagers-work-immunity-after: 200
+    villagers-work-immunity-for: 100
+   villagers-active-for-panic: true
+  tick-inactive-villagers: false
+ignore-spectators: true</code></pre>
+</div>
+</div>Giải thích từng khái niệm tại <a href="https://github.com/PaperMC/Paper/commit/e0ea2e0e147875b5b0eeab747d19fa00a5e19ef2" target="_blank" class="link link--external" rel="noreferrer">Entity Activation Range</a> -- cũng là nền tảng để phát triển <a href="https://blog.airplane.gg/dear-configuration/" target="_blank" class="link link--external" rel="noreferrer">DEAR</a> sau này. Tùy chọn <b><code class="bbCodeInline">work immunity</code></b> và <b><code class="bbCodeInline">wake up inactive</code></b> được Paper bổ sung nhằm giúp thế giới trong game trở nên “sống” hơn. Cơ chế này cho phép một số thực thể đang ở trạng thái không hoạt động có thể “thức dậy” trong một khoảng thời gian ngắn để thực hiện các hành vi cần thiết. Nhờ đó, những Entity như dân làng vẫn có thể bổ sung lại vật phẩm để trao đổi (restock) hoặc tìm công việc, ngay cả khi trước đó chúng không nằm trong vùng hoạt động đầy đủ. Riêng phần bên dưới, mình có hay áp dụng để giới hạn lại <i><span style="color: rgb(147, 101, 184)">số lượng vật phẩm</span></i> người chơi máy chủ mình <span style="color: rgb(147, 101, 184)"><i>trao đổi được với dân làng</i></span> và cân bằng với Datapack:​</div>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>villagers-max-per-tick: 2
+  villagers-every: 12400
+  villagers-for: 40
+    tick-inactive-villagers: false
+  villagers-work-immunity-after: 200
+  villagers-work-immunity-for: 100</code></pre>
+</div>
+</div><div style="text-align: justify"><img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async">Thiết lập này sẽ dẫn đến hành vi như sau:<br>
+Cứ mỗi <code class="bbCodeInline">12400</code> tick, máy chủ sẽ chọn ngẫu nhiên tối đa <code class="bbCodeInline">2</code> dân làng đang được tải nhưng đã không hoạt động trong ít nhất <code class="bbCodeInline">200</code> tick. Những dân làng này sẽ “thức dậy” trong khoảng <code class="bbCodeInline">40</code> tick. Trong thời gian đó, dân làng có thể hoạt động bình thường trong khoảng <code class="bbCodeInline">100</code> tick và không bị ảnh hưởng bởi trạng thái “đóng băng” khi ở quá xa người chơi.​</div><div class="bbImageWrapper" title="28sqaaxenpy21.jpg">
+<img src="__BASE__media/source/115-28sqaaxenpy21-81687317.jpg" class="bbImage" style="width: 658px" alt="28sqaaxenpy21.jpg" title="" width="1920" height="1080" loading="lazy" decoding="async">
+</div><br>
+<div style="text-align: justify">Dễ hiểu, Dân làng học nghề lâu + thiết lập <code class="bbCodeInline">tick-inactive-villager: false</code> yêu cầu máy chủ ngừng xử lý đối với những dân làng nằm ngoài "khoảng cách kích hoạt" (activation range) của người chơi. Về mặt kỹ thuật, khi người chơi rời xa khu vực dân làng, máy chủ sẽ đưa chúng vào trạng thái đóng băng để giảm tải; tuy nhiên, điều này dẫn đến hai hệ lụy trực tiếp:​</div><ul>
+<li><div style="text-align: justify">Iron Golem Farm sẽ giảm hiệu suất hoặc ngừng hoạt động vì điều kiện để sinh Golem yêu cầu dân làng phải hoạt động, kiểu như hoảng sợ hoặc đi ngủ, giao tiếp.​</div></li>
+<li><div style="text-align: justify">Thời gian làm mới vật phẩm giao dịch (trade cooldown) sẽ bị tạm dừng hoàn toàn nếu không có người chơi AFK gần đấy, dân làng sẽ không bao giờ hồi lại các món đồ đã bán được cả.​</div></li>
+</ul><div style="text-align: justify">Kết quả, tiết kiệm tài nguyên máy chủ và làm chậm lại tiến trình phát triển của người chơi <img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async">​</div><hr><h4 class="bbHeading" id="-spigot-yml-world-settings-default-merge-radius"><div style="text-align: justify"><b>spigot.yml/world-settings.default.merge-radius</b>​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất:
+item: 3.5
+exp: 4.0</code></pre>
+</div>
+</div>Tùy chọn này quyết định khoảng cách mà các vật phẩm rơi và kinh nghiệm (Exp Orb) có thể gộp lại với nhau, từ đó giảm số lượng vật phẩm phải xử lý trên mặt đất. Nếu đặt quá cao, người chơi có thể cảm giác vật phẩm hoặc Exp “biến mất” do bị gộp lại. Băng ghi hình giải thích dễ hiểu về cách các hạt EXP được gộp vào với nhau:<br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/116-www.youtube-6ed279ab.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=LYmauqpeU3c" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+XP in Minecraft is Super WEIRD...
+</a>
+</p>
+<div class="contentRow-snippet">Back from vacation with a quick deep dive into some of the weird and unintuitive dynamics of XP in Minecraft. Links:@whitestonejazz - Math discussion -- GREA...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div>
+Ngoài ra, bạn có thể thiết đặt trong tệp <code class="bbCodeInline">config/paper-world-defaults.yml/entities.behavior.experience-merge-max-value</code> để tùy chỉnh sâu hơn giá trị từng hạt có thể gộp được. Ghi nhớ rằng, giá trị quá lớn sẽ khiến vật phẩm bị bug “xuyên tường” để gộp với nhau, vì mặc định Vanilla không có cơ chế kiểm tra va chạm giữa các loại vật thể này, trừ khi bạn bật tùy chọn <code class="bbCodeInline">fix-items-merging-through-walls</code> của Paper.​</div><ul>
+<li><div style="text-align: justify"><b>Tiểu tiết tối ưu hiệu năng</b>​</div></li>
+</ul><div style="text-align: justify">➜ Chỉnh trong tệp <code class="bbCodeInline">config/paper-global.yml</code><br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>misc:
+xp-orb-groups-per-area: 60</code></pre>
+</div>
+</div>Tùy chọn này cho phép bạn đặt giá trị cao hơn mặc định (<code class="bbCodeInline">40</code>) để gộp các hạt kinh nghiệm mạnh tay hơn, đặc biệt với những máy Farm có lượng Exp đầu ra siêu lớn.<br>
+<br>
+➜ Chỉnh trong tệp <code class="bbCodeInline">spigot.yml</code><br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>players: disable-saving: false</code></pre>
+</div>
+</div>Nếu bạn đang chạy Proxy có Lobby, bạn nên đặt giá trị này thành <code class="bbCodeInline">true</code>, để tránh việc, dữ liệu người chơi tại máy chủ Lobby này bị lưu mỗi lần thoát ra vào lại.​</div><hr><h4 class="bbHeading" id="-spigot-yml-attribute-maxhealth"><div style="text-align: justify"><b>spigot.yml/attribute.maxHealth</b>​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>attribute:
+maxAbsorption: max: 2048.0
+maxHealth: max: 9999.0
+movementSpeed: max: 1024.0
+attackDamage: max: 9999.0</code></pre>
+</div>
+</div>Đây là nơi bạn có thể thiết đặt giới hạn tối đa khả năng một thực thể đạt tới được. Nếu máy chủ của bạn tính phát triển mảng RPG, Dungeon sử dụng <a href="https://mythiccraft.io/index.php?resources/mythicmobs.1/" target="_blank" class="link link--external" rel="noreferrer">MythicsMob</a>, hiển nhiên phải lưu tâm.​</div><hr><h4 class="bbHeading" id="-spigot-yml-commands-spam-exclusions"><div style="text-align: justify"><b>spigot.yml/commands.spam-exclusions</b>​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất:
+commands: tab-complete: 0
+send-namespaced: false
+log: false
+spam-exclusions:
+- /function</code></pre>
+</div>
+</div><div class="bbImageWrapper" title="1777429344443.webp">
+<img src="__BASE__media/source/117-1777429344443-7f3a5ffb.webp" class="bbImage" style="" alt="1777429344443.webp" title="1777429344443.webp" width="1100" height="619" loading="lazy" decoding="async">
+</div><br>
+<b>.ᐟ.ᐟ Máy chủ bạn triển Datapack lặp lại câu lệnh nhiều?</b> Tùy chọn này cho phép bạn liệt kê các tin nhắn hoặc lệnh sẽ được bỏ qua khỏi bộ lọc spam mặc định. Nếu nội dung chat hoặc lệnh bắt đầu giống với một mục trong danh sách này, thì sẽ không bị tính là <b>Spam</b>. Lưu ý, các lệnh phải có dấu <code class="bbCodeInline">/</code> ở đầu thì mới được nhận diện nha.​</div><hr><h4 class="bbHeading" id="-spigot-yml-netty-threads"><div style="text-align: justify"><b>spigot.yml/netty-threads</b>​</div></h4><div style="text-align: justify">Tham số <code class="bbCodeInline">netty-threads</code> trong <code class="bbCodeInline">spigot.yml</code> quyết định số lượng luồng (threads) CPU được cấp phát cho Netty – thư viện I/O bất đồng bộ chịu trách nhiệm xử lý toàn bộ luồng dữ liệu mạng (packet) vào và ra của máy chủ. Nói một cách dễ hiểu, nó giống như số lượng "nhân viên soát vé" ở cổng kết nối: nếu thiết đặt quá thấp, dữ liệu gửi nhận giữa người chơi và máy chủ sẽ bị nghẽn (bottleneck) dẫn đến tình trạng lag mạng - ping cao, block lag dù tps của server vẫn ở mức 20; ngược lại, nếu đẩy lên quá cao, bạn sẽ làm lãng phí tài nguyên CPU và gây ra độ trễ do hệ thống phải liên tục chuyển đổi ngữ cảnh (context switching) giữa quá nhiều luồng rác. Đối với hầu hết các phần mềm máy chủ, giá trị mặc định là <code class="bbCodeInline">4</code> đã được Spigot và Paper tối ưu hóa cực tốt, thừa sức xử lý băng thông cho hàng trăm người chơi cùng lúc. Theo nhận định lâu đời của giới phát triển máy chủ Dev, bạn nên giữ nguyên con số <code class="bbCodeInline">4</code> này.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Chỉ trong trường hợp máy chủ của bạn chạy trên <b>máy vật lý</b> có lượng nhân CPU cực khủng 16+ cores và phải gồng gánh một lượng kết nối đồng thời khổng lồ, bị nghẽn I/O rõ rệt qua các bản Spark báo cáo, thì mới nên cân nhắc nhích nhẹ lên <code class="bbCodeInline">6</code> hoặc <code class="bbCodeInline">8</code>.​</div>
+</div>
+
+</div>
+</blockquote><hr>

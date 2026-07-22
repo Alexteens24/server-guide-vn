@@ -1,0 +1,168 @@
+{
+  "checkedAt": "2026-07-22",
+  "notes": {
+    "glossary": [
+      {
+        "status": "confirmed",
+        "title": "Cách dùng chỉ số",
+        "body": "TPS cho biết nhịp game, còn MSPT phản ánh thời gian xử lý mỗi tick. Khi chẩn đoán, cần xem cả hai cùng workload thực tế thay vì chỉ nhìn một con số.",
+        "sources": [{ "label": "PaperMC — Profiling", "href": "https://docs.papermc.io/paper/profiling" }]
+      }
+    ],
+    "intro": [
+      {
+        "status": "author",
+        "title": "Cấu hình mẫu không phải đáp án chung",
+        "body": "Các nhận định về mức tải và phần cứng phụ thuộc gameplay, plugin, world và số người chơi. Hãy coi chúng là điểm bắt đầu cho phép đo, không phải cam kết hiệu năng."
+      }
+    ],
+    "preparation": [
+      {
+        "status": "version",
+        "title": "Baseline hiện hành",
+        "body": "Paper 26.2 yêu cầu tối thiểu Java 25. Các phiên bản Paper 1.20–1.21.11 vẫn dùng Java 21; luôn đối chiếu bảng yêu cầu trước khi đổi runtime.",
+        "version": "Paper 26.2 / Java 25",
+        "sources": [{ "label": "PaperMC — Getting started", "href": "https://docs.papermc.io/paper/getting-started/" }]
+      }
+    ],
+    "setup": [
+      {
+        "status": "caution",
+        "title": "Quy trình áp dụng",
+        "body": "Không áp dụng toàn bộ cấu hình trong một lần. Chụp baseline, thay đổi một nhóm key, restart hoàn toàn rồi so sánh cùng một workload."
+      }
+    ],
+    "setup-jvm": [
+      {
+        "status": "version",
+        "title": "JVM flags phụ thuộc runtime",
+        "body": "Các cờ JVM có thể đổi ý nghĩa, bị bỏ hoặc trở thành mặc định giữa các bản Java. Chỉ giữ cờ có mục tiêu rõ ràng và kiểm tra log khởi động sau mỗi lần nâng Java.",
+        "version": "Java 25 cho Paper 26.2",
+        "sources": [{ "label": "PaperMC — Java installation", "href": "https://docs.papermc.io/misc/java-install/" }]
+      }
+    ],
+    "server-properties": [
+      {
+        "status": "version",
+        "title": "Để phần mềm sinh cấu hình trước",
+        "body": "Khi nâng phiên bản, hãy để server software sinh tệp mẫu mới rồi đối chiếu thay vì chép đè tệp cũ; key và giá trị mặc định có thể thay đổi."
+      }
+    ],
+    "bukkit-yml": [
+      {
+        "status": "caution",
+        "title": "Mob cap ảnh hưởng gameplay",
+        "body": "Giảm giới hạn spawn có thể hạ tải nhưng cũng thay đổi farm và trải nghiệm. Đo theo từng world và ghi lại giá trị trước khi chỉnh."
+      }
+    ],
+    "spigot-yml": [
+      {
+        "status": "caution",
+        "title": "Không đánh đổi gameplay vô thức",
+        "body": "Activation range, merge radius và nerf-spawner-mobs đều có thể làm cơ chế game khác vanilla. Mọi thay đổi cần có tiêu chí chấp nhận về gameplay bên cạnh MSPT."
+      }
+    ],
+    "paper-world": [
+      {
+        "status": "version",
+        "title": "Key Paper có thể được di chuyển",
+        "body": "Đối chiếu reference đúng phiên bản trước khi dùng. Key không được nhận diện có thể bị bỏ qua, khiến phép thử cho kết quả sai.",
+        "sources": [{ "label": "PaperMC — Configuration", "href": "https://docs.papermc.io/paper/reference/configuration/" }]
+      }
+    ],
+    "paper-global": [
+      {
+        "status": "caution",
+        "title": "Packet limiter là lớp phòng vệ, không thay thế firewall",
+        "body": "Thiết đặt giới hạn packet cần thử với Geyser, proxy và plugin protocol; vẫn phải kết hợp firewall, rate limit ở proxy và giám sát log."
+      }
+    ],
+    "purpur-yml": [
+      {
+        "status": "version",
+        "title": "Phân biệt tối ưu và tùy biến gameplay",
+        "body": "Purpur kế thừa Paper nhưng bổ sung nhiều tùy chọn gameplay. Chỉ bật key sau khi đọc mô tả của build đang chạy.",
+        "sources": [{ "label": "PurpurMC Documentation", "href": "https://purpurmc.org/docs/purpur/" }]
+      }
+    ],
+    "leaf-global": [
+      {
+        "status": "version",
+        "title": "Leaf 26.2 chưa có stable build",
+        "body": "Tại ngày kiểm chứng, trang tải Leaf 26.2 chỉ cung cấp experimental build và không khuyến nghị production. Nếu ưu tiên ổn định, chọn phiên bản có stable channel hoặc thử riêng trên staging.",
+        "version": "Leaf 26.2",
+        "sources": [{ "label": "Leaf — Downloads", "href": "https://www.leafmc.one/en/download" }]
+      }
+    ],
+    "gale": [
+      {
+        "status": "version",
+        "title": "Xác nhận fork và schema",
+        "body": "Không giả định mọi fork Paper còn hỗ trợ cấu hình Gale. Kiểm tra tệp được sinh bởi chính build đang chạy và log cảnh báo key không hợp lệ."
+      }
+    ],
+    "integrations": [
+      {
+        "status": "caution",
+        "title": "Tích hợp theo nhu cầu",
+        "body": "Mỗi plugin thêm dependency, quyền và workload. Ghi rõ chủ sở hữu, mục tiêu, dữ liệu lưu và phương án gỡ trước khi đưa vào production."
+      }
+    ],
+    "plugins": [
+      {
+        "status": "version",
+        "title": "Danh mục tham khảo, không phải allowlist",
+        "body": "Trạng thái duy trì, license và khả năng tương thích của plugin thay đổi liên tục. Kiểm tra trang phát hành, issue tracker và thử trên staging trước khi cài."
+      }
+    ],
+    "datapack": [
+      {
+        "status": "caution",
+        "title": "Đo function và command workload",
+        "body": "Datapack có thể tạo chi phí theo tick dù không xuất hiện như plugin. Dùng profiler và kiểm tra scheduled functions trước khi kết luận nguyên nhân lag."
+      }
+    ],
+    "admin-mistakes": [
+      {
+        "status": "author",
+        "title": "Biến kinh nghiệm thành quy trình",
+        "body": "Các case study mang giọng kể cá nhân. Phần có thể áp dụng rộng rãi là: staging, changelog, backup đã thử restore, quan sát log và rollback có thời hạn."
+      }
+    ],
+    "useful-websites": [
+      {
+        "status": "version",
+        "title": "Liên kết bên ngoài có thể thay đổi",
+        "body": "Ưu tiên tài liệu dự án và kho mã chính thức. Nếu một công cụ đóng cửa, không thay bằng mirror không rõ nguồn gốc."
+      }
+    ],
+    "free-options": [
+      {
+        "status": "caution",
+        "title": "Miễn phí vẫn có chi phí vận hành",
+        "body": "Đánh giá thời gian bảo trì, cập nhật bảo mật và khả năng xuất dữ liệu; giá mua bằng 0 không đồng nghĩa tổng chi phí bằng 0."
+      }
+    ],
+    "operations": [
+      {
+        "status": "confirmed",
+        "title": "Tiêu chuẩn tối thiểu trước production",
+        "body": "Có backup tự động, thử restore định kỳ, tài khoản quản trị riêng, log tập trung, staging và changelog cho mọi thay đổi."
+      }
+    ],
+    "next": [
+      {
+        "status": "author",
+        "title": "Roadmap nên đi theo dữ liệu",
+        "body": "Sau giai đoạn đầu, ưu tiên bottleneck đã quan sát được thay vì tiếp tục thêm plugin hoặc tối ưu dựa trên danh sách chung."
+      }
+    ],
+    "references": [
+      {
+        "status": "caution",
+        "title": "Tệp đính kèm là mẫu tham khảo",
+        "body": "Không chép trực tiếp các tệp cấu hình vào production. So sánh từng key với tệp mới do phiên bản đang chạy sinh ra và lưu bản diff."
+      }
+    ]
+  }
+}

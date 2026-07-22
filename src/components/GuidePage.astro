@@ -1,0 +1,124 @@
+---
+import ChapterContent from './ChapterContent.astro';
+import EditorialNotes from './EditorialNotes.astro';
+import guide from '../data/guide-pages.json';
+import fragmentManifest from '../data/chapter-fragments.json';
+import { normalizeOutlineTitle } from '../utils/guide-format';
+
+interface Props { pageId: string; }
+const { pageId } = Astro.props;
+const pages = guide.pages;
+const page = pages.find((item) => item.id === pageId);
+if (!page) throw new Error(`Không tìm thấy trang tài liệu: ${pageId}`);
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const hrefFor = (slug: string) => `${base}${slug}/`;
+const children = pages.filter((item) => item.parent === page.id);
+const parent = page.parent ? pages.find((item) => item.id === page.parent) : null;
+const currentIndex = pages.findIndex((item) => item.id === page.id);
+const previous = currentIndex > 0 ? pages[currentIndex - 1] : null;
+const next = currentIndex < pages.length - 1 ? pages[currentIndex + 1] : null;
+const fragmentIds = [page.fragment, ...children.map((item) => item.fragment)].filter(Boolean);
+const currentFragment = page.fragment
+  ? fragmentManifest.items.find((fragment) => fragment.id === page.fragment)
+  : null;
+const localOutline = currentFragment?.outline
+  .filter((item) => item.id !== currentFragment.firstHeadingId)
+  .map((item) => ({ ...item, title: normalizeOutlineTitle(item.id, item.title) })) ?? [];
+const stats = fragmentManifest.items
+  .filter((fragment) => fragmentIds.includes(fragment.id))
+  .reduce((total, fragment) => ({
+    textLength: total.textLength + fragment.textLength,
+    headings: total.headings + fragment.headings,
+    images: total.images + fragment.images,
+    codeBlocks: total.codeBlocks + fragment.codeBlocks,
+  }), { textLength: 0, headings: 0, images: 0, codeBlocks: 0 });
+const readingMinutes = Math.max(1, Math.ceil(stats.textLength / 1_100));
+---
+
+<div class="guide-page" data-page-id={page.id}>
+  <section class="guide-page__overview" aria-label="Tóm tắt chương">
+    <div class="guide-page__status">
+      <span>Phần {page.number}</span>
+      <i></i>
+      <span>Kiểm chứng {guide.verifiedAt}</span>
+    </div>
+    <p class="guide-page__summary">{page.description}</p>
+    <div class="guide-page__learning">
+      <div>
+        <span>Trước khi đọc</span>
+        <ul>{page.prerequisites.map((item) => <li>{item}</li>)}</ul>
+      </div>
+      <div>
+        <span>Hoàn thành khi bạn có thể</span>
+        <ul>{page.outcomes.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </div>
+    <div class="guide-page__stats" aria-label="Thống kê nội dung">
+      <span><strong>{stats.headings}</strong> đề mục</span>
+      <span><strong>{stats.images}</strong> hình</span>
+      <span><strong>{stats.codeBlocks}</strong> đoạn mã</span>
+      <span><strong>~{readingMinutes}</strong> phút đọc</span>
+      <a href={`${base}nguyen-tac/`}>Xem nguyên tác ↗</a>
+    </div>
+  </section>
+
+  {parent && (
+    <a class="guide-page__parent" href={hrefFor(parent.slug)} data-pagefind-ignore>
+      <span>←</span> Trở về {parent.title}
+    </a>
+  )}
+
+  <div class="reading-toolbar" data-reading-controls data-pagefind-ignore>
+    <span><i></i> Tùy chỉnh cách đọc</span>
+    <div role="group" aria-label="Cỡ chữ">
+      <button type="button" data-reading-size="small" aria-label="Cỡ chữ nhỏ">A−</button>
+      <button type="button" data-reading-size="normal" aria-label="Cỡ chữ mặc định">A</button>
+      <button type="button" data-reading-size="large" aria-label="Cỡ chữ lớn">A+</button>
+    </div>
+    <button type="button" data-reading-density aria-pressed="false">Dòng thoáng</button>
+  </div>
+
+  {localOutline.length > 0 && (
+    <details class="guide-local-toc" open data-pagefind-ignore>
+      <summary><span>Trong trang này</span><small>{localOutline.length} đề mục</small></summary>
+      <ol>
+        {localOutline.map((item) => (
+          <li class:list={[`level-${item.level}`]}><a href={`#${item.id}`}>{item.title}</a></li>
+        ))}
+      </ol>
+    </details>
+  )}
+
+  {page.fragment && <ChapterContent fragmentId={page.fragment} />}
+
+  {children.length > 0 && (
+    <nav class="guide-children" aria-label={`Các mục trong ${page.title}`} data-pagefind-ignore>
+      <header><span>Nội dung chương</span><strong>{children.length} mục chuyên sâu</strong></header>
+      <ol>
+        {children.map((child) => (
+          <li>
+            <a href={hrefFor(child.slug)}>
+              <span>{child.number}</span>
+              <div><strong>{child.title}</strong><small>{child.description}</small></div>
+              <i aria-hidden="true">→</i>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )}
+
+  <EditorialNotes pageId={page.id} />
+
+  <nav class="guide-pagination" aria-label="Điều hướng trước và sau" data-pagefind-ignore>
+    {previous ? (
+      <a href={hrefFor(previous.slug)}><span>← Trước</span><strong>{previous.title}</strong></a>
+    ) : <span></span>}
+    {next && (
+      <a href={hrefFor(next.slug)}><span>Tiếp theo →</span><strong>{next.title}</strong></a>
+    )}
+  </nav>
+</div>

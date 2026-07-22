@@ -1,0 +1,75 @@
+<h3 class="bbHeading" id="-3-7-leaf-global-yml"><div style="text-align: justify">3.7. leaf-global.yml​</div></h3><div style="text-align: justify">Nếu phải mô tả LeafMC bằng một từ, đó là <b>"Lean" (Tinh gọn)</b>. Nó không chỉ đơn thuần là mượt, mà là mượt một cách "sang chảnh". LeafMC mã nguồn mở, phát triển cùng các pháp sư Trung Hoa, tập trung vào việc xử lý những thứ "nặng đô" nhất của Minecraft (như entity, chunk loading) bằng những thuật toán mà các bản fork cũ chỉ biết nhìn mà ước j làm được. Nếu Purpur là chiếc xe độ đầy màu sắc, thì <b>LeafMC</b> chính là chiếc Tesla đời mới nhất – tối giản, hiện đại và tốc độ kinh hoàng. Bạn cảm thấy đã sẵn sàng để "lên đời" quả máy chủ phò phạch của mình chưa? <img src="__BASE__media/source/124-B-5558b60c.gif" class="smilie" loading="lazy" alt="B-)" title="Sành điệu B-)" decoding="async">​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify"><b><span style="font-size: 18px"><span style="color: rgb(184, 49, 47)">[.ᐟ.ᐟ]</span></span></b><span style="font-size: 18px"> Toàn bộ thiết đặt cần thiết đều được giải thích tại <a href="https://www.leafmc.one/docs/config/leaf-global" target="_blank" class="link link--external" rel="noreferrer"><b>Docs của Leaf</b></a> </span>​</div>
+</div>
+
+</div>
+</blockquote><hr><h4 class="bbHeading" id="-leaf-global-yml-fast-biome-manager-seed-obfuscation"><div style="text-align: justify">leaf-global.yml/fast-biome-manager-seed-obfuscation​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+<span style="color: rgb(184, 49, 47)">.ᐟ.ᐟ</span> Trong bản Vanilla, Minecraft dùng thuật toán SHA-256 để xáo trộn seed khi tính toán các quần xã sinh vật (biomes). LeafMC cho phép bạn đổi sang <a href="https://github.com/cyan4973/xxhash" target="_blank" class="link link--external" rel="noreferrer"><b>XXHash</b> </a>– một thuật toán nhanh như chớp nhưng vẫn cực kỳ chuẩn xác, giúp giảm tải khi tạo Biome mới từ Vanilla --&gt; Datapack​</div><hr><h4 class="bbHeading" id="-leaf-global-yml-async-tat-ca-thiet-dat-enabled"><div style="text-align: justify">leaf-global.yml/async-&lt;tất cả thiết đặt&gt;.enabled​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+Mục tiêu cốt lõi ở đây là đẩy các tác vụ tính toán ra khỏi luồng chính của máy chủ (nơi xử lý các tick game) và chuyển sang các luồng chạy ngầm, từ đó giảm tải cho luồng chính và kéo chỉ số tps lên cao hơn.​</div><hr><h4 class="bbHeading" id="-leaf-global-yml-region-format-settings-region-format"><div style="text-align: justify">leaf-global.yml/region-format-settings.region-format:​</div></h4><div style="text-align: justify"><div class="bbImageWrapper" title="1783619544151.webp">
+<img src="__BASE__media/source/140-1783619544151-746b363a.webp" class="bbImage" style="" alt="1783619544151.webp" title="1783619544151.webp" width="796" height="337" loading="lazy" decoding="async">
+</div><br>
+<b>MCA:</b> Đây là định dạng Anvil mặc định xưa giờ của Minecraft rồi. Cứ chọn cái này cho nó lành, chạy bao ổn định, siêu an toàn mà độ tương thích thoải mái ạ. Tuy nhiên, nhiều máy chủ ông đang gánh mấy con máy chủ thuộc hàng bô lão, sở hữu thế giới siêu to khổng lồ nặng hơn <code class="bbCodeInline">1TB</code> dữ liệu và dàn phần cứng có sẵn từ <code class="bbCodeInline">10+ GB RAM</code> trở lên, có thể tham khảo định dạng <code class="bbCodeInline">B_LINEAR</code> hoặc <code class="bbCodeInline">LINEAR_V2</code>. Đây là kiểu nén dữ liệu <a href="https://github.com/facebook/zstd" target="_blank" class="link link--external" rel="noreferrer">Zstandard</a> giúp tiết kiệm dung lượng ổ cứng siêu đỉnh, giảm đi <span style="color: rgb(61, 142, 185)"><span style="font-size: 18px"><b>50 - 80%</b></span></span>, nhưng bù lại thì <span style="color: rgb(184, 49, 47)">RỦI RO KHỦNG KHIẾP</span>, độ tương thích còn kém với các phần mềm chuyên giảm tải dữ liệu như <b><a href="https://github.com/Querz/mcaselector" target="_blank" class="link link--external" rel="noreferrer">mcaselector</a></b> tại thời điểm tôi viết bài, và tay nghề quản trị viên kém thì sơ hở là bay màu dữ liệu như chơi.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Công cụ tham khảo chuyển đổi định dạng tệp dữ liệu thế giới thủ công: <a href="https://github.com/LuminolMC/region_converter" target="_blank" class="link link--external" rel="noreferrer">https://github.com/LuminolMC/region_converter</a>​</div>
+</div>
+
+</div>
+</blockquote><hr><h4 class="bbHeading" id="-leaf-global-yml-spawner-settings"><div style="text-align: justify">leaf-global.yml/spawner-settings​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: min-spawn-delay: 1100 và max-spawn-delay: 1600</code><br>
+Bộ cấu hình này dùng để quản lý mấy cái lồng sản sinh quái (spawner) trên máy chủ. Tối ưu đống này chuẩn chỉ sẽ giúp giảm tải kha khá cho CPU, nhất là khi người chơi trong máy chủ đam mê làm mấy cái dạng Farm quái tự động. Có thể kết hợp <a href="https://builtbybit.com/resources/neospawner-ui-based-opensource.56785/" target="_blank" class="link link--external" rel="noreferrer">NeoSpawner</a> hoặc <a href="https://builtbybit.com/resources/virtualspawner-corruption-sell-wands.28314/" target="_blank" class="link link--external" rel="noreferrer">VirtualSpawner</a> khi quản trị viên lựa chọn Spawner làm nền kinh tế chính của máy chủ.​</div><div class="bbImageWrapper" title="1783619900694.gif">
+<img src="__BASE__media/source/141-1783619900694-5d77d61e.gif" class="bbImage" style="" alt="1783619900694.gif" title="1783619900694.gif" width="800" height="600" loading="lazy" decoding="async">
+</div><br>
+<hr><h4 class="bbHeading" id="-leaf-global-yml-compat-mode-false-khuyen-dung-tru-khi-thuc-su-can"><div style="text-align: justify">leaf-global.yml/compat-mode: false (Khuyên dùng trừ khi thực sự cần)​</div></h4><div style="text-align: justify">Chuyện là mấy ông thần plugin làm NPC (điển hình nhất là <a href="https://www.spigotmc.org/resources/citizens.13811/" target="_blank" class="link link--external" rel="noreferrer">Citizens</a>) hay tạo NPC bằng cách bê nguyên thực thể người chơi thật vào. Do cơ chế của bộ theo dõi là chạy bất đồng bộ (async), nên thỉnh thoảng nó làm mấy con NPC kiểu này bị lỗi hiển thị, kiểu vừa hiện ra đã biến mất trong tích tắc. Đơn giản là do dữ liệu cập nhật của tụi nó bị lệch pha, không khớp với luồng chính (main thread).​</div><ul>
+<li><div style="text-align: justify"><b>Cơ chế hoạt động: </b>Hệ thống sẽ kiểm tra kỹ xem thực thể đang được theo dõi là người chơi thật hay là người chơi giả (giống như NPC của Citizens). Nếu bật chế độ tương thích này, các cập nhật theo dõi dành cho người chơi giả sẽ bị ép phải chạy đồng bộ (synchronously) ngay trên luồng chính, trong khi việc theo dõi các thực thể khác (quái, vật phẩm rơi vãi, người chơi thật...) thì vẫn chạy bất đồng bộ. Việc này giúp sửa triệt để các lỗi hiển thị cho các loại NPC đặc thù đó.​</div></li>
+<li><div style="text-align: justify">Các plugin NPC dùng gói packet hoặc thực thể ảo (như <a href="https://modrinth.com/project/p9LVUS4o" target="_blank" class="link link--external" rel="noreferrer">ZNPCsPlus</a>, <a href="https://github.com/TabooLib/adyeshach" target="_blank" class="link link--external" rel="noreferrer">Adyeshach</a>, <a href="https://modrinth.com/plugin/fancynpcs" target="_blank" class="link link--external" rel="noreferrer">FancyNPCs</a>) thì hoàn toàn không bị ảnh hưởng.​</div></li>
+</ul><hr><h4 class="bbHeading" id="-leaf-global-yml-secure-seed"><div style="text-align: justify">leaf-global.yml/secure-seed​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
+Đây chính là "trùm cuối" để chống lại các pháp sư soi seed. Thay vì dùng seed <code class="bbCodeInline">64-bit</code> mỏng manh dễ vỡ như Vanilla, LeafMC nâng cấp lên <b><code class="bbCodeInline">1024-bit</code></b> bằng thuật toán mật mã học siêu cấp. Với seed 64-bit bình thường, mấy thanh niên dùng tool "seed cracking" chỉ mất vài phút là biết sạch chỗ nào có kim cương, chỗ nào có trụ sở dân làng hay công trình gần đó. Một khi đã dùng Secure Seed, quản trị viên không thể tắt thiết lập này đi để quay về kiểu cũ được, trừ khi bạn muốn máy chủ mình đầy những vết sẹo địa hình bị lỗi như ảnh:​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 50.0000%"><div class="bbImageWrapper" title="7OFEQ.png">
+<img src="__BASE__media/source/142-7OFEQ-97dd46e7.png" class="bbImage" style="" alt="7OFEQ.png" title="" width="854" height="480" loading="lazy" decoding="async">
+</div></td><td style="width: 50.0000%"><div class="bbImageWrapper" title="anybody-knows-what-mod-datapack-is-causing-these-houses-to-v0-yee5lsm88pua1.png">
+<img src="__BASE__media/source/143-anybody-knows-what-mod-datapack-is-causing-these-houses-to-v0-yee5lsm88p-d8fefc17.webp" class="bbImage" style="" alt="anybody-knows-what-mod-datapack-is-causing-these-houses-to-v0-yee5lsm88pua1.png" title="" width="640" height="360" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><hr><h4 class="bbHeading" id="-leaf-global-yml-sentry"><div style="text-align: justify">leaf-global.yml/sentry​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: học cách mà dùng</code><br>
+Nếu bạn là Quản trị viên và mệt mỏi với việc mỗi lần máy chủ "dở chứng" là phải lặn ngụp trong cái tệp nhật ký dữ liệu <code class="bbCodeInline">latest.log</code> dài như sớ táo quân, thì <a href="https://sentry.io/" target="_blank" class="link link--external" rel="noreferrer"><b>Sentry</b> </a>chính là trạm cứu hộ tâm hồn cho cái máy chủ của bạn đấy.​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Chi tiết hướng xử lý tại <a href="https://viblo.asia/p/performance-optimization-101-nhung-cau-hoi-co-ban-Qbq5Q9BE5D8" target="_blank" class="link link--external" rel="noreferrer">Performance Optimization 101</a> của anh <a href="https://viblo.asia/u/monmen" target="_blank" class="link link--external" rel="noreferrer">Minh Monmen</a>​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: center"><div class="bbImageWrapper" title="6a9f0368-a240-446e-82f8-025c1b9abf93.png">
+<img src="__BASE__media/source/144-6a9f0368-a240-446e-82f8-025c1b9abf93-943d2529.png" class="bbImage" style="width: 856px" alt="6a9f0368-a240-446e-82f8-025c1b9abf93.png" title="" width="1117" height="539" loading="lazy" decoding="async">
+</div></div><div style="text-align: justify">Hãy tưởng tượng Sentry như một chiếc <b>Camera an ninh thông minh 24/7</b> lắp trong server của bạn. Bình thường, khi máy chủ lỗi, nó chỉ để lại một đống nhật ký hỗn độn mà bạn phải tự đi "mò kim đáy bể". Nhưng với Sentry, mỗi khi có một con bug xuất hiện hay ai đó trong máy chủ "hắt hơi sổ mũi", phần mềm này sẽ ngay lập tức chụp ảnh hiện trường, ghi lại mọi bằng chứng và gửi thẳng về điện thoại hoặc web-panel cho bạn: đoạn code nào lỗi, plugin nào đang "đánh nhau", và tình trạng server lúc đó ra sao. Kết hợp với tính năng <b>tracing</b> (theo dõi hành trình), Sentry sẽ giúp nhân sự Dev của bạn biết được một yêu cầu từ người chơi đã đi qua những đâu trước khi gây ra lỗi (Plugins pipeline). Thay vì hỏi <i>"Sao máy chủ sập thế nhỉ?"</i>, bạn sẽ tự tin nói được <i>"À, lỗi ở dòng 45 của Plugin X, để mình sửa trong 30 giây nhé"</i>.​</div><hr><h4 class="bbHeading" id="-leaf-global-yml-dab"><div style="text-align: justify">leaf-global.yml/DAB​</div></h4>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Mã:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>  dab:
+    enabled: true
+    dont-enable-if-in-water: false
+    start-distance: 8
+    max-tick-freq: 80
+    activation-dist-mod: 7
+    blacklisted-entities:
+    - axolotl
+    - zombified_piglin
+    - zombie
+    - axolotl
+    - goat
+    - cat
+    - cow
+    - enderman
+    - villager
+    - turtle</code></pre>
+</div>
+</div><div style="text-align: justify">Nếu phải đặt một cái tên thuần Việt cho DAB, mình sẽ gọi nó là: "Phương pháp phẫu thuật thùy não" hoặc <b>"Liệu pháp tiết kiệm nơ-ron". </b>Phát triển bởi <a href="https://blog.airplane.gg/dear-configuration/" target="_blank" class="link link--external" rel="noreferrer">AirPlane</a> - Fork của Paper. Bình thường, mọi thực thể trong Minecraft (từ con gà đến con heo) đều có một "bộ não" - Brain ticking, hoạt động liên tục để quyết định xem nó nên đi đâu, làm gì, nhìn ai. Nếu máy chủ bạn có 1000 con heo, CPU sẽ phải "vắt óc" suy nghĩ cho cả 1000 đứa đó cùng lúc --&gt; Server thở oxy ngay ⓘ DAB hoạt động dựa trên nguyên lý cực kỳ thực dụng: <b>"Xa mặt thì cạch não"</b>.​</div><ul>
+<li><div style="text-align: justify"><b>Khi ở gần người chơi:</b> Thực thể sẽ được cấp "full nơ-ron", quái sẽ cực kỳ thông minh, phản ứng nhanh, di chuyển mượt mà vì bạn đang nhìn thấy nó.​</div></li>
+<li><div style="text-align: justify"><b>Khi ở xa người chơi:</b> DAB sẽ nhận thấy: "<i>À, chỗ này không có ai xem nè, làm màu làm gì!</i>". Thế là thiết đặt này sẽ giảm tần suất suy nghĩ của con Mob đó xuống, thay vì kiểm tra não bộ 20 lần mỗi giây, giờ Game có thể chỉ kiểm tra 1 lần mỗi vài giây thôi.​</div></li>
+</ul><hr>

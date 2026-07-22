@@ -1,0 +1,1266 @@
+{
+  "source": "https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/",
+  "postId": 343982,
+  "generatedAt": "2026-07-22T09:02:16.846Z",
+  "count": 21,
+  "items": [
+    {
+      "id": "glossary",
+      "start": null,
+      "end": "intro",
+      "filename": "glossary.html",
+      "textLength": 2372,
+      "headings": 1,
+      "images": 9,
+      "tables": 2,
+      "codeBlocks": 0,
+      "firstHeadingId": "glossary",
+      "anchors": [
+        "glossary"
+      ],
+      "outline": [
+        {
+          "id": "glossary",
+          "level": 2,
+          "title": "0. TABLE OF CONTENTS - Nội dung​"
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "start": "intro",
+      "end": "preparation",
+      "filename": "intro.html",
+      "textLength": 1135,
+      "headings": 1,
+      "images": 0,
+      "tables": 0,
+      "codeBlocks": 0,
+      "firstHeadingId": "intro",
+      "anchors": [
+        "intro"
+      ],
+      "outline": [
+        {
+          "id": "intro",
+          "level": 2,
+          "title": "1. INTRO - Mở đầu​"
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "start": "preparation",
+      "end": "setup",
+      "filename": "preparation.html",
+      "textLength": 19495,
+      "headings": 13,
+      "images": 59,
+      "tables": 5,
+      "codeBlocks": 0,
+      "firstHeadingId": "preparation",
+      "anchors": [
+        "preparation",
+        "-2-0-essential-tools-knowledge-cong-cu-kien-thuc-co-ban-can-thiet",
+        "-2-1-server-software-jar-phan-mem-may-chu",
+        "-purper",
+        "-leaf",
+        "-folia",
+        "-luminol-lophine",
+        "-arclight-mohist",
+        "hosting",
+        "-2-2-1-luu-tam-ve-host-nuoc-ngoai-host-viet-nam",
+        "-2-2-2-choosing-a-host-lua-chon-noi-dat-may-chu",
+        "-dedicated-server-ca-1-may-chu-vat-ly-rieng-danh-cho-ban",
+        "-2-3-human-doi-tac-cong-tac-vien-nhan-su-suc-va-t"
+      ],
+      "outline": [
+        {
+          "id": "preparation",
+          "level": 2,
+          "title": "2. Preparations - Chuẩn bị​"
+        },
+        {
+          "id": "-2-0-essential-tools-knowledge-cong-cu-kien-thuc-co-ban-can-thiet",
+          "level": 3,
+          "title": "2.0. Essential Tools & Knowledge - Công cụ / Kiến thức cơ bản cần thiết​"
+        },
+        {
+          "id": "-2-1-server-software-jar-phan-mem-may-chu",
+          "level": 3,
+          "title": "2.1. Server software JAR - Phần mềm máy chủ​"
+        },
+        {
+          "id": "-purper",
+          "level": 4,
+          "title": "Purper​"
+        },
+        {
+          "id": "-leaf",
+          "level": 4,
+          "title": "Leaf​"
+        },
+        {
+          "id": "-folia",
+          "level": 4,
+          "title": "Folia​"
+        },
+        {
+          "id": "-luminol-lophine",
+          "level": 4,
+          "title": "Luminol / Lophine​"
+        },
+        {
+          "id": "-arclight-mohist",
+          "level": 4,
+          "title": "Arclight/Mohist​"
+        },
+        {
+          "id": "hosting",
+          "level": 3,
+          "title": "2.2. Hosting - Chạy máy chủ ở đâu?​"
+        },
+        {
+          "id": "-2-2-1-luu-tam-ve-host-nuoc-ngoai-host-viet-nam",
+          "level": 4,
+          "title": "2.2.1. Lưu tâm về Host nước ngoài & Host Việt Nam​"
+        },
+        {
+          "id": "-2-2-2-choosing-a-host-lua-chon-noi-dat-may-chu",
+          "level": 4,
+          "title": "2.2.2. Choosing a Host - Lựa chọn nơi đặt máy chủ.​"
+        },
+        {
+          "id": "-dedicated-server-ca-1-may-chu-vat-ly-rieng-danh-cho-ban",
+          "level": 4,
+          "title": "Dedicated Server - Cả 1 máy chủ vật lý riêng dành cho bạn​"
+        },
+        {
+          "id": "-2-3-human-doi-tac-cong-tac-vien-nhan-su-suc-va-t",
+          "level": 3,
+          "title": "2.3. Human - Đối tác / Cộng tác viên / Nhân sự /Suc' va^.t ​"
+        }
+      ]
+    },
+    {
+      "id": "setup-intro",
+      "start": "setup",
+      "end": "-3-2-server-properties-thiet-dat-can-thiet",
+      "filename": "setup-intro.html",
+      "textLength": 13746,
+      "headings": 6,
+      "images": 45,
+      "tables": 8,
+      "codeBlocks": 2,
+      "firstHeadingId": "setup",
+      "anchors": [
+        "setup",
+        "-3-0-tai-nguyen-tham-khao",
+        "-3-1-giai-thich-cac-khai-niem-va-ly-do-minh-dat-vay",
+        "-3-1-1-jvm-startup-flags-co-jvm-phu-hop",
+        "-3-1-2-fundamentals-nen-tang",
+        "-3-1-3-thiet-lap-may-chu-co-ban"
+      ],
+      "outline": [
+        {
+          "id": "setup",
+          "level": 2,
+          "title": "3. Setup - Thiết đặt​"
+        },
+        {
+          "id": "-3-0-tai-nguyen-tham-khao",
+          "level": 3,
+          "title": "3.0. Tài nguyên tham khảo​"
+        },
+        {
+          "id": "-3-1-giai-thich-cac-khai-niem-va-ly-do-minh-dat-vay",
+          "level": 3,
+          "title": "3.1. Giải thích các khái niệm và lý do mình đặt vậy​"
+        },
+        {
+          "id": "-3-1-1-jvm-startup-flags-co-jvm-phu-hop",
+          "level": 4,
+          "title": "3.1.1. JVM startup flags - Cờ JVM phù hợp​"
+        },
+        {
+          "id": "-3-1-2-fundamentals-nen-tang",
+          "level": 4,
+          "title": "3.1.2. Fundamentals - Nền tảng​"
+        },
+        {
+          "id": "-3-1-3-thiet-lap-may-chu-co-ban",
+          "level": 4,
+          "title": "3.1.3. Thiết lập máy chủ cơ bản​"
+        }
+      ]
+    },
+    {
+      "id": "server-properties",
+      "start": "-3-2-server-properties-thiet-dat-can-thiet",
+      "end": "-3-3-bukkit-yml-thiet-dat-can-thiet",
+      "filename": "server-properties.html",
+      "textLength": 4681,
+      "headings": 11,
+      "images": 3,
+      "tables": 1,
+      "codeBlocks": 0,
+      "firstHeadingId": "-3-2-server-properties-thiet-dat-can-thiet",
+      "anchors": [
+        "-3-2-server-properties-thiet-dat-can-thiet",
+        "-view-distance",
+        "-simulation-distance",
+        "-allow-flight",
+        "-pause-when-empty-seconds",
+        "-entity-broadcast-range-percentage",
+        "-max-world-size",
+        "-network-compression-threshold",
+        "-rcon",
+        "-spawn-protection",
+        "-resource-pack"
+      ],
+      "outline": [
+        {
+          "id": "-3-2-server-properties-thiet-dat-can-thiet",
+          "level": 3,
+          "title": "3.2. server.properties - thiết đặt cần thiết​"
+        },
+        {
+          "id": "-view-distance",
+          "level": 4,
+          "title": "view-distance​"
+        },
+        {
+          "id": "-simulation-distance",
+          "level": 4,
+          "title": "simulation-distance​"
+        },
+        {
+          "id": "-allow-flight",
+          "level": 4,
+          "title": "allow-flight​"
+        },
+        {
+          "id": "-pause-when-empty-seconds",
+          "level": 4,
+          "title": "pause-when-empty-seconds​"
+        },
+        {
+          "id": "-entity-broadcast-range-percentage",
+          "level": 4,
+          "title": "entity-broadcast-range-percentage​"
+        },
+        {
+          "id": "-max-world-size",
+          "level": 4,
+          "title": "max-world-size​"
+        },
+        {
+          "id": "-network-compression-threshold",
+          "level": 4,
+          "title": "network-compression-threshold​"
+        },
+        {
+          "id": "-rcon",
+          "level": 4,
+          "title": "rcon​"
+        },
+        {
+          "id": "-spawn-protection",
+          "level": 4,
+          "title": "spawn-protection​"
+        },
+        {
+          "id": "-resource-pack",
+          "level": 4,
+          "title": "resource-pack​"
+        }
+      ]
+    },
+    {
+      "id": "bukkit-yml",
+      "start": "-3-3-bukkit-yml-thiet-dat-can-thiet",
+      "end": "-3-4-spigot-yml-thiet-dat-can-thiet",
+      "filename": "bukkit-yml.html",
+      "textLength": 7008,
+      "headings": 4,
+      "images": 16,
+      "tables": 2,
+      "codeBlocks": 5,
+      "firstHeadingId": "-3-3-bukkit-yml-thiet-dat-can-thiet",
+      "anchors": [
+        "-3-3-bukkit-yml-thiet-dat-can-thiet",
+        "-spawn-limits-con-duoc-biet-toi-la-mob-cap",
+        "-ticks-per",
+        "-aliases"
+      ],
+      "outline": [
+        {
+          "id": "-3-3-bukkit-yml-thiet-dat-can-thiet",
+          "level": 3,
+          "title": "3.3. bukkit.yml - thiết đặt cần thiết​"
+        },
+        {
+          "id": "-spawn-limits-con-duoc-biet-toi-la-mob-cap",
+          "level": 4,
+          "title": "spawn-limits (còn được biết tới là mob cap)​"
+        },
+        {
+          "id": "-ticks-per",
+          "level": 4,
+          "title": "ticks-per​"
+        },
+        {
+          "id": "-aliases",
+          "level": 4,
+          "title": "aliases​"
+        }
+      ]
+    },
+    {
+      "id": "spigot-yml",
+      "start": "-3-4-spigot-yml-thiet-dat-can-thiet",
+      "end": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
+      "filename": "spigot-yml.html",
+      "textLength": 11625,
+      "headings": 10,
+      "images": 16,
+      "tables": 1,
+      "codeBlocks": 10,
+      "firstHeadingId": "-3-4-spigot-yml-thiet-dat-can-thiet",
+      "anchors": [
+        "-3-4-spigot-yml-thiet-dat-can-thiet",
+        "-world-settings-default-view-distance",
+        "-spigot-yml-world-settings-default-mob-spawn-range",
+        "-spigot-yml-world-settings-default-nerf-spawner-mobs",
+        "-spigot-yml-world-settings-default-entity-activation-range",
+        "-spigot-yml-world-settings-default-entity-activation-range-wake-up-inactive",
+        "-spigot-yml-world-settings-default-merge-radius",
+        "-spigot-yml-attribute-maxhealth",
+        "-spigot-yml-commands-spam-exclusions",
+        "-spigot-yml-netty-threads"
+      ],
+      "outline": [
+        {
+          "id": "-3-4-spigot-yml-thiet-dat-can-thiet",
+          "level": 3,
+          "title": "3.4. spigot.yml - thiết đặt cần thiết​"
+        },
+        {
+          "id": "-world-settings-default-view-distance",
+          "level": 4,
+          "title": "world-settings.default.view-distance​"
+        },
+        {
+          "id": "-spigot-yml-world-settings-default-mob-spawn-range",
+          "level": 4,
+          "title": "spigot.yml/world-settings.default.mob-spawn-range​"
+        },
+        {
+          "id": "-spigot-yml-world-settings-default-nerf-spawner-mobs",
+          "level": 4,
+          "title": "spigot.yml/world-settings.default.nerf-spawner-mobs​"
+        },
+        {
+          "id": "-spigot-yml-world-settings-default-entity-activation-range",
+          "level": 4,
+          "title": "spigot.yml/world-settings.default.entity-activation-range​"
+        },
+        {
+          "id": "-spigot-yml-world-settings-default-entity-activation-range-wake-up-inactive",
+          "level": 4,
+          "title": "spigot.yml/world-settings.default.entity-activation-range.wake-up-inactive​"
+        },
+        {
+          "id": "-spigot-yml-world-settings-default-merge-radius",
+          "level": 4,
+          "title": "spigot.yml/world-settings.default.merge-radius​"
+        },
+        {
+          "id": "-spigot-yml-attribute-maxhealth",
+          "level": 4,
+          "title": "spigot.yml/attribute.maxHealth​"
+        },
+        {
+          "id": "-spigot-yml-commands-spam-exclusions",
+          "level": 4,
+          "title": "spigot.yml/commands.spam-exclusions​"
+        },
+        {
+          "id": "-spigot-yml-netty-threads",
+          "level": 4,
+          "title": "spigot.yml/netty-threads​"
+        }
+      ]
+    },
+    {
+      "id": "paper-world",
+      "start": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
+      "end": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
+      "filename": "paper-world.html",
+      "textLength": 19770,
+      "headings": 21,
+      "images": 21,
+      "tables": 2,
+      "codeBlocks": 13,
+      "firstHeadingId": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
+      "anchors": [
+        "-3-5-paper-configs-tep-thiet-dat-can-thiet",
+        "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-1-paper-world-defaults-yml",
+        "-anti-xray-co-ban",
+        "-paper-world-defaults-yml-entities-tracking-range-y",
+        "-paper-world-defaults-yml-entities-spawning-despawn-ranges",
+        "-paper-world-defaults-entities-spawning-despawn-time",
+        "-paper-world-defaults-yml-chunks-entity-per-chunk-save-limit",
+        "-paper-world-defaults-yml-entities-spawning-alt-item-despawn-rate",
+        "-paper-world-defaults-yml-collisions-max-entity-collisions",
+        "-paper-world-defaults-yml-collisions-fix-climbing-bypassing-cramming-rule",
+        "-paper-world-defaults-yml-entities-spawning-per-player-mob-spawn",
+        "-paper-world-defaults-yml-chunks-prevent-moving-into-unloaded-chunks",
+        "-paper-world-defaults-yml-misc-redstone-implementation",
+        "-paper-world-defaults-yml-environment-treasure-maps",
+        "-paper-world-defaults-yml-chunks-max-auto-save-chunks-per-tick",
+        "-paper-world-defaults-yml-tick-rates",
+        "-paper-world-defaults-yml-environment-optimize-explosions",
+        "-paper-world-defaults-yml-entities-armor-stands",
+        "-paper-world-defaults-yml-tick-rates-2",
+        "-paper-world-defaults-yml-lootables",
+        "-paper-world-defaults-yml-feature-seeds-generate-random-seeds-for-all"
+      ],
+      "outline": [
+        {
+          "id": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
+          "level": 3,
+          "title": "3.5. PAPER configs - tệp thiết đặt cần thiết​"
+        },
+        {
+          "id": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-1-paper-world-defaults-yml",
+          "level": 4,
+          "title": "˚˖ ᵎᵎ 3.5.1. PAPER-WORLD-DEFAULTS.YML​"
+        },
+        {
+          "id": "-anti-xray-co-ban",
+          "level": 4,
+          "title": "Anti-xray cơ bản​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-entities-tracking-range-y",
+          "level": 4,
+          "title": "paper-world-defaults.yml/entities.tracking-range-y​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-entities-spawning-despawn-ranges",
+          "level": 4,
+          "title": "paper-world-defaults.yml/entities.spawning.despawn-ranges​"
+        },
+        {
+          "id": "-paper-world-defaults-entities-spawning-despawn-time",
+          "level": 4,
+          "title": "paper-world-defaults/entities.spawning.despawn-time​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-chunks-entity-per-chunk-save-limit",
+          "level": 4,
+          "title": "paper-world-defaults.yml/chunks.entity-per-chunk-save-limit​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-entities-spawning-alt-item-despawn-rate",
+          "level": 4,
+          "title": "paper-world-defaults.yml/entities.spawning.alt-item-despawn-rate​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-collisions-max-entity-collisions",
+          "level": 4,
+          "title": "paper-world-defaults.yml/collisions.max-entity-collisions​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-collisions-fix-climbing-bypassing-cramming-rule",
+          "level": 4,
+          "title": "paper-world-defaults.yml/collisions.fix-climbing-bypassing-cramming-rule​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-entities-spawning-per-player-mob-spawn",
+          "level": 4,
+          "title": "paper-world-defaults.yml/entities.spawning.per-player-mob-spawn​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-chunks-prevent-moving-into-unloaded-chunks",
+          "level": 4,
+          "title": "paper-world-defaults.yml/chunks.prevent-moving-into-unloaded-chunks​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-misc-redstone-implementation",
+          "level": 4,
+          "title": "paper-world-defaults.yml/misc.redstone-implementation​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-environment-treasure-maps",
+          "level": 4,
+          "title": "paper-world-defaults.yml/environment.treasure-maps​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-chunks-max-auto-save-chunks-per-tick",
+          "level": 4,
+          "title": "paper-world-defaults.yml/chunks.max-auto-save-chunks-per-tick​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-tick-rates",
+          "level": 4,
+          "title": "paper-world-defaults.yml/tick-rates​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-environment-optimize-explosions",
+          "level": 4,
+          "title": "paper-world-defaults.yml/environment.optimize-explosions​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-entities-armor-stands",
+          "level": 4,
+          "title": "paper-world-defaults.yml/entities.armor-stands​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-tick-rates-2",
+          "level": 4,
+          "title": "paper-world-defaults.yml/tick-rates​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-lootables",
+          "level": 4,
+          "title": "paper-world-defaults.yml/lootables​"
+        },
+        {
+          "id": "-paper-world-defaults-yml-feature-seeds-generate-random-seeds-for-all",
+          "level": 4,
+          "title": "paper-world-defaults.yml/feature-seeds.generate-random-seeds-for-all​"
+        }
+      ]
+    },
+    {
+      "id": "paper-global",
+      "start": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
+      "end": "-3-6-purpur-yml-thiet-dat-can-thiet",
+      "filename": "paper-global.html",
+      "textLength": 8775,
+      "headings": 5,
+      "images": 15,
+      "tables": 0,
+      "codeBlocks": 7,
+      "firstHeadingId": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
+      "anchors": [
+        "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
+        "-paper-global-yml-chunk-loading-advanced",
+        "-paper-global-yml-item-validation-book",
+        "-paper-global-yml-block-updates-disable-noteblock-updates",
+        "-paper-global-yml-packet-limiter"
+      ],
+      "outline": [
+        {
+          "id": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
+          "level": 4,
+          "title": "˚˖ ᵎᵎ 3.5.2 PAPER-GLOBAL.YML​"
+        },
+        {
+          "id": "-paper-global-yml-chunk-loading-advanced",
+          "level": 4,
+          "title": "paper-global.yml/chunk-loading-advanced​"
+        },
+        {
+          "id": "-paper-global-yml-item-validation-book",
+          "level": 4,
+          "title": "paper-global.yml/item-validation.book​"
+        },
+        {
+          "id": "-paper-global-yml-block-updates-disable-noteblock-updates",
+          "level": 4,
+          "title": "paper-global.yml/block-updates.disable-noteblock-updates​"
+        },
+        {
+          "id": "-paper-global-yml-packet-limiter",
+          "level": 4,
+          "title": "paper-global.yml/packet-limiter​"
+        }
+      ]
+    },
+    {
+      "id": "purpur-yml",
+      "start": "-3-6-purpur-yml-thiet-dat-can-thiet",
+      "end": "-3-7-leaf-global-yml",
+      "filename": "purpur-yml.html",
+      "textLength": 3546,
+      "headings": 5,
+      "images": 7,
+      "tables": 1,
+      "codeBlocks": 1,
+      "firstHeadingId": "-3-6-purpur-yml-thiet-dat-can-thiet",
+      "anchors": [
+        "-3-6-purpur-yml-thiet-dat-can-thiet",
+        "-purpur-yml-use-alternate-keepalive",
+        "-purpur-yml-zombie-aggressive-towards-villager-when-lagging",
+        "-purpur-yml-entities-can-use-portals",
+        "-villager-lobotomize-enabled"
+      ],
+      "outline": [
+        {
+          "id": "-3-6-purpur-yml-thiet-dat-can-thiet",
+          "level": 3,
+          "title": "3.6. purpur.yml - thiết đặt cần thiết​"
+        },
+        {
+          "id": "-purpur-yml-use-alternate-keepalive",
+          "level": 4,
+          "title": "purpur.yml/use-alternate-keepalive​"
+        },
+        {
+          "id": "-purpur-yml-zombie-aggressive-towards-villager-when-lagging",
+          "level": 4,
+          "title": "purpur.yml/zombie.aggressive-towards-villager-when-lagging​"
+        },
+        {
+          "id": "-purpur-yml-entities-can-use-portals",
+          "level": 4,
+          "title": "purpur.yml/entities-can-use-portals​"
+        },
+        {
+          "id": "-villager-lobotomize-enabled",
+          "level": 4,
+          "title": "villager.lobotomize.enabled​"
+        }
+      ]
+    },
+    {
+      "id": "leaf-global",
+      "start": "-3-7-leaf-global-yml",
+      "end": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
+      "filename": "leaf-global.html",
+      "textLength": 6525,
+      "headings": 9,
+      "images": 6,
+      "tables": 1,
+      "codeBlocks": 1,
+      "firstHeadingId": "-3-7-leaf-global-yml",
+      "anchors": [
+        "-3-7-leaf-global-yml",
+        "-leaf-global-yml-fast-biome-manager-seed-obfuscation",
+        "-leaf-global-yml-async-tat-ca-thiet-dat-enabled",
+        "-leaf-global-yml-region-format-settings-region-format",
+        "-leaf-global-yml-spawner-settings",
+        "-leaf-global-yml-compat-mode-false-khuyen-dung-tru-khi-thuc-su-can",
+        "-leaf-global-yml-secure-seed",
+        "-leaf-global-yml-sentry",
+        "-leaf-global-yml-dab"
+      ],
+      "outline": [
+        {
+          "id": "-3-7-leaf-global-yml",
+          "level": 3,
+          "title": "3.7. leaf-global.yml​"
+        },
+        {
+          "id": "-leaf-global-yml-fast-biome-manager-seed-obfuscation",
+          "level": 4,
+          "title": "leaf-global.yml/fast-biome-manager-seed-obfuscation​"
+        },
+        {
+          "id": "-leaf-global-yml-async-tat-ca-thiet-dat-enabled",
+          "level": 4,
+          "title": "leaf-global.yml/async-<tất cả thiết đặt>.enabled​"
+        },
+        {
+          "id": "-leaf-global-yml-region-format-settings-region-format",
+          "level": 4,
+          "title": "leaf-global.yml/region-format-settings.region-format:​"
+        },
+        {
+          "id": "-leaf-global-yml-spawner-settings",
+          "level": 4,
+          "title": "leaf-global.yml/spawner-settings​"
+        },
+        {
+          "id": "-leaf-global-yml-compat-mode-false-khuyen-dung-tru-khi-thuc-su-can",
+          "level": 4,
+          "title": "leaf-global.yml/compat-mode: false (Khuyên dùng trừ khi thực sự cần)​"
+        },
+        {
+          "id": "-leaf-global-yml-secure-seed",
+          "level": 4,
+          "title": "leaf-global.yml/secure-seed​"
+        },
+        {
+          "id": "-leaf-global-yml-sentry",
+          "level": 4,
+          "title": "leaf-global.yml/sentry​"
+        },
+        {
+          "id": "-leaf-global-yml-dab",
+          "level": 4,
+          "title": "leaf-global.yml/DAB​"
+        }
+      ]
+    },
+    {
+      "id": "gale",
+      "start": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
+      "end": "integrations",
+      "filename": "gale.html",
+      "textLength": 2135,
+      "headings": 6,
+      "images": 0,
+      "tables": 0,
+      "codeBlocks": 1,
+      "firstHeadingId": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
+      "anchors": [
+        "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
+        "-gale-world-defaults-yml-gameplay-mechanics-entities-can-random-stroll-into-non-ticking-chunks-true",
+        "-gale-world-defaults-yml-reduced-intervals-check-stuck-in-wall",
+        "-gale-world-defaults-yml-entity-wake-up-duration-ratio-standard-deviation",
+        "-3-8-config-gale-global-yml",
+        "-use-xor-shift-random"
+      ],
+      "outline": [
+        {
+          "id": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
+          "level": 3,
+          "title": "3.8. config/gale-world-defaults.yml - thiết đặt cần thiết​"
+        },
+        {
+          "id": "-gale-world-defaults-yml-gameplay-mechanics-entities-can-random-stroll-into-non-ticking-chunks-true",
+          "level": 4,
+          "title": "gale-world-defaults.yml/gameplay-mechanics.entities-can-random-stroll-into-non-ticking-chunks:true​"
+        },
+        {
+          "id": "-gale-world-defaults-yml-reduced-intervals-check-stuck-in-wall",
+          "level": 4,
+          "title": "gale-world-defaults.yml/reduced-intervals.check-stuck-in-wall​"
+        },
+        {
+          "id": "-gale-world-defaults-yml-entity-wake-up-duration-ratio-standard-deviation",
+          "level": 4,
+          "title": "gale-world-defaults.yml/entity-wake-up-duration-ratio-standard-deviation​"
+        },
+        {
+          "id": "-3-8-config-gale-global-yml",
+          "level": 3,
+          "title": "3.8. config/gale-global.yml​"
+        },
+        {
+          "id": "-use-xor-shift-random",
+          "level": 4,
+          "title": "use-xor-shift-random​"
+        }
+      ]
+    },
+    {
+      "id": "integrations-intro",
+      "start": "integrations",
+      "end": "-4-1-plugins-sm",
+      "filename": "integrations-intro.html",
+      "textLength": 1546,
+      "headings": 1,
+      "images": 13,
+      "tables": 3,
+      "codeBlocks": 0,
+      "firstHeadingId": "integrations",
+      "anchors": [
+        "integrations"
+      ],
+      "outline": [
+        {
+          "id": "integrations",
+          "level": 2,
+          "title": "4. Advanced system integrations - Giới thiệu tính năng khái quát​"
+        }
+      ]
+    },
+    {
+      "id": "plugins",
+      "start": "-4-1-plugins-sm",
+      "end": "-4-2-datapack-goi-du-lieu",
+      "filename": "plugins.html",
+      "textLength": 22842,
+      "headings": 46,
+      "images": 89,
+      "tables": 15,
+      "codeBlocks": 3,
+      "firstHeadingId": "-4-1-plugins-sm",
+      "anchors": [
+        "-4-1-plugins-sm",
+        "-eternalcode",
+        "-authme-rereloaded-fork-authmereloaded-peyajauth",
+        "-vaultunlocked",
+        "-coinengine-excellenteconomy",
+        "-luckperms",
+        "-fawe",
+        "-",
+        "-lpc-luckpermchat-socialismus-interactivechat",
+        "-viaversion",
+        "-tab",
+        "-anticheat-antihack-chong-gian-lan-danh-cho-smp-chill-o-ben-trong",
+        "-antibackdoor-antibot-antivpn-antiddos-chan-co-ban-nhung-thanh-phan-co-y-pha-hoai-may-chu-ban-o-ben-ngoai",
+        "-worlds",
+        "-packetevents",
+        "-economyshopgui-premium-excellentshop",
+        "-topper-timedtopper",
+        "-fancyholograms-decentholograms",
+        "-fancynpcs-znpcsplus",
+        "-skinsrestorer-bedrock-skin-restorer",
+        "-bettermodel-modelengine",
+        "-wildrtp-ovrandomteleport-eternalcore",
+        "-geyser-floodgate",
+        "-redstonelimiter-insights",
+        "--2",
+        "-commandwhilelist-commandblocker",
+        "-deluxemenu-zmenu-miaomenu-trmenu",
+        "--3",
+        "-imagemotd-pictogram",
+        "-emage-image-display-makiscreen-customscreenmenu",
+        "-discordsrv-discordsynthesis-discordlink",
+        "-chunky-chunksmith-chunker",
+        "-protpa-simpletpa-just-tpa-huskhomes",
+        "-inventoryrollbackplus-axinventoryrestore",
+        "-libertybans",
+        "-skript-skbee",
+        "-nexo-craft-engine",
+        "-quests-betonquest-notquest-typewriter-mrcommunityquest-community-quests-battlepass",
+        "-customnameplates-betterhud",
+        "-explock",
+        "-coreprotect-stellarprotect-aetherlog-spyglass-prism",
+        "-dotman-puns-payment-korapayments-simppay-paybot",
+        "-nap-the",
+        "-lagfixer",
+        "-terraformgenerator-iris-dimension-engine",
+        "-mythicdungeons-litedungeon-dungeons-mydungeon-sincedungeon",
+        "-advanceddungeonarena",
+        "-season-core-aeternum-seasons-real-life-seasonsplus",
+        "-ultimateautorestart"
+      ],
+      "outline": [
+        {
+          "id": "-4-1-plugins-sm",
+          "level": 3,
+          "title": "4.1. Plugins​"
+        },
+        {
+          "id": "-eternalcode",
+          "level": 4,
+          "title": "Eternalcode​"
+        },
+        {
+          "id": "-authme-rereloaded-fork-authmereloaded-peyajauth",
+          "level": 4,
+          "title": "AuthMe ReReloaded(Fork) / AuthMeReloaded / peyajAuth​"
+        },
+        {
+          "id": "-vaultunlocked",
+          "level": 4,
+          "title": "VaultUnlocked​"
+        },
+        {
+          "id": "-coinengine-excellenteconomy",
+          "level": 4,
+          "title": "CoinEngine - ExcellentEconomy​"
+        },
+        {
+          "id": "-luckperms",
+          "level": 4,
+          "title": "Luckperms​"
+        },
+        {
+          "id": "-fawe",
+          "level": 4,
+          "title": "FAWE​"
+        },
+        {
+          "id": "-lpc-luckpermchat-socialismus-interactivechat",
+          "level": 4,
+          "title": "LPC (LuckPermChat) / Socialismus / InteractiveChat​"
+        },
+        {
+          "id": "-viaversion",
+          "level": 4,
+          "title": "ViaVersion​"
+        },
+        {
+          "id": "-tab",
+          "level": 4,
+          "title": "TAB​"
+        },
+        {
+          "id": "-anticheat-antihack-chong-gian-lan-danh-cho-smp-chill-o-ben-trong",
+          "level": 4,
+          "title": "AntiCheat - AntiHack - Chống gian lận dành cho SMP / Chill ở bên trong​"
+        },
+        {
+          "id": "-antibackdoor-antibot-antivpn-antiddos-chan-co-ban-nhung-thanh-phan-co-y-pha-hoai-may-chu-ban-o-ben-ngoai",
+          "level": 4,
+          "title": "AntiBackdoor / AntiBot / AntiVPN / AntiDDos - Chặn (cơ bản) những thành phần cố ý phá hoại máy chủ bạn ở Bên ngoài​"
+        },
+        {
+          "id": "-worlds",
+          "level": 4,
+          "title": "Worlds​"
+        },
+        {
+          "id": "-packetevents",
+          "level": 4,
+          "title": "PacketEvents​"
+        },
+        {
+          "id": "-economyshopgui-premium-excellentshop",
+          "level": 4,
+          "title": "EconomyShopGUI Premium / ExcellentShop​"
+        },
+        {
+          "id": "-topper-timedtopper",
+          "level": 4,
+          "title": "Topper / TimedTopper​"
+        },
+        {
+          "id": "-fancyholograms-decentholograms",
+          "level": 4,
+          "title": "FancyHolograms / DecentHolograms​"
+        },
+        {
+          "id": "-fancynpcs-znpcsplus",
+          "level": 4,
+          "title": "FancyNpcs / ZNPCsPlus​"
+        },
+        {
+          "id": "-skinsrestorer-bedrock-skin-restorer",
+          "level": 4,
+          "title": "SkinsRestorer / bedrock-skin-restorer​"
+        },
+        {
+          "id": "-bettermodel-modelengine",
+          "level": 4,
+          "title": "BetterModel / ModelEngine​"
+        },
+        {
+          "id": "-wildrtp-ovrandomteleport-eternalcore",
+          "level": 4,
+          "title": "WildRTP / OvRandomTeleport / EternalCore​"
+        },
+        {
+          "id": "-geyser-floodgate",
+          "level": 4,
+          "title": "Geyser / FloodGate​"
+        },
+        {
+          "id": "-redstonelimiter-insights",
+          "level": 4,
+          "title": "RedstoneLimiter / Insights​"
+        },
+        {
+          "id": "-commandwhilelist-commandblocker",
+          "level": 4,
+          "title": "CommandWhilelist / CommandBlocker​"
+        },
+        {
+          "id": "-deluxemenu-zmenu-miaomenu-trmenu",
+          "level": 4,
+          "title": "DeluxeMenu / zMenu / MiaoMenu / TrMenu​"
+        },
+        {
+          "id": "-imagemotd-pictogram",
+          "level": 4,
+          "title": "ImageMOTD / Pictogram​"
+        },
+        {
+          "id": "-emage-image-display-makiscreen-customscreenmenu",
+          "level": 4,
+          "title": "Emage / Image-Display / MakiScreen / CustomScreenMenu ​"
+        },
+        {
+          "id": "-discordsrv-discordsynthesis-discordlink",
+          "level": 4,
+          "title": "DiscordSRV / DiscordSynthesis / DiscordLink​"
+        },
+        {
+          "id": "-chunky-chunksmith-chunker",
+          "level": 4,
+          "title": "Chunky / Chunksmith / Chunker​"
+        },
+        {
+          "id": "-protpa-simpletpa-just-tpa-huskhomes",
+          "level": 4,
+          "title": "ProTPA / SimpleTPA / Just TPA / HuskHomes​"
+        },
+        {
+          "id": "-inventoryrollbackplus-axinventoryrestore",
+          "level": 4,
+          "title": "InventoryRollBackPlus / AxInventoryRestore​"
+        },
+        {
+          "id": "-libertybans",
+          "level": 4,
+          "title": "LibertyBans​"
+        },
+        {
+          "id": "-skript-skbee",
+          "level": 4,
+          "title": "Skript / SkBee​"
+        },
+        {
+          "id": "-nexo-craft-engine",
+          "level": 4,
+          "title": "Nexo / Craft-Engine​"
+        },
+        {
+          "id": "-quests-betonquest-notquest-typewriter-mrcommunityquest-community-quests-battlepass",
+          "level": 4,
+          "title": "Quests / BetonQuest / NotQuest / Typewriter / MrCommunityQuest / Community Quests / BattlePass​"
+        },
+        {
+          "id": "-customnameplates-betterhud",
+          "level": 4,
+          "title": "CustomNameplates / BetterHUD​"
+        },
+        {
+          "id": "-explock",
+          "level": 4,
+          "title": "Explock​"
+        },
+        {
+          "id": "-coreprotect-stellarprotect-aetherlog-spyglass-prism",
+          "level": 4,
+          "title": "CoreProtect / StellarProtect / AetherLog / Spyglass / Prism​"
+        },
+        {
+          "id": "-dotman-puns-payment-korapayments-simppay-paybot",
+          "level": 4,
+          "title": "Dotman / puns-payment / KoraPayments / SimpPay / PayBot​"
+        },
+        {
+          "id": "-nap-the",
+          "level": 4,
+          "title": "- Nạp thẻ​"
+        },
+        {
+          "id": "-lagfixer",
+          "level": 4,
+          "title": "LagFixer​"
+        },
+        {
+          "id": "-terraformgenerator-iris-dimension-engine",
+          "level": 3,
+          "title": "TerraformGenerator / Iris - Dimension Engine​"
+        },
+        {
+          "id": "-mythicdungeons-litedungeon-dungeons-mydungeon-sincedungeon",
+          "level": 3,
+          "title": "MythicDungeons / LiteDungeon / Dungeons+ / MyDungeon / SinceDungeon /​"
+        },
+        {
+          "id": "-advanceddungeonarena",
+          "level": 3,
+          "title": "AdvancedDungeonArena​"
+        },
+        {
+          "id": "-season-core-aeternum-seasons-real-life-seasonsplus",
+          "level": 3,
+          "title": "Season Core / Aeternum Seasons / Real Life / SeasonsPlus​"
+        },
+        {
+          "id": "-ultimateautorestart",
+          "level": 4,
+          "title": "UltimateAutoRestart​"
+        }
+      ]
+    },
+    {
+      "id": "datapack",
+      "start": "-4-2-datapack-goi-du-lieu",
+      "end": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
+      "filename": "datapack.html",
+      "textLength": 661,
+      "headings": 1,
+      "images": 3,
+      "tables": 0,
+      "codeBlocks": 0,
+      "firstHeadingId": "-4-2-datapack-goi-du-lieu",
+      "anchors": [
+        "-4-2-datapack-goi-du-lieu"
+      ],
+      "outline": [
+        {
+          "id": "-4-2-datapack-goi-du-lieu",
+          "level": 3,
+          "title": "4.2. Datapack - Gói dữ liệu​"
+        }
+      ]
+    },
+    {
+      "id": "admin-mistakes",
+      "start": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
+      "end": "-4-4-website-huu-ich",
+      "filename": "admin-mistakes.html",
+      "textLength": 4316,
+      "headings": 7,
+      "images": 22,
+      "tables": 5,
+      "codeBlocks": 0,
+      "firstHeadingId": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
+      "anchors": [
+        "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
+        "-tin-nguoi-vcl-v",
+        "-cai-mot-mo-plugins-va-datapack-theo-he-tam-linh",
+        "-luoi-tim-hieu-plugin-sua-config",
+        "-quan-ly-co-so-du-lieu-kieu-sinh-vien-kieu-gi-ban-cung-se-lap-lai-cho-ma-xem",
+        "-khong-co-du-kien-thuc-de-go-loi-logs-spark-b",
+        "-case-study-bai-hoc-xuong-mau"
+      ],
+      "outline": [
+        {
+          "id": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
+          "level": 3,
+          "title": "4.3. Phân tích những pha tự hủy kinh điển của Quản trị viên máy chủ​"
+        },
+        {
+          "id": "-tin-nguoi-vcl-v",
+          "level": 3,
+          "title": "Tin người vcl​"
+        },
+        {
+          "id": "-cai-mot-mo-plugins-va-datapack-theo-he-tam-linh",
+          "level": 4,
+          "title": "Cài một mớ Plugins và Datapack theo hệ tâm linh​"
+        },
+        {
+          "id": "-luoi-tim-hieu-plugin-sua-config",
+          "level": 4,
+          "title": "Lười tìm hiểu Plugin / sửa config​"
+        },
+        {
+          "id": "-quan-ly-co-so-du-lieu-kieu-sinh-vien-kieu-gi-ban-cung-se-lap-lai-cho-ma-xem",
+          "level": 4,
+          "title": "Quản lý cơ sở dữ liệu kiểu sinh viên <-- Kiểu gì bạn cũng sẽ lặp lại cho mà xem​"
+        },
+        {
+          "id": "-khong-co-du-kien-thuc-de-go-loi-logs-spark-b",
+          "level": 4,
+          "title": "Không có đủ kiến thức để gỡ lỗi Logs, Spark ​"
+        },
+        {
+          "id": "-case-study-bai-hoc-xuong-mau",
+          "level": 4,
+          "title": "Case-study bài học xương máu?​"
+        }
+      ]
+    },
+    {
+      "id": "useful-websites",
+      "start": "-4-4-website-huu-ich",
+      "end": "free-options",
+      "filename": "useful-websites.html",
+      "textLength": 423,
+      "headings": 1,
+      "images": 0,
+      "tables": 0,
+      "codeBlocks": 0,
+      "firstHeadingId": "-4-4-website-huu-ich",
+      "anchors": [
+        "-4-4-website-huu-ich"
+      ],
+      "outline": [
+        {
+          "id": "-4-4-website-huu-ich",
+          "level": 3,
+          "title": "4.4. Website hữu ích​"
+        }
+      ]
+    },
+    {
+      "id": "free-options",
+      "start": "free-options",
+      "end": "operations",
+      "filename": "free-options.html",
+      "textLength": 596,
+      "headings": 1,
+      "images": 4,
+      "tables": 0,
+      "codeBlocks": 0,
+      "firstHeadingId": "free-options",
+      "anchors": [
+        "free-options"
+      ],
+      "outline": [
+        {
+          "id": "free-options",
+          "level": 2,
+          "title": "5. Em không có tiền mua Plugins + thiết đặt xịn anh ơi! ​"
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "start": "operations",
+      "end": "next",
+      "filename": "operations.html",
+      "textLength": 10024,
+      "headings": 1,
+      "images": 6,
+      "tables": 0,
+      "codeBlocks": 1,
+      "firstHeadingId": "operations",
+      "anchors": [
+        "operations"
+      ],
+      "outline": [
+        {
+          "id": "operations",
+          "level": 2,
+          "title": "6. Lưu ý nhỏ của những người đi trước nè~​"
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "start": "next",
+      "end": "references",
+      "filename": "next.html",
+      "textLength": 2637,
+      "headings": 1,
+      "images": 9,
+      "tables": 1,
+      "codeBlocks": 0,
+      "firstHeadingId": "next",
+      "anchors": [
+        "next"
+      ],
+      "outline": [
+        {
+          "id": "next",
+          "level": 2,
+          "title": "7. Sau 1 - 3 tháng, rồi sao?​"
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "start": "references",
+      "end": null,
+      "includeAttachments": true,
+      "filename": "references.html",
+      "textLength": 917,
+      "headings": 2,
+      "images": 3,
+      "tables": 0,
+      "codeBlocks": 0,
+      "firstHeadingId": "references",
+      "anchors": [
+        "references",
+        "original-attachments-title"
+      ],
+      "outline": [
+        {
+          "id": "references",
+          "level": 2,
+          "title": "8. Danh mục tài liệu tham khảo bổ sung​"
+        },
+        {
+          "id": "original-attachments-title",
+          "level": 2,
+          "title": "Đính kèm"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,412 @@
+
+# Leaf Config
+# 
+# Website: https://www.leafmc.one/
+# Docs: https://www.leafmc.one/docs/getting-started
+# GitHub Repo: https://github.com/Winds-Studio/Leaf
+# Discord: https://discord.com/invite/gfgAwdSEuM
+config-version: '3.0'
+
+###########
+#  ASYNC  #
+###########
+async:
+  # Makes chunk packet preparation and sending asynchronous to improve server performance.
+  # This can significantly reduce main thread load when many players are loading chunks.
+  async-chunk-send:
+    enabled: true
+  # Whether or not asynchronous mob spawning should be enabled.
+  # On servers with many entities, this can improve performance by up to 15%. You must have
+  # paper's per-player-mob-spawns setting set to true for this to work.
+  # One quick note - this does not actually spawn mobs async (that would be very unsafe).
+  # This just offloads some expensive calculations that are required for mob spawning.
+  async-mob-spawning:
+    enabled: true
+  async-pathfinding:
+    enabled: true
+    max-threads: 1
+    keepalive: 120
+    queue-size: 256
+    # The policy to use when the queue is full and a new task is submitted.
+    # FLUSH_ALL: All pending tasks will be run on server thread.
+    # CALLER_RUNS: Newly submitted task will be run on server thread.
+    reject-policy: CALLER_RUNS
+  # Make PlayerData saving asynchronously.
+  async-playerdata-save:
+    enabled: true
+  # ** Experimental Feature **
+  # Make entity tracking asynchronously, can improve performance significantly,
+  # especially in some massive entities in small area situations.
+  async-entity-tracker:
+    enabled: true
+    threads: 2
+  # **Experimental feature**
+  # Enables parallel world ticking to improve performance on multi-core systems.
+  parallel-world-ticking:
+    enabled: false
+    threads: 8
+    log-container-creation-stacktraces: false
+    disable-hard-throw: false
+    async-unsafe-read-handling: DISABLED
+
+##########
+#  PERF  #
+##########
+performance:
+  check-survival-before-growth:
+    # Check if a cactus can survive before growing.
+    cactus-check-survival: true
+  despawn-time:
+    # Proactive despawn check for weak-loaded entities.
+    # This is an experimental feature.
+    proactive-weak-loading-despawn: true
+  dont-save-entity:
+    # Disable save primed tnt on chunk unloads.
+    # Useful for redstone/technical servers, can prevent machines from being exploded by TNT,
+    # when player disconnected caused by Internet issue.
+    dont-save-primed-tnt: true
+    dont-save-falling-block: true
+  # Optimizes entity brains when
+  # they're far away from the player
+  dab:
+    enabled: true
+    # After enabling this, non-aquatic entities in the water will not be affected by DAB.
+    # This could fix entities suffocate in the water.
+    dont-enable-if-in-water: false
+    # This value determines how far away an entity has to be
+    # from the player to start being effected by DEAR.
+    start-distance: 8
+    # This value defines how often in ticks, the furthest entity
+    # will get their pathfinders and behaviors ticked. 20 = 1s
+    max-tick-freq: 80
+    # This value defines how much distance modifies an entity's
+    # tick frequency. freq = (distanceToPlayer^2) / (2^value)",
+    # If you want further away entities to tick less often, use 7.
+    # If you want further away entities to tick more often, try 9.
+    activation-dist-mod: 7
+    # A list of entities to ignore for activation
+    blacklisted-entities:
+    - axolotl
+    - zombified_piglin
+    - zombie
+    - axolotl
+    - goat
+    - cat
+    - cow
+    - enderman
+    - villager
+    - turtle
+  # Whether to cache expensive CraftEntityType#minecraftToBukkit call.
+  enable-cached-minecraft-to-bukkit-entitytype-convert: true
+  entity-goal:
+    start-tick-chance:
+      nearest-attackable-target: 20
+      follow-parent: 100
+      avoid-entity: 20
+      temptation: 10
+      enderman-look-for-player: 30
+  fast-biome-manager-seed-obfuscation:
+    # Replace vanilla SHA-256 seed obfuscation in BiomeManager with XXHash.
+    enabled: true
+    # Seed obfuscation key for XXHash.
+    seed-obfuscation-key: 
+  # Use faster random generator?
+  # Requires a JVM that supports Xoroshiro128PlusPlus.
+  # Some JREs don't support this.
+  faster-random-generator:
+    enabled: true
+    # Enable faster random generator for world generation.
+    # WARNING: This will affect world generation!!!
+    enable-for-worldgen: true
+    # Warn if you are not using legacy random source for slime chunk generation.
+    warn-for-slime-chunk: true
+    # Use legacy random source for slime chunk generation,
+    # to follow vanilla behavior.
+    use-legacy-random-for-slime-chunk: false
+  # May cause the inconsistent order of future compose tasks.
+  faster-structure-gen-future-sequencing: true
+  # Experimental feature.
+  # Reuse BlockPos to reduce memory allocation slightly and improve performance on random ticking.
+  # May conflict with certain plugins or operations. Disable if position issues occur.
+  reuse-random-ticking-blockpos: true
+  cache-biome:
+    enabled: true
+    mob-spawning: true
+    advancements: false
+  optimize-block-entities: true
+  optimize-mob-despawn: true
+  # Whether to only tick / update items in main hand and offhand instead of the entire inventory.
+  only-tick-items-in-hand: true
+  optimize-mob-spawning: true
+  optimize-no-action-time:
+    disable-light-check: true
+  # Whether to optimize player movement processing by skipping unnecessary edge checks and avoiding redundant view distance updates.
+  optimize-player-movement: true
+  optimize-random-tick: true
+  optimize-waypoint: false
+  # Whether to use optimized powered rails.
+  # The implementation is based on RailOptimization made by GitHub@FxMorin
+  optimized-powered-rails: true
+  reduce-packets:
+    reduce-entity-move-packets: true
+    reduce-entity-motion-packets: true
+    disable-useless-particles: true
+  skip-ai-for-non-aware-mob: true
+  datapack:
+    # Skip selecting inactive entities when using execute command.
+    # Will improve performance on servers with massive datapack functions.
+    skip-inactive-entity-for-execute-command: true
+  skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer: true
+  sleeping-block-entity: true
+  # Skip mob spawning for chunks with repeated failures at least `min-failed`.
+  # Valid range for `spawn-chance` is 0.0 to 100.0.
+  # Failure counter does not increment when reach spawn limits.
+  throttle-mob-spawning:
+    enabled: true
+    monster:
+      min-failed: 8
+      spawn-chance: 25.0
+    creature:
+      min-failed: 8
+      spawn-chance: 25.0
+    ambient:
+      min-failed: 8
+      spawn-chance: 25.0
+    axolotls:
+      min-failed: 8
+      spawn-chance: 25.0
+    underground_water_creature:
+      min-failed: 8
+      spawn-chance: 25.0
+    water_creature:
+      min-failed: 8
+      spawn-chance: 25.0
+    water_ambient:
+      min-failed: 8
+      spawn-chance: 25.0
+  create-snapshot-on-retrieving-blockstate: true
+  use-virtual-thread:
+    # Use the new Virtual Thread introduced in JDK 21 for CraftAsyncScheduler.
+    bukkit-async-scheduler: true
+    # Use the new Virtual Thread introduced in JDK 21 for FoliaAsyncScheduler.
+    folia-async-scheduler: true
+    # Use the new Virtual Thread introduced in JDK 21 for Async Chat Executor.
+    async-chat-executor: true
+    # Use the new Virtual Thread introduced in JDK 21 for profile fetching executor.
+    download-pool: true
+    # Use the new Virtual Thread introduced in JDK 21 for user authentication.
+    auth-pool: true
+    # Use the new Virtual Thread introduced in JDK 21 for Paper task pool in configuration phase.
+    paper-configuration-pool: true
+
+###########
+#  FIXES  #
+###########
+fixes:
+  # Fixes for vanilla Minecraft bugs.
+  vanilla-bug-fix:
+    # Whether to fix incorrect granting of 'Who needs rockets?' advancement.
+    # Mojira link: https://mojira.dev/MC-270656
+    mc-270656: true
+    # Whether to fix the memory leak in the combat tracker caused by the mob constantly being damaged.
+    # Mojira link: https://mojira.dev/MC-301114
+    mc-301114: true
+    # Max allowed entries in mob's combat tracker.
+    mc-301114-max-entries: 10240
+    # Whether to fix the bug End City ship generation gets cut at chunk borders.
+    # Mojira link: https://mojira.dev/MC-152094
+    mc-152094: false
+  # Prevents entities from moving into weak loaded chunks.
+  prevent-moving-into-weak-loaded-chunks:
+    # Set to true to enable features below.
+    enabled: true
+    # Prevents projectiles from moving into weak loaded chunks.
+    projectiles: true
+
+##############
+#  GAMEPLAY  #
+##############
+gameplay-mechanisms:
+  afk-command:
+    # The AFK command based on Minecraft built-in idle-timeout mechanism
+    # Rest of AFK settings are in the Purpur config
+    enabled: false
+  inventory-overflow-event:
+    # The event called when used plugin to Inventory#addItem
+    # into player's inventory, and the inventory is full.
+    # This is not recommended to use, please re-design to use the
+    # returned map of Inventory#addItem method as soon as possible!
+    enabled: false
+    # The full class name of the listener which listens to this inventory overflow event.
+    listener-class: com.example.package.PlayerInventoryOverflowEvent
+  player:
+    # The max distance of UseItem for players.
+    # Set to -1 to disable max-distance-check.
+    # NOTE: if set to -1 to disable the check,
+    # players are able to use some packet modules of hack clients,
+    # and NoCom Exploit!!
+    max-use-item-distance: -1
+  allow-tripwire-dupe: false
+  death-item-drop-knockback:
+    # If true, items will drop randomly around the player on death.
+    drop-around: false
+    # Base speed for horizontal velocity when randomly dropping items.
+    horizontal-force: 0.5
+    # Upward motion for randomly dropped items.
+    vertical-force: 0.2
+  ice-and-snow-chance: 48
+  knockback:
+    # Make snowball can knockback players.
+    snowball-knockback-players: true
+    # Make egg can knockback players.
+    egg-knockback-players: true
+    # Make players can knockback zombie.
+    can-player-knockback-zombie: true
+    # Synchronize player immediately when knocked back.
+    flush-location-while-knockback-player: true
+    old-blast-protection-explosion-knockback: true
+  # Enable to make only player pushable
+  only-player-pushable: false
+  # This section contains settings for mob spawner blocks.
+  spawner-settings:
+    # Enable custom spawner settings. Set to true to enable all features below.
+    enabled: true
+    # Various checks that can be enabled or disabled for spawner blocks.
+    checks:
+      # Check if there is the required light level to spawn the mob
+      light-level-check: false
+      # Check if there are the max amount of nearby mobs to spawn the mob
+      spawner-max-nearby-check: true
+      # Check if any players are in a radius to spawn the mob
+      check-for-nearby-players: true
+      # Check if there are physical blocks obstructing the spawn location, or if custom spawn rules (isValidPosition) fail due to block conditions.
+      spawner-block-checks: false
+      # Checks if there is water around that prevents spawning
+      water-prevent-spawn-check: false
+      # Ignore mob-specific spawn rules, like animals needing grass or specific biomes/blocks (does not affect light level or physical obstruction checks).
+      ignore-spawn-rules: true
+    # Minimum delay (in ticks) between spawner spawns. Higher values slow down spawners.
+    min-spawn-delay: 2150
+    # Maximum delay (in ticks) between spawner spawns. Higher values slow down spawners.
+    max-spawn-delay: 3000
+  use-spigot-item-merging-mechanism: true
+  use-vanilla-hopper: true
+
+#############
+#  NETWORK  #
+#############
+network:
+  # Async switch connection state.
+  async-switch-state: true
+  # Whether or not enable chat message signature,
+  # disable will prevent players to report chat messages.
+  # And also disables the popup when joining a server without
+  # 'secure chat', such as offline-mode servers.
+  chat-message-signature: false
+  # WARNING: This option is NOT compatible with ProtocolLib and may cause
+  # issues with other plugins that modify packet handling.
+  # 
+  # Optimizes non-flush packet sending by using Netty's lazyExecute method to avoid
+  # expensive thread wakeup calls when scheduling packet operations.
+  # 
+  # Requires server restart to take effect.
+  OptimizeNonFlushPacketSending: false
+  protocol-support:
+    strict-mode: false
+    jade-protocol: false
+    appleskin-protocol: true
+    appleskin-protocol-sync-tick-interval: 20
+    asteorbar-protocol: false
+    chatimage-protocol: false
+    xaero-map-protocol: false
+    xaero-map-server-id: -2060364218
+    syncmatica-protocol: false
+    syncmatica-quota: false
+    syncmatica-quota-limit: 40000000
+    do-a-barrel-roll-protocol: true
+    do-a-barrel-roll-allow-thrusting: true
+    do-a-barrel-roll-force-enabled: true
+    do-a-barrel-roll-force-installed: false
+    do-a-barrel-roll-installed-timeout: 0
+
+##########
+#  MISC  #
+##########
+misc:
+  # Connection message, using MiniMessage format, set to "default" to use vanilla join message.
+  # available placeholders:
+  # <player_name> - player name
+  # <player_displayname> - player display name
+  connection-message:
+    join:
+      enabled: false
+      # Join message of player
+      message: <dark_gray>[<green>+</green>] <player_displayname> <gray>đã tham gia.
+    quit:
+      enabled: false
+      # Quit message of player
+      message: <dark_gray>[<red>-</red>] <player_displayname> <gray>đã rời đi.
+  disable-world-data-saving:
+    # Worlds listed here will skip world data persistence.
+    # Changes in chunks/entities remain in memory until unload/restart and are not written to disk.
+    worlds: []
+  including-5s-in-get-tps: false
+  # This section contains lag compensation features,
+  # which could ensure basic playing experience during a lag.
+  lag-compensation:
+    enabled: true
+    enable-for-water: true
+    enable-for-lava: true
+  # Linear is a region format that uses zstd compression instead of zlib.
+  # This format saves about 50% of disk space.
+  # Read Leaf docs before using!
+  region-format:
+    format-name: MCA
+    compress-level: 1
+    io-thread-count: 6
+    io-flush-delay: -1
+    linear-use-virtual-thread: true
+  # Enable to prevent console spam.
+  remove-change-non-editable-sign-warning: true
+  # Enable player enter backend server through proxy
+  # without backend server enabling its bungee mode.
+  remove-spigot-check-bungee-config: false
+  # Once you enable secure seed, all ores and structures are generated with 1024-bit seed
+  # instead of using 64-bit seed in vanilla, made seed cracker become impossible.
+  secure-seed:
+    enabled: true
+  sentry:
+    # Sentry DSN for improved error logging, leave blank to disable,
+    # Obtain from https://sentry.io/
+    dsn: https://
+    # Logs with a level higher than or equal to this level will be recorded.
+    log-level: INFO
+    # Only log with a Throwable will be recorded after enabling this.
+    only-log-thrown: true
+  rebrand:
+    server-mod-name: GaConMC
+    server-gui-name: 🐔
+  message:
+    # Unknown command message, using MiniMessage format, set to "default" to use vanilla message,
+    # placeholder:
+    # <message>, show message of the command exception.
+    # <detail>, shows detail of the command exception.
+    unknown-command: Bạn nhập sai rồi, nhập lại thử nhé ạ!
+  vanilla-username-check:
+    # Remove Vanilla username check,
+    # allowing all characters as username.
+    # WARNING: UNSAFE, USE AT YOUR OWN RISK!
+    remove-all-check: true
+    # Enforce skull validation,
+    # preventing skulls with invalid names from disconnecting the client.
+    enforce-skull-validation: true
+    # Allow old players to join the server after the username regex is changed,
+    # even if their names don't meet the new requirements.
+    allow-old-players-join: true
+    # Use username regex to validate usernames,
+    # allowing only characters specified in the regex.
+    use-username-regex: false
+    # Username regex,
+    # specifying the characters allowed in usernames.
+    # Default: ^[a-zA-Z0-9_.]*$
+    username-regex: ^[a-zA-Z0-9_.]*$?,

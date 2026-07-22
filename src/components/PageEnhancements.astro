@@ -1,0 +1,119 @@
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<a class="back-to-top" href="#_top" aria-label="Về đầu trang" title="Về đầu trang">
+  <span aria-hidden="true">↑</span>
+</a>
+
+<script>
+  function copyText(value: string) {
+    if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(value);
+    return Promise.reject(new Error('Clipboard API không khả dụng'));
+  }
+
+  function enhanceOriginalPost() {
+    const article = document.querySelector<HTMLElement>('.original-post');
+    if (!article || article.dataset.enhanced === 'true') return;
+    article.dataset.enhanced = 'true';
+
+    article.querySelectorAll('.bbCodeBlock--code').forEach((block) => {
+      const code = block.querySelector('code');
+      const title = block.querySelector('.bbCodeBlock-title');
+      if (!code || !title) return;
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'original-code-copy';
+      button.textContent = 'Sao chép';
+      button.setAttribute('aria-label', 'Sao chép đoạn mã');
+      button.addEventListener('click', async () => {
+        try {
+          await copyText(code.textContent || '');
+          button.textContent = 'Đã chép ✓';
+        } catch {
+          button.textContent = 'Không thể chép';
+        }
+        window.setTimeout(() => { button.textContent = 'Sao chép'; }, 1800);
+      });
+      title.append(button);
+    });
+
+    article.querySelectorAll('.bbTable').forEach((table, index) => {
+      table.setAttribute('role', 'region');
+      table.setAttribute('tabindex', '0');
+      table.setAttribute('aria-label', `Bảng dữ liệu ${index + 1} — có thể cuộn ngang`);
+    });
+  }
+
+  function enhanceReadingControls() {
+    const controls = document.querySelector<HTMLElement>('[data-reading-controls]');
+    if (!controls) return;
+    const root = document.documentElement;
+    let size = 'normal';
+    let relaxed = false;
+    try {
+      size = localStorage.getItem('guide-reading-size') || 'normal';
+      relaxed = localStorage.getItem('guide-reading-density') === 'relaxed';
+    } catch {
+      // Trình duyệt có thể chặn localStorage; giao diện vẫn dùng mặc định.
+    }
+
+    const apply = () => {
+      root.dataset.readingSize = size;
+      root.dataset.readingDensity = relaxed ? 'relaxed' : 'normal';
+      controls.querySelectorAll<HTMLButtonElement>('[data-reading-size]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.readingSize === size));
+      });
+      const density = controls.querySelector<HTMLButtonElement>('[data-reading-density]');
+      density?.setAttribute('aria-pressed', String(relaxed));
+    };
+
+    controls.querySelectorAll<HTMLButtonElement>('[data-reading-size]').forEach((button) => {
+      button.addEventListener('click', () => {
+        size = button.dataset.readingSize || 'normal';
+        try { localStorage.setItem('guide-reading-size', size); } catch {}
+        apply();
+      });
+    });
+    controls.querySelector<HTMLButtonElement>('[data-reading-density]')?.addEventListener('click', () => {
+      relaxed = !relaxed;
+      try { localStorage.setItem('guide-reading-density', relaxed ? 'relaxed' : 'normal'); } catch {}
+      apply();
+    });
+    apply();
+  }
+
+  function enhanceLocalToc() {
+    const toc = document.querySelector<HTMLDetailsElement>('.guide-local-toc');
+    if (!toc) return;
+    if (window.matchMedia('(max-width: 50rem)').matches) toc.open = false;
+
+    const links = new Map(
+      Array.from(toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'))
+        .map((link) => [decodeURIComponent(link.hash.slice(1)), link]),
+    );
+    const headings = Array.from(document.querySelectorAll<HTMLElement>('.guide-fragment h2[id], .guide-fragment h3[id], .guide-fragment h4[id]'));
+    if (!headings.length) return;
+
+    const setActive = (id: string) => {
+      for (const link of links.values()) link.removeAttribute('aria-current');
+      links.get(id)?.setAttribute('aria-current', 'true');
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      const first = visible[0]?.target as HTMLElement | undefined;
+      if (first?.id) setActive(first.id);
+    }, { rootMargin: '-15% 0px -72% 0px' });
+    headings.forEach((heading) => observer.observe(heading));
+  }
+
+  function enhancePage() {
+    enhanceOriginalPost();
+    enhanceReadingControls();
+    enhanceLocalToc();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enhancePage, { once: true });
+  } else {
+    enhancePage();
+  }
+</script>

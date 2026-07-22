@@ -1,0 +1,84 @@
+<h3 class="bbHeading" id="-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu"><div style="text-align: justify">4.3. Phân tích những pha tự hủy kinh điển của Quản trị viên máy chủ​</div></h3><div style="text-align: justify">Làm quản trị viên một cỗ máy sinh tồn không chỉ là câu chuyện nhặt vài cái tệp tin trên mạng ném vào thư mục rồi cầu nguyện cho nó chạy mượt. Từ kinh nghiệm đi <code class="bbCodeInline">fix-bug</code> dạo cho vô số hệ thống đang ngắc ngoải ngoài kia, mình nhận ra hầu hết anh em đều sập hầm ở những lỗi kiến trúc rất sơ đẳng. Đừng biến máy chủ của bạn thành một mớ mã nguồn hỗn độn bóp nghẹt tài nguyên phần cứng đấy nhé.​</div><h3 class="bbHeading" id="-tin-nguoi-vcl-v"><div style="text-align: justify">Tin người vcl<img src="__BASE__media/source/236-v-ca74d906.png" class="smilie" loading="lazy" alt=":v" title="Pacman :v" decoding="async">​</div></h3><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 40.0915%"><div class="bbImageWrapper" title="1777606789778.webp">
+<img src="__BASE__media/source/237-1777606789778-f05a3093.webp" class="bbImage" style="" alt="1777606789778.webp" title="1777606789778.webp" width="876" height="619" loading="lazy" decoding="async">
+</div><div class="bbImageWrapper" title="1777606196490.webp">
+<img src="__BASE__media/source/238-1777606196490-962b11c5.webp" class="bbImage" style="width: 548px" alt="1777606196490.webp" title="1777606196490.webp" width="1121" height="362" loading="lazy" decoding="async">
+</div></td><td style="width: 59.8184%"><div class="bbImageWrapper" title="1777606248218.webp">
+<img src="__BASE__media/source/239-1777606248218-5e9cbbc3.webp" class="bbImage" style="" alt="1777606248218.webp" title="1777606248218.webp" width="1232" height="603" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div>Không trách được, mọi người dù có kinh nghiệm tới đâu cũng sẽ gặp phải 1 - 2 lần. <b><span style="color: rgb(184, 49, 47)">F2A</span></b> bảo mật từng tài khoản nhân sự máy chủ, chính là chân ái!<br>
+<hr><h4 class="bbHeading" id="-cai-mot-mo-plugins-va-datapack-theo-he-tam-linh"><div style="text-align: justify">Cài một mớ Plugins và Datapack theo hệ tâm linh​</div></h4><div style="text-align: justify">Cài càng nhiều, thì bạn càng phải chấp nhận việc gỡ lỗi và thiết đặt sẽ càng phức tạp. Thiết đặt kiểu này rất dễ oẳng. Nhiều Plugins can thiệp trực tiếp vào logic cốt lõi của game, trong khi lại có loại lại hook vào các sự kiện trên máy chủ. Hệ thống Plugins này mà dẫm chân lên nhau, ví dụ cùng quản lý cơ chế rơi đồ của Quái/Cùng quản lý việc người chơi nhắn tin, thì Server không báo lỗi đỏ lòm Console cũng khiến tps lặn mất tăm. Làm Ássmin thì nguyên tắc số 1 là phải đọc kỹ <b><span style="color: rgb(209, 72, 65)">Documentation/Wiki/Source-Code</span></b> của thứ mình nhét vô, trước khi cài bất cứ thứ gì.​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><th style="width: 27.4141%"><div style="text-align: center">Cài hằng sa số Plugins​</div></th><th style="width: 37.324%"><div style="text-align: center">Cài Plugin lậu​</div></th><th style="width: 35.1985%"><div style="text-align: center">Dev không giỏi / VibeCoding​</div></th></tr><tr><td style="width: 27.4141%"><div class="bbImageWrapper" title="1777604763221.webp">
+<img src="__BASE__media/source/240-1777604763221-5d0dad37.webp" class="bbImage" style="" alt="1777604763221.webp" title="1777604763221.webp" width="667" height="348" loading="lazy" decoding="async">
+</div></td><td style="width: 37.324%"><div class="bbImageWrapper" title="1777604812352.webp">
+<img src="__BASE__media/source/241-1777604812352-c0f5b430.webp" class="bbImage" style="" alt="1777604812352.webp" title="1777604812352.webp" width="1508" height="619" loading="lazy" decoding="async">
+</div></td><td style="width: 35.1985%"><div class="bbImageWrapper" title="1777605096340.webp">
+<img src="__BASE__media/source/242-1777605096340-2a0d96ba.webp" class="bbImage" style="" alt="1777605096340.webp" title="1777605096340.webp" width="1226" height="619" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><br>
+<div style="text-align: justify">Hàng cổ đại không còn được bảo trì mà bạn tin dùng bên Spigot, hoặc xài lậu tìm được ở trên mạng, hoàn toàn có thể huỷ diệt hiệu năng máy chủ bạn nếu không dành thời gian để ý Spark:​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 42.4324%"><div class="bbImageWrapper" title="1784116840838.webp">
+<img src="__BASE__media/source/243-1784116840838-b505bce2.webp" class="bbImage" style="" alt="1784116840838.webp" title="1784116840838.webp" width="647" height="559" loading="lazy" decoding="async">
+</div></td><td style="width: 57.5676%"><div class="bbImageWrapper" title="1784116953537.webp">
+<img src="__BASE__media/source/244-1784116953537-8a2df978.webp" class="bbImage" style="" alt="1784116953537.webp" title="1784116953537.webp" width="2559" height="1599" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Một bản datapack viết tốt luôn thắng một chiếc Plugin viết tệ. Tại sao ạ?​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: justify">Datapack chạy dựa trên hệ thống <code class="bbCodeInline">command</code> và <code class="bbCodeInline">function</code> chính chủ của MoJang, nó được tối ưu hóa để vận hành trong vòng lặp <code class="bbCodeInline">tick</code> ngay trên chính luồng xử lý chính mà không gây crash hệ thống đột ngột. Trái lại, một plugin Viết cẩu thả, ví dụ như lạm dụng quá nhiều <code class="bbCodeInline">task</code> đồng bộ trên <code class="bbCodeInline">main thread</code> hoặc không giải phóng bộ nhớ, sẽ khiến Server sập hầm ngay lập tức.​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 50.0000%"><div class="bbImageWrapper" title="1777334570273.webp">
+<img src="__BASE__media/source/245-1777334570273-4e4df275.webp" class="bbImage" style="width: 547px" alt="1777334570273.webp" title="1777334570273.webp" width="892" height="418" loading="lazy" decoding="async">
+</div></td><td style="width: 50.0000%"><div class="bbImageWrapper" title="1777604702530.webp">
+<img src="__BASE__media/source/246-1777604702530-d8ac9764.webp" class="bbImage" style="" alt="1777604702530.webp" title="1777604702530.webp" width="1480" height="619" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><div style="text-align: justify">Dù vậy, Datapack dù có xịn đến đâu cũng không bao giờ chạm được tới ngưỡng của Plugin hàng tuyển, chỉ có thể thao tác với những gì Mojang cho phép thông qua lệnh và NBT, trong khi Plugin có toàn quyền truy cập vào API của <code class="bbCodeInline">bukkit/spigot</code>, thậm chí là can thiệp trực tiếp vào mã nguồn gốc <a href="https://www.youtube.com/watch?v=M3JT6_tUcm8" target="_blank" class="link link--external" rel="noreferrer"><code class="bbCodeInline">nms - net minecraft server</code></a> để thay đổi cách thế giới vận hành ở mức phân tử. Một ví dụ Plugin tương tác với Datapack viết hay, là của <a href="https://deepwiki.com/Xiao-MoMi/craft-engine/2-core-plugin-framework" target="_blank" class="link link--external" rel="noreferrer">Craft-Engine</a>, luồng xử lý linh hoạt hơn nhiều: Sự kiện phát sinh --&gt; <code class="bbCodeInline">Event listener</code> bắt ngay lập tức ở tầng <code class="bbCodeInline">byte-code</code> --&gt; thực thi logic trực tiếp trên Ram --&gt; thay đổi trạng thái <code class="bbCodeInline">entity/block</code> ngay trong tích tắc, đẩy những tác vụ nặng như tính toán định vị hoặc ghi ra các luồng xử lý bất đồng bộ riêng biệt (Async) để không làm Lag máy chủ bạn, điều mà Datapack Vanilla hoàn toàn bất lực.<br>​</div><hr><h4 class="bbHeading" id="-luoi-tim-hieu-plugin-sua-config"><a href="https://minevn.net/threads/plugin-nay-dung-sao-lam-sao-de-lam-vay.33738/" class="link link--internal" target="_blank" rel="noreferrer">Lười tìm hiểu Plugin</a> / sửa config​</h4><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 28.6937%"><div class="bbImageWrapper" title="1777604861363.webp">
+<img src="__BASE__media/source/247-1777604861363-3a28a148.webp" class="bbImage" style="" alt="1777604861363.webp" title="1777604861363.webp" width="1136" height="427" loading="lazy" decoding="async">
+</div></td><td style="width: 28.4684%"><div class="bbImageWrapper" title="1777604883204.webp">
+<img src="__BASE__media/source/248-1777604883204-7c136466.webp" class="bbImage" style="" alt="1777604883204.webp" title="1777604883204.webp" width="995" height="376" loading="lazy" decoding="async">
+</div></td><td style="width: 42.7929%"><div class="bbImageWrapper" title="1777605801630.webp">
+<img src="__BASE__media/source/249-1777605801630-7d677ec2.webp" class="bbImage" style="" alt="1777605801630.webp" title="1777605801630.webp" width="706" height="232" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><div style="text-align: justify">Đây là căn bệnh lười thâm căn cố đế, bê nguyên thiết lập mặc định của tác giả vào máy chủ nhà mình là một bước đi vào lòng đất. Mỗi máy chủ có một hệ sinh thái và luồng người chơi riêng. Nếu không chủ động thay đổi lại các giới hạn Cooldown/Hiệu năng, bộ tính năng cần thiết hay chỉnh lại tỷ lệ rớt đồ, thì chỉ tầm vài ngày là dân cày cuốc sẽ tìm ra Exploit để phá nát nền kinh tế và sập máy chủ lúc nào không hay.​</div>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/250-www.youtube-32341d83.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=maMpMOnIJDE" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+RANDAR: Minecraft's Most DANGEROUS Exploit
+</a>
+</p>
+<div class="contentRow-snippet">Today we'll uncover the history of the most powerful Minecraft coordinate exploit of all time, and how to stay safe from it!Download Honkai: Star Rail with m...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div>
+<hr><h4 class="bbHeading" id="-quan-ly-co-so-du-lieu-kieu-sinh-vien-kieu-gi-ban-cung-se-lap-lai-cho-ma-xem">Quản lý cơ sở dữ liệu kiểu sinh viên &lt;-- Kiểu gì bạn cũng sẽ lặp lại cho mà xem​</h4><div style="text-align: justify"><div class="bbImageWrapper" title="1777605086594.webp">
+<img src="__BASE__media/source/251-1777605086594-1ee246a5.webp" class="bbImage" style="" alt="1777605086594.webp" title="1777605086594.webp" width="513" height="112" loading="lazy" decoding="async">
+</div></div><br>
+Chạy máy chủ cho năm ba người bạn thì xài file <code class="bbCodeInline">.yml</code> hay <code class="bbCodeInline">sqlite</code> cục bộ là quá đủ. Nhưng nếu làm cộng đồng SMP lớn cỡ 15 ngừi, mà vẫn tư duy giữ dữ liệu bằng flatfile thì tới công chuyện liền. Khi dữ liệu phình to lên vài chục ngàn dòng, mỗi lần người chơi đăng nhập hay mua bán, máy chủ phải đứng hình truy vấn nguyên cái tệp mất vài tích tắc chỉ để đọc ghi tệp. Chuẩn bài là phải tham khảo ngay một hệ thống cơ sở dữ liệu xịn như <code class="bbCodeInline">Mariadb</code> hay <code class="bbCodeInline">mySQL</code> từ đầu, vừa mượt vừa dễ thao tác lên sau này.<br>
+<div class="bbImageWrapper" title="1777972352731.webp">
+<img src="__BASE__media/source/252-1777972352731-5c3ee10c.webp" class="bbImage" style="width: 842px" alt="1777972352731.webp" title="1777972352731.webp" width="937" height="469" loading="lazy" decoding="async">
+</div><br>
+<hr><h4 class="bbHeading" id="-khong-co-du-kien-thuc-de-go-loi-logs-spark-b">Không có đủ kiến thức để gỡ lỗi Logs, Spark <img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async">​</h4><div class="bbImageWrapper" title="1777024303182.webp">
+<img src="__BASE__media/source/253-1777024303182-17048d96.webp" class="bbImage" style="" alt="1777024303182.webp" title="1777024303182.webp" width="620" height="431" loading="lazy" decoding="async">
+</div><br>
+Gặp lỗi nào ac' qua' không biết gỡ, nhớ <a href="https://www.youtube.com/watch?v=K2hPADEsVsc" target="_blank" class="link link--external" rel="noreferrer">gửi toàn bộ Logs máy chủ</a> lên <a href="https://mclo.gs/" target="_blank" class="link link--external" rel="noreferrer">mclo.gs</a> + <a href="https://www.youtube.com/watch?v=ZqO003y50-U" target="_blank" class="link link--external" rel="noreferrer">Spark Profiler công khai</a>, điều này sẽ hỗ trợ người giúp bạn rất nhiều đấy <img src="__BASE__media/source/005-D-ef8315a7.gif" class="smilie" loading="lazy" alt=":D" title="Cười nhe răng :D" decoding="async"><br>
+<hr><h4 class="bbHeading" id="-case-study-bai-hoc-xuong-mau"><a href="https://www.facebook.com/share/p/18KrUBQxMq/" target="_blank" class="link link--external" rel="noreferrer">Case-study</a> bài học xương máu?​</h4><div class="bbImageWrapper" title="1776889803654.webp">
+<img src="__BASE__media/source/254-1776889803654-f574a1d0.webp" class="bbImage" style="" alt="1776889803654.webp" title="1776889803654.webp" width="1600" height="900" loading="lazy" decoding="async">
+</div><br>
+Học cách xử lý Khủng hoảng truyền thông, mình đề xuất <a href="https://www.brandsvietnam.com/congdong/topic/xu-ly-khung-hoang-truyen-thong-influencer-huong-dan-chi-tiet-tu-quy-trinh-thuc-chien" target="_blank" class="link link--external" rel="noreferrer">Tài liệu PDF tổng hợp quy trình xử lý khủng hoảng truyền thông</a><br>
+<hr>

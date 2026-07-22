@@ -1,0 +1,190 @@
+<h3 class="bbHeading" id="-3-3-bukkit-yml-thiet-dat-can-thiet"><div style="text-align: justify">3.3. <a href="https://docs.papermc.io/paper/reference/spigot-configuration/" target="_blank" class="link link--external" rel="noreferrer"><b>bukkit.yml</b></a><b> - thiết đặt cần thiết</b>​</div></h3><h4 class="bbHeading" id="-spawn-limits-con-duoc-biet-toi-la-mob-cap"><div style="text-align: justify"><b>spawn-limits (còn được biết tới là mob cap)</b>​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Wiki:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất
+monsters: 20
+animals: 5
+water-animals: 2
+water-ambient: 2
+water-underground-creature: 3
+axolotls: 3
+ambient: 1</code></pre>
+</div>
+</div>Phần cấu hình này quyết định tổng số thực thể được sản sinh trên máy chủ. Giảm các giá trị ở đây là cách ảnh hưởng trực tiếp nhất đến hiệu năng, vì <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Entity.html" target="_blank" class="link link--external" rel="noreferrer">Entity </a>là một trong những thứ cực kỳ tiêu tốn tài nguyên máy chủ để hoạt động.<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Wiki:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code> Máy chủ mình
+spawn-limits:
+monsters: 24
+animals: 12
+water-animals: 1
+water-ambient: 1
+water-underground-creature: 1
+axolotls: 1
+ambient: 0</code></pre>
+</div>
+</div>Cách <a href="https://paper-chan.moe/paper-optimization/?ref=paper-chan.moe#mob-categories" target="_blank" class="link link--external" rel="noreferrer">phân loại theo Categories</a>, giới hạn số lượng thực thể - mob cap trên máy chủ được tính theo công thức:<br>
+<code class="bbCodeInline">giới hạn số lượng thực thể toàn máy chủ = số người chơi trực tuyến * giới hạn quái được bạn điền vô ở trên</code><br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/100-youtu-aecfc026.jpg" loading="lazy" alt="youtu.be" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://youtu.be/OrV07_ob6GI" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+Using Science to Design a MAXIMUM Efficiency Iron Farm
+</a>
+</p>
+<div class="contentRow-snippet">A detailed explanation of iron farm mechanics and how to apply them :-].Java only**0:00 Intro1:34 - Iron Farm Basics4:10 - Impact of Time to Kill7:02 - Impac...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="youtu.be" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+youtu.be
+</div>
+</div>
+</div>
+</div></div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify">Càng ít người chơi hoặc đặt giới hạn càng thấp thì máy chủ sẽ càng ít quái xuất hiện. Miễn là xung quanh người chơi còn vị trí hợp lệ để quái xuất hiện, máy chủ sẽ liên tục <b>cố gắng</b> tạo thêm thực thể cho đến khi đạt tới giới hạn bạn đã đặt.​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: justify">Tùy chọn <code class="bbCodeInline">per-player-mob-spawn</code> tại <code class="bbCodeInline">config/paper-world-defaults.yml</code> sẽ giúp chia đều quái cho mỗi người chơi, tránh tình trạng người 2 hộp sữa, thằng không hộp nào. Nhớ là, việc giảm giới hạn mob luôn là con dao hai lưỡi <img src="__BASE__media/source/031-B-ca2fde4b.gif" class="smilie" loading="lazy" alt=":-B" title="Mọt sách :-B" decoding="async">:​</div><ul>
+<li><div style="text-align: justify">Máy chủ nhẹ hơn​</div></li>
+<li><div style="text-align: justify">Người chơi than không còn quái để Farm​</div></li>
+</ul><div style="text-align: justify">Quản trị viên có thể đặt <code class="bbCodeInline">monsters &lt; 20</code> nếu giảm đồng thời <code class="bbCodeInline">mob-spawn-range</code> tại tệp <code class="bbCodeInline">spigot.yml</code> xuống, yên tâm, người chơi sẽ không than cho đến khi <code class="bbCodeInline">monsters &lt; 14</code>. <a href="https://paper-chan.moe/paper-optimization/?ref=paper-chan.moe#spawn-limits" target="_blank" class="link link--external" rel="noreferrer">Công thức tính</a>:​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><th><div style="text-align: center">Overall Entity Count (%)​</div></th><th><div style="text-align: center">spawn-limit tại bukkit.yml​</div></th><th><div style="text-align: center">mob-spawn-range tại spigot.yml​</div></th><th><div style="text-align: center">Actual Calculated Number​</div></th></tr><tr><td style="width: 25.0000%"><div style="text-align: center">100​</div></td><td style="width: 25.0000%"><div style="text-align: center">70​</div></td><td style="width: 25.0000%"><div style="text-align: center">8​</div></td><td style="width: 25.0000%"><div style="text-align: center">8​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">90​</div></td><td style="width: 25.0000%"><div style="text-align: center">63​</div></td><td style="width: 25.0000%"><div style="text-align: center">7 hoặc 8​</div></td><td style="width: 25.0000%"><div style="text-align: center">7.6​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">80​</div></td><td style="width: 25.0000%"><div style="text-align: center">56​</div></td><td style="width: 25.0000%"><div style="text-align: center">7​</div></td><td style="width: 25.0000%"><div style="text-align: center">7.18​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">70​</div></td><td style="width: 25.0000%"><div style="text-align: center">49​</div></td><td style="width: 25.0000%"><div style="text-align: center">6 hoặc 7​</div></td><td style="width: 25.0000%"><div style="text-align: center">6.74​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">60​</div></td><td style="width: 25.0000%"><div style="text-align: center">42​</div></td><td style="width: 25.0000%"><div style="text-align: center">6​</div></td><td style="width: 25.0000%"><div style="text-align: center">6.26​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">50​</div></td><td style="width: 25.0000%"><div style="text-align: center">35​</div></td><td style="width: 25.0000%"><div style="text-align: center">5 hoặc 6​</div></td><td style="width: 25.0000%"><div style="text-align: center">5.75​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">40​</div></td><td style="width: 25.0000%"><div style="text-align: center">28​</div></td><td style="width: 25.0000%"><div style="text-align: center">5​</div></td><td style="width: 25.0000%"><div style="text-align: center">5.18​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">30​</div></td><td style="width: 25.0000%"><div style="text-align: center">21​</div></td><td style="width: 25.0000%"><div style="text-align: center">4​</div></td><td style="width: 25.0000%"><div style="text-align: center">4.55​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">20​</div></td><td style="width: 25.0000%"><div style="text-align: center">14​</div></td><td style="width: 25.0000%"><div style="text-align: center">4​</div></td><td style="width: 25.0000%"><div style="text-align: center">3.81​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">10​</div></td><td style="width: 25.0000%"><div style="text-align: center">7​</div></td><td style="width: 25.0000%"><div style="text-align: center">3​</div></td><td style="width: 25.0000%"><div style="text-align: center">2.89​</div></td></tr><tr><td style="width: 25.0000%"><div style="text-align: center">3​</div></td><td style="width: 25.0000%"><div style="text-align: center">2​</div></td><td style="width: 25.0000%"><div style="text-align: center">Bỏ xíu tiền mà nâng cấp máy chủ đi ạ​</div></td><td style="width: 25.0000%"><div style="text-align: center">Cái Nokia nhà mình còn xử lý được nhiều thực thể hơn cả máy chủ bạn.​</div></td></tr></tbody></table>
+</div><div style="text-align: justify">Về mặt tổng thể, lượng Entity nên chiếm &lt; <b><span style="color: rgb(26, 188, 156)">30%</span></b> thời gian xử lý mỗi tick. Nếu bạn thấy máy chủ tốn quá nhiều tài nguyên cho việc sản sinh quái, thì đó là dấu hiệu giới hạn thực thể đang quá trời nhiều luôn ạ, và cần phải giảm xuống. Mục tiêu lý tưởng là giữ mật độ Mob gần giống mặc định của Vanilla, nhưng vẫn đảm bảo máy chủ duy trì dưới <code class="bbCodeInline">50 mspt</code> trong giờ cao điểm. Nếu chưa đạt được mức này, hãy tiếp tục giảm giới hạn cho đến khi máy chủ ổn định.​</div><div class="bbImageWrapper" title="1776634683611.webp">
+<img src="__BASE__media/source/071-1776634683611-279b2fa9.webp" class="bbImage" style="" alt="1776634683611.webp" title="1776634683611.webp" width="1310" height="92" loading="lazy" decoding="async">
+</div><br>
+<div style="text-align: justify">Nếu dùng Paper, bạn còn có thể chỉnh giới hạn riêng cho từng thế giới <i><span style="color: rgb(0, 168, 133)">world/world_nether/world_the_end</span></i> tại <a href="https://docs.papermc.io/paper/reference/world-configuration" target="_blank" class="link link--external" rel="noreferrer">https://docs.papermc.io/paper/reference/world-configuration</a>​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify"><b><span style="color: rgb(184, 49, 47)">[!!!]</span></b> Các giới hạn này chỉ áp dụng cho mob xuất hiện tự nhiên, những Entity được tạo ra bằng cơ chế đặc biệt như nhân bản Allay, Silver Fish - Cá bạc từ thuốc Nhiễm khuẩn, Iron Golem sinh ra từ dân làng, hay Guardian trong Ocean Monument sẽ không bị ảnh hưởng bởi thiết đặt này. Bắt buộc phải có Plugin riêng, ở đây mình sử dụng <a href="https://modrinth.com/plugin/entityblocker/versions" target="_blank" class="link link--external" rel="noreferrer">EntityBlocker</a> để chặn Cá bạc, và <a href="https://www.spigotmc.org/resources/entitylimiter-optimize-performance.125214/" target="_blank" class="link link--external" rel="noreferrer">EntityLimiter</a> với các loại còn lại.​</div>
+</div>
+
+</div>
+</blockquote><div class="bbTable">
+<table style="width: 100%"><tbody><tr><th>Cá bạc</th><th>IronGolem</th><th>Allay</th></tr><tr><td style="width: 33.3333%"><div class="bbImageWrapper" title="if-youre-building-a-silverfish-xp-farm-they-are-small-v0-aumarg0hznhe1.png">
+<img src="__BASE__media/source/101-if-youre-building-a-silverfish-xp-farm-they-are-small-v0-aumarg0hznhe1-ab2200c1.png" class="bbImage" style="width: 393px" alt="if-youre-building-a-silverfish-xp-farm-they-are-small-v0-aumarg0hznhe1.png" title="" width="1920" height="1080" loading="lazy" decoding="async">
+</div></td><td style="width: 33.3333%"><div class="bbImageWrapper" title="maxresdefault.jpg">
+<img src="__BASE__media/source/102-maxresdefault-b83ae35e.jpg" class="bbImage" style="" alt="maxresdefault.jpg" title="" width="1280" height="720" loading="lazy" decoding="async">
+</div></td><td style="width: 33.3333%"><div class="bbImageWrapper" title="hq720.jpg">
+<img src="__BASE__media/source/103-hq720-9cef6195.jpg" class="bbImage" style="" alt="hq720.jpg" title="" width="686" height="386" loading="lazy" decoding="async">
+</div></td></tr></tbody></table>
+</div><div style="text-align: justify"><b><span style="font-size: 18px"><span style="color: rgb(184, 49, 47)">[!!!]</span></span></b><span style="font-size: 18px"> <b>Villager - Dân làng</b></span><br>
+Dân làng là loại thực thể đặc biệt, vừa tốn tài nguyên máy chủ theo cách riêng, vừa không thể bị kiểm soát số lượng khi người chơi sản sinh hàng loạt, lại còn không bị giới hạn bởi các tùy chọn trong <code class="bbCodeInline">bukkit.yml</code> như đã đề cập ở trên. Do đó, bạn nên tham khảo các phương pháp dưới đây:​</div><ul>
+<li><div style="text-align: justify">Cài <a href="https://modrinth.com/plugin/villagerlobotomy" target="_blank" class="link link--external" rel="noreferrer">VillagerLobotimizer</a> để tự động tắt não của dân làng bị nhét vào khu trao đổi (trading hall). <a href="https://www.leafmc.one/docs/config/gale-world-defaults" target="_blank" class="link link--external" rel="noreferrer">Leaf cũng có chức năng tương tự</a> mà không sâu bằng.<br>
+<div class="bbImageWrapper" title="1781050161079.webp">
+<img src="__BASE__media/source/104-1781050161079-d8686210.webp" class="bbImage" style="" alt="1781050161079.webp" title="1781050161079.webp" width="1920" height="1081" loading="lazy" decoding="async">
+</div></div></li>
+<li><div style="text-align: justify">Giảm tần suất xử lý (tick rate) của dân làng tại <code class="bbCodeInline">paper-world-defaults.yml/tick-rates</code> để giảm áp lực lên máy chủ.​</div></li>
+<li><div style="text-align: justify">Giới hạn số lượng dân làng trong một khu vực với <a href="https://github.com/froobynooby/FarmControl" target="_blank" class="link link--external" rel="noreferrer">FarmControl</a> / <a href="https://www.spigotmc.org/resources/entitylimiter-optimize-performance.125214/" target="_blank" class="link link--external" rel="noreferrer">EntityLimiter</a>​</div></li>
+<li><div style="text-align: justify">Thay đổi cách người chơi kiếm đồ == tạo khu trao đổi cộng đồng/Shop hệ thống do Admin quản lý. <s>Dân làng để làm cảnh.</s>​</div></li>
+</ul><hr><h4 class="bbHeading" id="-ticks-per"><div style="text-align: justify">ticks-per​</div></h4><div style="text-align: justify"><div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Wiki:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Đề xuất
+monster-spawns: 10
+animal-spawns: 400
+water-spawns: 400
+water-ambient-spawns: 400
+water-underground-creature-spawns: 400
+axolotl-spawns: 400
+ambient-spawns: 400</code></pre>
+</div>
+</div>Tùy chọn này quyết định khoảng thời gian (tính bằng tick) mà máy chủ sẽ thử triệu hồi các loại sinh vật một lần. Những thực thể như cá/dơi không cần Spawn liên tục mỗi tick vì chúng vô dụng<img src="__BASE__media/source/091-media-893397ac.png" class="smilie" loading="lazy" alt="<(&quot;)" title="Cụt cụt <(&quot;)" decoding="async">. Với quái vật, việc tăng nhẹ thời gian giữa mỗi lần triệu hồi tương đương việc giảm số lần Game kiểm tra thường xuyên, tùy chọn này không ảnh hưởng nhiều đến tốc độ quái xuất hiện, kể cả với các Mob Farm thường thấy trên nên tảng Youtube.<br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Wiki:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>Máy chủ mình
+ticks-per:
+animal-spawns: 4200
+monster-spawns: 12
+water-spawns: 4200
+water-ambient-spawns: 4200
+water-underground-creature-spawns: 4200
+axolotl-spawns: 4200
+ambient-spawns: 4200
+autosave: 36000</code></pre>
+</div>
+</div>Nếu chỉ tăng hoặc giảm ở đây, bạn thực chất chỉ đang tìm cách trì hoãn vấn đề thay vì giải quyết tận gốc. Nhớ là, Minecraft sẽ luôn cố gắng triệu hồi thực thể cho đến khi lấp đầy giới hạn mob-cap đã được bạn đặt ở phần trước --&gt; việc tính toán và kiểm tra vị trí để quái xuất hiện được thực thi luân phiên --&gt; điều này cũng tiêu tốn tài nguyên máy chủ một lượng kha khá đó nha. Nên tốt nhất, vẫn là giảm giới hạn Entity tổng trước tại <code class="bbCodeInline">bukkit.yml/spawn-limits</code>, sau đó mới tính tới việc điều chỉnh <code class="bbCodeInline">ticks-per</code>.<br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/105-www.youtube-dc44838d.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=nTSFuNXbjqo" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+How to Design the MOST Optimized Gold Farm [Nerf Proof!]
+</a>
+</p>
+<div class="contentRow-snippet">I make the mechanical thinking machine optimize my gold farm for me in Minecraft. A deep dive into the balancing act require to optimize spawning farms. This...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div>
+<b><span style="color: rgb(184, 49, 47)">[!!!] Không đạt đủ mob cap dù đã cố gắng hết sức?!</span></b><br>
+Nếu mobcap <b>không đạt tới giới hạn </b>nhanh và hiệu quả, máy chủ sẽ:​</div><ul>
+<li><div style="text-align: justify">liên tục vô vọng triệu hồi Mobs​</div></li>
+<li><div style="text-align: justify">tốn tài nguyên CPU vô ích​</div></li>
+<li><div style="text-align: justify">tụt tps máy chủ​</div></li>
+</ul><div style="text-align: justify">Nếu có thời gian và muốn tìm hiểu về <a href="https://techmcdocs.github.io/techmcdocs.github.io/" target="_blank" class="link link--external" rel="noreferrer">Technical Minecraft</a>, bạn nên dùng lệnh <code class="bbCodeInline">/paper mobcaps</code> &amp; <code class="bbCodeInline">/paper playermobcaps</code> + dành thêm một khoảng thời gian <a href="https://techmcdocs.github.io/" target="_blank" class="link link--external" rel="noreferrer">phân tích Wiki</a> --&gt; đảm bảo rằng <b>spawn-limits </b>bạn đặt hoàn toàn chuẩn. Dấu hiệu mobcap bị lỗi thường sẽ xuất hiện trong tệp Spark của máy chủ bạn, như thông số <code class="bbCodeInline">NaturalSpawner.spawnForChunk</code>đang cao bất thường:​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="text-align: justify"><div class="bbImageWrapper" title="1776661339496.webp">
+<img src="__BASE__media/source/106-1776661339496-fbfd5774.webp" class="bbImage" style="width: 572px" alt="1776661339496.webp" title="1776661339496.webp" width="673" height="63" loading="lazy" decoding="async">
+</div> <img src="__BASE__media/source/107-media-1c6e245d.gif" class="smilie" loading="lazy" alt="=))" title="Cười lăn lộn =))" decoding="async">Quái đông máy chủ khóc, người chơi than &lt;--&gt; Quái ít người chơi than​</div>
+</div>
+
+</div>
+</blockquote><div style="text-align: justify">Bạn có thể thay đổi <code class="bbCodeInline">paper-world-defaults.yml/entities.spawning.ticks-per-spawn</code><br>
+<div class="bbCodeBlock bbCodeBlock--screenLimited bbCodeBlock--code">
+<div class="bbCodeBlock-title">
+Wiki:
+
+</div>
+<div class="bbCodeBlock-content" dir="ltr">
+<pre class="bbCodeCode" dir="ltr"><code>ticks-per-spawn:
+ambient: 90000
+axolotls: 2200
+creature: 90000
+monster: 20
+underground_water_creature: 9800
+water_ambient: 2200
+water_creature: 2200</code></pre>
+</div>
+</div>Thiết đặt ở trên cũng có thể được chỉnh riêng cho từng thế giới trong tệp <code class="bbCodeInline">paper-world.yml</code> (tạo riêng trong thư mục của từng <i><span style="color: rgb(26, 188, 156)">world/world_nether/world_the_end...</span></i>), để ghi đè lên cấu hình <code class="bbCodeInline">paper-world-defaults.yml</code> mặc định của máy chủ. Nhờ vậy, bạn có thể tinh chỉnh tần suất quái xuất hiện khác nhau cho từng thế giới, thay vì phải dùng chung một mức cho tất cả.​</div><hr><h4 class="bbHeading" id="-aliases"><div style="text-align: justify">aliases​</div></h4><div style="margin-left: 20px">Chuyển câu lệnh mặc định sang những dạng câu lệnh mới tương đương. Ví dụ:​</div><div style="margin-left: 20px"><code class="bbCodeInline">/op</code> --&gt; <code class="bbCodeInline">/capchotaoquyenop</code> vẫn sẽ cho bạn quyền quản trị viên khi nhập, chặn được 90% vấn đề phá hoại máy chủ cơ bản <img src="__BASE__media/source/091-media-893397ac.png" class="smilie" loading="lazy" alt="<(&quot;)" title="Cụt cụt <(&quot;)" decoding="async"><img src="__BASE__media/source/091-media-893397ac.png" class="smilie" loading="lazy" alt="<(&quot;)" title="Cụt cụt <(&quot;)" decoding="async"><img src="__BASE__media/source/091-media-893397ac.png" class="smilie" loading="lazy" alt="<(&quot;)" title="Cụt cụt <(&quot;)" decoding="async">​</div>
+<blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
+<div class="bbCodeBlock-content">
+<div class="">
+<div style="margin-left: 20px">Muốn thay đổi sâu hơn? Tham khảo <a href="https://eternalcode.pl/docs/eternalcore/" target="_blank" class="link link--external" rel="noreferrer">EternalCore plugin</a> - Phát triển bởi các anh Ba Lan, tùy chỉnh mạnh/bật &amp; tắt các thiết lập câu lệnh.​</div>
+</div>
+
+</div>
+</blockquote><hr>
