@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 test('renders the complete original article on one page', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
 
   await expect(page.getByRole('heading', { level: 1, name: 'Lộ trình Server Minecraft' })).toBeVisible();
   await expect(page.locator('.original-post')).toBeVisible();
@@ -12,7 +12,7 @@ test('renders the complete original article on one page', async ({ page }) => {
 });
 
 test('table of contents stays on the same page', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await page.locator('.inline-toc a[href="#setup"]').click();
 
   await expect(page).toHaveURL(/#setup$/);
@@ -20,14 +20,14 @@ test('table of contents stays on the same page', async ({ page }) => {
 });
 
 test('old chapter URLs redirect to their original anchor', async ({ page }) => {
-  await page.goto('/03-thiet-dat/server-properties/');
+  await page.goto('03-thiet-dat/server-properties/');
 
   await expect(page).toHaveURL(/\/#-3-2-server-properties-thiet-dat-can-thiet$/);
   await expect(page.locator('[id="-3-2-server-properties-thiet-dat-can-thiet"]')).toHaveCount(1);
 });
 
 test('has no serious accessibility violations', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await page.waitForLoadState('networkidle');
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
@@ -41,7 +41,7 @@ test('has no serious accessibility violations', async ({ page }) => {
 
 test('mobile chapter navigation uses in-page anchors', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto('./');
   await page.getByRole('button', { name: 'Menu' }).click();
 
   const navigation = page.getByRole('navigation', { name: 'Các chương trong lộ trình' });
