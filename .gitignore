@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 *.log
+public/media/optimized/
+test-results/
+playwright-report/

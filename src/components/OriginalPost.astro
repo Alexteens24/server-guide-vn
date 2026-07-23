@@ -1,10 +1,22 @@
 ---
+import * as cheerio from 'cheerio';
 import originalPost from '../data/original-post.html?raw';
+import { optimizeEmbeddedMedia } from '../utils/optimized-media';
 
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const html = originalPost.replaceAll('__BASE__', base);
+const $ = cheerio.load(originalPost, {}, false);
+
+// Chỉ sửa thuộc tính tương tác để bản nguyên tác dùng được với bàn phím và trình đọc màn hình.
+$('.original-break-figure[aria-hidden="true"]').removeAttr('aria-hidden');
+$('.bbCodeInlineSpoiler:has(a)').removeAttr('tabindex role');
+$('.bbCodeCode').attr('tabindex', '0');
+$('.original-chapter-heading').each((_, heading) => {
+  $(heading).nextUntil('.original-chapter-heading').addBack().wrapAll('<section class="original-chapter"></section>');
+});
+
+const html = optimizeEmbeddedMedia($.html(), base);
 ---
 
-<article class="original-post" aria-label="Toàn bộ nội dung gốc bài đăng MineVN" set:html={html} />
+<article id="noi-dung" class="original-post" aria-label="Toàn bộ nội dung gốc bài đăng MineVN" set:html={html} />

@@ -1,0 +1,13 @@
+---
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<CardGrid>
+  <LinkCard title="Về trang chủ" href={base} description="Bắt đầu hoặc tiếp tục lộ trình." />
+  <LinkCard title="Mở toàn bộ hướng dẫn" href={base} description="Đọc bài viết đầy đủ trong một trang." />
+  <LinkCard title="Bắt đầu từ thuật ngữ" href={`${base}#glossary`} description="Đi tới phần đầu tiên của lộ trình." />
+</CardGrid>

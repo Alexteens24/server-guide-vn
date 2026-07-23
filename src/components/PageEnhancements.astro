@@ -43,72 +43,8 @@
     });
   }
 
-  function enhanceReadingControls() {
-    const controls = document.querySelector<HTMLElement>('[data-reading-controls]');
-    if (!controls) return;
-    const root = document.documentElement;
-    let size = 'normal';
-    let relaxed = false;
-    try {
-      size = localStorage.getItem('guide-reading-size') || 'normal';
-      relaxed = localStorage.getItem('guide-reading-density') === 'relaxed';
-    } catch {
-      // Trình duyệt có thể chặn localStorage; giao diện vẫn dùng mặc định.
-    }
-
-    const apply = () => {
-      root.dataset.readingSize = size;
-      root.dataset.readingDensity = relaxed ? 'relaxed' : 'normal';
-      controls.querySelectorAll<HTMLButtonElement>('[data-reading-size]').forEach((button) => {
-        button.setAttribute('aria-pressed', String(button.dataset.readingSize === size));
-      });
-      const density = controls.querySelector<HTMLButtonElement>('[data-reading-density]');
-      density?.setAttribute('aria-pressed', String(relaxed));
-    };
-
-    controls.querySelectorAll<HTMLButtonElement>('[data-reading-size]').forEach((button) => {
-      button.addEventListener('click', () => {
-        size = button.dataset.readingSize || 'normal';
-        try { localStorage.setItem('guide-reading-size', size); } catch {}
-        apply();
-      });
-    });
-    controls.querySelector<HTMLButtonElement>('[data-reading-density]')?.addEventListener('click', () => {
-      relaxed = !relaxed;
-      try { localStorage.setItem('guide-reading-density', relaxed ? 'relaxed' : 'normal'); } catch {}
-      apply();
-    });
-    apply();
-  }
-
-  function enhanceLocalToc() {
-    const toc = document.querySelector<HTMLDetailsElement>('.guide-local-toc');
-    if (!toc) return;
-    if (window.matchMedia('(max-width: 50rem)').matches) toc.open = false;
-
-    const links = new Map(
-      Array.from(toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'))
-        .map((link) => [decodeURIComponent(link.hash.slice(1)), link]),
-    );
-    const headings = Array.from(document.querySelectorAll<HTMLElement>('.guide-fragment h2[id], .guide-fragment h3[id], .guide-fragment h4[id]'));
-    if (!headings.length) return;
-
-    const setActive = (id: string) => {
-      for (const link of links.values()) link.removeAttribute('aria-current');
-      links.get(id)?.setAttribute('aria-current', 'true');
-    };
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      const first = visible[0]?.target as HTMLElement | undefined;
-      if (first?.id) setActive(first.id);
-    }, { rootMargin: '-15% 0px -72% 0px' });
-    headings.forEach((heading) => observer.observe(heading));
-  }
-
   function enhancePage() {
     enhanceOriginalPost();
-    enhanceReadingControls();
-    enhanceLocalToc();
   }
 
   if (document.readyState === 'loading') {

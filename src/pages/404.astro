@@ -1,0 +1,15 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import NotFoundLinks from '../components/NotFoundLinks.astro';
+---
+
+<StarlightPage frontmatter={{
+  title: 'Không tìm thấy trang',
+  description: 'Đường dẫn này không tồn tại.',
+  editUrl: false,
+  pagefind: false,
+  tableOfContents: false,
+}}>
+  <p>Đường dẫn bạn mở không còn tồn tại. Toàn bộ hướng dẫn hiện được trình bày trong một trang duy nhất.</p>
+  <NotFoundLinks />
+</StarlightPage>

@@ -4,16 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "start": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "dev": "npm run media:optimize && ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "start": "npm run dev",
+    "build": "npm run media:optimize && ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "media:verify": "node scripts/verify-media.mjs",
+    "media:optimize": "node scripts/generate-media-derivatives.mjs",
     "media:import": "node scripts/import-media.mjs",
     "content:import": "node scripts/import-original-post.mjs",
     "content:verify": "node scripts/verify-original-post.mjs",
-    "guide:verify": "node scripts/verify-guide.mjs"
+    "guide:verify": "node scripts/verify-guide.mjs",
+    "test:e2e": "playwright test",
+    "test:perf": "node scripts/run-lighthouse.mjs",
+    "verify": "npm run media:verify && npm run content:verify && npm run build && npm run guide:verify"
   },
   "dependencies": {
     "@astrojs/starlight": "0.41.3",
@@ -21,7 +25,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.61.1",
     "cheerio": "^1.2.0",
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.4.1",
+    "sharp": "0.35.3",
     "typescript": "^5.9.3"
   },
   "engines": {
