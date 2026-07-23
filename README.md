@@ -47,3 +47,12 @@ Importer tái sử dụng file đã tải, thử fallback cho nguồn chặn hot
 ## GitHub Pages
 
 Workflow `.github/workflows/deploy.yml` tự build khi push lên `main`. Astro suy ra `site` và `base` từ `GITHUB_REPOSITORY`, nên dùng được cho cả repository Pages (`/ten-repo/`) và user Pages (`username.github.io`).
+
+## Giấy phép
+
+Project sử dụng giấy phép theo từng phần:
+
+- Mã nguồn website, Astro components, CSS/JavaScript/TypeScript, các script import/verify/optimize, GitHub Actions và cấu hình do project tạo được phát hành theo [MIT License](./LICENSE#website-software--mit-license).
+- Nội dung bài hướng dẫn do **Minh — TranNhatMinhxD / bạngáitôiđátôi** viết được phát hành theo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Khi chia sẻ hoặc chỉnh sửa, cần ghi công Minh, dẫn nguồn bài gốc, dẫn giấy phép và nêu rõ các thay đổi.
+
+Media, attachment, nội dung trích dẫn và tài sản của bên thứ ba không tự động thuộc hai giấy phép trên. Xem phạm vi và mẫu ghi công đầy đủ trong [LICENSE](./LICENSE).
