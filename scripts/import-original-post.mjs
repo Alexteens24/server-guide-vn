@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
@@ -12,6 +13,42 @@ const fragmentDirectory = path.resolve('src/data/chapters');
 const attachmentManifestPath = path.resolve('src/data/attachments.json');
 const attachmentDirectory = path.resolve('public/attachments');
 const mediaManifest = JSON.parse(await readFile('src/data/media.json', 'utf8'));
+let existingOutput = '';
+try {
+  existingOutput = await readFile(outputPath, 'utf8');
+} catch {
+  // Lần import đầu tiên chưa có nội dung đã sinh.
+}
+let existingAttachments = { items: [] };
+try {
+  existingAttachments = JSON.parse(await readFile(attachmentManifestPath, 'utf8'));
+} catch {
+  // Lần import đầu tiên chưa có manifest attachment để tái sử dụng.
+}
+const existingAttachmentBySource = new Map(
+  existingAttachments.items
+    .filter((item) => item.source && item.filename)
+    .map((item) => [item.source, item]),
+);
+const existingAttachmentByName = new Map(
+  existingAttachments.items
+    .filter((item) => item.name && item.filename)
+    .map((item) => [item.name, item]),
+);
+
+async function writeJsonManifest(target, value) {
+  try {
+    const previous = JSON.parse(await readFile(target, 'utf8'));
+    const { generatedAt: _previousGeneratedAt, ...previousData } = previous;
+    const { generatedAt: _nextGeneratedAt, ...nextData } = value;
+    if (JSON.stringify(previousData) === JSON.stringify(nextData)) {
+      value.generatedAt = previous.generatedAt;
+    }
+  } catch {
+    // Lần import đầu tiên chưa có manifest để so sánh.
+  }
+  await writeFile(target, `${JSON.stringify(value, null, 2)}\n`);
+}
 
 const fragmentDefinitions = [
   { id: 'glossary', start: null, end: 'intro' },
@@ -246,12 +283,14 @@ post.find('.message-attachments .attachmentList > li').each((index, element) => 
   const meta = attachment.find('.file-meta').first().text().replace(/\s+/g, ' ').trim();
   const href = attachment.find('a.file-preview[href]').attr('href');
   if (!name || !href) return;
+  const attachmentSource = new URL(href, SOURCE_URL).href;
+  const existing = existingAttachmentBySource.get(attachmentSource) ?? existingAttachmentByName.get(name);
   attachments.push({
     order: index + 1,
     name,
-    meta,
-    source: new URL(href, SOURCE_URL).href,
-    filename: safeFilename(name, index),
+    meta: existing?.meta ?? meta,
+    source: attachmentSource,
+    filename: existing?.filename ?? safeFilename(name, index),
     isImage: /\.(avif|gif|jpe?g|png|webp)$/i.test(name),
   });
 });
@@ -304,6 +343,7 @@ const fragmentItems = fragmentDefinitions.map((definition) => {
     ...definition,
     filename: `${definition.id}.html`,
     html,
+    contentHash: createHash('sha256').update(html).digest('hex'),
     textLength: parsed.text().replace(/\s+/g, ' ').trim().length,
     headings: parsed('h2,h3,h4').length,
     images: parsed('img').not('.original-attachments img').length,
@@ -326,21 +366,21 @@ await writeFile(outputPath, output);
 for (const item of fragmentItems) {
   await writeFile(path.join(fragmentDirectory, item.filename), item.html);
 }
-await writeFile(fragmentManifestPath, `${JSON.stringify({
+await writeJsonManifest(fragmentManifestPath, {
   source: SOURCE_URL,
   postId: 343982,
   generatedAt: new Date().toISOString(),
   count: fragmentItems.length,
   items: fragmentItems.map(({ html: _html, ...item }) => item),
-}, null, 2)}\n`);
-await writeFile(attachmentManifestPath, `${JSON.stringify({
+});
+await writeJsonManifest(attachmentManifestPath, {
   source: SOURCE_URL,
   postId: 343982,
   generatedAt: new Date().toISOString(),
   count: downloadedAttachments.length,
   downloadedCount: downloadedAttachments.filter((item) => item.status === 'downloaded').length,
   items: downloadedAttachments,
-}, null, 2)}\n`);
+});
 
 const generated = cheerio.load(output, {}, false);
 const meta = {
@@ -349,6 +389,7 @@ const meta = {
   generatedAt: new Date().toISOString(),
   sourceTextLength: sourceBody.text().replace(/\s+/g, ' ').trim().length,
   generatedTextLength: generated.text().replace(/\s+/g, ' ').trim().length,
+  contentHash: createHash('sha256').update(output).digest('hex'),
   headings: generated('h2,h3,h4').length,
   bodyHeadings: root.find('h2,h3,h4').length,
   images: root.find('img').length,
@@ -357,7 +398,14 @@ const meta = {
   spoilers: root.find('.original-spoiler').length,
   attachments: downloadedAttachments.length,
 };
-await writeFile(metaPath, `${JSON.stringify(meta, null, 2)}\n`);
+await writeJsonManifest(metaPath, meta);
+
+if (existingOutput !== output) {
+  const guidePath = path.resolve('src/data/guide-pages.json');
+  const guide = JSON.parse(await readFile(guidePath, 'utf8'));
+  guide.verifiedAt = new Date().toISOString().slice(0, 10);
+  await writeFile(guidePath, `${JSON.stringify(guide, null, 2)}\n`);
+}
 
 console.log(meta);
 if (downloadedAttachments.some((item) => item.status === 'failed')) process.exitCode = 1;

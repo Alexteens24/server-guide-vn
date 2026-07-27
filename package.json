@@ -13,6 +13,7 @@
     "media:verify": "node scripts/verify-media.mjs",
     "media:optimize": "node scripts/generate-media-derivatives.mjs",
     "media:import": "node scripts/import-media.mjs",
+    "source:fetch": "node scripts/fetch-source.mjs",
     "content:import": "node scripts/import-original-post.mjs",
     "content:verify": "node scripts/verify-original-post.mjs",
     "guide:verify": "node scripts/verify-guide.mjs",
