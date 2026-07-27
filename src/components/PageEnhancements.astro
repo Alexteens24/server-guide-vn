@@ -1,5 +1,47 @@
+---
+import guide from '../data/guide-pages.json';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const chapters = guide.pages.filter((page) => !page.parent);
+---
+
 <div class="scroll-progress" aria-hidden="true"><span></span></div>
-<a class="back-to-top" href="#_top" aria-label="Về đầu trang" title="Về đầu trang">
+
+<details class="chapter-jump" data-chapter-jump>
+  <summary>
+    <span class="chapter-jump__label">Đang đọc</span>
+    <strong data-current-chapter>Phần tổng quan</strong>
+    <span class="chapter-jump__toggle" aria-hidden="true">⌄</span>
+  </summary>
+  <nav aria-label="Nhảy nhanh tới chương">
+    <ol>
+      {chapters.map((chapter) => (
+        <li>
+          <a
+            href={`${base}#${chapter.id}`}
+            data-chapter-link={chapter.id}
+            data-chapter-number={chapter.number}
+            data-chapter-title={chapter.title}
+          >
+            <span>{chapter.number}</span>
+            <strong>{chapter.title}</strong>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+</details>
+
+<a
+  class="back-to-top"
+  href="#_top"
+  aria-label="Về đầu trang"
+  aria-hidden="true"
+  tabindex="-1"
+  title="Về đầu trang"
+>
   <span aria-hidden="true">↑</span>
 </a>
 
@@ -43,8 +85,145 @@
     });
   }
 
+  function enhanceChapterNavigation() {
+    const article = document.querySelector<HTMLElement>('.original-post');
+    const jump = document.querySelector<HTMLDetailsElement>('[data-chapter-jump]');
+    if (!article || !jump || jump.dataset.enhanced === 'true') return;
+    jump.dataset.enhanced = 'true';
+
+    const sections = Array.from(article.querySelectorAll<HTMLElement>('.original-chapter'));
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]'));
+    const currentLabel = jump.querySelector<HTMLElement>('[data-current-chapter]');
+    let activeId = '';
+
+    function setActiveChapter(id = '') {
+      if (activeId === id) return;
+      activeId = id;
+
+      links.forEach((link) => {
+        const active = link.dataset.chapterLink === id;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+
+      const activeLink = links.find((link) => link.dataset.chapterLink === id);
+      if (currentLabel) {
+        currentLabel.textContent = activeLink
+          ? `${activeLink.dataset.chapterNumber} · ${activeLink.dataset.chapterTitle}`
+          : 'Phần tổng quan';
+      }
+    }
+
+    function syncFromPosition() {
+      const readingLine = Math.min(window.innerHeight * 0.28, 240);
+      const current = sections.find((section) => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= readingLine && bounds.bottom > readingLine;
+      });
+      const heading = current?.querySelector<HTMLElement>('.original-chapter-heading');
+      setActiveChapter(heading?.id || '');
+    }
+
+    let navigationScheduled = false;
+    function scheduleNavigationSync() {
+      if (navigationScheduled) return;
+      navigationScheduled = true;
+      window.requestAnimationFrame(() => {
+        syncFromPosition();
+        navigationScheduled = false;
+      });
+    }
+
+    const Observer = globalThis.IntersectionObserver;
+    if (Observer) {
+      const observer = new Observer(scheduleNavigationSync, {
+        rootMargin: '-22% 0px -68% 0px',
+        threshold: 0,
+      });
+      sections.forEach((section) => observer.observe(section));
+    }
+    window.addEventListener('scroll', scheduleNavigationSync, { passive: true });
+    window.addEventListener('resize', scheduleNavigationSync, { passive: true });
+
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const targetId = link.dataset.chapterLink;
+        const target = targetId ? document.getElementById(targetId) : null;
+        const targetSection = target?.closest<HTMLElement>('.original-chapter');
+        const targetIndex = targetSection ? sections.indexOf(targetSection) : -1;
+        const measuredSections = targetIndex >= 0 ? sections.slice(0, targetIndex + 1) : [];
+        if (!target) return;
+
+        // Các chương dùng content-visibility để giữ trang nhẹ. Đo những chương đứng
+        // trước đích trong một nhịp giúp fragment xa không dừng ở vị trí ước lượng.
+        event.preventDefault();
+        measuredSections.forEach((section) => {
+          section.style.contentVisibility = 'visible';
+        });
+        window.history.pushState(null, '', link.href);
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        target.scrollIntoView({ block: 'start' });
+        window.requestAnimationFrame(() => {
+          target.scrollIntoView({ block: 'start' });
+          window.requestAnimationFrame(() => {
+            target.scrollIntoView({ block: 'start' });
+            document.documentElement.style.scrollBehavior = previousScrollBehavior;
+            syncFromPosition();
+          });
+        });
+
+        if (jump.contains(link)) jump.open = false;
+      });
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (jump.open && !jump.contains(event.target as Node)) jump.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !jump.open) return;
+      jump.open = false;
+      jump.querySelector<HTMLElement>('summary')?.focus();
+    });
+
+    syncFromPosition();
+  }
+
+  function enhanceScrollControls() {
+    const progress = document.querySelector<HTMLElement>('.scroll-progress span');
+    const backToTop = document.querySelector<HTMLAnchorElement>('.back-to-top');
+    if (!progress || !backToTop || backToTop.dataset.enhanced === 'true') return;
+    const progressBar = progress;
+    const backToTopLink = backToTop;
+    backToTopLink.dataset.enhanced = 'true';
+    let scheduled = false;
+
+    function update() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+      progressBar.style.setProperty('--guide-scroll-progress', String(ratio));
+
+      const visible = window.scrollY > Math.min(window.innerHeight * 0.8, 720);
+      backToTopLink.classList.toggle('is-visible', visible);
+      backToTopLink.setAttribute('aria-hidden', String(!visible));
+      backToTopLink.tabIndex = visible ? 0 : -1;
+      scheduled = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  }
+
   function enhancePage() {
     enhanceOriginalPost();
+    enhanceChapterNavigation();
+    enhanceScrollControls();
   }
 
   if (document.readyState === 'loading') {

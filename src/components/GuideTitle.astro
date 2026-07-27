@@ -1,0 +1,57 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import guide from '../data/guide-pages.json';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const normalizedPath = Astro.url.pathname.replace(base, '').replace(/^\/+|\/+$/g, '');
+const isHome = normalizedPath === '';
+const data = Astro.locals.starlightRoute.entry.data;
+const chapters = guide.pages.filter((page) => !page.parent);
+const updatedAt = new Intl.DateTimeFormat('vi-VN', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+}).format(new Date(`${guide.verifiedAt}T00:00:00Z`));
+const sourceUrl = 'https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/';
+---
+
+{isHome ? (
+  <header class="guide-hero">
+    <div class="guide-hero__texture" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <p class="guide-hero__eyebrow">
+      <span class="guide-hero__status" aria-hidden="true"></span>
+      Cẩm nang cộng đồng · Tiếng Việt
+    </p>
+    <h1 id="_top">{data.title}</h1>
+    <p class="guide-hero__lead">{data.description}</p>
+    <div class="guide-hero__meta" aria-label="Thông tin lộ trình">
+      <span><strong>{chapters.length}</strong> chương chính</span>
+      <span>Cập nhật <strong>{updatedAt}</strong></span>
+      <span>Dành cho <strong>người mới</strong></span>
+    </div>
+    <div class="guide-hero__actions">
+      <a class="guide-button guide-button--primary" href="#glossary">
+        Bắt đầu lộ trình <span aria-hidden="true">↓</span>
+      </a>
+      <a class="guide-button guide-button--secondary" href={sourceUrl} target="_blank" rel="noreferrer">
+        Xem bài gốc <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="guide-hero__attribution">
+      <p>
+        Bài viết của <strong>Minh — TranNhatMinhxD / bạngáitôiđátôi</strong>, đăng ngày 22/04/2026.
+      </p>
+      <p>
+        Nội dung theo giấy phép
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license noreferrer">CC BY 4.0 ↗</a>;
+        website có thay đổi về trình bày và markup.
+      </p>
+    </div>
+  </header>
+) : (
+  <Default {...Astro.props}><slot /></Default>
+)}

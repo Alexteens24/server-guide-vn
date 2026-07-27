@@ -1,0 +1,35 @@
+---
+import guide from '../data/guide-pages.json';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const chapters = guide.pages.filter((page) => !page.parent);
+---
+
+<section class="guide-overview" aria-labelledby="guide-overview-title">
+  <div class="guide-overview__heading">
+    <div>
+      <p class="guide-overview__eyebrow">Lộ trình học</p>
+      <h2 id="guide-overview-title">Chọn điểm bắt đầu</h2>
+    </div>
+    <p>Đọc liên tục từ đầu đến cuối, hoặc nhảy tới chương phù hợp với máy chủ của bạn.</p>
+  </div>
+  <nav class="chapter-grid" aria-label="Mục lục chính">
+    {chapters.map((chapter) => (
+      <a
+        href={`${base}#${chapter.id}`}
+        data-chapter-link={chapter.id}
+        data-chapter-number={chapter.number}
+        data-chapter-title={chapter.title}
+      >
+        <span class="chapter-grid__number">{chapter.number}</span>
+        <span class="chapter-grid__body">
+          <strong>{chapter.title}</strong>
+          <small>{chapter.description}</small>
+        </span>
+        <span class="chapter-grid__arrow" aria-hidden="true">↘</span>
+      </a>
+    ))}
+  </nav>
+</section>

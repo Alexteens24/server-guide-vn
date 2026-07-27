@@ -23,7 +23,9 @@ if (landing('h1').length !== 1) failures.push(`Trang chính có ${landing('h1').
 if (landing('.original-post').length !== 1) failures.push('Trang chính thiếu bài nguyên tác');
 if (landing('.original-post .original-chapter-heading').length !== 9) failures.push('Trang chính không có đủ 9 chương nguyên tác');
 if (landing('.original-post > .original-chapter').length !== 9) failures.push('Trang chính chưa chia vùng render cho 9 chương');
-if (landing('.inline-toc a').length !== 9) failures.push('Mục lục đầu bài không có đủ 9 liên kết');
+if (landing('.chapter-grid a[data-chapter-link]').length !== 9) {
+  failures.push('Mục lục đầu bài không có đủ 9 liên kết');
+}
 if (landing('[data-progress-page], [data-progress-dashboard]').length) failures.push('Trang chính vẫn còn checklist/progress');
 if (landing('[data-guide-search]').length) failures.push('Trang chính vẫn còn faceted search');
 

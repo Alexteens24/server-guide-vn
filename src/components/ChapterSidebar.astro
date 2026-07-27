@@ -16,7 +16,12 @@ const chapters = guide.pages.filter((page) => !page.parent);
   <ol>
     {chapters.map((chapter) => (
       <li>
-        <a href={`${base}#${chapter.id}`}>
+        <a
+          href={`${base}#${chapter.id}`}
+          data-chapter-link={chapter.id}
+          data-chapter-number={chapter.number}
+          data-chapter-title={chapter.title}
+        >
           <span class="chapter-sidebar__number">{chapter.number}</span>
           <span><strong>{chapter.title}</strong></span>
         </a>

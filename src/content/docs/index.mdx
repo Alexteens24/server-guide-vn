@@ -15,41 +15,14 @@ head:
     attrs:
       property: og:description
       content: Toàn bộ bài viết gốc của Minh về phát triển và tối ưu máy chủ Minecraft.
-  - tag: meta
-    attrs:
-      name: theme-color
-      content: '#15803d'
 ---
 
 import OriginalPost from '../../components/OriginalPost.astro';
+import GuideOverview from '../../components/GuideOverview.astro';
 import PageEnhancements from '../../components/PageEnhancements.astro';
 
 <PageEnhancements />
 
-<div class="guide-intro">
-  <p class="guide-intro__byline">Bài viết của <strong>Minh — TranNhatMinhxD / bạngáitôiđátôi</strong></p>
-  <p>
-    Lộ trình đầy đủ từ kiến thức nền, lựa chọn hạ tầng đến cấu hình, plugin và vận hành máy chủ Minecraft.
-    Nội dung được trình bày trong một trang và giữ nguyên thứ tự của bài viết gốc.
-  </p>
-  <p class="guide-intro__meta">
-    Đăng ngày 22/04/2026 · <a href="https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/" target="_blank" rel="noreferrer">Xem bài trên MineVN ↗</a>
-  </p>
-  <p class="guide-intro__meta">
-    Nội dung của Minh được cấp phép theo <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license noreferrer">CC BY 4.0 ↗</a>. Bản website có thay đổi về trình bày và markup.
-  </p>
-</div>
-
-<nav class="inline-toc" aria-label="Mục lục chính">
-  <a href="#glossary"><span>00</span> Thuật ngữ</a>
-  <a href="#intro"><span>01</span> Mở đầu</a>
-  <a href="#preparation"><span>02</span> Chuẩn bị</a>
-  <a href="#setup"><span>03</span> Thiết đặt</a>
-  <a href="#integrations"><span>04</span> Tích hợp</a>
-  <a href="#free-options"><span>05</span> Miễn phí</a>
-  <a href="#operations"><span>06</span> Vận hành</a>
-  <a href="#next"><span>07</span> Tiếp theo</a>
-  <a href="#references"><span>08</span> Tham khảo</a>
-</nav>
+<GuideOverview />
 
 <OriginalPost />

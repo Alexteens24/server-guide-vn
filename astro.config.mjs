@@ -52,6 +52,7 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       components: {
         Head: './src/components/GuideHead.astro',
+        PageTitle: './src/components/GuideTitle.astro',
         SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/ChapterSidebar.astro',
       },
