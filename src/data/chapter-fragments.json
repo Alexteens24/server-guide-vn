@@ -1,7 +1,7 @@
 {
   "source": "https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/",
   "postId": 343982,
-  "generatedAt": "2026-07-22T09:02:16.846Z",
+  "generatedAt": "2026-07-27T09:16:03.674Z",
   "count": 21,
   "items": [
     {
@@ -9,7 +9,8 @@
       "start": null,
       "end": "intro",
       "filename": "glossary.html",
-      "textLength": 2372,
+      "contentHash": "35d43ee24dff6ed174092b528e9e095d1a8b4e819d2090f86108f7fac3953c88",
+      "textLength": 2456,
       "headings": 1,
       "images": 9,
       "tables": 2,
@@ -31,6 +32,7 @@
       "start": "intro",
       "end": "preparation",
       "filename": "intro.html",
+      "contentHash": "4daac2ba8fdf5d1c79bfb33e0c5a23d4c5b43989f5fdcc9fc115a9ee3179f493",
       "textLength": 1135,
       "headings": 1,
       "images": 0,
@@ -53,6 +55,7 @@
       "start": "preparation",
       "end": "setup",
       "filename": "preparation.html",
+      "contentHash": "b4774ccef39630ae991a624b6bea6323dcaac3934fd40a38c9b5428e30a8424e",
       "textLength": 19495,
       "headings": 13,
       "images": 59,
@@ -147,6 +150,7 @@
       "start": "setup",
       "end": "-3-2-server-properties-thiet-dat-can-thiet",
       "filename": "setup-intro.html",
+      "contentHash": "2c6a3094d2019de5b5e5867685878fc992b440a497040fceb668c862359e5be6",
       "textLength": 13746,
       "headings": 6,
       "images": 45,
@@ -199,6 +203,7 @@
       "start": "-3-2-server-properties-thiet-dat-can-thiet",
       "end": "-3-3-bukkit-yml-thiet-dat-can-thiet",
       "filename": "server-properties.html",
+      "contentHash": "cbb8754ea2b8b1a1d9c2029752a0c9b00fc6a95a77ae049d37cea80f7d1f817a",
       "textLength": 4681,
       "headings": 11,
       "images": 3,
@@ -281,6 +286,7 @@
       "start": "-3-3-bukkit-yml-thiet-dat-can-thiet",
       "end": "-3-4-spigot-yml-thiet-dat-can-thiet",
       "filename": "bukkit-yml.html",
+      "contentHash": "7cef58eb8aa386889b8d1eba3b5e9b40b1d57fdfab21795f87b6aa2cfb4108ce",
       "textLength": 7008,
       "headings": 4,
       "images": 16,
@@ -321,6 +327,7 @@
       "start": "-3-4-spigot-yml-thiet-dat-can-thiet",
       "end": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
       "filename": "spigot-yml.html",
+      "contentHash": "ac0a962eb4447366101905c724f36e984b4f9704ce675c7ea08d84f6579bcbb5",
       "textLength": 11625,
       "headings": 10,
       "images": 16,
@@ -397,6 +404,7 @@
       "start": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
       "end": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
       "filename": "paper-world.html",
+      "contentHash": "b4107656afc699367891c093722132dd2ac779c31804ed47403e647dc708de62",
       "textLength": 19770,
       "headings": 21,
       "images": 21,
@@ -539,6 +547,7 @@
       "start": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
       "end": "-3-6-purpur-yml-thiet-dat-can-thiet",
       "filename": "paper-global.html",
+      "contentHash": "6cca26f9a77c89212b73055420f026ffdf1d22906f0de21053cc7e94a8a9343b",
       "textLength": 8775,
       "headings": 5,
       "images": 15,
@@ -585,6 +594,7 @@
       "start": "-3-6-purpur-yml-thiet-dat-can-thiet",
       "end": "-3-7-leaf-global-yml",
       "filename": "purpur-yml.html",
+      "contentHash": "5155f00915e88ba79504eec69e716bae5b01532c13d0346bf515959e1cd0b16d",
       "textLength": 3546,
       "headings": 5,
       "images": 7,
@@ -631,6 +641,7 @@
       "start": "-3-7-leaf-global-yml",
       "end": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
       "filename": "leaf-global.html",
+      "contentHash": "07c291ffc39e41352c5aff7a1bb2675cac0beb434932b8fae3b80508515927e5",
       "textLength": 6525,
       "headings": 9,
       "images": 6,
@@ -701,6 +712,7 @@
       "start": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
       "end": "integrations",
       "filename": "gale.html",
+      "contentHash": "930ee1d4e276b8a82bcdbbce38a2375e21880aab3630f452990146f2d394efa1",
       "textLength": 2135,
       "headings": 6,
       "images": 0,
@@ -753,6 +765,7 @@
       "start": "integrations",
       "end": "-4-1-plugins-sm",
       "filename": "integrations-intro.html",
+      "contentHash": "c164ea8616bb73c94f7bab3d44568d1130256bceca78c2fdd0261b4043de3cc8",
       "textLength": 1546,
       "headings": 1,
       "images": 13,
@@ -775,10 +788,11 @@
       "start": "-4-1-plugins-sm",
       "end": "-4-2-datapack-goi-du-lieu",
       "filename": "plugins.html",
-      "textLength": 22842,
-      "headings": 46,
-      "images": 89,
-      "tables": 15,
+      "contentHash": "f511b74183b1598c78db8a6ee4d371a639134fc1325e394acd6d3e960bfa55ad",
+      "textLength": 23878,
+      "headings": 53,
+      "images": 100,
+      "tables": 18,
       "codeBlocks": 3,
       "firstHeadingId": "-4-1-plugins-sm",
       "anchors": [
@@ -791,7 +805,7 @@
         "-fawe",
         "-",
         "-lpc-luckpermchat-socialismus-interactivechat",
-        "-viaversion",
+        "-viaversion-geyserreversion",
         "-tab",
         "-anticheat-antihack-chong-gian-lan-danh-cho-smp-chill-o-ben-trong",
         "-antibackdoor-antibot-antivpn-antiddos-chan-co-ban-nhung-thanh-phan-co-y-pha-hoai-may-chu-ban-o-ben-ngoai",
@@ -814,6 +828,12 @@
         "-emage-image-display-makiscreen-customscreenmenu",
         "-discordsrv-discordsynthesis-discordlink",
         "-chunky-chunksmith-chunker",
+        "-craftorithm",
+        "-jobs-reborn-ecojobs-advancedjobs",
+        "-sertraline-hydrochloride-mythiccrucible-executableitems-ratziel-ecoitems",
+        "-auraskills-advancedskills-ecoskills",
+        "-custom-crops-infinitecrops-heirloom-litefarm-kaleidoscopecookery-papersdelight-emakicooking",
+        "-customfishing-infinitifishing-pyrofishingpro-litefish-evenmorefish",
         "-protpa-simpletpa-just-tpa-huskhomes",
         "-inventoryrollbackplus-axinventoryrestore",
         "-libertybans",
@@ -823,10 +843,11 @@
         "-customnameplates-betterhud",
         "-explock",
         "-coreprotect-stellarprotect-aetherlog-spyglass-prism",
-        "-dotman-puns-payment-korapayments-simppay-paybot",
+        "-dotman-puns-payment-korapayments-simppay-paybot-ezpay",
         "-nap-the",
         "-lagfixer",
         "-terraformgenerator-iris-dimension-engine",
+        "-cac-dong-thuoc-nha-mythic",
         "-mythicdungeons-litedungeon-dungeons-mydungeon-sincedungeon",
         "-advanceddungeonarena",
         "-season-core-aeternum-seasons-real-life-seasonsplus",
@@ -874,9 +895,9 @@
           "title": "LPC (LuckPermChat) / Socialismus / InteractiveChat​"
         },
         {
-          "id": "-viaversion",
+          "id": "-viaversion-geyserreversion",
           "level": 4,
-          "title": "ViaVersion​"
+          "title": "ViaVersion / GeyserReversion​"
         },
         {
           "id": "-tab",
@@ -979,6 +1000,36 @@
           "title": "Chunky / Chunksmith / Chunker​"
         },
         {
+          "id": "-craftorithm",
+          "level": 3,
+          "title": "Craftorithm​"
+        },
+        {
+          "id": "-jobs-reborn-ecojobs-advancedjobs",
+          "level": 4,
+          "title": "Jobs Reborn / EcoJobs / AdvancedJobs​"
+        },
+        {
+          "id": "-sertraline-hydrochloride-mythiccrucible-executableitems-ratziel-ecoitems",
+          "level": 4,
+          "title": "Sertraline-Hydrochloride / MythicCrucible / ExecutableItems / Ratziel / EcoItems​"
+        },
+        {
+          "id": "-auraskills-advancedskills-ecoskills",
+          "level": 4,
+          "title": "AuraSkills / AdvancedSkills / EcoSkills​"
+        },
+        {
+          "id": "-custom-crops-infinitecrops-heirloom-litefarm-kaleidoscopecookery-papersdelight-emakicooking",
+          "level": 4,
+          "title": "Custom-Crops / InfiniteCrops / Heirloom / LiteFarm / KaleidoscopeCookery / PapersDelight / EmakiCooking​"
+        },
+        {
+          "id": "-customfishing-infinitifishing-pyrofishingpro-litefish-evenmorefish",
+          "level": 4,
+          "title": "CustomFishing / InfinitiFishing / PyroFishingPro / LiteFish / EvenMoreFish​"
+        },
+        {
           "id": "-protpa-simpletpa-just-tpa-huskhomes",
           "level": 4,
           "title": "ProTPA / SimpleTPA / Just TPA / HuskHomes​"
@@ -1024,9 +1075,9 @@
           "title": "CoreProtect / StellarProtect / AetherLog / Spyglass / Prism​"
         },
         {
-          "id": "-dotman-puns-payment-korapayments-simppay-paybot",
+          "id": "-dotman-puns-payment-korapayments-simppay-paybot-ezpay",
           "level": 4,
-          "title": "Dotman / puns-payment / KoraPayments / SimpPay / PayBot​"
+          "title": "Dotman / puns-payment / KoraPayments / SimpPay / PayBot / EzPay​"
         },
         {
           "id": "-nap-the",
@@ -1040,22 +1091,27 @@
         },
         {
           "id": "-terraformgenerator-iris-dimension-engine",
-          "level": 3,
+          "level": 4,
           "title": "TerraformGenerator / Iris - Dimension Engine​"
         },
         {
+          "id": "-cac-dong-thuoc-nha-mythic",
+          "level": 4,
+          "title": "Các dòng thuộc nhà Mythic​"
+        },
+        {
           "id": "-mythicdungeons-litedungeon-dungeons-mydungeon-sincedungeon",
-          "level": 3,
+          "level": 4,
           "title": "MythicDungeons / LiteDungeon / Dungeons+ / MyDungeon / SinceDungeon /​"
         },
         {
           "id": "-advanceddungeonarena",
-          "level": 3,
+          "level": 4,
           "title": "AdvancedDungeonArena​"
         },
         {
           "id": "-season-core-aeternum-seasons-real-life-seasonsplus",
-          "level": 3,
+          "level": 4,
           "title": "Season Core / Aeternum Seasons / Real Life / SeasonsPlus​"
         },
         {
@@ -1070,6 +1126,7 @@
       "start": "-4-2-datapack-goi-du-lieu",
       "end": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
       "filename": "datapack.html",
+      "contentHash": "030122099a38f2bc2d34c46ac7c76add6f29dc67ab43556a82abeaaf7d2b2a7e",
       "textLength": 661,
       "headings": 1,
       "images": 3,
@@ -1092,6 +1149,7 @@
       "start": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
       "end": "-4-4-website-huu-ich",
       "filename": "admin-mistakes.html",
+      "contentHash": "9f6486a59879556cc648f819ec7dc0310addb68408e2fba9d8a27695f40b8198",
       "textLength": 4316,
       "headings": 7,
       "images": 22,
@@ -1150,6 +1208,7 @@
       "start": "-4-4-website-huu-ich",
       "end": "free-options",
       "filename": "useful-websites.html",
+      "contentHash": "268ed0cce16adcdfea9745ab7c063ad9c5ae329057068401980486823c312dfd",
       "textLength": 423,
       "headings": 1,
       "images": 0,
@@ -1172,6 +1231,7 @@
       "start": "free-options",
       "end": "operations",
       "filename": "free-options.html",
+      "contentHash": "031b6bbc041931895456a492382f92ad0d7a11d0d3f2013811b48a76c07f0b68",
       "textLength": 596,
       "headings": 1,
       "images": 4,
@@ -1194,6 +1254,7 @@
       "start": "operations",
       "end": "next",
       "filename": "operations.html",
+      "contentHash": "016166509943a5fbd11f23a0f855a7776f5a783232b6a43e9fcab410e53d8837",
       "textLength": 10024,
       "headings": 1,
       "images": 6,
@@ -1216,6 +1277,7 @@
       "start": "next",
       "end": "references",
       "filename": "next.html",
+      "contentHash": "7b51a719735e1a70fd647c8f9eea45aa13628726a25a38266646963021751fef",
       "textLength": 2637,
       "headings": 1,
       "images": 9,
@@ -1239,6 +1301,7 @@
       "end": null,
       "includeAttachments": true,
       "filename": "references.html",
+      "contentHash": "666140b85c439a356ac49bc7b0ea68d10007b16a872a03a8b19d5e439be53f3d",
       "textLength": 917,
       "headings": 2,
       "images": 3,
