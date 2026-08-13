@@ -1,7 +1,7 @@
 {
   "source": "https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/",
   "postId": 343982,
-  "generatedAt": "2026-08-03T22:18:20.180Z",
+  "generatedAt": "2026-08-10T21:58:13.522Z",
   "count": 21,
   "items": [
     {
@@ -150,8 +150,8 @@
       "start": "setup",
       "end": "-3-2-server-properties-thiet-dat-can-thiet",
       "filename": "setup-intro.html",
-      "contentHash": "125edba832eebd38a14e46a9b2aa6621f8c36710eb98a5837b4c48e94c9d85d3",
-      "textLength": 13746,
+      "contentHash": "f1abe2e96b3fce1e09b98f8eb27be24a71d8d6ea0cd01e89143637e67b1da31e",
+      "textLength": 13757,
       "headings": 6,
       "images": 45,
       "tables": 8,
@@ -404,10 +404,10 @@
       "start": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
       "end": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
       "filename": "paper-world.html",
-      "contentHash": "349b05bdc89b89a4549e2dcb23db81101a1d7c14c3a02760e9b72257a6f62653",
-      "textLength": 19770,
+      "contentHash": "be8aa325f4d1929233abd8ef802b0b79a489b4e2b6c581e98f2db6cc4735d925",
+      "textLength": 20071,
       "headings": 21,
-      "images": 21,
+      "images": 22,
       "tables": 2,
       "codeBlocks": 13,
       "firstHeadingId": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
@@ -788,8 +788,8 @@
       "start": "-4-1-plugins-sm",
       "end": "-4-2-datapack-goi-du-lieu",
       "filename": "plugins.html",
-      "contentHash": "f511b74183b1598c78db8a6ee4d371a639134fc1325e394acd6d3e960bfa55ad",
-      "textLength": 23878,
+      "contentHash": "6f38a684228394c15990a7d284e16d4620e96438bf7a1c46d4be4b913904e9f4",
+      "textLength": 23887,
       "headings": 53,
       "images": 100,
       "tables": 18,
@@ -822,7 +822,7 @@
         "-redstonelimiter-insights",
         "--2",
         "-commandwhilelist-commandblocker",
-        "-deluxemenu-zmenu-miaomenu-trmenu",
+        "-deluxemenu-zmenu-miaomenu-trmenu-kamenu",
         "--3",
         "-imagemotd-pictogram",
         "-emage-image-display-makiscreen-customscreenmenu",
@@ -975,9 +975,9 @@
           "title": "CommandWhilelist / CommandBlocker​"
         },
         {
-          "id": "-deluxemenu-zmenu-miaomenu-trmenu",
+          "id": "-deluxemenu-zmenu-miaomenu-trmenu-kamenu",
           "level": 4,
-          "title": "DeluxeMenu / zMenu / MiaoMenu / TrMenu​"
+          "title": "DeluxeMenu / zMenu / MiaoMenu / TrMenu / KaMenu​"
         },
         {
           "id": "-imagemotd-pictogram",
@@ -1301,7 +1301,7 @@
       "end": null,
       "includeAttachments": true,
       "filename": "references.html",
-      "contentHash": "666140b85c439a356ac49bc7b0ea68d10007b16a872a03a8b19d5e439be53f3d",
+      "contentHash": "679516c760c559c4001e5b80f21b31b50bdabbe3ac2e698bb1b5a2e962583f77",
       "textLength": 917,
       "headings": 2,
       "images": 3,

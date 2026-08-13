@@ -1,7 +1,7 @@
 {
   "source": "https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/",
   "postId": 343982,
-  "generatedAt": "2026-07-27T09:14:34.318Z",
+  "generatedAt": "2026-08-10T21:58:13.523Z",
   "count": 11,
   "downloadedCount": 11,
   "items": [
@@ -61,19 +61,19 @@
     },
     {
       "order": 7,
-      "name": "server.properties.txt",
-      "meta": "1.9 KB · Lượt xem: 52",
-      "source": "https://minevn.net/attachments/server-properties-txt.49865/",
-      "filename": "07-server.properties.txt",
+      "name": "spigot.txt",
+      "meta": "6.5 KB · Lượt xem: 62",
+      "source": "https://minevn.net/attachments/spigot-txt.49866/",
+      "filename": "08-spigot.txt",
       "isImage": false,
       "status": "downloaded"
     },
     {
       "order": 8,
-      "name": "spigot.txt",
-      "meta": "6.5 KB · Lượt xem: 62",
-      "source": "https://minevn.net/attachments/spigot-txt.49866/",
-      "filename": "08-spigot.txt",
+      "name": "server.properties.txt",
+      "meta": "1.9 KB · Lượt xem: 52",
+      "source": "https://minevn.net/attachments/server-properties-txt.49865/",
+      "filename": "07-server.properties.txt",
       "isImage": false,
       "status": "downloaded"
     },
