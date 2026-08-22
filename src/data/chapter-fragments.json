@@ -1,7 +1,7 @@
 {
   "source": "https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/",
   "postId": 343982,
-  "generatedAt": "2026-08-10T21:58:13.522Z",
+  "generatedAt": "2026-08-17T21:41:06.581Z",
   "count": 21,
   "items": [
     {
@@ -55,8 +55,8 @@
       "start": "preparation",
       "end": "setup",
       "filename": "preparation.html",
-      "contentHash": "b4774ccef39630ae991a624b6bea6323dcaac3934fd40a38c9b5428e30a8424e",
-      "textLength": 19495,
+      "contentHash": "fd26cd38b068a6a1ac3b60a1538495fffe5cb39dd64b4fae107949e19e3699ea",
+      "textLength": 19504,
       "headings": 13,
       "images": 59,
       "tables": 5,
@@ -69,7 +69,7 @@
         "-purper",
         "-leaf",
         "-folia",
-        "-luminol-lophine",
+        "-luminol-lophine-canvas",
         "-arclight-mohist",
         "hosting",
         "-2-2-1-luu-tam-ve-host-nuoc-ngoai-host-viet-nam",
@@ -109,9 +109,9 @@
           "title": "Folia​"
         },
         {
-          "id": "-luminol-lophine",
+          "id": "-luminol-lophine-canvas",
           "level": 4,
-          "title": "Luminol / Lophine​"
+          "title": "Luminol / Lophine / Canvas​"
         },
         {
           "id": "-arclight-mohist",
@@ -150,7 +150,7 @@
       "start": "setup",
       "end": "-3-2-server-properties-thiet-dat-can-thiet",
       "filename": "setup-intro.html",
-      "contentHash": "f1abe2e96b3fce1e09b98f8eb27be24a71d8d6ea0cd01e89143637e67b1da31e",
+      "contentHash": "5290c4e4abc69efe83b5eb3d8db3cd8452e4fdb3c140c799531b79cdc8dd4bda",
       "textLength": 13757,
       "headings": 6,
       "images": 45,
@@ -765,8 +765,8 @@
       "start": "integrations",
       "end": "-4-1-plugins-sm",
       "filename": "integrations-intro.html",
-      "contentHash": "c164ea8616bb73c94f7bab3d44568d1130256bceca78c2fdd0261b4043de3cc8",
-      "textLength": 1546,
+      "contentHash": "12f43aad101b334101fa23bec31628dc79465f86e4f8d0b0aa9ecd6d7daafb7b",
+      "textLength": 1348,
       "headings": 1,
       "images": 13,
       "tables": 3,
