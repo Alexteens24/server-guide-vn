@@ -1,7 +1,7 @@
 {
   "source": "https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/",
   "postId": 343982,
-  "generatedAt": "2026-08-17T21:41:06.581Z",
+  "generatedAt": "2026-08-24T21:44:11.184Z",
   "count": 21,
   "items": [
     {
@@ -55,11 +55,11 @@
       "start": "preparation",
       "end": "setup",
       "filename": "preparation.html",
-      "contentHash": "fd26cd38b068a6a1ac3b60a1538495fffe5cb39dd64b4fae107949e19e3699ea",
-      "textLength": 19504,
+      "contentHash": "0f9d383f0e3459e3a9d69b6f2701fbb3fa0b960ae8e65aa0a8f34d2bbe53fc4a",
+      "textLength": 19651,
       "headings": 13,
-      "images": 59,
-      "tables": 5,
+      "images": 63,
+      "tables": 8,
       "codeBlocks": 0,
       "firstHeadingId": "preparation",
       "anchors": [
@@ -150,8 +150,8 @@
       "start": "setup",
       "end": "-3-2-server-properties-thiet-dat-can-thiet",
       "filename": "setup-intro.html",
-      "contentHash": "5290c4e4abc69efe83b5eb3d8db3cd8452e4fdb3c140c799531b79cdc8dd4bda",
-      "textLength": 13757,
+      "contentHash": "e1dbd50115db9b3af663d6ccdadaae36a37088874aaa56dc6d78e34bfe79861b",
+      "textLength": 13764,
       "headings": 6,
       "images": 45,
       "tables": 8,
@@ -788,10 +788,10 @@
       "start": "-4-1-plugins-sm",
       "end": "-4-2-datapack-goi-du-lieu",
       "filename": "plugins.html",
-      "contentHash": "6f38a684228394c15990a7d284e16d4620e96438bf7a1c46d4be4b913904e9f4",
-      "textLength": 23887,
-      "headings": 53,
-      "images": 100,
+      "contentHash": "3d912ddf8a526cfb9ad33d21a15710791340fc6a342c8997632f9283bf5af1bf",
+      "textLength": 24207,
+      "headings": 55,
+      "images": 103,
       "tables": 18,
       "codeBlocks": 3,
       "firstHeadingId": "-4-1-plugins-sm",
@@ -826,13 +826,15 @@
         "--3",
         "-imagemotd-pictogram",
         "-emage-image-display-makiscreen-customscreenmenu",
+        "-giftcodex-advancedredeem",
+        "-airauctions-zauctionhouse-player-auctions-axauctions",
         "-discordsrv-discordsynthesis-discordlink",
         "-chunky-chunksmith-chunker",
         "-craftorithm",
         "-jobs-reborn-ecojobs-advancedjobs",
         "-sertraline-hydrochloride-mythiccrucible-executableitems-ratziel-ecoitems",
         "-auraskills-advancedskills-ecoskills",
-        "-custom-crops-infinitecrops-heirloom-litefarm-kaleidoscopecookery-papersdelight-emakicooking",
+        "-custom-crops-infinitecrops-heirloom-litefarm-kaleidoscopecookery-papersdelight-emakicooking-novafarmersdelight",
         "-customfishing-infinitifishing-pyrofishingpro-litefish-evenmorefish",
         "-protpa-simpletpa-just-tpa-huskhomes",
         "-inventoryrollbackplus-axinventoryrestore",
@@ -849,7 +851,7 @@
         "-terraformgenerator-iris-dimension-engine",
         "-cac-dong-thuoc-nha-mythic",
         "-mythicdungeons-litedungeon-dungeons-mydungeon-sincedungeon",
-        "-advanceddungeonarena",
+        "-advanceddungeonarena-dungeon-maker-eddungeons-sincedungeon",
         "-season-core-aeternum-seasons-real-life-seasonsplus",
         "-ultimateautorestart"
       ],
@@ -990,6 +992,16 @@
           "title": "Emage / Image-Display / MakiScreen / CustomScreenMenu ​"
         },
         {
+          "id": "-giftcodex-advancedredeem",
+          "level": 4,
+          "title": "GiftcodeX / AdvancedRedeem​"
+        },
+        {
+          "id": "-airauctions-zauctionhouse-player-auctions-axauctions",
+          "level": 4,
+          "title": "AirAuctions / zAuctionHouse / Player Auctions / AxAuctions​"
+        },
+        {
           "id": "-discordsrv-discordsynthesis-discordlink",
           "level": 4,
           "title": "DiscordSRV / DiscordSynthesis / DiscordLink​"
@@ -1020,9 +1032,9 @@
           "title": "AuraSkills / AdvancedSkills / EcoSkills​"
         },
         {
-          "id": "-custom-crops-infinitecrops-heirloom-litefarm-kaleidoscopecookery-papersdelight-emakicooking",
+          "id": "-custom-crops-infinitecrops-heirloom-litefarm-kaleidoscopecookery-papersdelight-emakicooking-novafarmersdelight",
           "level": 4,
-          "title": "Custom-Crops / InfiniteCrops / Heirloom / LiteFarm / KaleidoscopeCookery / PapersDelight / EmakiCooking​"
+          "title": "Custom-Crops / InfiniteCrops / Heirloom / LiteFarm / KaleidoscopeCookery / PapersDelight / EmakiCooking / NovaFarmersDelight​"
         },
         {
           "id": "-customfishing-infinitifishing-pyrofishingpro-litefish-evenmorefish",
@@ -1105,9 +1117,9 @@
           "title": "MythicDungeons / LiteDungeon / Dungeons+ / MyDungeon / SinceDungeon /​"
         },
         {
-          "id": "-advanceddungeonarena",
+          "id": "-advanceddungeonarena-dungeon-maker-eddungeons-sincedungeon",
           "level": 4,
-          "title": "AdvancedDungeonArena​"
+          "title": "AdvancedDungeonArena / Dungeon Maker / EdDungeons / SinceDungeon​"
         },
         {
           "id": "-season-core-aeternum-seasons-real-life-seasonsplus",
@@ -1208,21 +1220,27 @@
       "start": "-4-4-website-huu-ich",
       "end": "free-options",
       "filename": "useful-websites.html",
-      "contentHash": "268ed0cce16adcdfea9745ab7c063ad9c5ae329057068401980486823c312dfd",
-      "textLength": 423,
-      "headings": 1,
-      "images": 0,
-      "tables": 0,
+      "contentHash": "2654847478ecb33851b0c4aaa5bdf61fe69039839c8d84bffe8841719b7ad11b",
+      "textLength": 2600,
+      "headings": 2,
+      "images": 24,
+      "tables": 1,
       "codeBlocks": 0,
       "firstHeadingId": "-4-4-website-huu-ich",
       "anchors": [
-        "-4-4-website-huu-ich"
+        "-4-4-website-huu-ich",
+        "-4-5-tai-nguyen-ngau-nhien-minh-thay-ngau-det-trong-qua-trinh-xay-dung-bai-viet-nay-awesome-minecraft"
       ],
       "outline": [
         {
           "id": "-4-4-website-huu-ich",
           "level": 3,
           "title": "4.4. Website hữu ích​"
+        },
+        {
+          "id": "-4-5-tai-nguyen-ngau-nhien-minh-thay-ngau-det-trong-qua-trinh-xay-dung-bai-viet-nay-awesome-minecraft",
+          "level": 3,
+          "title": "4.5. Tài nguyên ngẫu nhiên mình thấy ngầu đét trong quá trình xây dựng bài viết này (awesome-minecraft)​"
         }
       ]
     },
@@ -1231,10 +1249,10 @@
       "start": "free-options",
       "end": "operations",
       "filename": "free-options.html",
-      "contentHash": "031b6bbc041931895456a492382f92ad0d7a11d0d3f2013811b48a76c07f0b68",
-      "textLength": 596,
+      "contentHash": "ec48a39de89d5127a74cacf107e6177398c6dd13684258c3a23d55464ae7698c",
+      "textLength": 1412,
       "headings": 1,
-      "images": 4,
+      "images": 7,
       "tables": 0,
       "codeBlocks": 0,
       "firstHeadingId": "free-options",
@@ -1254,10 +1272,10 @@
       "start": "operations",
       "end": "next",
       "filename": "operations.html",
-      "contentHash": "7e0662e132289a2f642099cf5415c4bfb500c7f9d507ebbc80833b403e63017b",
-      "textLength": 10024,
+      "contentHash": "dc5d9c1fadf405fcb21477f364713393379bcf301d673fa6fd5232a8c22a276a",
+      "textLength": 10102,
       "headings": 1,
-      "images": 6,
+      "images": 7,
       "tables": 0,
       "codeBlocks": 1,
       "firstHeadingId": "operations",
@@ -1277,10 +1295,10 @@
       "start": "next",
       "end": "references",
       "filename": "next.html",
-      "contentHash": "df351ea8cf39e57da078b10e1f4a9b5d35984aa196390a102246f65ab402b7c3",
-      "textLength": 2637,
+      "contentHash": "04f969d1eb68fc2c675f720234e143883191e6eaaf6fd48709d4c0fca72c5a91",
+      "textLength": 2773,
       "headings": 1,
-      "images": 9,
+      "images": 10,
       "tables": 1,
       "codeBlocks": 0,
       "firstHeadingId": "next",
@@ -1301,7 +1319,7 @@
       "end": null,
       "includeAttachments": true,
       "filename": "references.html",
-      "contentHash": "679516c760c559c4001e5b80f21b31b50bdabbe3ac2e698bb1b5a2e962583f77",
+      "contentHash": "801fc62ab456f6e445801d5e088a925a6e41b18a7cbfabfbde4520b137231225",
       "textLength": 917,
       "headings": 2,
       "images": 3,
