@@ -38,11 +38,7 @@ for (const [filename, metadata] of byFilename) {
 
   const width = metadata.decorative ? 128 : 1280;
   const isAnimated = animatedFiles.has(filename);
-  const sharpInstance = sharp(source);
-  if (!isAnimated) {
-    sharpInstance.pages(1);
-  }
-  await sharpInstance
+  await sharp(source, isAnimated ? {} : { pages: 1 })
     .rotate()
     .resize({ width, height: width, fit: 'inside', withoutEnlargement: true })
     .webp({
