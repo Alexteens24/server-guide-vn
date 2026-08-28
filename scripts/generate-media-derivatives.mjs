@@ -16,6 +16,12 @@ for (const item of manifest.items) {
   });
 }
 
+const animatedFiles = new Set(
+  manifest.items
+    .filter((item) => item.status === 'downloaded' && item.filename && item.contentType === 'image/gif')
+    .map((item) => item.filename),
+);
+
 let generated = 0;
 let reused = 0;
 for (const [filename, metadata] of byFilename) {
@@ -31,10 +37,19 @@ for (const [filename, metadata] of byFilename) {
   }
 
   const width = metadata.decorative ? 128 : 1280;
-  await sharp(source, { pages: 1 })
+  const isAnimated = animatedFiles.has(filename);
+  const sharpInstance = sharp(source);
+  if (!isAnimated) {
+    sharpInstance.pages(1);
+  }
+  await sharpInstance
     .rotate()
     .resize({ width, height: width, fit: 'inside', withoutEnlargement: true })
-    .webp({ quality: metadata.decorative ? 72 : 80, effort: 4 })
+    .webp({
+      quality: metadata.decorative ? 72 : 80,
+      effort: 4,
+      ...(isAnimated ? { animated: true } : {}),
+    })
     .toFile(output);
   generated++;
 }
