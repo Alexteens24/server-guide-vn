@@ -31,7 +31,7 @@ for (const [filename, metadata] of byFilename) {
     stat(source),
     stat(output).catch(() => null),
   ]);
-  if (outputStat && outputStat.mtimeMs >= sourceStat.mtimeMs) {
+  if (outputStat && !animatedFiles.has(filename) && outputStat.mtimeMs >= sourceStat.mtimeMs) {
     reused++;
     continue;
   }
