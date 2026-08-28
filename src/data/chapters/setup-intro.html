@@ -19,7 +19,7 @@ Không cần đọc hiểu hết, chỉ cần <a href="https://spark.lucko.me/do
 <li><div style="text-align: justify">Docker Image: Khuyến khích bản Java ổn định nhất như <a href="https://docs.aws.amazon.com/corretto/latest/corretto-25-ug/downloads-list.html" target="_blank" class="link link--external" rel="noreferrer">Amazon Corretto</a> --&gt; <a href="https://www.graalvm.org/" target="_blank" class="link link--external" rel="noreferrer">GraalVM</a> (Bản Enterprise) -&gt; <a href="https://adoptium.net/temurin/releases" target="_blank" class="link link--external" rel="noreferrer">Eclipse Adoptium</a>​</div></li>
 </ul><div style="text-align: justify"><span style="color: rgb(61, 142, 185)">Bộ cờ JVM phù hợp với máy chủ của bạn?</span> Phần lớn các máy chủ Minecraft hiện nay đều sử dụng <a href="https://docs.papermc.io/paper/aikars-flags/" target="_blank" class="link link--external" rel="noreferrer">Aikar’s Flags</a>. Tuy nhiên, các thiết lập này được tạo từ thời Java 8 (2014 – 2018), khi hệ sinh thái Java còn đơn giản. Đến nay, Minecraft và Java đã phát triển rất xa (tiệm cận 26.x), nên nhiều flags đã lỗi thời hoặc được tích hợp sẵn trong các JVM đời mới. Việc chỉ dùng Aikar’s Flags thường không tạo khác biệt rõ rệt, thậm chí đôi khi chỉ mang tính “cho có”. Cuối cùng, thiết lập JVM vẫn phụ thuộc chủ yếu vào phần cứng, mục tiêu phát triển máy chủ và số lượng người chơi thực tế của máy chủ bạn.<br>
 &gt; Tham khảo bài viết giải thích chi tiết các khái niệm của <a href="https://github.com/MeowIce/meowice-flags" target="_blank" class="link link--external" rel="noreferrer"><b><span style="font-size: 18px">meowice-flags</span></b></a> dành cho SMP.<br>
-&gt; Tham khảo <a href="https://github.com/Cooperly/v2flags" target="_blank" class="link link--external" rel="noreferrer">v2flags</a> dành cho máy chủ / Client chiến Modpack cực nặng.​</div><br>
+&gt; Tham khảo <a href="https://github.com/Cooperly/v2flags" target="_blank" class="link link--external" rel="noreferrer">v2flags</a> / <a href="https://github.com/Lucentnoctix/VMCF" target="_blank" class="link link--external" rel="noreferrer">VMCF</a> dành cho máy chủ / Client chiến Modpack cực nặng.​</div><br>
 <div class="bbImageWrapper" title="1776591919591.webp">
 <img src="__BASE__media/source/064-1776591919591-b464429d.webp" class="bbImage" style="" alt="1776591919591.webp" title="1776591919591.webp" width="587" height="302" loading="lazy" decoding="async">
 </div><br>
@@ -173,7 +173,7 @@ Mặc định <code class="bbCodeInline">SQLite</code>, nên khi &gt;20 người
 <div style="text-align: justify"><img src="__BASE__media/source/084-media-519acac7.gif" class="smilie" loading="lazy" alt=":-&quot;" title="Huýt sáo :-&quot;" decoding="async">Cần có thời gian hướng dẫn nhân sự máy chủ sử dụng. Staff mà lười tìm hiểu <u>lịch sử</u> khu vực cần khôi phục, dùng lệnh ngay --&gt; sẽ dẫn đến tình trạng nhân bản Vật phẩm - <a href="https://2b2t.miraheze.org/wiki/Duplication_glitch" target="_blank" class="link link--external" rel="noreferrer">Item Dupe</a>.​</div></td><td style="width: 33.2235%">Ưu tiên cho những máy chủ SMP nhỏ, Quản trị viên muốn dành thời gian tương tác với người chơi. <div class="bbImageWrapper" title="CHV7ZR8.png">
 <img src="__BASE__media/source/085-CHV7ZR8-03ef4343.png" class="bbImage" style="" alt="CHV7ZR8.png" title="" width="854" height="480" loading="lazy" decoding="async">
 </div></td></tr><tr><td style="width: 12.7027%"><a href="https://modrinth.com/plugin/griefprevention" target="_blank" class="link link--external" rel="noreferrer">GriefPrevention</a> / <a href="https://www.spigotmc.org/resources/lands-%E2%AD%95-land-claim-plugin-%E2%9C%85-grief-prevention-protection-gui-management-nations-wars-26-x-support.53313/" target="_blank" class="link link--external" rel="noreferrer">Lands</a> / <a href="https://modrinth.com/plugin/simpleclaimsystem" target="_blank" class="link link--external" rel="noreferrer">SimpleClaimSystem</a><br>
-/ <a href="https://modrinth.com/plugin/towny" target="_blank" class="link link--external" rel="noreferrer">Towny</a><br>
+/ <a href="https://modrinth.com/plugin/towny" target="_blank" class="link link--external" rel="noreferrer">Towny</a> / <a href="https://github.com/LunaDeerMC/Dominion" target="_blank" class="link link--external" rel="noreferrer">Dominion</a><br>
 -- Người chơi chiếm trọn một khu vực</td><td style="width: 53.964%"><div style="text-align: justify"><img src="__BASE__media/source/086-media-2ad5afc3.gif" class="smilie" loading="lazy" alt=":)" title="Cười :)" decoding="async">Không cần cơ sở dữ liệu, người chơi dùng vài câu lệnh đơn giản là xong, tích hợp GUI đồ họa nhìn chiến đét <img src="__BASE__media/source/076-media-a7ccbcaf.gif" class="smilie" loading="lazy" alt="^:)^" title="Nhận 1 lạy ^:)^" decoding="async"> Kết hợp với hệ thống Rank, quản trị viên có thể rao bán đặc quyền nhất định.​</div><hr><img src="__BASE__media/source/015-media-754976fe.gif" class="smilie" loading="lazy" alt=":|" title="Không biết nói gì :|" decoding="async">NBT/Datapack/Vật phẩm tùy chỉnh có thể <u><b>không</b></u> bảo vệ được. Người mới vào, sẽ bị khu vực được chiếm của người đi trước cản trở. <div class="bbImageWrapper" title="1776640969971.webp">
 <img src="__BASE__media/source/087-1776640969971-a15a4f3c.webp" class="bbImage" style="width: 587px" alt="1776640969971.webp" title="1776640969971.webp" width="546" height="140" loading="lazy" decoding="async">
 </div> <div class="bbImageWrapper" title="1776640903865.webp">
@@ -214,7 +214,7 @@ Hướng Dẫn Setups Server Sinh Tồn PE PC Chơi Chung Với Các Lệnh TPA,
 <div class="contentRow-snippet">Bạn đang muốn mở server Minecraft Sinh Tồn cho PE (Bedrock) và PC (Java) chơi chung?Trong video này, mình sẽ hướng dẫn setup server chi tiết từ A–Z, phù hợp ...</div>
 <div class="contentRow-minor contentRow-minor--hideLinks">
 <span>
-<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+<img src="__BASE__media/source/094-www.youtube-79e3bad5.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
 </span>
 www.youtube.com
 </div>
@@ -240,7 +240,7 @@ HƯỚNG DẪN MỞ PORT SERVER MINECRAFT 2025 | TÊN MIỀN MIỄN PHÍ
 <div class="contentRow-snippet">Liên Hệ Cv: <a href="https://minevn.net/cdn-cgi/l/email-protection" class="__cf_email__" target="_blank" rel="noreferrer">[email&nbsp;protected]</a>ác bạn có thể tạo server Minecraft 24/7 qua website GachCloud.Truy cập qua: https://gachcloud.net/tunghaidon và nhập Mã g...</div>
 <div class="contentRow-minor contentRow-minor--hideLinks">
 <span>
-<img src="__BASE__media/source/094-youtu-3bce61cc.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+<img src="__BASE__media/source/094-www.youtube-79e3bad5.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
 </span>
 www.youtube.com
 </div>

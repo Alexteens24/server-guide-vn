@@ -123,8 +123,9 @@ const uniqueSources = [...new Map(occurrences.map((item) => [item.source, item])
 await mkdir(outputDirectory, { recursive: true });
 
 let existingBySource = new Map();
+let existingManifest = null;
 try {
-  const existingManifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  existingManifest = JSON.parse(await readFile(manifestPath, 'utf8'));
   existingBySource = new Map(
     existingManifest.items
       .filter((item) => item.status === 'downloaded' && item.filename)
@@ -177,6 +178,13 @@ const manifest = {
   failedCount: downloads.filter((item) => item.status === 'failed').length,
   items,
 };
+if (existingManifest) {
+  const { generatedAt: _oldGeneratedAt, ...oldData } = existingManifest;
+  const { generatedAt: _newGeneratedAt, ...newData } = manifest;
+  if (JSON.stringify(oldData) === JSON.stringify(newData)) {
+    manifest.generatedAt = existingManifest.generatedAt;
+  }
+}
 
 await mkdir(path.dirname(manifestPath), { recursive: true });
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);

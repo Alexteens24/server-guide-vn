@@ -13,7 +13,16 @@ $('.original-break-figure[aria-hidden="true"]').removeAttr('aria-hidden');
 $('.bbCodeInlineSpoiler:has(a)').removeAttr('tabindex role');
 $('.bbCodeCode').attr('tabindex', '0');
 $('.original-chapter-heading').each((_, heading) => {
-  $(heading).nextUntil('.original-chapter-heading').addBack().wrapAll('<section class="original-chapter"></section>');
+  const $heading = $(heading);
+  const $section = $('<section class="original-chapter"></section>');
+  $heading.before($section);
+  $section.append($heading);
+  let $next = $heading.next();
+  while ($next.length && !$next.hasClass('original-chapter-heading')) {
+    const $toMove = $next;
+    $next = $next.next();
+    $section.append($toMove);
+  }
 });
 
 const html = optimizeEmbeddedMedia($.html(), base);

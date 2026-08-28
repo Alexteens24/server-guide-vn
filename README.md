@@ -34,15 +34,20 @@ Guide dùng cấu trúc single-page. Mục lục ở thanh bên và đầu bài 
 
 ## Media nguồn
 
-`src/data/media.json` là manifest của 346 vị trí ảnh trong bài `#1`, tương ứng 269 file duy nhất nằm tại `public/media/source/`. Importer có thể chạy lại từ một HTML snapshot hoặc trực tiếp từ URL nguồn:
+`src/data/media.json` là manifest của 357 vị trí ảnh trong bài `#1`, tương ứng 280 file duy nhất nằm tại `public/media/source/`. Importer có thể chạy lại từ một HTML snapshot hoặc trực tiếp từ URL nguồn:
 
 ```bash
+npm run source:fetch -- /tmp/minevn-guide.html
+npm run media:import -- /tmp/minevn-guide.html
+npm run content:import -- /tmp/minevn-guide.html
+# hoặc fetch trực tiếp bằng importer
 npm run media:import -- /path/to/minevn-guide.html
-# hoặc
 npm run media:import
 ```
 
 Importer tái sử dụng file đã tải, thử fallback cho nguồn chặn hotlink và ghi lại URL gốc cho từng media. Chỉ chạy lệnh này khi có quyền tái bản nội dung nguồn.
+
+Workflow `Sync MineVN source` chạy lúc 04:17 sáng thứ Ba hàng tuần (giờ Việt Nam) và có thể chạy thủ công. Workflow tải một snapshot, nhập lại media/nội dung, chạy `npm run verify`, rồi mở hoặc cập nhật PR `automation/sync-minevn` nếu bài gốc thay đổi; không ghi trực tiếp vào `main`.
 
 ## GitHub Pages
 

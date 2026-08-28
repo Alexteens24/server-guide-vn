@@ -1,0 +1,86 @@
+name: Sync MineVN source
+
+on:
+  schedule:
+    # 04:17 thứ Ba theo giờ Việt Nam (21:17 UTC thứ Hai).
+    - cron: '17 21 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-minevn-source
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch MineVN post
+        run: npm run source:fetch -- "$RUNNER_TEMP/minevn-guide.html"
+
+      - name: Import media
+        run: npm run media:import -- "$RUNNER_TEMP/minevn-guide.html"
+
+      - name: Import content
+        run: npm run content:import -- "$RUNNER_TEMP/minevn-guide.html"
+
+      - name: Verify imported guide
+        run: npm run verify
+
+      - name: Detect source changes
+        id: changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain -- public/attachments public/media/source src/data)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Có thay đổi mới từ bài MineVN." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Bài MineVN chưa thay đổi." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Create or update sync pull request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/sync-minevn
+          base: main
+          delete-branch: true
+          commit-message: 'chore: sync MineVN source'
+          title: 'chore: sync MineVN source'
+          body: |
+            Đồng bộ tự động nội dung bài gốc trên MineVN.
+
+            Workflow đã:
+            - tải một snapshot duy nhất của post #343982;
+            - nhập media, attachment và các fragment nội dung;
+            - chạy toàn bộ `npm run verify`.
+
+            Hãy xem diff nội dung và media trước khi merge.
+          add-paths: |
+            public/attachments
+            public/media/source
+            src/data/attachments.json
+            src/data/chapter-fragments.json
+            src/data/chapters
+            src/data/guide-pages.json
+            src/data/media.json
+            src/data/original-post-meta.json
+            src/data/original-post.html
