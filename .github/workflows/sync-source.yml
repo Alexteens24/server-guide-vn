@@ -43,6 +43,12 @@ jobs:
       - name: Verify imported guide
         run: npm run verify
 
+      - name: Record weekly sync run
+        shell: bash
+        run: |
+          mkdir -p .github
+          date -u +'%G-W%V' > .github/minevn-sync-week
+
       - name: Detect source changes
         id: changes
         shell: bash
@@ -56,7 +62,6 @@ jobs:
           fi
 
       - name: Create or update sync pull request
-        if: steps.changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -75,6 +80,7 @@ jobs:
 
             Hãy xem diff nội dung và media trước khi merge.
           add-paths: |
+            .github/minevn-sync-week
             public/attachments
             public/media/source
             src/data/attachments.json

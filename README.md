@@ -47,7 +47,7 @@ npm run media:import
 
 Importer tái sử dụng file đã tải, thử fallback cho nguồn chặn hotlink và ghi lại URL gốc cho từng media. Chỉ chạy lệnh này khi có quyền tái bản nội dung nguồn.
 
-Workflow `Sync MineVN source` chạy lúc 04:17 sáng thứ Ba hàng tuần (giờ Việt Nam) và có thể chạy thủ công. Workflow tải một snapshot, nhập lại media/nội dung, chạy `npm run verify`, rồi mở hoặc cập nhật PR `automation/sync-minevn` nếu bài gốc thay đổi; không ghi trực tiếp vào `main`.
+Workflow `Sync MineVN source` chạy lúc 04:17 sáng thứ Ba hàng tuần (giờ Việt Nam) và có thể chạy thủ công. Workflow tải một snapshot, nhập lại media/nội dung, chạy `npm run verify`, rồi mở hoặc cập nhật PR `automation/sync-minevn` mỗi tuần; nếu bài gốc không thay đổi, PR chỉ cập nhật dấu tuần đồng bộ. Workflow không ghi trực tiếp vào `main`.
 
 ## GitHub Pages
 
