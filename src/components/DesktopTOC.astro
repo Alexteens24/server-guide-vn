@@ -1,0 +1,106 @@
+---
+import type { SidebarChapter, SidebarSection } from '../utils/guide-format';
+import sidebarTreeUntyped from '../data/sidebar-data.json';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const sidebarTree = sidebarTreeUntyped as SidebarChapter[];
+---
+
+<nav class="desktop-toc" aria-label="Mục lục chi tiết">
+  <div class="desktop-toc__head">
+    <span class="desktop-toc__eyebrow">Mục lục</span>
+  </div>
+  <ol class="desktop-toc__list">
+    {sidebarTree.map((chapter) => (
+      <li data-toc-chapter={chapter.id} class="desktop-toc__chapter">
+        <a
+          href={`${base}#${chapter.id}`}
+          data-chapter-link={chapter.id}
+          data-chapter-number={chapter.number}
+          data-chapter-title={chapter.title}
+        >
+          <span class="desktop-toc__number">{chapter.number}</span>
+          <strong>{chapter.title}</strong>
+        </a>
+        {chapter.sections && chapter.sections.length > 0 && (
+          <ol class="desktop-toc__section-list">
+            {chapter.sections.map((section) => (
+              <li data-toc-section={section.id || section.targetId}>
+                {section.isGroup && section.children ? (
+                  <>
+                    <div class="desktop-toc__section-row">
+                      <span class="desktop-toc__number">{section.number}</span>
+                      <span>{section.title}</span>
+                      <button
+                        type="button"
+                        class="desktop-toc__toggle"
+                        aria-expanded="false"
+                        aria-controls={`${section.id}-toc-children`}
+                        data-toc-toggle={section.id}
+                        aria-label={`Mở rộng ${section.title}`}
+                      >
+                        <svg
+                          class="desktop-toc__chevron"
+                          width="10"
+                          height="10"
+                          viewBox="0 0 10 10"
+                          aria-hidden="true"
+                          fill="none"
+                        >
+                          <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
+                    </div>
+                    <ol id={`${section.id}-toc-children`} class="desktop-toc__subsection-list" hidden>
+                      {section.children.map((child: SidebarSection) => (
+                        <li data-toc-subsection={child.id}>
+                          <a
+                            href={`${base}#${child.targetId || child.id}`}
+                            data-section-link={child.targetId || child.id}
+                          >
+                            <span class="desktop-toc__number">{child.number}</span>
+                            <span>{child.title}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </>
+                ) : (
+                  <>
+                    {section.targetId && (
+                      <a
+                        href={`${base}#${section.targetId}`}
+                        data-section-link={section.targetId}
+                        class="desktop-toc__section-link"
+                      >
+                        <span class="desktop-toc__number">{section.number}</span>
+                        <span>{section.title}</span>
+                      </a>
+                    )}
+                    {section.subsections && section.subsections.length > 0 && (
+                      <ol class="desktop-toc__subsection-list">
+                        {section.subsections.map((sub) => (
+                          <li data-toc-subsection={sub.id || sub.targetId}>
+                            <a
+                              href={`${base}#${sub.targetId || sub.id}`}
+                              data-subsection-link={sub.targetId || sub.id}
+                            >
+                              <span>{sub.title}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ol>
+                    )}
+                  </>
+                )}
+              </li>
+            ))}
+          </ol>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

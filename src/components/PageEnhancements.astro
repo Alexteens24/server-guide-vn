@@ -223,6 +223,8 @@ const chapters = guide.pages.filter((page) => !page.parent);
     const sections = Array.from(article.querySelectorAll<HTMLElement>('.original-chapter'));
     const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]'));
     let activeId = '';
+    let activeSectionId = '';
+    const base = window.location.origin + window.location.pathname.replace(/\/$/, '');
 
     function setActiveChapter(id = '') {
       if (activeId === id) return;
@@ -236,6 +238,36 @@ const chapters = guide.pages.filter((page) => !page.parent);
       });
     }
 
+    function setActiveSection(id = '') {
+      if (activeSectionId === id) return;
+      activeSectionId = id;
+
+      document.querySelectorAll<HTMLElement>('[data-section-link]').forEach((link) => {
+        const active = link.dataset.sectionLink === id;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      document.querySelectorAll<HTMLElement>('[data-subsection-link]').forEach((link) => {
+        const active = link.dataset.subsectionLink === id;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+
+      const parentChapter = document.querySelector<HTMLElement>(
+        `[data-section-link="${id}"]`,
+      )?.closest('[data-chapter-toggle]');
+      parentChapter?.setAttribute('aria-expanded', 'true');
+      parentChapter?.nextElementSibling?.removeAttribute('hidden');
+
+      const parentSection = document.querySelector<HTMLElement>(
+        `[data-subsection-link="${id}"]`,
+      )?.closest('[data-section-toggle]');
+      parentSection?.setAttribute('aria-expanded', 'true');
+      parentSection?.nextElementSibling?.removeAttribute('hidden');
+    }
+
     function syncFromPosition() {
       const readingLine = Math.min(window.innerHeight * 0.28, 240);
       const current = sections.find((section) => {
@@ -244,6 +276,15 @@ const chapters = guide.pages.filter((page) => !page.parent);
       });
       const heading = current?.querySelector<HTMLElement>('.original-chapter-heading');
       setActiveChapter(heading?.id || '');
+
+      const allHeadings = Array.from(
+        article!.querySelectorAll<HTMLElement>('[id]:not(.original-chapter-heading):not(#noi-dung)'),
+      ).filter((h) => {
+        const bounds = h.getBoundingClientRect();
+        return bounds.top <= readingLine && bounds.bottom > readingLine;
+      });
+      const target = allHeadings[0];
+      setActiveSection(target?.id || '');
     }
 
     let navigationScheduled = false;
@@ -267,40 +308,106 @@ const chapters = guide.pages.filter((page) => !page.parent);
     window.addEventListener('scroll', scheduleNavigationSync, { passive: true });
     window.addEventListener('resize', scheduleNavigationSync, { passive: true });
 
+    function scrollToTarget(event: Event, target: HTMLElement, targetId: string) {
+      const targetSection = target?.closest<HTMLElement>('.original-chapter');
+      const targetIndex = targetSection ? sections.indexOf(targetSection) : -1;
+      const measuredSections = targetIndex >= 0 ? sections.slice(0, targetIndex + 1) : [];
+
+      event.preventDefault();
+      measuredSections.forEach((section) => {
+        section.style.contentVisibility = 'visible';
+      });
+      window.history.pushState(null, '', `${base}#${targetId}`);
+      const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = 'auto';
+      target.scrollIntoView({ block: 'start' });
+      window.requestAnimationFrame(() => {
+        target.scrollIntoView({ block: 'start' });
+        window.requestAnimationFrame(() => {
+          target.scrollIntoView({ block: 'start' });
+          document.documentElement.style.scrollBehavior = previousScrollBehavior;
+          syncFromPosition();
+        });
+      });
+    }
+
     links.forEach((link) => {
       link.addEventListener('click', (event) => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         const targetId = link.dataset.chapterLink;
-        const target = targetId ? document.getElementById(targetId) : null;
-        const targetSection = target?.closest<HTMLElement>('.original-chapter');
-        const targetIndex = targetSection ? sections.indexOf(targetSection) : -1;
-        const measuredSections = targetIndex >= 0 ? sections.slice(0, targetIndex + 1) : [];
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
         if (!target) return;
+        scrollToTarget(event, target, targetId);
+      });
+    });
 
-        // Các chương dùng content-visibility để giữ trang nhẹ. Đo những chương đứng
-        // trước đích trong một nhịp giúp fragment xa không dừng ở vị trí ước lượng.
-        event.preventDefault();
-        measuredSections.forEach((section) => {
-          section.style.contentVisibility = 'visible';
-        });
-        window.history.pushState(null, '', link.href);
-        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
-        document.documentElement.style.scrollBehavior = 'auto';
-        target.scrollIntoView({ block: 'start' });
-        window.requestAnimationFrame(() => {
-          target.scrollIntoView({ block: 'start' });
-          window.requestAnimationFrame(() => {
-            target.scrollIntoView({ block: 'start' });
-            document.documentElement.style.scrollBehavior = previousScrollBehavior;
-            syncFromPosition();
-          });
-        });
+    document.querySelectorAll<HTMLAnchorElement>('[data-section-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const targetId = link.dataset.sectionLink;
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        scrollToTarget(event, target, targetId);
+      });
+    });
 
+    document.querySelectorAll<HTMLAnchorElement>('[data-subsection-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const targetId = link.dataset.subsectionLink;
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        scrollToTarget(event, target, targetId);
         syncFromPosition();
       });
     });
 
     syncFromPosition();
+  }
+
+  function enhanceSidebarToggles() {
+    const article = document.querySelector<HTMLElement>('.original-post');
+    if (!article) return;
+
+    function setupToggle(button: HTMLButtonElement, targetSelector: string) {
+      const target = document.getElementById(targetSelector);
+      if (!target) return;
+
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        if (expanded) {
+          target.setAttribute('hidden', '');
+        } else {
+          target.removeAttribute('hidden');
+        }
+      });
+
+      button.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          button.click();
+        }
+      });
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-chapter-toggle]').forEach((button) => {
+      const chapterId = button.dataset.chapterToggle;
+      if (chapterId) setupToggle(button, `${chapterId}-subs`);
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('[data-section-toggle]').forEach((button) => {
+      const sectionId = button.dataset.sectionToggle;
+      if (sectionId) setupToggle(button, `${sectionId}-children`);
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('[data-toc-toggle]').forEach((button) => {
+      const sectionId = button.dataset.tocToggle;
+      if (sectionId) setupToggle(button, `${sectionId}-toc-children`);
+    });
   }
 
   function enhanceScrollControls() {
@@ -336,6 +443,7 @@ const chapters = guide.pages.filter((page) => !page.parent);
   function enhancePage() {
     enhanceOriginalPost();
     enhanceChapterNavigation();
+    enhanceSidebarToggles();
     enhanceScrollControls();
     enhanceImageZoom();
   }

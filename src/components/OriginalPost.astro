@@ -8,7 +8,6 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   : `${import.meta.env.BASE_URL}/`;
 const $ = cheerio.load(originalPost, {}, false);
 
-// Chỉ sửa thuộc tính tương tác để bản nguyên tác dùng được với bàn phím và trình đọc màn hình.
 $('.original-break-figure[aria-hidden="true"]').removeAttr('aria-hidden');
 $('.bbCodeInlineSpoiler:has(a)').removeAttr('tabindex role');
 $('.bbCodeCode').attr('tabindex', '0');
@@ -23,6 +22,12 @@ $('.original-chapter-heading').each((_, heading) => {
     $next = $next.next();
     $section.append($toMove);
   }
+});
+
+$('h2.bbHeading, h3.bbHeading, h4.bbHeading').each((_, el) => {
+  const $el = $(el);
+  const id = $el.attr('id');
+  if (id) $el.addClass('guide-heading');
 });
 
 const html = optimizeEmbeddedMedia($.html(), base);

@@ -1,9 +1,12 @@
 ---
-import sidebarTree from '../data/sidebar-data.json';
+import type { SidebarChapter, SidebarSection } from '../utils/guide-format';
+import sidebarTreeUntyped from '../data/sidebar-data.json';
 
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+
+const sidebarTree = sidebarTreeUntyped as SidebarChapter[];
 ---
 
 <nav class="chapter-sidebar" aria-label="Các chương trong lộ trình">
@@ -12,18 +15,136 @@ const base = import.meta.env.BASE_URL.endsWith('/')
     <a class="chapter-sidebar__home" href={base}>Lộ trình hoàn chỉnh</a>
     <p>Một bài viết, đọc liên tục từ đầu đến cuốc.</p>
   </div>
-  <ol>
+  <ol class="chapter-sidebar__list">
     {sidebarTree.map((chapter) => (
-      <li data-chapter={chapter.id}>
+      <li data-chapter={chapter.id} class="chapter-sidebar__item">
         <a
           href={`${base}#${chapter.id}`}
           data-chapter-link={chapter.id}
           data-chapter-number={chapter.number}
           data-chapter-title={chapter.title}
+          class="chapter-sidebar__chapter-link"
         >
           <span class="chapter-sidebar__number">{chapter.number}</span>
-          <span><strong>{chapter.title}</strong></span>
+          <span class="chapter-sidebar__title">{chapter.title}</span>
         </a>
+        {chapter.sections && chapter.sections.length > 0 && (
+          <>
+            <button
+              type="button"
+              class="chapter-sidebar__toggle"
+              aria-expanded="false"
+              aria-controls={`${chapter.id}-subs`}
+              data-chapter-toggle={chapter.id}
+              aria-label={`Mở rộng ${chapter.title}`}
+            >
+              <svg
+                class="chapter-sidebar__chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                aria-hidden="true"
+                fill="none"
+              >
+                <path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ol id={`${chapter.id}-subs`} class="chapter-sidebar__sub-list" hidden>
+              {chapter.sections.map((section) => (
+                <li data-section={section.id || section.targetId} class="chapter-sidebar__section-item">
+                  {section.isGroup && section.children ? (
+                    <>
+                      <div class="chapter-sidebar__group-header">
+                        <span class="chapter-sidebar__number">{section.number}</span>
+                        <span class="chapter-sidebar__title">{section.title}</span>
+                        <button
+                          type="button"
+                          class="chapter-sidebar__toggle chapter-sidebar__toggle--small"
+                          aria-expanded="false"
+                          aria-controls={`${section.id}-children`}
+                          data-section-toggle={section.id}
+                          aria-label={`Mở rộng ${section.title}`}
+                        >
+                          <svg
+                            class="chapter-sidebar__chevron"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            aria-hidden="true"
+                            fill="none"
+                          >
+                            <path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <ol id={`${section.id}-children`} class="chapter-sidebar__sub-list" hidden>
+                        {section.children.map((child: SidebarSection) => (
+                          <li data-subsection={child.id} class="chapter-sidebar__subsection-item">
+                            <a
+                              href={`${base}#${child.targetId || child.id}`}
+                              data-section-link={child.targetId || child.id}
+                              class="chapter-sidebar__subsection-link"
+                            >
+                              <span class="chapter-sidebar__number">{child.number}</span>
+                              <span>{child.title}</span>
+                            </a>
+                            {child.subsections && child.subsections.length > 0 && (
+                              <ol class="chapter-sidebar__sub-sub-list">
+                                {child.subsections.map((sub) => (
+                                  <li data-subsection={sub.id || sub.targetId}>
+                                    <a
+                                      href={`${base}#${sub.targetId || sub.id}`}
+                                      data-subsection-link={sub.targetId || sub.id}
+                                      class="chapter-sidebar__subsection-link chapter-sidebar__subsection-link--nested"
+                                    >
+                                      <span class="chapter-sidebar__dot" aria-hidden="true"></span>
+                                      <span>{sub.title}</span>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ol>
+                            )}
+                          </li>
+                        ))}
+                      </ol>
+                    </>
+                  ) : (
+                    <>
+                      {section.targetId && (
+                        <a
+                          href={`${base}#${section.targetId}`}
+                          data-section-link={section.targetId}
+                          data-section-number={section.number}
+                          data-section-title={section.title}
+                          class="chapter-sidebar__section-link"
+                        >
+                          <span class="chapter-sidebar__number">{section.number}</span>
+                          <span>{section.title}</span>
+                        </a>
+                      )}
+                      {section.subsections && section.subsections.length > 0 && (
+                        <ol class="chapter-sidebar__sub-sub-list">
+                          {section.subsections.map((sub) => (
+                            <li data-subsection={sub.id || sub.targetId}>
+                              <a
+                                href={`${base}#${sub.targetId || sub.id}`}
+                                data-subsection-link={sub.targetId || sub.id}
+                                class="chapter-sidebar__subsection-link chapter-sidebar__subsection-link--nested"
+                              >
+                                <span class="chapter-sidebar__dot" aria-hidden="true"></span>
+                                <span>{sub.title}</span>
+                              </a>
+                            </li>
+                          ))}
+                        </ol>
+                      )}
+                    </>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </>
+        )}
       </li>
     ))}
   </ol>
@@ -39,3 +160,208 @@ const base = import.meta.env.BASE_URL.endsWith('/')
     </a>
   </div>
 </nav>
+
+<style>
+  .chapter-sidebar__list {
+    display: grid;
+    gap: .1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .chapter-sidebar__item + .chapter-sidebar__item {
+    margin-top: .15rem;
+  }
+
+  .chapter-sidebar__chapter-link {
+    display: grid;
+    grid-template-columns: 1.8rem minmax(0, 1fr) .9rem;
+    gap: .5rem;
+    align-items: center;
+    padding: .5rem .45rem;
+    border-radius: .35rem;
+    color: var(--sl-color-gray-2);
+    font-size: .78rem;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .chapter-sidebar__chapter-link:hover {
+    color: var(--sl-color-white);
+    background: var(--guide-surface);
+  }
+
+  .chapter-sidebar__chapter-link.is-active {
+    color: var(--sl-color-white);
+    background: var(--sl-color-accent-low);
+    box-shadow: inset 2px 0 0 var(--sl-color-accent);
+  }
+
+  .chapter-sidebar__chapter-link:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  .chapter-sidebar__toggle {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 0;
+    border-radius: .3rem;
+    color: var(--guide-muted);
+    background: transparent;
+    font-size: .7rem;
+    cursor: pointer;
+    transition: color 160ms ease, background-color 160ms ease;
+    padding: 0;
+  }
+
+  .chapter-sidebar__toggle:hover {
+    color: var(--sl-color-white);
+    background: var(--guide-surface);
+  }
+
+  .chapter-sidebar__toggle:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  .chapter-sidebar__toggle[aria-expanded="true"] .chapter-sidebar__chevron {
+    transform: rotate(180deg);
+  }
+
+  .chapter-sidebar__chevron {
+    transition: transform 160ms ease;
+  }
+
+  .chapter-sidebar__sub-list {
+    padding: .15rem 0 0 1.2rem;
+    margin: 0;
+    list-style: none;
+  }
+
+  .chapter-sidebar__sub-list[hidden] {
+    display: none;
+  }
+
+  .chapter-sidebar__section-item {
+    margin: .15rem 0;
+  }
+
+  .chapter-sidebar__section-link,
+  .chapter-sidebar__group-header {
+    display: grid;
+    grid-template-columns: 1.8rem minmax(0, 1fr);
+    gap: .5rem;
+    align-items: center;
+    padding: .35rem .45rem .35rem 0;
+    margin-left: 1.2rem;
+    border-radius: .35rem;
+    color: var(--sl-color-gray-2);
+    font-size: .74rem;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .chapter-sidebar__section-link:hover,
+  .chapter-sidebar__group-header:hover {
+    color: var(--sl-color-white);
+    background: var(--guide-surface);
+  }
+
+  .chapter-sidebar__group-header {
+    grid-template-columns: 1.8rem minmax(0, 1fr) .9rem;
+    cursor: pointer;
+    padding-right: .45rem;
+  }
+
+  .chapter-sidebar__group-header:hover {
+    padding-right: .45rem;
+  }
+
+  .chapter-sidebar__section-link.is-active {
+    color: var(--sl-color-white);
+    background: var(--sl-color-accent-low);
+    box-shadow: inset 2px 0 0 var(--sl-color-accent);
+  }
+
+  .chapter-sidebar__section-link:focus-visible,
+  .chapter-sidebar__group-header:focus-within {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  .chapter-sidebar__toggle--small {
+    width: 1.4rem;
+    height: 1.4rem;
+    transform: scale(0.8);
+  }
+
+  .chapter-sidebar__subsection-item {
+    margin: .1rem 0;
+  }
+
+  .chapter-sidebar__sub-sub-list {
+    padding: .1rem 0 0 1.4rem;
+    margin: 0;
+  }
+
+  .chapter-sidebar__subsection-link,
+  .chapter-sidebar__subsection-link--nested {
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr);
+    gap: .4rem;
+    align-items: center;
+    padding: .3rem .45rem .3rem 0;
+    margin-left: 1.2rem;
+    border-radius: .35rem;
+    color: var(--sl-color-gray-3);
+    font-size: .72rem;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .chapter-sidebar__subsection-link--nested {
+    grid-template-columns: 0.7rem minmax(0, 1fr);
+    color: var(--sl-color-gray-4);
+    font-size: .7rem;
+  }
+
+  .chapter-sidebar__subsection-link--nested .chapter-sidebar__dot {
+    width: 3px;
+    height: 3px;
+  }
+
+  .chapter-sidebar__subsection-link:hover,
+  .chapter-sidebar__subsection-link--nested:hover {
+    color: var(--sl-color-white);
+    background: var(--guide-surface);
+  }
+
+  .chapter-sidebar__subsection-link.is-active {
+    color: var(--sl-color-white);
+    background: var(--sl-color-accent-low);
+    box-shadow: inset 2px 0 0 var(--sl-color-accent);
+  }
+
+  .chapter-sidebar__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--sl-color-accent);
+    flex-shrink: 0;
+  }
+
+  .chapter-sidebar__number {
+    color: var(--sl-color-accent);
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    font-size: .62rem;
+  }
+
+  .chapter-sidebar__toggle[disabled] {
+    opacity: .4;
+    cursor: not-allowed;
+  }
+</style>

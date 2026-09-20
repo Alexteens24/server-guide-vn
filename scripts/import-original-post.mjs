@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
+import { normalizeHeadingTitle } from './guide-format.mjs';
 
 const SOURCE_URL =
   'https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/';
@@ -354,7 +355,7 @@ const fragmentItems = fragmentDefinitions.map((definition) => {
     outline: parsed('h2,h3,h4').map((_, element) => ({
       id: parsed(element).attr('id') || null,
       level: Number(element.tagName.slice(1)),
-      title: parsed(element).text().replace(/\s+/g, ' ').trim(),
+       title: normalizeHeadingTitle(parsed(element).attr('id') || '', parsed(element).text().replace(/\s+/g, ' ').trim()),
     })).get().filter((item) => item.id && item.title),
   };
 });
