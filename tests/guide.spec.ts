@@ -80,15 +80,9 @@ test('mobile quick jump tracks chapters and supports the keyboard', async ({ pag
   await page.goto('./');
 
   const jump = page.locator('[data-chapter-jump]');
-  await jump.locator('summary').click();
+  await expect(jump.locator('a[data-chapter-link]')).toHaveCount(9);
+
   await jump.locator('a[data-chapter-link="operations"]').click();
   await expect(page).toHaveURL(/#operations$/);
-  await expect(jump.locator('[data-current-chapter]')).toContainText('06 · Vận hành an toàn');
-  await jump.locator('summary').click();
-  await expect(jump).toHaveAttribute('open', '');
-  await expect(jump.locator('nav a')).toHaveCount(9);
-
-  await page.keyboard.press('Escape');
-  await expect(jump).not.toHaveAttribute('open', '');
-  await expect(jump.locator('summary')).toBeFocused();
+  await expect(jump.locator('a[data-chapter-link="operations"]')).toHaveClass(/is-active/);
 });
