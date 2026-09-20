@@ -9,12 +9,7 @@ const chapters = guide.pages.filter((page) => !page.parent);
 
 <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-<details class="chapter-jump" data-chapter-jump>
-  <summary>
-    <span class="chapter-jump__label">Đang đọc</span>
-    <strong data-current-chapter>Phần tổng quan</strong>
-    <span class="chapter-jump__toggle" aria-hidden="true">⌄</span>
-  </summary>
+<div class="chapter-jump" data-chapter-jump>
   <nav aria-label="Nhảy nhanh tới chương">
     <ol>
       {chapters.map((chapter) => (
@@ -32,7 +27,7 @@ const chapters = guide.pages.filter((page) => !page.parent);
       ))}
     </ol>
   </nav>
-</details>
+</div>
 
 <a
   class="back-to-top"
@@ -44,6 +39,15 @@ const chapters = guide.pages.filter((page) => !page.parent);
 >
   <span aria-hidden="true">↑</span>
 </a>
+
+<div class="image-lightbox" aria-modal="true" aria-hidden="true" role="dialog" aria-label="Xem ảnh to">
+  <button type="button" class="image-lightbox__close" aria-label="Đóng">×</button>
+  <button type="button" class="image-lightbox__nav image-lightbox__nav--prev" aria-label="Ảnh trước">‹</button>
+  <img alt="" loading="eager" />
+  <button type="button" class="image-lightbox__nav image-lightbox__nav--next" aria-label="Ảnh sau">›</button>
+  <div class="image-lightbox__caption"></div>
+  <div class="image-lightbox__counter"><span data-lightbox-current>1</span> / <span data-lightbox-total>1</span></div>
+</div>
 
 <script>
   function copyText(value: string) {
@@ -83,17 +87,141 @@ const chapters = guide.pages.filter((page) => !page.parent);
       table.setAttribute('tabindex', '0');
       table.setAttribute('aria-label', `Bảng dữ liệu ${index + 1} — có thể cuộn ngang`);
     });
+
+    article.querySelectorAll('.optimized-media').forEach((img) => {
+      const image = img as HTMLImageElement;
+      if (image.complete) {
+        image.dataset.loaded = 'true';
+      } else {
+        image.addEventListener('load', () => { image.dataset.loaded = 'true'; });
+        image.addEventListener('error', () => { image.dataset.loaded = 'true'; });
+      }
+    });
+  }
+
+  function enhanceImageZoom() {
+    const lightbox = document.querySelector<HTMLElement>('.image-lightbox');
+    if (!lightbox) return;
+    const lightboxImg = lightbox.querySelector('img');
+    const closeButton = lightbox.querySelector<HTMLElement>('.image-lightbox__close');
+    const prevButton = lightbox.querySelector<HTMLElement>('.image-lightbox__nav--prev');
+    const nextButton = lightbox.querySelector<HTMLElement>('.image-lightbox__nav--next');
+    const captionEl = lightbox.querySelector<HTMLElement>('.image-lightbox__caption');
+    const currentEl = lightbox.querySelector<HTMLElement>('[data-lightbox-current]');
+    const totalEl = lightbox.querySelector<HTMLElement>('[data-lightbox-total]');
+    if (!lightboxImg || !closeButton || !prevButton || !nextButton || !captionEl || !currentEl || !totalEl || lightbox.dataset.enhanced === 'true') return;
+    lightbox.dataset.enhanced = 'true';
+
+    const images: HTMLImageElement[] = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll<HTMLImageElement>('.bbImage:not(.smilie)').forEach((img) => {
+      images.push(img);
+    });
+
+    const updateCounter = () => {
+      currentEl.textContent = String(currentIndex + 1);
+      totalEl.textContent = String(images.length);
+    };
+
+    const loadImage = (src: string): Promise<void> => {
+      return new Promise((resolve) => {
+        if (!src) { resolve(); return; }
+        const temp = new Image();
+        temp.onload = () => resolve();
+        temp.onerror = () => resolve();
+        temp.src = src;
+      });
+    };
+
+    const showImage = async (index: number) => {
+      currentIndex = index;
+      const img = images[index];
+      if (!img) return;
+      const fullSrc = img.dataset.originalSrc || img.src;
+      const alt = img.alt || img.title || '';
+
+      lightboxImg.classList.remove('image-lightbox__img--loaded');
+      lightbox.classList.add('is-loading');
+
+      await loadImage(fullSrc);
+      lightboxImg.src = fullSrc;
+      lightboxImg.alt = alt;
+      captionEl.textContent = alt || '';
+      updateCounter();
+
+      lightboxImg.onload = () => {
+        lightboxImg.classList.add('image-lightbox__img--loaded');
+        lightbox.classList.remove('is-loading');
+      };
+      lightboxImg.onerror = () => {
+        lightbox.classList.remove('is-loading');
+      };
+    };
+
+    const openLightbox = (index: number) => {
+      if (images.length === 0) return;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      showImage(index).then(() => { prevButton.focus(); });
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open', 'is-loading');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+      lightboxImg.classList.remove('image-lightbox__img--loaded');
+      captionEl.textContent = '';
+      document.body.style.overflow = '';
+    };
+
+    const prev = () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex).then(() => { prevButton.focus(); });
+    };
+
+    const next = () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex).then(() => { nextButton.focus(); });
+    };
+
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('.image-lightbox')) return;
+      const img = target.closest<HTMLImageElement>('.bbImage:not(.smilie)');
+      if (!img) return;
+      const idx = images.indexOf(img);
+      if (idx < 0) return;
+      event.preventDefault();
+      openLightbox(idx);
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    prevButton.addEventListener('click', prev);
+    nextButton.addEventListener('click', next);
+
+    lightbox.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement) === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeLightbox();
+      else if (event.key === 'ArrowLeft') prev();
+      else if (event.key === 'ArrowRight') next();
+    });
   }
 
   function enhanceChapterNavigation() {
     const article = document.querySelector<HTMLElement>('.original-post');
-    const jump = document.querySelector<HTMLDetailsElement>('[data-chapter-jump]');
+    const jump = document.querySelector<HTMLElement>('[data-chapter-jump]');
     if (!article || !jump || jump.dataset.enhanced === 'true') return;
     jump.dataset.enhanced = 'true';
 
     const sections = Array.from(article.querySelectorAll<HTMLElement>('.original-chapter'));
     const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]'));
-    const currentLabel = jump.querySelector<HTMLElement>('[data-current-chapter]');
     let activeId = '';
 
     function setActiveChapter(id = '') {
@@ -106,13 +234,6 @@ const chapters = guide.pages.filter((page) => !page.parent);
         if (active) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
-
-      const activeLink = links.find((link) => link.dataset.chapterLink === id);
-      if (currentLabel) {
-        currentLabel.textContent = activeLink
-          ? `${activeLink.dataset.chapterNumber} · ${activeLink.dataset.chapterTitle}`
-          : 'Phần tổng quan';
-      }
     }
 
     function syncFromPosition() {
@@ -175,16 +296,8 @@ const chapters = guide.pages.filter((page) => !page.parent);
           });
         });
 
-        if (jump.contains(link)) jump.open = false;
+        syncFromPosition();
       });
-    });
-    document.addEventListener('pointerdown', (event) => {
-      if (jump.open && !jump.contains(event.target as Node)) jump.open = false;
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || !jump.open) return;
-      jump.open = false;
-      jump.querySelector<HTMLElement>('summary')?.focus();
     });
 
     syncFromPosition();
@@ -224,6 +337,7 @@ const chapters = guide.pages.filter((page) => !page.parent);
     enhanceOriginalPost();
     enhanceChapterNavigation();
     enhanceScrollControls();
+    enhanceImageZoom();
   }
 
   if (document.readyState === 'loading') {

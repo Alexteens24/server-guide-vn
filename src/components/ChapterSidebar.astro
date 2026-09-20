@@ -1,21 +1,20 @@
 ---
-import guide from '../data/guide-pages.json';
+import sidebarTree from '../data/sidebar-data.json';
 
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const chapters = guide.pages.filter((page) => !page.parent);
 ---
 
 <nav class="chapter-sidebar" aria-label="Các chương trong lộ trình">
   <div class="chapter-sidebar__head">
     <span class="chapter-sidebar__eyebrow">Mục lục</span>
     <a class="chapter-sidebar__home" href={base}>Lộ trình hoàn chỉnh</a>
-    <p>Một bài viết, đọc liên tục từ đầu đến cuối.</p>
+    <p>Một bài viết, đọc liên tục từ đầu đến cuốc.</p>
   </div>
   <ol>
-    {chapters.map((chapter) => (
-      <li>
+    {sidebarTree.map((chapter) => (
+      <li data-chapter={chapter.id}>
         <a
           href={`${base}#${chapter.id}`}
           data-chapter-link={chapter.id}

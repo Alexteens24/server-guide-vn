@@ -1,0 +1,295 @@
+[
+  {
+    "id": "glossary",
+    "slug": "00-thuat-ngu",
+    "number": "00",
+    "title": "Mục lục & thuật ngữ",
+    "description": "Các khái niệm nền tảng như tick, TPS, MSPT, tải xử lý và điểm nghẽn.",
+    "fragment": "glossary",
+    "parent": null,
+    "prerequisites": [
+      "Chưa cần kinh nghiệm vận hành máy chủ"
+    ],
+    "outcomes": [
+      "Đọc đúng các chỉ số hiệu năng",
+      "Phân biệt TPS với MSPT"
+    ],
+    "subSections": []
+  },
+  {
+    "id": "intro",
+    "slug": "01-mo-dau",
+    "number": "01",
+    "title": "Mở đầu",
+    "description": "Mục tiêu, phạm vi và cách sử dụng lộ trình mà không tối ưu theo cảm tính.",
+    "fragment": "intro",
+    "parent": null,
+    "prerequisites": [
+      "Đã đọc phần thuật ngữ"
+    ],
+    "outcomes": [
+      "Hiểu giới hạn của cấu hình mẫu",
+      "Biết vì sao cần đo trước khi chỉnh"
+    ],
+    "subSections": []
+  },
+  {
+    "id": "preparation",
+    "slug": "02-chuan-bi",
+    "number": "02",
+    "title": "Chuẩn bị nền móng",
+    "description": "Công cụ, phần mềm máy chủ, hạ tầng, hosting và nhân sự cần chuẩn bị.",
+    "fragment": "preparation",
+    "parent": null,
+    "prerequisites": [
+      "Biết sử dụng terminal ở mức cơ bản"
+    ],
+    "outcomes": [
+      "Chọn đúng phần mềm máy chủ",
+      "Đánh giá host và nguồn lực vận hành"
+    ],
+    "subSections": [
+      {
+        "id": "-2-0-essential-tools-knowledge-cong-cu-kien-thuc-co-ban-can-thiet",
+        "title": "2.0. Công cụ & kiến thức nền tảng",
+        "targetId": "-2-0-essential-tools-knowledge-cong-cu-kien-thuc-co-ban-can-thiet",
+        "children": []
+      },
+      {
+        "id": "-2-1-server-software-jar-phan-mem-may-chu",
+        "title": "2.1. Phần mềm máy chủ (server JAR)",
+        "targetId": "-2-1-server-software-jar-phan-mem-may-chu",
+        "children": [
+          {
+            "id": "-purper",
+            "title": "Purper"
+          },
+          {
+            "id": "-leaf",
+            "title": "Leaf"
+          },
+          {
+            "id": "-folia",
+            "title": "Folia"
+          },
+          {
+            "id": "-luminol-lophine-canvas",
+            "title": "Luminol / Lophine / Canvas"
+          },
+          {
+            "id": "-arclight-mohist",
+            "title": "Arclight / Mohist"
+          }
+        ]
+      },
+      {
+        "id": "hosting",
+        "title": "2.2. Hosting — Chạy máy chủ ở đâu?",
+        "targetId": "hosting",
+        "children": [
+          {
+            "id": "-2-2-1-luu-tam-ve-host-nuoc-ngoai-host-viet-nam",
+            "title": "2.2.1. Lưu ý về host nước ngoài và host Việt Nam"
+          },
+          {
+            "id": "-2-2-2-choosing-a-host-lua-chon-noi-dat-may-chu",
+            "title": "2.2.2. Lựa chọn nơi đặt máy chủ"
+          },
+          {
+            "id": "-dedicated-server-ca-1-may-chu-vat-ly-rieng-danh-cho-ban",
+            "title": "Dedicated server — Máy chủ vật lý riêng"
+          }
+        ]
+      },
+      {
+        "id": "-2-3-human-doi-tac-cong-tac-vien-nhan-su-suc-va-t",
+        "title": "2.3. Nhân sự — Đối tác và cộng tác viên",
+        "targetId": "-2-3-human-doi-tac-cong-tac-vien-nhan-su-suc-va-t",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "setup",
+    "slug": "03-thiet-dat",
+    "number": "03",
+    "title": "Thiết đặt hiệu năng",
+    "description": "Từ JVM đến các tệp cấu hình Paper, Purpur, Leaf và Gale.",
+    "fragment": null,
+    "parent": null,
+    "prerequisites": [
+      "Có bản sao lưu máy chủ",
+      "Có môi trường thử nghiệm tách khỏi máy chủ chính"
+    ],
+    "outcomes": [
+      "Thiết lập số đo gốc",
+      "Thay đổi cấu hình theo từng nhóm có kiểm chứng"
+    ],
+    "subSections": [
+      {
+        "id": "setup-jvm",
+        "title": "3.1. JVM & thiết lập nền tảng",
+        "targetId": "setup",
+        "children": []
+      },
+      {
+        "id": "server-properties",
+        "title": "3.2. server.properties",
+        "targetId": "-3-2-server-properties-thiet-dat-can-thiet",
+        "children": []
+      },
+      {
+        "id": "bukkit-yml",
+        "title": "3.3. bukkit.yml",
+        "targetId": "-3-3-bukkit-yml-thiet-dat-can-thiet",
+        "children": []
+      },
+      {
+        "id": "spigot-yml",
+        "title": "3.4. spigot.yml",
+        "targetId": "-3-4-spigot-yml-thiet-dat-can-thiet",
+        "children": []
+      },
+      {
+        "id": "paper-world",
+        "title": "3.5.1. Paper world defaults",
+        "targetId": "-3-5-paper-configs-tep-thiet-dat-can-thiet",
+        "children": []
+      },
+      {
+        "id": "paper-global",
+        "title": "3.5.2. Paper global",
+        "targetId": "-%CB%96-%E1%B5%8E%E1%B5%8E-3-5-2-paper-global-yml",
+        "children": []
+      },
+      {
+        "id": "purpur-yml",
+        "title": "3.6. purpur.yml",
+        "targetId": "-3-6-purpur-yml-thiet-dat-can-thiet",
+        "children": []
+      },
+      {
+        "id": "leaf-global",
+        "title": "3.7. Leaf global",
+        "targetId": "-3-7-leaf-global-yml",
+        "children": []
+      },
+      {
+        "id": "gale",
+        "title": "3.8. Gale configs",
+        "targetId": "-3-8-config-gale-world-defaults-yml-thiet-dat-can-thiet",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "integrations",
+    "slug": "04-tich-hop",
+    "number": "04",
+    "title": "Plugin & tích hợp",
+    "description": "Lựa chọn plugin, datapack, công cụ và cách tránh tự tạo bottleneck.",
+    "fragment": "integrations-intro",
+    "parent": null,
+    "prerequisites": [
+      "Máy chủ nền đã chạy ổn định"
+    ],
+    "outcomes": [
+      "Đánh giá nhu cầu trước khi cài plugin",
+      "Thiết lập quy trình thử nghiệm tích hợp"
+    ],
+    "subSections": [
+      {
+        "id": "plugins",
+        "title": "4.1. Danh mục plugin",
+        "targetId": "-4-1-plugins-sm",
+        "children": []
+      },
+      {
+        "id": "datapack",
+        "title": "4.2. Datapack",
+        "targetId": "-4-2-datapack-goi-du-lieu",
+        "children": []
+      },
+      {
+        "id": "admin-mistakes",
+        "title": "4.3. Sai lầm quản trị thường gặp",
+        "targetId": "-4-3-phan-tich-nhung-pha-tu-huy-kinh-dien-cua-quan-tri-vien-may-chu",
+        "children": []
+      },
+      {
+        "id": "useful-websites",
+        "title": "4.4. Website hữu ích",
+        "targetId": "-4-4-website-huu-ich",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "free-options",
+    "slug": "05-mien-phi",
+    "number": "05",
+    "title": "Phương án miễn phí",
+    "description": "Cách tiếp cận khi ngân sách plugin và cấu hình còn hạn chế.",
+    "fragment": "free-options",
+    "parent": null,
+    "prerequisites": [
+      "Xác định nhu cầu tối thiểu của máy chủ"
+    ],
+    "outcomes": [
+      "Ưu tiên đúng khoản đầu tư",
+      "Dùng giải pháp miễn phí có chọn lọc"
+    ],
+    "subSections": []
+  },
+  {
+    "id": "operations",
+    "slug": "06-van-hanh",
+    "number": "06",
+    "title": "Vận hành an toàn",
+    "description": "Những thói quen, rủi ro và bài học thực tế khi duy trì máy chủ.",
+    "fragment": "operations",
+    "parent": null,
+    "prerequisites": [
+      "Có quyền quản trị và quy trình sao lưu"
+    ],
+    "outcomes": [
+      "Giảm thay đổi không kiểm soát",
+      "Tạo quy trình sao lưu, đo đạc và hoàn tác"
+    ],
+    "subSections": []
+  },
+  {
+    "id": "next",
+    "slug": "07-tiep-theo",
+    "number": "07",
+    "title": "Sau 1–3 tháng",
+    "description": "Các hướng phát triển tiếp theo sau khi máy chủ đã có nền tảng ổn định.",
+    "fragment": "next",
+    "parent": null,
+    "prerequisites": [
+      "Đã có dữ liệu vận hành thực tế"
+    ],
+    "outcomes": [
+      "Lập lộ trình tiếp theo",
+      "Chọn hướng học theo điểm nghẽn thực tế"
+    ],
+    "subSections": []
+  },
+  {
+    "id": "references",
+    "slug": "08-tham-khao",
+    "number": "08",
+    "title": "Tài liệu tham khảo",
+    "description": "Nguồn đọc bổ sung và toàn bộ tệp cấu hình đính kèm từ bài gốc.",
+    "fragment": "references",
+    "parent": null,
+    "prerequisites": [
+      "Không có"
+    ],
+    "outcomes": [
+      "Truy cập nguồn chuyên sâu",
+      "Tải các cấu hình mẫu để đối chiếu"
+    ],
+    "subSections": []
+  }
+]

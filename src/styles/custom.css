@@ -52,6 +52,35 @@ body {
   backdrop-filter: blur(16px) saturate(140%);
 }
 
+:root {
+  --sl-menu-button-size: 2.5rem;
+}
+
+starlight-menu-button button {
+  background-color: var(--guide-surface-solid);
+  color: var(--sl-color-accent);
+  border: 1px solid var(--guide-border);
+  border-radius: .6rem;
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--guide-bg) 60%, transparent);
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+starlight-menu-button:hover button {
+  color: var(--sl-color-accent-high);
+  border-color: var(--sl-color-accent);
+}
+
+starlight-menu-button [aria-expanded='true'] button {
+  background-color: var(--guide-surface-raised);
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  starlight-menu-button button {
+    transition-duration: .01ms;
+  }
+}
+
 .sidebar-pane {
   border-inline-end-color: var(--guide-border);
   background: color-mix(in srgb, var(--guide-bg) 94%, transparent);
@@ -241,7 +270,6 @@ body {
 
 .guide-button:focus-visible,
 .chapter-grid > a:focus-visible,
-.chapter-jump summary:focus-visible,
 .chapter-jump a:focus-visible,
 .back-to-top:focus-visible,
 .original-code-copy:focus-visible {
@@ -431,7 +459,7 @@ body {
   display: grid;
   grid-template-columns: 1.8rem minmax(0, 1fr);
   gap: .5rem;
-  align-items: baseline;
+  align-items: center;
   padding: .5rem .45rem;
   border-radius: .35rem;
   color: var(--sl-color-gray-2);
@@ -547,6 +575,10 @@ body {
   line-height: 1.25;
   letter-spacing: -.025em;
   scroll-margin-top: 5rem;
+}
+
+.original-post [id] {
+  scroll-margin-top: calc(var(--sl-nav-height, 3.5rem) + 1.5rem);
 }
 
 .original-post h2.bbHeading,
@@ -729,6 +761,130 @@ body {
   border: 1px solid var(--guide-border);
   border-radius: .65rem;
   box-shadow: 0 16px 44px color-mix(in srgb, var(--guide-bg) 50%, transparent);
+  cursor: zoom-in;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  user-select: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+}
+
+.original-post .bbImage:hover,
+.original-post .bbImage:focus-visible {
+  box-shadow: 0 24px 56px color-mix(in srgb, var(--guide-bg) 64%, transparent);
+  border-color: var(--sl-color-accent);
+}
+
+.original-post .bbImage:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 3px;
+}
+
+.original-post .optimized-media {
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.original-post .optimized-media[data-loaded="true"] {
+  opacity: 1;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, .8);
+  backdrop-filter: blur(8px);
+}
+
+.image-lightbox.is-open {
+  display: flex;
+}
+
+.image-lightbox.is-loading img {
+  opacity: 0;
+}
+
+.image-lightbox img {
+  max-width: 95vw;
+  max-height: 95vh;
+  border-radius: .5rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.image-lightbox img.image-lightbox__img--loaded {
+  opacity: 1;
+}
+
+.image-lightbox .image-lightbox__close,
+.image-lightbox .image-lightbox__nav {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: .35rem;
+  color: var(--sl-color-gray-2);
+  background: var(--guide-surface-solid);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.image-lightbox .image-lightbox__close {
+  top: 1.25rem;
+  inset-inline-end: 1.25rem;
+}
+
+.image-lightbox .image-lightbox__nav--prev {
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.image-lightbox .image-lightbox__nav--next {
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.image-lightbox .image-lightbox__close:hover,
+.image-lightbox .image-lightbox__nav:hover {
+  color: var(--sl-color-accent);
+}
+
+.image-lightbox .image-lightbox__caption {
+  margin-top: .75rem;
+  max-width: 90vw;
+  color: var(--sl-color-gray-2);
+  font-size: .78rem;
+  text-align: center;
+  word-break: break-word;
+}
+
+.image-lightbox .image-lightbox__counter {
+  position: absolute;
+  bottom: 1.25rem;
+  color: var(--sl-color-gray-2);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .72rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .original-post .bbImage {
+    transition-duration: .01ms;
+  }
+
+  .original-post .optimized-media {
+    transition-duration: .01ms;
+  }
 }
 
 .original-post .smilie {
@@ -972,6 +1128,7 @@ body {
     top: calc(var(--sl-nav-height, 3.5rem) + .5rem);
     display: block;
     margin: 0 0 1.5rem;
+    padding: .4rem;
     border: 1px solid var(--guide-border);
     border-radius: .55rem;
     background: color-mix(in srgb, var(--guide-surface-solid) 93%, transparent);
@@ -979,66 +1136,16 @@ body {
     backdrop-filter: blur(14px) saturate(130%);
   }
 
-  .chapter-jump summary {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: .65rem;
-    align-items: center;
-    min-height: 2.8rem;
-    padding: .55rem .75rem;
-    color: var(--sl-color-white);
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .chapter-jump summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .chapter-jump__label {
-    color: var(--guide-muted);
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    font-size: .58rem;
-    font-weight: 720;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
-  .chapter-jump summary strong {
-    overflow: hidden;
-    font-size: .74rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .chapter-jump__toggle {
-    color: var(--sl-color-accent);
-    transition: transform 160ms ease;
-  }
-
-  .chapter-jump[open] .chapter-jump__toggle {
-    transform: rotate(180deg);
-  }
-
   .chapter-jump nav {
-    position: absolute;
-    right: 0;
-    left: 0;
-    overflow-y: auto;
-    max-height: min(62vh, 29rem);
-    margin-top: .4rem;
-    padding: .45rem;
-    border: 1px solid var(--guide-border);
-    border-radius: .55rem;
+    border-radius: .45rem;
     background: var(--guide-surface-solid);
-    box-shadow: var(--guide-shadow);
   }
 
   .chapter-jump ol {
     display: grid;
     gap: .18rem;
     margin: 0;
-    padding: 0;
+    padding: .35rem;
     list-style: none;
   }
 
@@ -1142,7 +1249,6 @@ body {
 
   .guide-button,
   .chapter-grid > a,
-  .chapter-jump__toggle,
   .back-to-top {
     transition-duration: .01ms;
   }
