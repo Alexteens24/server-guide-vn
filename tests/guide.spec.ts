@@ -79,10 +79,14 @@ test('mobile quick jump tracks chapters and supports the keyboard', async ({ pag
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('./');
 
-  const jump = page.locator('[data-chapter-jump]');
-  await expect(jump.locator('a[data-chapter-link]')).toHaveCount(9);
+  await expect(page.locator('[data-chapter-jump]')).not.toBeVisible();
 
-  await jump.locator('a[data-chapter-link="operations"]').click();
+  await page.getByRole('button', { name: 'Menu' }).click();
+
+  const navigation = page.getByRole('navigation', { name: 'Các chương trong lộ trình' });
+  await expect(navigation).toBeVisible();
+
+  await navigation.getByRole('link', { name: /Vận hành/ }).click();
   await expect(page).toHaveURL(/#operations$/);
-  await expect(jump.locator('a[data-chapter-link="operations"]')).toHaveClass(/is-active/);
+  await expect(navigation.locator('a[data-chapter-link="operations"]')).toHaveClass(/is-active/);
 });
