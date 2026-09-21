@@ -45,6 +45,10 @@ function getSectionFromFragment(fragmentId, sectionNumber) {
   return null;
 }
 
+function isNumericHeading(title) {
+  return /^(\d+(?:\.\d+)*)/.test(title);
+}
+
 function extractSubsections(fragmentId, sectionNumber) {
   const fragment = fragmentById[fragmentId];
   if (!fragment?.outline) return [];
@@ -53,14 +57,21 @@ function extractSubsections(fragmentId, sectionNumber) {
   let inSection = false;
   for (const item of fragment.outline) {
     if (item.level === 3) {
-      inSection = item.title.startsWith(sectionNumber) ||
-        (parts.length >= 2 && item.title.startsWith(`${parts[0]}.${parts[1]}`));
-    } else if (item.level >= 4 && inSection) {
-      subs.push({
-        id: item.id,
-        title: normalizeHeadingTitle(item.id, item.title).replace(/^(\d+(?:\.\d+){0,2})\.?\s*/, ''),
-        targetId: item.id,
-      });
+      if (isNumericHeading(item.title)) {
+        inSection = item.title.startsWith(sectionNumber) ||
+          (parts.length >= 2 && item.title.startsWith(`${parts[0]}.${parts[1]}`));
+      }
+    } else if (item.level >= 4) {
+      if (!inSection && item.title.startsWith(sectionNumber)) {
+        inSection = true;
+      }
+      if (inSection) {
+        subs.push({
+          id: item.id,
+          title: normalizeHeadingTitle(item.id, item.title).replace(/^(\d+(?:\.\d+){0,2})\.?\s*/, ''),
+          targetId: item.id,
+        });
+      }
     }
   }
   return subs;
@@ -109,8 +120,11 @@ function getSubSections(chapter) {
 
     for (const child of standalone) {
       const title = normalizeHeadingTitle(child.id, child.title);
+      const sectionHeading = child.fragment
+        ? getSectionFromFragment(child.fragment, child.number)
+        : null;
       const targetId = child.fragment
-        ? (fragmentById[child.fragment]?.firstHeadingId || child.fragment)
+        ? (sectionHeading?.id || fragmentById[child.fragment]?.firstHeadingId || child.fragment)
         : child.id;
       const subsections = child.fragment
         ? extractSubsections(child.fragment, child.number)
@@ -159,6 +173,18 @@ function getSubSections(chapter) {
     }
   }
 
+  sections.sort((a, b) => {
+    const aParts = parseNumberParts(a.number);
+    const bParts = parseNumberParts(b.number);
+    const maxLen = Math.max(aParts.length, bParts.length);
+    for (let i = 0; i < maxLen; i++) {
+      const aVal = aParts[i] ?? 0;
+      const bVal = bParts[i] ?? 0;
+      if (aVal !== bVal) return aVal - bVal;
+    }
+    return 0;
+  });
+
   return sections;
 }
 
@@ -202,7 +228,7 @@ function extractSubsectionsFromOutline(outline, sectionHeading) {
       continue;
     }
     if (item.level === 3 && capturing) {
-      break;
+      if (isNumericHeading(item.title)) break;
     }
     if (capturing && item.level >= 4 && item.id) {
       subs.push({

@@ -255,17 +255,16 @@ const chapters = guide.pages.filter((page) => !page.parent);
         else link.removeAttribute('aria-current');
       });
 
-      const parentChapter = document.querySelector<HTMLElement>(
-        `[data-section-link="${id}"]`,
-      )?.closest('[data-chapter-toggle]');
-      parentChapter?.setAttribute('aria-expanded', 'true');
-      parentChapter?.nextElementSibling?.removeAttribute('hidden');
+      function autoExpandToggle(linkSelector: string) {
+        const linkEl = document.querySelector<HTMLElement>(linkSelector);
+        const subList = linkEl?.closest('ol');
+        const toggleBtn = subList?.previousElementSibling as HTMLButtonElement | null;
+        toggleBtn?.setAttribute('aria-expanded', 'true');
+        subList?.removeAttribute('hidden');
+      }
 
-      const parentSection = document.querySelector<HTMLElement>(
-        `[data-subsection-link="${id}"]`,
-      )?.closest('[data-section-toggle]');
-      parentSection?.setAttribute('aria-expanded', 'true');
-      parentSection?.nextElementSibling?.removeAttribute('hidden');
+      autoExpandToggle(`[data-section-link="${id}"]`);
+      autoExpandToggle(`[data-subsection-link="${id}"]`);
     }
 
     function syncFromPosition() {
@@ -279,11 +278,11 @@ const chapters = guide.pages.filter((page) => !page.parent);
 
       const allHeadings = Array.from(
         article!.querySelectorAll<HTMLElement>('[id]:not(.original-chapter-heading):not(#noi-dung)'),
-      ).filter((h) => {
+      );
+      const target = [...allHeadings].reverse().find((h) => {
         const bounds = h.getBoundingClientRect();
-        return bounds.top <= readingLine && bounds.bottom > readingLine;
+        return bounds.top <= readingLine;
       });
-      const target = allHeadings[0];
       setActiveSection(target?.id || '');
     }
 

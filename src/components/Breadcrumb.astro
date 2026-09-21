@@ -9,7 +9,12 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 
 const guideUntyped = JSON.parse(readFileSync(path.resolve('src/data/guide-pages.json'), 'utf8'));
 const guide = guideUntyped as { pages: GuidePage[]; verifiedAt: string };
-const currentId = Astro.url.hash?.slice(1) || '';
+
+const breadcrumbTitles: Record<string, string> = {};
+for (const page of guide.pages) {
+  breadcrumbTitles[page.id] = page.title;
+  if (page.number) breadcrumbTitles[page.number] = page.title;
+}
 ---
 
 <nav class="breadcrumb" aria-label="Đường đi hiện tại">
@@ -17,22 +22,40 @@ const currentId = Astro.url.hash?.slice(1) || '';
     <li class="breadcrumb__item">
       <a href={base} class="breadcrumb__link">Lộ trình</a>
     </li>
-    {currentId ? (
-      <>
-        <li class="breadcrumb__separator" aria-hidden="true">/</li>
-        <li class="breadcrumb__item">
-          <span class="breadcrumb__current">{(() => {
-            const match = currentId.match(/^(-?\d+(?:\.\d+)*)-/);
-            if (match) {
-              const num = match[1];
-              const page = guide.pages.find(p => p.number === num);
-              return page?.title || num;
-            }
-            const page = guide.pages.find(p => p.id === currentId);
-            return page?.title || currentId;
-          })()}</span>
-        </li>
-      </>
-    ) : ''}
+    <li class="breadcrumb__separator" aria-hidden="true">/</li>
+    <li class="breadcrumb__item">
+      <span class="breadcrumb__current" data-breadcrumb-current>…</span>
+    </li>
   </ol>
 </nav>
+
+<script type="application/json" data-breadcrumb-titles is:inline>{JSON.stringify(breadcrumbTitles)}</script>
+<script is:inline type="module">
+  (function() {
+    const titlesEl = document.querySelector('[data-breadcrumb-titles]');
+    const titles = titlesEl ? JSON.parse(titlesEl.textContent) : {};
+    const currentEl = document.querySelector('[data-breadcrumb-current]');
+    if (!currentEl) return;
+
+    function updateFromHash() {
+      const hash = window.location.hash;
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      if (!id) {
+        currentEl.textContent = 'Toàn bộ lộ trình';
+        return;
+      }
+      const match = id.match(/^(-?\d+(?:\.\d+)*)-/);
+      if (match) {
+        const num = match[1];
+        const title = titles[num] || titles[id] || num;
+        currentEl.textContent = title;
+      } else {
+        const title = titles[id] || id;
+        currentEl.textContent = title;
+      }
+    }
+
+    updateFromHash();
+    window.addEventListener('hashchange', updateFromHash);
+  })();
+</script>

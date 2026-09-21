@@ -80,7 +80,7 @@ export default defineConfig({
         PageTitle: './src/components/GuideTitle.astro',
         SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/ChapterSidebar.astro',
-        TOC: './src/components/DesktopTOC.astro',
+        TableOfContents: './src/components/DesktopTOC.astro',
       },
       sidebar: [{ label: 'Toàn bộ lộ trình', link: '/' }],
       tableOfContents: false,

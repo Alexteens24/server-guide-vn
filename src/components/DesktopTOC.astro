@@ -21,6 +21,7 @@ const sidebarTree = sidebarTreeUntyped as SidebarChapter[];
           data-chapter-link={chapter.id}
           data-chapter-number={chapter.number}
           data-chapter-title={chapter.title}
+          class="desktop-toc__chapter-link"
         >
           <span class="desktop-toc__number">{chapter.number}</span>
           <strong>{chapter.title}</strong>
@@ -60,6 +61,7 @@ const sidebarTree = sidebarTreeUntyped as SidebarChapter[];
                           <a
                             href={`${base}#${child.targetId || child.id}`}
                             data-section-link={child.targetId || child.id}
+                            class="desktop-toc__subsection-link"
                           >
                             <span class="desktop-toc__number">{child.number}</span>
                             <span>{child.title}</span>
@@ -87,6 +89,7 @@ const sidebarTree = sidebarTreeUntyped as SidebarChapter[];
                             <a
                               href={`${base}#${sub.targetId || sub.id}`}
                               data-subsection-link={sub.targetId || sub.id}
+                              class="desktop-toc__subsection-link"
                             >
                               <span>{sub.title}</span>
                             </a>
