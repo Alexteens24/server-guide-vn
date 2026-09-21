@@ -1453,6 +1453,10 @@ mobile-starlight-toc {
 }
 
 @media (max-width: 50rem) {
+  .chapter-jump {
+    display: none;
+  }
+
   .guide-hero {
     margin-top: .5rem;
   }
