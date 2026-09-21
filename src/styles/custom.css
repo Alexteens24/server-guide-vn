@@ -845,6 +845,10 @@ starlight-menu-button [aria-expanded='true'] button {
   .breadcrumb {
     display: none;
   }
+
+  .chapter-sidebar {
+    display: none;
+  }
 }
 .original-post {
   --source-red: #a73532;
