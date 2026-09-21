@@ -133,7 +133,8 @@ function getSubSections(chapter) {
       const childSections = groupChildren.map((child) => {
         const title = normalizeHeadingTitle(child.id, child.title);
         const targetId = child.fragment
-          ? (fragmentById[child.fragment]?.firstHeadingId || child.fragment)
+          ? (findSubSectionHeadingId(fragmentById[child.fragment], child.number) ||
+             fragmentById[child.fragment]?.firstHeadingId || child.fragment)
           : child.id;
         const subsections = child.fragment
           ? extractSubsections(child.fragment, child.number)
@@ -159,6 +160,19 @@ function getSubSections(chapter) {
   }
 
   return sections;
+}
+
+function findSubSectionHeadingId(fragment, sectionNumber) {
+  if (!fragment?.outline) return null;
+  const numParts = sectionNumber.split('.');
+  const prefix = numParts.length >= 3 ? numParts.slice(0, 3).join('.') : null;
+  const firstH3 = fragment.outline.find((item) => item.level === 3);
+  for (const item of fragment.outline) {
+    if (item.level >= 4 && item.id && item.title.trim()) {
+      if (prefix && item.title.includes(prefix)) return item.id;
+    }
+  }
+  return firstH3?.level === 3 ? null : firstH3?.id || null;
 }
 
 function findSectionTitleByNumber(chapter, number, groupChildren) {

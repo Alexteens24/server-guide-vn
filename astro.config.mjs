@@ -12,10 +12,35 @@ const home = base === '/' ? '/' : `${base}/`;
 const firstHeadingByFragment = new Map(
   fragments.items.map((fragment) => [fragment.id, fragment.firstHeadingId]),
 );
+
+function findSubSectionHeadingId(fragment, sectionNumber) {
+  if (!fragment?.outline?.length) return null;
+  const numParts = sectionNumber.split('.');
+  const prefix = numParts.length >= 3 ? numParts.slice(0, 3).join('.') : null;
+  for (const item of fragment.outline) {
+    if (item.level >= 4 && item.id && item.title.trim()) {
+      if (prefix && item.title.includes(prefix)) return item.id;
+    }
+  }
+  return null;
+}
+
+const redirectHeadings = new Map(
+  guide.pages.map((page) => {
+    if (!page.fragment) return [page.slug, page.id];
+    const fragment = fragments.items.find((f) => f.id === page.fragment);
+    const subId = page.number && fragment
+      ? findSubSectionHeadingId(fragment, page.number)
+      : null;
+    const heading = subId || firstHeadingByFragment.get(page.fragment) || page.id;
+    return [page.slug, heading];
+  }),
+);
+
 const redirects = {
   ...Object.fromEntries(guide.pages.map((page) => [
     `/${page.slug}`,
-    `${home}#${page.fragment ? firstHeadingByFragment.get(page.fragment) : page.id}`,
+    `${home}#${redirectHeadings.get(page.slug)}`,
   ])),
   '/nguyen-tac': home,
   '/tim-kiem': home,
