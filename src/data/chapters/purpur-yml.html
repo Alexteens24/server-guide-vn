@@ -6,7 +6,7 @@
 </div>
 
 </div>
-</blockquote><hr><h4 class="bbHeading" id="-purpur-yml-use-alternate-keepalive"><div style="text-align: justify">purpur.yml/use-alternate-keepalive​</div></h4><div style="text-align: justify"><b><code class="bbCodeInline">use-alternate-keepalive: true</code></b> <img src="__BASE__media/source/124-B-5558b60c.gif" class="smilie" loading="lazy" alt="B-)" title="Sành điệu B-)" decoding="async"><br>
+</blockquote><hr><h4 class="bbHeading" id="-purpur-yml-use-alternate-keepalive"><div style="text-align: justify">purpur.yml/use-alternate-keepalive​</div></h4><div style="text-align: justify"><b><code class="bbCodeInline">use-alternate-keepalive: true</code></b> B-)<br>
 Keepalive truyền thống:​</div><ul>
 <li><div style="text-align: justify"><b>Kiểu cũ (Vanilla/Paper):</b> Server gửi 1 gói tin "Alo, Vũ à?" (keepalive packet). Nếu chẳng may mạng nhà bạn bị "lag nhẹ" đúng lúc đó làm gói tin bị thất lạc (packet loss), máy chủ sẽ phũ phàng kết luận: "À, Vũ đây rồi" và đá văng bạn ra với dòng chữ <i><code class="bbCodeInline">Timed Out</code></i> đầy ức chế.​</div></li>
 <li><div style="text-align: justify"><b>Purpur:</b> Server sẽ gửi liên tục mỗi giây 1 gói tin. Nó cực kỳ "kiên trì" luôn, gửi ròng rã trong 30 giây, chỉ cần bạn phản hồi lại <b>duy nhất 1 gói bất kỳ</b> trong số 30 cái đó, server sẽ hiểu là "À, mạng hơi lag tí thôi nhưng vẫn ổn áp" và giữ bạn ở lại.​</div></li>
@@ -14,7 +14,7 @@ Keepalive truyền thống:​</div><ul>
 <blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
 <div class="bbCodeBlock-content">
 <div class="">
-<div style="text-align: justify">Nếu máy chủ đằng ấy đang dùng Reverse proxy xịn xò như <a href="https://tcpshield.com/" target="_blank" class="link link--external" rel="noreferrer">TCPShield</a> hoặc các bộ lọc Aggressive DDoS Filter/Scrubbing gắt gao để chống <a href="https://viettelidc.com.vn/tin-tuc/ddos-la-gi-tat-tan-tat-nhung-dieu-nguoi-dung-nen-biet-ve-tan-cong-ddos" target="_blank" class="link link--external" rel="noreferrer">DDoS </a>mà bật cái này lên, khả năng cao là người chơi sẽ không vào được hoặc bị lỗi kết nối linh tinh. TCPShield có cách xử lý gói tin riêng để bảo mật, nên khi Purpur gửi đống packet liên tục như thế, hệ thống phòng thủ có thể lầm tưởng máy chủ đang bị tấn công ấy <img src="__BASE__media/source/005-D-ef8315a7.gif" class="smilie" loading="lazy" alt=":D" title="Cười nhe răng :D" decoding="async">​</div>
+<div style="text-align: justify">Nếu máy chủ đằng ấy đang dùng Reverse proxy xịn xò như <a href="https://tcpshield.com/" target="_blank" class="link link--external" rel="noreferrer">TCPShield</a> hoặc các bộ lọc Aggressive DDoS Filter/Scrubbing gắt gao để chống <a href="https://viettelidc.com.vn/tin-tuc/ddos-la-gi-tat-tan-tat-nhung-dieu-nguoi-dung-nen-biet-ve-tan-cong-ddos" target="_blank" class="link link--external" rel="noreferrer">DDoS </a>mà bật cái này lên, khả năng cao là người chơi sẽ không vào được hoặc bị lỗi kết nối linh tinh. TCPShield có cách xử lý gói tin riêng để bảo mật, nên khi Purpur gửi đống packet liên tục như thế, hệ thống phòng thủ có thể lầm tưởng máy chủ đang bị tấn công ấy :D​</div>
 </div>
 
 </div>
@@ -22,7 +22,7 @@ Keepalive truyền thống:​</div><ul>
 Zombie biết điều khi tps tụt xuống dưới mức <code class="bbCodeInline">lagging-threshold</code> trong <code class="bbCodeInline">purpur.yml</code>. Đám Zombie sẽ tự động "giả mù", ngừng đuổi đánh dân làng để giảm tải cho CPU​</div><hr><h4 class="bbHeading" id="-purpur-yml-entities-can-use-portals"><div style="text-align: justify">purpur.yml/entities-can-use-portals​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
 Có thể dùng chung với <a href="https://modrinth.com/plugin/vertical_dimensions/versions" target="_blank" class="link link--external" rel="noreferrer"><span style="font-size: 18px"><span style="color: rgb(41, 105, 176)">Vertical Dimensions</span></span></a> / <a href="https://modrinth.com/plugin/entityportallock" target="_blank" class="link link--external" rel="noreferrer"><span style="font-size: 18px">EntityPortalLock</span></a> để chặn vật thể di chuyển qua các chiều không gian. Khi bật <code class="bbCodeInline">false</code>, chỉ có người chơi mới được đi qua cổng địa ngục hay cổng End, còn đám Mob khác làm gì có tuổi. Điều này sẽ làm hỏng các Farm sử dụng cổng Nether và LagMachine như:<br>
 <div class="bbImageWrapper" title="1780488738749.webp">
-<img src="__BASE__media/source/136-1780488738749-8e500880.webp" class="bbImage" style="" alt="1780488738749.webp" title="1780488738749.webp" width="1920" height="1080" loading="lazy" decoding="async">
+<img src="__BASE__media/source/118-1780488738749-7dd07f07.webp" class="bbImage" style="" alt="1780488738749.webp" title="1780488738749.webp" width="1920" height="1080" loading="lazy" decoding="async">
 </div></div><div class="bbTable">
 <table style="width: 100%"><tbody><tr><th><div style="text-align: center">Gold Farm​</div></th><th><div style="text-align: center">Wither Skeleton Farm​</div></th><th><div style="text-align: center">Chunk Loader​</div></th></tr><tr><td style="width: 33.3333%"><div class="bbImageWrapper" title="1000010340.jpg">
 <img src="__BASE__media/source/137-1000010340-5e244e88.jpg" class="bbImage" style="" alt="1000010340.jpg" title="" width="2560" height="1440" loading="lazy" decoding="async">
@@ -74,7 +74,7 @@ Mã:
 <blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
 <div class="bbCodeBlock-content">
 <div class="">
-<div style="text-align: justify"><span style="font-size: 22px">Còn lại, nên tìm hiểu thêm trong <a href="https://purpurmc.org/docs/" target="_blank" class="link link--external" rel="noreferrer">Docs của Purpur</a>, quản trị viên có thể thay đổi trực tiếp kích thước động vật, cho phép bọt biển hút dung nham, tăng bán kính Beacon, điều chỉnh sát thương TNT/End_Crystal, khiến bắn cung khó chài ia? hay thay đổi độ bền Elytra sử dụng... Nhất định <b>nên thử! <img src="__BASE__media/source/012-anime1-2772104b.png" class="smilie" loading="lazy" alt=":anime1:" title="smug :anime1:" decoding="async"></b></span>​</div>
+<div style="text-align: justify"><span style="font-size: 22px">Còn lại, nên tìm hiểu thêm trong <a href="https://purpurmc.org/docs/" target="_blank" class="link link--external" rel="noreferrer">Docs của Purpur</a>, quản trị viên có thể thay đổi trực tiếp kích thước động vật, cho phép bọt biển hút dung nham, tăng bán kính Beacon, điều chỉnh sát thương TNT/End_Crystal, khiến bắn cung khó chài ia? hay thay đổi độ bền Elytra sử dụng... Nhất định <b>nên thử! <img src="__BASE__media/source/007-anime1-00ec0ca7.png" class="smilie" loading="lazy" alt=":anime1:" title="smug :anime1:" decoding="async"></b></span>​</div>
 </div>
 
 </div>
