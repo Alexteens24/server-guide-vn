@@ -424,6 +424,31 @@
     });
   }
 
+  function enhanceSearchResults() {
+    const container = document.getElementById('starlight__search');
+    if (!container || container.dataset.enhanced === 'true') return;
+    container.dataset.enhanced = 'true';
+
+    function pointMainResultToFirstSection() {
+      container!.querySelectorAll<HTMLAnchorElement>('.pagefind-ui__result-link[href]').forEach((link) => {
+        if (link.closest('.pagefind-ui__result-nested')) return;
+        const url = new URL(link.getAttribute('href') || '', window.location.href);
+        if (url.hash) return;
+        const nestedLink = link
+          .closest('.pagefind-ui__result')
+          ?.querySelector<HTMLAnchorElement>('.pagefind-ui__result-nested .pagefind-ui__result-link[href*="#"]');
+        const nestedHref = nestedLink?.getAttribute('href');
+        if (nestedHref) link.setAttribute('href', nestedHref);
+      });
+    }
+
+    new MutationObserver(pointMainResultToFirstSection).observe(container, {
+      childList: true,
+      subtree: true,
+    });
+    pointMainResultToFirstSection();
+  }
+
   function enhancePage() {
     enhanceThemeToggle();
     enhanceOriginalPost();
@@ -431,6 +456,7 @@
     enhanceSidebarToggles();
     enhanceScrollControls();
     enhanceImageZoom();
+    enhanceSearchResults();
   }
 
   if (document.readyState === 'loading') {
