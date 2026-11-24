@@ -1,4 +1,4 @@
-import { mkdir, stat } from 'node:fs/promises';
+import { mkdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import manifest from '../src/data/media.json' with { type: 'json' };
@@ -49,5 +49,18 @@ for (const [filename, metadata] of byFilename) {
     .toFile(output);
   generated++;
 }
+
+const dimensions = {};
+for (const filename of byFilename.keys()) {
+  const output = path.join(outputDirectory, `${path.parse(filename).name}.webp`);
+  const metadata = await sharp(output).metadata();
+  if (metadata.width && metadata.height) {
+    dimensions[filename] = { width: metadata.width, height: metadata.height };
+  }
+}
+await writeFile(
+  path.resolve('src/data/media-dimensions.json'),
+  `${JSON.stringify(dimensions, null, 2)}\n`,
+);
 
 console.log(`Media tối ưu: ${generated} tạo mới, ${reused} tái sử dụng, ${byFilename.size} file.`);

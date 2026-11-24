@@ -1,6 +1,7 @@
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
+import { headingOverrides } from '../src/lib/guide-format.mjs';
 
 const html = await readFile('src/data/original-post.html', 'utf8');
 const meta = JSON.parse(await readFile('src/data/original-post-meta.json', 'utf8'));
@@ -27,6 +28,13 @@ const expected = {
 const failures = Object.entries(expected)
   .filter(([key, value]) => checks[key] !== value)
   .map(([key, value]) => `${key}: ${checks[key]} (cần ${value})`);
+
+const headingIds = new Set($('[id]').toArray().map((element) => $(element).attr('id')));
+for (const id of Object.keys(headingOverrides)) {
+  if (!headingIds.has(id)) {
+    failures.push(`headingOverrides khóa theo id không còn tồn tại: ${id}`);
+  }
+}
 
 const fragmentBodies = [];
 for (const fragment of fragments.items) {
@@ -78,4 +86,9 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log({ ...checks, fragments: fragments.count, textLength: meta.generatedTextLength });
+console.log({
+  ...checks,
+  fragments: fragments.count,
+  textLength: meta.generatedTextLength,
+  headingOverrides: Object.keys(headingOverrides).length,
+});

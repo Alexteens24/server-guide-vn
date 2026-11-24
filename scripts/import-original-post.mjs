@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
-import { normalizeHeadingTitle } from './guide-format.mjs';
+import { normalizeHeadingTitle } from '../src/lib/guide-format.mjs';
 
 const SOURCE_URL =
   'https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-uu-hieu-nang-may-chu-minecraft-danh-cho-nguoi-moi.52423/';

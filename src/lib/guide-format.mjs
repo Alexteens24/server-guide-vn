@@ -1,4 +1,4 @@
-export const headingOverrides: Record<string, string> = {
+export const headingOverrides = {
   'glossary': '0. Mục lục & thuật ngữ',
   'intro': '1. Mở đầu',
   'preparation': '2. Chuẩn bị',
@@ -37,7 +37,7 @@ export const headingOverrides: Record<string, string> = {
   'references': '8. Tài liệu tham khảo',
 };
 
-export function normalizeHeadingTitle(id: string, value: string) {
+export function normalizeHeadingTitle(id, value) {
   return (headingOverrides[id] ?? value)
     .replace(/[\u200B-\u200D\uFEFF]/g, '')
     .replace(/^[˚˖\sᵎ]+/u, '')
@@ -49,62 +49,62 @@ export function normalizeHeadingTitle(id: string, value: string) {
     .trim();
 }
 
-export function normalizeOutlineTitle(id: string, value: string) {
+export function normalizeOutlineTitle(id, value) {
   return normalizeHeadingTitle(id, value).replace(/^(\d+(?:\.\d+){0,2})\.?\s*/, '$1 · ');
 }
 
-export interface HeadingOutline {
-  id: string | null;
-  level: number;
-  title: string;
-}
-
-export interface SidebarSubsection {
-  id?: string;
-  title: string;
-  targetId: string;
-}
-
-export interface SidebarSection {
-  id: string;
-  number: string;
-  title: string;
-  targetId: string;
-  subsections?: SidebarSubsection[];
-  isGroup?: boolean;
-  children?: SidebarSection[];
-}
-
-export interface SidebarChapter {
-  id: string;
-  number: string;
-  title: string;
-  slug?: string;
-  fragment?: string;
-  description?: string;
-  targetId: string;
-  sections: SidebarSection[];
-}
-
-export interface GuidePage {
-  id: string;
-  slug: string;
-  number: string;
-  title: string;
-  description?: string;
-  parent?: string;
-  fragment?: string;
-}
-
-export function predictMarkdownHeading(id: string, level: number, title: string): string {
+export function predictMarkdownHeading(id, level, title) {
   const normalized = normalizeHeadingTitle(id, title);
   const prefix = '#'.repeat(Math.max(1, Math.min(level, 6)));
   const anchor = id ? ` {#${id}}` : '';
   return `${prefix} ${normalized}${anchor}`;
 }
 
-export function predictMarkdownOutline(outline: HeadingOutline[]): string {
+export function predictMarkdownOutline(outline) {
   return outline
     .map((item) => predictMarkdownHeading(item.id || '', item.level, item.title))
     .join('\n');
+}
+
+export function parseNumberParts(number) {
+  return String(number).split('.').map((part) => parseInt(part, 10));
+}
+
+export function numberFromTitle(title) {
+  return String(title).match(/^(\d+(?:\.\d+){0,2})\.?\s*/)?.[1] ?? '';
+}
+
+/**
+ * Resolve the heading id a legacy chapter URL should redirect to.
+ * Prefers the exact heading for the section number, then any deeper heading
+ * carrying the same numeric prefix, then the parent section heading.
+ */
+export function findSubSectionHeadingId(fragment, sectionNumber) {
+  if (!fragment?.outline?.length) return null;
+  const parts = String(sectionNumber).split('.');
+  const parentNumber = parts.length > 2 ? parts.slice(0, 2).join('.') : null;
+
+  for (const item of fragment.outline) {
+    if (item.level === 3 && item.id && item.title.trim() && item.title.startsWith(sectionNumber)) {
+      return item.id;
+    }
+  }
+
+  const prefix = parts.length >= 3 ? parts.slice(0, 3).join('.') : null;
+  if (prefix) {
+    for (const item of fragment.outline) {
+      if (item.level >= 4 && item.id && item.title.trim() && item.title.includes(prefix)) {
+        return item.id;
+      }
+    }
+  }
+
+  if (!parentNumber) return null;
+  for (const item of fragment.outline) {
+    if (item.level === 3 && item.id && item.title.trim() && item.title.startsWith(parentNumber)) {
+      return item.id;
+    }
+  }
+
+  return null;
 }

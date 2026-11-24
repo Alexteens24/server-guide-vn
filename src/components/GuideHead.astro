@@ -13,6 +13,11 @@ const sourceUrl = 'https://minevn.net/threads/lo-trinh-huong-dan-phat-trien-toi-
 const isHome = normalizedPath === '';
 const canonical = Astro.url.href;
 const description = data.description ?? 'Lộ trình phát triển, vận hành và tối ưu máy chủ Minecraft.';
+// Starlight appends the site title even when a page title matches it.
+const titleEntry = route.head.find(({ tag }) => tag === 'title');
+if (titleEntry?.content === `${data.title} | ${route.siteTitle}` && data.title === route.siteTitle) {
+  titleEntry.content = data.title;
+}
 
 const structuredData = isHome
   ? {

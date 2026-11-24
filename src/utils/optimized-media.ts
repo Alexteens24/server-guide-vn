@@ -1,6 +1,12 @@
 import * as cheerio from 'cheerio';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import media from '../data/media.json';
+
+const dimensionsPath = path.resolve('src/data/media-dimensions.json');
+const imageDimensions: Record<string, { width: number; height: number }> = existsSync(dimensionsPath)
+  ? JSON.parse(readFileSync(dimensionsPath, 'utf8'))
+  : {};
 
 const knownFiles = new Set(
   media.items
@@ -32,6 +38,11 @@ export function optimizeEmbeddedMedia(html: string, base: string) {
     image.attr('loading', 'lazy');
     image.attr('decoding', 'async');
     image.addClass('optimized-media');
+    const size = imageDimensions[filename];
+    if (size) {
+      image.attr('width', String(size.width));
+      image.attr('height', String(size.height));
+    }
     if (animatedFiles.has(filename)) {
       image.addClass('optimized-media--animated');
       image.attr('title', image.attr('title') || 'Mở ảnh động gốc');

@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
-import { normalizeHeadingTitle } from './guide-format.mjs';
+import { normalizeHeadingTitle } from '../src/lib/guide-format.mjs';
 
 const fragmentsPath = path.resolve('src/data/chapter-fragments.json');
 const chaptersDir = path.resolve('src/data/chapters');

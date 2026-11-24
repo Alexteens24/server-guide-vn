@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeNova from 'starlight-theme-nova';
 import guide from './src/data/guide-pages.json' with { type: 'json' };
 import fragments from './src/data/chapter-fragments.json' with { type: 'json' };
+import { findSubSectionHeadingId } from './src/lib/guide-format.mjs';
 
 const repository = process.env.GITHUB_REPOSITORY ?? '';
 const [owner = '', repo = ''] = repository.split('/');
@@ -12,18 +14,6 @@ const home = base === '/' ? '/' : `${base}/`;
 const firstHeadingByFragment = new Map(
   fragments.items.map((fragment) => [fragment.id, fragment.firstHeadingId]),
 );
-
-function findSubSectionHeadingId(fragment, sectionNumber) {
-  if (!fragment?.outline?.length) return null;
-  const numParts = sectionNumber.split('.');
-  const prefix = numParts.length >= 3 ? numParts.slice(0, 3).join('.') : null;
-  for (const item of fragment.outline) {
-    if (item.level >= 4 && item.id && item.title.trim()) {
-      if (prefix && item.title.includes(prefix)) return item.id;
-    }
-  }
-  return null;
-}
 
 const redirectHeadings = new Map(
   guide.pages.map((page) => {
@@ -52,6 +42,7 @@ export default defineConfig({
   redirects,
   integrations: [
     starlight({
+      plugins: [starlightThemeNova()],
       title: 'Lộ trình Server Minecraft',
       description:
         'Lộ trình phát triển, vận hành và tối ưu hiệu năng máy chủ Minecraft dành cho người mới.',
@@ -78,9 +69,7 @@ export default defineConfig({
       components: {
         Head: './src/components/GuideHead.astro',
         PageTitle: './src/components/GuideTitle.astro',
-        SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/ChapterSidebar.astro',
-        TableOfContents: './src/components/DesktopTOC.astro',
       },
       sidebar: [{ label: 'Toàn bộ lộ trình', link: '/' }],
       tableOfContents: false,

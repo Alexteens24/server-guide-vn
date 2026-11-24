@@ -22,8 +22,9 @@
     "verify": "npm run media:verify && npm run content:verify && npm run build && npm run guide:verify"
   },
   "dependencies": {
-    "@astrojs/starlight": "0.41.3",
-    "astro": "7.1.3"
+    "@astrojs/starlight": "0.42.11",
+    "astro": "7.3.8",
+    "starlight-theme-nova": "0.12.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",

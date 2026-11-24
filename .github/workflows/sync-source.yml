@@ -87,6 +87,8 @@ jobs:
             src/data/chapter-fragments.json
             src/data/chapters
             src/data/guide-pages.json
+            src/data/media-dimensions.json
             src/data/media.json
             src/data/original-post-meta.json
+            src/data/sidebar-data.json
             src/data/original-post.html

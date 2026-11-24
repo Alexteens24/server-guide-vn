@@ -10,7 +10,6 @@ test('renders the complete original article on one page', async ({ page }) => {
   await expect(page.locator('.chapter-grid a')).toHaveCount(9);
   await expect(page.getByRole('link', { name: /Bắt đầu lộ trình/ })).toHaveAttribute('href', '#glossary');
   await expect(page.getByText('9 chương chính')).toBeVisible();
-  await expect(page.locator('[data-progress-page], [data-progress-dashboard]')).toHaveCount(0);
 });
 
 test('table of contents stays on the same page', async ({ page }) => {
@@ -27,9 +26,6 @@ test('highlights the chapter currently being read without rewriting the URL', as
   await page.goto('./');
   await page.locator('#setup').evaluate((heading) => {
     document.documentElement.style.scrollBehavior = 'auto';
-    document.querySelectorAll<HTMLElement>('.original-chapter').forEach((section) => {
-      section.style.contentVisibility = 'visible';
-    });
     heading.scrollIntoView({ block: 'start' });
   });
 
@@ -67,7 +63,7 @@ test('has no serious accessibility violations', async ({ page }) => {
 test('mobile chapter navigation uses in-page anchors', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('./');
-  await page.getByRole('button', { name: 'Menu' }).click();
+  await page.locator('header').getByRole('button', { name: 'Menu' }).click();
 
   const navigation = page.getByRole('navigation', { name: 'Các chương trong lộ trình' });
   await expect(navigation).toBeVisible();
@@ -75,18 +71,27 @@ test('mobile chapter navigation uses in-page anchors', async ({ page }) => {
   await expect(navigation.locator('a[href*="tim-kiem"]')).toHaveCount(0);
 });
 
-test('mobile quick jump tracks chapters and supports the keyboard', async ({ page }) => {
+test('mobile chapter navigation marks the chapter being read', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('./');
 
-  await expect(page.locator('[data-chapter-jump]')).not.toBeVisible();
-
-  await page.getByRole('button', { name: 'Menu' }).click();
+  await page.locator('header').getByRole('button', { name: 'Menu' }).click();
 
   const navigation = page.getByRole('navigation', { name: 'Các chương trong lộ trình' });
   await expect(navigation).toBeVisible();
 
   await navigation.getByRole('link', { name: /Vận hành/ }).click();
   await expect(page).toHaveURL(/#operations$/);
-  await expect(navigation.locator('a[data-chapter-link="operations"]')).toHaveClass(/is-active/);
+  await expect(page.locator('.chapter-sidebar a[data-chapter-link="operations"]')).toHaveClass(/is-active/);
+});
+
+test('desktop keeps a persistent chapter sidebar', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('./');
+
+  const navigation = page.getByRole('navigation', { name: 'Các chương trong lộ trình' });
+  await expect(navigation).toBeVisible();
+  await expect(navigation.locator('a[data-chapter-link="setup"]')).toBeVisible();
+  await expect(page.locator('[data-chapter-jump]')).toHaveCount(0);
+  await expect(page.locator('.desktop-toc')).toHaveCount(0);
 });

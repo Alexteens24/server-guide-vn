@@ -1,33 +1,4 @@
----
-import guide from '../data/guide-pages.json';
-
-const base = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const chapters = guide.pages.filter((page) => !page.parent);
----
-
 <div class="scroll-progress" aria-hidden="true"><span></span></div>
-
-<div class="chapter-jump" data-chapter-jump>
-  <nav aria-label="Nhảy nhanh tới chương">
-    <ol>
-      {chapters.map((chapter) => (
-        <li>
-          <a
-            href={`${base}#${chapter.id}`}
-            data-chapter-link={chapter.id}
-            data-chapter-number={chapter.number}
-            data-chapter-title={chapter.title}
-          >
-            <span>{chapter.number}</span>
-            <strong>{chapter.title}</strong>
-          </a>
-        </li>
-      ))}
-    </ol>
-  </nav>
-</div>
 
 <a
   class="back-to-top"
@@ -37,7 +8,20 @@ const chapters = guide.pages.filter((page) => !page.parent);
   tabindex="-1"
   title="Về đầu trang"
 >
-  <span aria-hidden="true">↑</span>
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    width="18"
+    height="18"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M12 19V5" />
+    <path d="m5 12 7-7 7 7" />
+  </svg>
 </a>
 
 <div class="image-lightbox" aria-modal="true" aria-hidden="true" role="dialog" aria-label="Xem ảnh to">
@@ -214,17 +198,18 @@ const chapters = guide.pages.filter((page) => !page.parent);
     });
   }
 
+  let chapterNavigationReady = false;
+
   function enhanceChapterNavigation() {
     const article = document.querySelector<HTMLElement>('.original-post');
-    const jump = document.querySelector<HTMLElement>('[data-chapter-jump]');
-    if (!article || !jump || jump.dataset.enhanced === 'true') return;
-    jump.dataset.enhanced = 'true';
+    if (!article || chapterNavigationReady) return;
+    chapterNavigationReady = true;
 
-    const sections = Array.from(article.querySelectorAll<HTMLElement>('.original-chapter'));
+    const chapterHeadings = Array.from(article.querySelectorAll<HTMLElement>('.original-chapter-heading[id]'));
     const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]'));
     let activeId = '';
     let activeSectionId = '';
-    const base = window.location.origin + window.location.pathname.replace(/\/$/, '');
+    const currentUrl = window.location.origin + window.location.pathname;
 
     function setActiveChapter(id = '') {
       if (activeId === id) return;
@@ -255,32 +240,45 @@ const chapters = guide.pages.filter((page) => !page.parent);
         else link.removeAttribute('aria-current');
       });
 
-      function autoExpandToggle(linkSelector: string) {
+      function autoExpandSidebar(linkSelector: string) {
         const linkEl = document.querySelector<HTMLElement>(linkSelector);
-        const subList = linkEl?.closest('ol');
-        const toggleBtn = subList?.previousElementSibling as HTMLButtonElement | null;
-        toggleBtn?.setAttribute('aria-expanded', 'true');
-        subList?.removeAttribute('hidden');
+        let list = linkEl?.closest('ol');
+        while (list) {
+          if (list.id) {
+            document.querySelector<HTMLElement>(`[aria-controls="${list.id}"]`)?.setAttribute('aria-expanded', 'true');
+            list.removeAttribute('hidden');
+          }
+          list = list.parentElement?.closest('ol') ?? null;
+        }
       }
 
-      autoExpandToggle(`[data-section-link="${id}"]`);
-      autoExpandToggle(`[data-subsection-link="${id}"]`);
+      autoExpandSidebar(`[data-section-link="${id}"]`);
+      autoExpandSidebar(`[data-subsection-link="${id}"]`);
     }
 
     function syncFromPosition() {
       const readingLine = Math.min(window.innerHeight * 0.28, 240);
-      const current = sections.find((section) => {
-        const bounds = section.getBoundingClientRect();
-        return bounds.top <= readingLine && bounds.bottom > readingLine;
-      });
-      const heading = current?.querySelector<HTMLElement>('.original-chapter-heading');
-      setActiveChapter(heading?.id || '');
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      const currentHeading = atBottom
+        ? chapterHeadings[chapterHeadings.length - 1]
+        : [...chapterHeadings].reverse().find((heading) => heading.getBoundingClientRect().top <= readingLine);
+      setActiveChapter(currentHeading?.id || '');
 
       const allHeadings = Array.from(
-        article!.querySelectorAll<HTMLElement>('[id]:not(.original-chapter-heading):not(#noi-dung)'),
+        article!.querySelectorAll<HTMLElement>('.guide-heading[id]:not(.original-chapter-heading)'),
       );
-      const target = [...allHeadings].reverse().find((h) => {
-        const bounds = h.getBoundingClientRect();
+      const currentIndex = currentHeading ? chapterHeadings.indexOf(currentHeading) : -1;
+      const nextChapter = currentIndex >= 0 ? chapterHeadings[currentIndex + 1] : undefined;
+      const chapterSections = currentHeading
+        ? allHeadings.filter((heading) => {
+            const afterChapter = currentHeading.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING;
+            const beforeNext = !nextChapter
+              || (heading.compareDocumentPosition(nextChapter) & Node.DOCUMENT_POSITION_FOLLOWING);
+            return afterChapter && beforeNext;
+          })
+        : [];
+      const target = [...chapterSections].reverse().find((heading) => {
+        const bounds = heading.getBoundingClientRect();
         return bounds.top <= readingLine;
       });
       setActiveSection(target?.id || '');
@@ -296,38 +294,24 @@ const chapters = guide.pages.filter((page) => !page.parent);
       });
     }
 
-    const Observer = globalThis.IntersectionObserver;
-    if (Observer) {
-      const observer = new Observer(scheduleNavigationSync, {
-        rootMargin: '-22% 0px -68% 0px',
-        threshold: 0,
-      });
-      sections.forEach((section) => observer.observe(section));
-    }
     window.addEventListener('scroll', scheduleNavigationSync, { passive: true });
     window.addEventListener('resize', scheduleNavigationSync, { passive: true });
 
     function scrollToTarget(event: Event, target: HTMLElement, targetId: string) {
-      const targetSection = target?.closest<HTMLElement>('.original-chapter');
-      const targetIndex = targetSection ? sections.indexOf(targetSection) : -1;
-      const measuredSections = targetIndex >= 0 ? sections.slice(0, targetIndex + 1) : [];
-
       event.preventDefault();
-      measuredSections.forEach((section) => {
-        section.style.contentVisibility = 'visible';
-      });
-      window.history.pushState(null, '', `${base}#${targetId}`);
-      const previousScrollBehavior = document.documentElement.style.scrollBehavior;
-      document.documentElement.style.scrollBehavior = 'auto';
+      const closeMobileMenu = document.body.hasAttribute('data-mobile-menu-expanded');
+      if (closeMobileMenu) {
+        document.querySelector<HTMLElement>('nova-mobile-menu-toggle')?.click();
+      }
+
+      window.history.pushState(null, '', `${currentUrl}#${targetId}`);
       target.scrollIntoView({ block: 'start' });
-      window.requestAnimationFrame(() => {
-        target.scrollIntoView({ block: 'start' });
-        window.requestAnimationFrame(() => {
-          target.scrollIntoView({ block: 'start' });
-          document.documentElement.style.scrollBehavior = previousScrollBehavior;
-          syncFromPosition();
-        });
-      });
+
+      if (closeMobileMenu) {
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      }
+      syncFromPosition();
     }
 
     links.forEach((link) => {
@@ -384,13 +368,6 @@ const chapters = guide.pages.filter((page) => !page.parent);
           target.removeAttribute('hidden');
         }
       });
-
-      button.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          button.click();
-        }
-      });
     }
 
     document.querySelectorAll<HTMLButtonElement>('[data-chapter-toggle]').forEach((button) => {
@@ -439,7 +416,16 @@ const chapters = guide.pages.filter((page) => !page.parent);
     update();
   }
 
+  function enhanceThemeToggle() {
+    document.querySelectorAll('astro-theme-toggle').forEach((toggle) => {
+      if (!toggle.hasAttribute('aria-label')) {
+        toggle.setAttribute('aria-label', 'Chuyển chế độ sáng/tối');
+      }
+    });
+  }
+
   function enhancePage() {
+    enhanceThemeToggle();
     enhanceOriginalPost();
     enhanceChapterNavigation();
     enhanceSidebarToggles();

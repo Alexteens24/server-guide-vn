@@ -20,15 +20,18 @@ const chapters = guide.pages.filter((page) => !page.parent);
       <a
         href={`${base}#${chapter.id}`}
         data-chapter-link={chapter.id}
-        data-chapter-number={chapter.number}
-        data-chapter-title={chapter.title}
       >
         <span class="chapter-grid__number">{chapter.number}</span>
         <span class="chapter-grid__body">
           <strong>{chapter.title}</strong>
           <small>{chapter.description}</small>
         </span>
-        <span class="chapter-grid__arrow" aria-hidden="true">↘</span>
+        <span class="chapter-grid__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7l10 10" />
+            <path d="M17 8v9H8" />
+          </svg>
+        </span>
       </a>
     ))}
   </nav>

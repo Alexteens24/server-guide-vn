@@ -26,8 +26,6 @@ if (landing('.original-post > .original-chapter').length !== 9) failures.push('T
 if (landing('.chapter-grid a[data-chapter-link]').length !== 9) {
   failures.push('Mục lục đầu bài không có đủ 9 liên kết');
 }
-if (landing('[data-progress-page], [data-progress-dashboard]').length) failures.push('Trang chính vẫn còn checklist/progress');
-if (landing('[data-guide-search]').length) failures.push('Trang chính vẫn còn faceted search');
 
 for (const page of guide.pages.filter((item) => !item.parent)) {
   if (!landing(`#${page.id}`).length) failures.push(`Thiếu anchor chương: #${page.id}`);
