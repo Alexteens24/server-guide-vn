@@ -59,8 +59,8 @@ Biết dùng AI như một công cụ giải quyết vấn đề, giải thích 
 </ul><div style="text-align: justify">Học nền tảng của thầy <a href="https://www.coursera.org/courses?query=machine%20learning%20andrew%20ng" target="_blank" class="link link--external" rel="noreferrer">Andrew Ng</a> bên Coursera<br>
 <a href="https://sdivn.com/wp-content/uploads/2024/06/Huong-dan-ra-lenh-AI-Gemini-4.pdf" target="_blank" class="link link--external" rel="noreferrer">Hướng dẫn viết lệnh AI</a> - Giải thích ngữ cảnh, viết Promt chuẩn chỉnh xíu.<br>
 <a href="https://github.com/affaan-m/everything-claude-code" target="_blank" class="link link--external" rel="noreferrer">everything-claude-code</a> - Triển khai công việc đã xử lý dưới dạng <code class="bbCodeInline">.md</code> thay vì tốn thêm token giải thích lại ngữ cảnh.<br>
-A<a href="https://github.com/msitarzewski/agency-agents" target="_blank" class="link link--external" rel="noreferrer">gency Agent</a> - Phân đầu việc cho từng hệ thống AI riêng.<br>
-D<a href="https://deepwiki.com/" target="_blank" class="link link--external" rel="noreferrer">eep Wiki</a> - Dạng “wiki thông minh”, sử dụng công nghệ để tự động đọc và tóm tắt nội dung (như code, tài liệu, dự án), rồi biến chúng thành tài liệu dễ hiểu.<br>
+<a href="https://github.com/msitarzewski/agency-agents" target="_blank" class="link link--external" rel="noreferrer">Agency Agent</a> - Phân đầu việc cho từng hệ thống AI riêng.<br>
+<a href="https://deepwiki.com/" target="_blank" class="link link--external" rel="noreferrer">Deep Wiki</a> - Dạng “wiki thông minh”, sử dụng công nghệ để tự động đọc và tóm tắt nội dung (như code, tài liệu, dự án), rồi biến chúng thành tài liệu dễ hiểu.<br>
 ...<br>​</div><hr><h3 class="bbHeading" id="-2-1-server-software-jar-phan-mem-may-chu"><div style="text-align: justify">2.1. <a href="https://github.com/LeStegii/server-software/tree/master/java" target="_blank" class="link link--external" rel="noreferrer">Server software JAR</a> - Phần mềm máy chủ​</div></h3><ol>
 <li><h4 class="bbHeading" id="-purper"><div style="text-align: justify"><a href="https://purpurmc.org/" target="_blank" class="link link--external" rel="noreferrer">Purper</a>​</div></h4>Được phát triển bởi PurpurMC, tách ra từ dự án gốc - <a href="https://github.com/PaperMC/Paper" target="_blank" class="link link--external" rel="noreferrer">Paper</a> fork, thiên về tính năng nhiều hơn là tối ưu. Sở hữu nhiều tính năng hấp dẫn như EnderChest 54 slots, tinh chỉnh kích thước động vật, cho phép tùy chỉnh nhiều khía cạnh về trải nghiệm người chơi.<br>
 <img src="__BASE__media/source/007-anime1-00ec0ca7.png" class="smilie" loading="lazy" alt=":anime1:" title="smug :anime1:" decoding="async"> Phù hợp cho <span style="color: rgb(243, 121, 52)">10 --&gt; 28+</span> người chơi.</li>
@@ -80,9 +80,8 @@ Khi nhìn vào Leaf, bạn có thể hiểu nó như một phiên bản máy ch�
 <br>
 <img src="__BASE__media/source/010-popo_canny-d41a1a51.png" class="smilie" loading="lazy" alt=":popo_canny:" title="Popo canny :popo_canny:" decoding="async"><span style="color: rgb(85, 57, 130)">Dù vậy, <b>nhược điểm</b> sẽ là:</span><br>
 - Việc thiết kế Plugin (Region / Async Scheduler) dành cho phần mềm máy chủ này do đó cũng trở nên phức tạp hơn. Vì không còn một thread trung tâm, các Event và thao tác với dữ liệu trò chơi phải đảm bảo an toàn giữa nhiều thread (thread-safe / main-thread violation). Nếu Plugin bạn cài không được thiết kế cho môi trường này, có thể xảy ra lỗi race condition (tranh chấp dữ liệu) hoặc toang máy chủ ngay lập tức.<br>
-- <span style="color: rgb(184, 49, 47)"><i>Đắt xắt ra miếng:</i></span> Trung bình cần nền tảng kiến thức nhất định về quản lý hệ thống, cùng số tiền bỏ ra để duy trì phần cứng không hề rẻ có thể làm bạn lỗ ròng vài tháng đầu phát triển, tối thiểu cần<span style="color: rgb(184, 49, 47)"> <b>CPU 16 </b></span><i><span style="color: rgb(184, 49, 47)"><b>cores.</b></span> </i><span style="color: rgb(0, 0, 0)"><s>Thấp hơn vẫn có thể hoạt động</s>, không hề khuyến khích. <br>
-- Nếu người chơi tập trung đông ở một khu vực, thì toàn bộ workload vẫn bị dồn vào một region duy nhất, và khi đó phần mềm này lại quay về giới hạn gần giống mô hình </span><a href="https://paper-chan.moe/paper/" target="_blank" class="link link--external" rel="noreferrer">Paper truyền thống</a><span style="color: rgb(0, 0, 0)">.</span><br>
-<br>
+- <span style="color: rgb(184, 49, 47)"><i>Đắt xắt ra miếng:</i></span> Trung bình cần nền tảng kiến thức nhất định về quản lý hệ thống, cùng số tiền bỏ ra để duy trì phần cứng không hề rẻ có thể làm bạn lỗ ròng vài tháng đầu phát triển, tối thiểu cần<span style="color: rgb(184, 49, 47)"> <b>CPU 16 </b></span><i><span style="color: rgb(184, 49, 47)"><b>cores.</b></span> </i><s>Thấp hơn vẫn có thể hoạt động</s>, dù mình không hề khuyến khích. <br>
+- Nếu người chơi tập trung đông ở một khu vực, thì toàn bộ workload vẫn bị dồn vào một region duy nhất, và khi đó phần mềm này lại quay về giới hạn gần giống mô hình <a href="https://paper-chan.moe/paper/" target="_blank" class="link link--external" rel="noreferrer">Paper truyền thống</a>.<br>
 <div class="bbImageWrapper" title="folia_spread.webp">
 <img src="__BASE__media/source/010-folia_spread-9009c18e.webp" class="bbImage" style="width: 637px" alt="folia_spread.webp" title="folia_spread.webp" width="2180" height="1351" loading="lazy" decoding="async">
 </div><br>
@@ -103,7 +102,8 @@ Bạn có tiền sao, đọc bài viết này đây chi <img src="__BASE__media/
 <img src="__BASE__media/source/013-1776519674738-3d57d18a.webp" class="bbImage" style="width: 636px" alt="1776519674738.webp" title="1776519674738.webp" width="1373" height="578" loading="lazy" decoding="async">
 </div></div><h3 class="bbHeading" id="hosting"><div style="text-align: justify">2.2. Hosting - Chạy máy chủ ở đâu?​</div></h3><div style="text-align: justify">Đây là một danh sách gồm những lựa chọn phổ biến khi đề cập đến việc chạy một máy Minecraft, xếp từ vừa túi tiền cho đến xịn xò con bò rồi củ chuối nhất. Mở máy chủ cho người Việt thì cứ táng Host trong nước hoặc bét nhất là Tân Ba Gia / HongKong, đừng dại rước máy chủ tận Châu Âu về rồi bắt ae chịu khổ.​</div><h4 class="bbHeading" id="-2-2-1-luu-tam-ve-host-nuoc-ngoai-host-viet-nam"><div style="text-align: justify">2.2.1. Lưu tâm về Host nước ngoài &amp; Host Việt Nam​</div></h4><ul>
 <li><div style="text-align: justify">Minh bạch về thông tin cấu hình phần cứng.​</div></li>
-</ul><div style="text-align: justify">Điểm yếu của Minecraft là chỉ chạy trên 1 nhân của CPU, tức là nếu CPU bạn có 69 nhân, thì Minecraft cũng sẽ chỉ chạy trên duy nhất 1 nhân (Không được nhầm lẫn với luồng đâu ạ, Minecraft có hỗ trợ chạy đa luồng nha), CPU lí tưởng sẽ là CPU có hiệu năng đơn nhân tốt và xung nhịp khỏe (từ 2.7 Ghz trở lên), tham khảo <a href="https://www.cpubenchmark.net/singleThread.html" target="_blank" class="link link--external" rel="noreferrer">CPU Benchmarks</a> + So sánh của <a href="https://copilot.microsoft.com/" target="_blank" class="link link--external" rel="noreferrer">Copilot</a> để biết thêm! Để có hiệu năng tốt, nên tránh các CPU quá cũ, ví dụ trước dòng Ryzen 3000.​</div>
+</ul><div style="text-align: justify">Điểm yếu của Minecraft là chỉ chạy trên 1 nhân của CPU, tức là nếu CPU bạn có 69 nhân, thì Minecraft cũng sẽ chỉ chạy trên duy nhất 1 nhân (Không được nhầm lẫn với luồng đâu ạ, Minecraft có hỗ trợ chạy đa luồng nha), CPU lí tưởng sẽ là CPU có hiệu năng đơn nhân tốt và xung nhịp khỏe (từ 2.7 Ghz trở lên), tham khảo <a href="https://www.cpubenchmark.net/singleThread.html" target="_blank" class="link link--external" rel="noreferrer">CPU Benchmarks</a> + So sánh của trí tuệ nhân tạo để biết thêm! Để có hiệu năng tốt, nên tránh các CPU quá cũ, ví dụ trước dòng Ryzen 3000. <br>
+Thông thường với các nhà cung cấp VN hiện tại, Gold cho CPU không giới hạn trên Xeon Gold - đủ cho vanilla, plugin và SMP nhỏ. Ryzen 9950X là Zen 5 xung 5.7GHz -tốc độ đơn nhân cao hơn hẳn, dành cho modpack nặng và cộng đồng đông người.​</div>
 <blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
 <div class="bbCodeBlock-content">
 <div class="">
@@ -118,13 +118,12 @@ Bạn có tiền sao, đọc bài viết này đây chi <img src="__BASE__media/
 <div class="bbImageWrapper" title="1776525756057.webp">
 <img src="__BASE__media/source/014-1776525756057-b52992f4.webp" class="bbImage" style="width: 746px" alt="1776525756057.webp" title="1776525756057.webp" width="1216" height="832" loading="lazy" decoding="async">
 </div><br>
-Đừng ngại hỏi thẳng nhà cung cấp về vấn đề này. Nếu họ không hỗ trợ thiết lập, không thèm phản hồi hoặc không cho bạn sử dụng toàn bộ tài nguyên CPU/RAM đã mua<img src="__BASE__media/source/015-anime7-769be25c.png" class="smilie" loading="lazy" alt=":anime7:" title="WTF :anime7:" decoding="async"> thì đó là dấu hiệu nên cân nhắc lại nhé. Đặc biệt để tâm tới <a href="https://aws.amazon.com/vi/what-is/sftp/" target="_blank" class="link link--external" rel="noreferrer">sftp</a> nếu như bên Hosting không hỗ trợ, ví dụ của <a href="https://pikamc.vn/servers" target="_blank" class="link link--external" rel="noreferrer">PikaMC</a>:<br>
+Đừng ngại hỏi thẳng nhà cung cấp về vấn đề này. Nếu họ không hỗ trợ thiết lập, không thèm phản hồi hoặc không cho bạn sử dụng toàn bộ tài nguyên CPU/RAM đã mua<img src="__BASE__media/source/015-anime7-769be25c.png" class="smilie" loading="lazy" alt=":anime7:" title="WTF :anime7:" decoding="async"> thì đó là dấu hiệu nên cân nhắc lại nhé. Đặc biệt để tâm tới <a href="https://aws.amazon.com/vi/what-is/sftp/" target="_blank" class="link link--external" rel="noreferrer">sftp</a> nếu như bên Hosting bị lỗi chưa hỗ trợ, ví dụ của <a href="https://pikamc.vn/servers" target="_blank" class="link link--external" rel="noreferrer">PikaMC</a> ở thời điểm mình đăng bài:<br>
 <div class="bbImageWrapper" title="1776646539202.webp">
 <img src="__BASE__media/source/016-1776646539202-ab4701e0.webp" class="bbImage" style="" alt="1776646539202.webp" title="1776646539202.webp" width="598" height="483" loading="lazy" decoding="async">
 </div><br>
 <br>
 Và có hỗ trợ - <a href="https://docs.bloom.host/sftp/" target="_blank" class="link link--external" rel="noreferrer">Bloom</a>:<br>
-<br>
 <div class="bbImageWrapper" title="3-c162a663ea99d4e8ddb3fa63ff7b18d9.png">
 <img src="__BASE__media/source/025-3-c162a663ea99d4e8ddb3fa63ff7b18d9-ad8904e8.png" class="bbImage" style="width: 650px" alt="3-c162a663ea99d4e8ddb3fa63ff7b18d9.png" title="" width="1920" height="887" loading="lazy" decoding="async">
 </div></div><ul>
@@ -144,9 +143,9 @@ Hoặc DuckPanel thông qua hệ điều hành Mac/Linux của Bloom: <a href="h
 </div><br>
 <ul>
 <li><div style="text-align: justify"><b>ĐIỀU KHOẢN DỊCH VỤ rõ ràng &amp; Chính sách quyền riêng tư minh bạch</b>​</div></li>
-</ul><div style="text-align: justify"><span style="color: rgb(209, 72, 65)"><b>[!!!]</b></span> Cực kỳ quan trọng nhé. Thường bạn nên để ý tới chính sách <a href="https://aws.amazon.com/vi/what-is/service-level-agreement/" target="_blank" class="link link--external" rel="noreferrer">SLA</a> - được hoàn tiền bao nhiêu ngày sau khi đưa vào sử dụng.<br>
+</ul><div style="text-align: justify"><span style="color: rgb(209, 72, 65)"><b>[!!!]</b></span> Cực kỳ quan trọng nhé. Thường bạn nên để ý tới chính sách <a href="https://aws.amazon.com/vi/what-is/service-level-agreement/" target="_blank" class="link link--external" rel="noreferrer">SLA</a> - được hoàn tiền bao nhiêu ngày sau khi đưa vào sử dụng và hoàn về đâu (tài khoản ngân hàng của bạn hay nền tảng của nhà cung cấp).<br>
 - Nước ngoài 48h - 1 tuần.<br>
-- VN tầm 48h - 72 tiếng. Ví dụ của <a href="https://minevn.cloud/terms" target="_blank" class="link link--external" rel="noreferrer">MineVN Cloud</a>:<br>
+- VN tầm 24h - 72h. Ví dụ của <a href="https://minevn.cloud/terms" target="_blank" class="link link--external" rel="noreferrer"><s>MineVN Cloud</s></a>:<br>
 <div class="bbImageWrapper" title="1776529227911.webp">
 <img src="__BASE__media/source/021-1776529227911-3a63bb71.webp" class="bbImage" style="width: 747px" alt="1776529227911.webp" title="1776529227911.webp" width="829" height="181" loading="lazy" decoding="async">
 </div><br>
@@ -157,7 +156,7 @@ Và hoàn được bao nhiêu ngày/tiền khi xảy ra sự cố DDOS/phía ngo
 <img src="__BASE__media/source/023-1787330261812-e8c79864.webp" class="bbImage" style="" alt="1787330261812.webp" title="1787330261812.webp" width="690" height="919" loading="lazy" decoding="async">
 </div></td></tr></tbody></table>
 </div><ul>
-<li><div style="text-align: justify"><b>Số Port bạn được tạo - Port Allocation</b>​</div>Mấy cái số Port này nhìn vậy chứ là linh hồn của máy chủ đó nha. Nó quyết định mọi thứ từ địa chỉ máy chủ - IP chính, giúp anh em hệ Bedrock vào chơi chung, cho đến việc có chỗ mà quảng cáo miễn phí trên mấy trang Voting hay tự duy trì máy chủ chạy Resource Pack. Ở Việt Nam mình, mua host thường được tặng sẵn <span style="color: rgb(184, 49, 47)">1 - 3 port</span>. Gặp đúng nhà cung cấp có tâm, như <a href="https://docs.lagless.gg/minecraft" target="_blank" class="link link--external" rel="noreferrer">Lagless</a>, là họ mở thêm, thậm chí cho bạn lựa số đẹp miễn phí nữa nhé :-B<b><div class="bbImageWrapper" title="1776652240678.webp">
+<li><div style="text-align: justify"><b>Số Port bạn được tạo - Port Allocation</b>​</div>Mấy cái số Port này nhìn vậy chứ là linh hồn của máy chủ đó nha. Nó quyết định mọi thứ từ địa chỉ máy chủ - IP chính, giúp anh em hệ Bedrock vào chơi chung, cho đến việc có chỗ mà quảng cáo miễn phí trên mấy trang Voting hay tự duy trì máy chủ chạy Resource Pack. Ở Việt Nam mình, mua host thường được tặng sẵn <span style="color: rgb(184, 49, 47)">1 - 3 port</span>. Gặp đúng nhà cung cấp có tâm, như <a href="https://docs.lagless.gg/minecraft" target="_blank" class="link link--external" rel="noreferrer">Lagless</a>, là họ mở thêm, thậm chí cho bạn lựa số đẹp miễn phí nữa nhé <img src="__BASE__media/source/025-blah-f115960d.png" class="smilie" loading="lazy" alt=":blah:" title="Blah blah :blah:" decoding="async"><b><div class="bbImageWrapper" title="1776652240678.webp">
 <img src="__BASE__media/source/024-1776652240678-43cb344b.webp" class="bbImage" style="width: 1070px" alt="1776652240678.webp" title="1776652240678.webp" width="1245" height="37" loading="lazy" decoding="async">
 </div></b></li>
 <li><div style="text-align: justify"><b>Hỗ trợ khách hàng</b> Đội ngũ hỗ trợ nhanh và có kiến thức là một điểm cộng lớn. Khi gặp sự cố, việc được hỗ trợ kịp thời có thể tiết kiệm cho bạn rất nhiều thời gian và công sức. Ví dụ của <a href="https://bumboohost.vn/" target="_blank" class="link link--external" rel="noreferrer">Bumboo Hosting</a> - một bên Host của Việt Nam hỗ trợ nhiệt tình thật sự:​</div></li>
@@ -196,6 +195,7 @@ Và hoàn được bao nhiêu ngày/tiền khi xảy ra sự cố DDOS/phía ngo
 </ul><div style="text-align: justify">Xịn nhất trong các lựa chọn mình liệt kê tới, yêu cầu có kĩ năng quản trị hệ điều hành Linux tối thiểu, nếu muốn, bạn có thể chọn <a href="https://www.ovhcloud.com/asia/" target="_blank" class="link link--external" rel="noreferrer">OVH</a> &amp; <a href="https://www.hetzner.com/" target="_blank" class="link link--external" rel="noreferrer">Hetzner</a> &gt; Khả thi với máy chủ <code class="bbCodeInline">~60+</code> người chơi.​</div><ul>
 <li><div style="text-align: justify"><span style="color: rgb(184, 49, 47)"><b>Shared host - Cùng "chia sẻ" tài nguyên với các máy chủ khác</b></span>​</div></li>
 </ul><div style="text-align: justify">Phần lớn các cộng đồng hoặc máy chủ Minecraft mà bạn thấy trên thị trường Việt Nam (khoảng 10–240 người chơi) đều thuộc nhóm này, và thường được quản lý thông qua <a href="https://github.com/pterodactyl/panel" target="_blank" class="link link--external" rel="noreferrer">Pterodactyl Panel</a>. Đây có lẽ là phần dễ gây rối nhất khi chọn Hosting vừa phù hợp nhu cầu, vừa phù hợp túi tiền - người đọc sẽ gặp rất nhiều thuật ngữ quảng cáo như CPU cực mạnh, Ram nhiều, hay nâng lẻ phần cứng được...<br>
+<br>
 <b><span style="color: rgb(235, 107, 86)"><i><span style="font-size: 18px">[!!!]</span></i><span style="font-size: 18px">Bỏ qua đi</span></span></b><br>
 Bạn nên sử dụng danh sách ở phần <b><span style="color: rgb(184, 49, 47)">2.2.1.</span></b> để đánh giá nhà cung cấp, những bên đáp ứng đầy đủ các tiêu chí đó thường sẽ có giá nhỉnh hơn một chút mà đổi lại là uy tín về hiệu năng &amp; hỗ trợ bài bản. Bạn có thể tham khảo trước ý kiến tại các bên như <a href="https://discord.com/invite/gfgAwdSEuM" target="_blank" class="link link--external" rel="noreferrer">LeafMC</a>  / <a href="https://www.facebook.com/groups/minecrafthosting" target="_blank" class="link link--external" rel="noreferrer">Cộng đồng Minecraft Hosting &amp; Cloud</a>...​</div>
 <blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
@@ -213,7 +213,8 @@ Bạn nên sử dụng danh sách ở phần <b><span style="color: rgb(184, 49,
 <div class="bbImageWrapper" title="1787878581049.webp">
 <img src="__BASE__media/source/033-1787878581049-314f9678.webp" class="bbImage" style="" alt="1787878581049.webp" title="1787878581049.webp" width="472" height="174" loading="lazy" decoding="async">
 </div></div><ol>
-<li><div style="text-align: justify"><a href="https://minevn.cloud/" target="_blank" class="link link--external" rel="noreferrer"><s>MineVN Cloud</s></a> - Phát triển bởi đội ngũ nhân sự của <a href="https://discord.com/invite/minevn" target="_blank" class="link link--external" rel="noreferrer">MineVN</a> mà mình dành phân nửa thanh xuân trong máy chủ này, nên cam kết về chất lượng kỹ thuật. Hạ tầng thì mình chưa thử :f11:​</div></li>
+<li><div style="text-align: justify"><a href="https://kinghost.vn/" target="_blank" class="link link--external" rel="noreferrer">KingHost</a> - Hầu hết host "giá rẻ" đặt máy ở Singapore hoặc xa hơn, người chơi Việt Nam gánh toàn bộ độ trễ đó. KingHost máy chủ trong nước &amp; <b>không chặn UDP</b>.​</div></li>
+<li><div style="text-align: justify"><a href="https://minevn.cloud/" target="_blank" class="link link--external" rel="noreferrer"><s>MineVN Cloud</s></a> - Phát triển bởi đội ngũ nhân sự của <a href="https://discord.com/invite/minevn" target="_blank" class="link link--external" rel="noreferrer">MineVN</a> mà mình dành phân nửa thanh xuân trong máy chủ này, nên cam kết về chất lượng kỹ thuật. Hạ tầng thì mình chưa thử <img src="__BASE__media/source/259-p24-33886dfc.gif" class="smilie" loading="lazy" alt=":p24:" title="Clown :p24:" decoding="async">​</div></li>
 <li><div style="text-align: justify"><a href="https://www.zyndata.vn/vi" target="_blank" class="link link--external" rel="noreferrer"><s>ZynHost</s></a> /<a href="https://www.facebook.com/luminecloud/" target="_blank" class="link link--external" rel="noreferrer"> Luminecloud</a> - Sau khi AsakaCloud ngừng hoạt động, nhà sáng lập của dịch vụ này đã tiếp tục phát triển một dự án mới mang tên ZynHost. / <a href="https://www.facebook.com/luminecloud/" target="_blank" class="link link--external" rel="noreferrer">Luminecloud</a> <s>đi nguyên dữ liệu khách</s> biết cách tiếp thị và cập nhật nhanh thông tin nội bộ hệ thống.​</div></li>
 <li><div style="text-align: justify"><a href="https://bumboohost.vn/" target="_blank" class="link link--external" rel="noreferrer">BumbooHosting</a> / <a href="https://discord.com/invite/pDDfWVbWgK" target="_blank" class="link link--external" rel="noreferrer">ZenCheap</a>(oẳng) - Hỗ trợ nhiệt tình ạ.​</div></li>
 <li><div style="text-align: justify"><a href="https://my.hypercore.vn/dashboard" target="_blank" class="link link--external" rel="noreferrer">Hypercore</a> - Phù hợp với Dev kiểm thử hệ thống &amp; máy chủ chuyên dành cho PC Java - chặn Geyser(Bedrock) tại thời điểm mình viết bài.​</div></li>
@@ -323,8 +324,16 @@ Hiển nhiên, một máy tính cá nhân không chạy máy chủ Minecraft v�
 <img src="__BASE__media/source/047-1776546854033-b04ae783.webp" class="bbImage" style="" alt="1776546854033.webp" title="1776546854033.webp" width="786" height="848" loading="lazy" decoding="async">
 </div></div></td><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1776547821433.webp">
 <img src="__BASE__media/source/048-1776547821433-7179a820.webp" class="bbImage" style="" alt="1776547821433.webp" title="1776547821433.webp" width="684" height="279" loading="lazy" decoding="async">
+</div><div class="bbImageWrapper" title="1795361896053.webp">
+<img src="__BASE__media/source/052-1795361896053-4c8a7c7e.webp" class="bbImage" style="" alt="1795361896053.webp" title="1795361896053.webp" width="673" height="1019" loading="lazy" decoding="async">
 </div></div></td><td><div class="bbImageWrapper" title="1778262042649.webp">
 <img src="__BASE__media/source/049-1778262042649-d53c9453.webp" class="bbImage" style="" alt="1778262042649.webp" title="1778262042649.webp" width="700" height="690" loading="lazy" decoding="async">
+</div></td></tr><tr><td style="width: 33.3333%"><div class="bbImageWrapper" title="1795360425155.webp">
+<img src="__BASE__media/source/054-1795360425155-ac228ee0.webp" class="bbImage" style="" alt="1795360425155.webp" title="1795360425155.webp" width="671" height="986" loading="lazy" decoding="async">
+</div></td><td style="width: 33.3333%"><div class="bbImageWrapper" title="1795358718378.webp">
+<img src="__BASE__media/source/055-1795358718378-f843784b.webp" class="bbImage" style="" alt="1795358718378.webp" title="1795358718378.webp" width="662" height="903" loading="lazy" decoding="async">
+</div></td><td><div class="bbImageWrapper" title="1795360472343.webp">
+<img src="__BASE__media/source/056-1795360472343-b07b22d8.webp" class="bbImage" style="" alt="1795360472343.webp" title="1795360472343.webp" width="1116" height="2480" loading="lazy" decoding="async">
 </div></td></tr></tbody></table>
 </div><div style="text-align: justify">Bạn của mai sau rất có thể sẽ góp mặt trong mớ hỗn độn này, nếu không dành thời gian để bảo vệ sản phẩm chất xám cá nhân. Có thể kể tới những phương án bảo vệ như:<br>
 - Làm rõ nội dung Brief công việc được giao, đảm bảo <b><span style="color: rgb(226, 80, 65)">Điều khoản dịch vụ / Chính sách quyền riêng tư</span></b> của máy chủ bạn đang phát triển sẽ hỗ trợ trong quá trình làm việc/chấm dứt làm việc. Dùng đại <a href="https://chatgpt.com/" target="_blank" class="link link--external" rel="noreferrer">GPT</a> quét qua một lượt văn bản + Chính sách của những máy chủ Minecraft lớn thường sẽ có những thông tin này để bạn tham khảo.​</div><div class="bbImageWrapper" title="1222.webp">
@@ -840,8 +849,7 @@ Tùy chọn này xác định phạm vi (tính theo Chunks) xung quanh người 
 <b>Nguyên tắc chung:</b> Nên đặt tối đa bằng <code class="bbCodeInline">simulation-distance - 1</code> và tối thiểu là 3, vì những mobs nằm ngoài <code class="bbCodeInline">simulation-distance</code> hoặc sát rìa sẽ không được xử lý (tick), gần như “đứng yên” và trông đần thật sự. Nếu bạn đang dùng <code class="bbCodeInline">simulation-distance</code> mặc định == 10, thì có thể linh hoạt chỉnh <code class="bbCodeInline">mob-spawn-range</code> trong khoảng từ 3 - 8 mà không cần quá cứng nhắc theo quy tắc trên. Nếu đặt <code class="bbCodeInline">mob-spawn-range</code> cao hơn <code class="bbCodeInline">simulation-distance</code>, thực thể sẽ cố xuất hiện ở những khu vực mà máy chủ không xử lý, khiến bạn cảm giác máy chủ chẳng có gì cả. Vì vậy, việc chọn giá trị phù hợp là rất quan trọng để giữ trải nghiệm người chơi ổn định.​</div><hr><h4 class="bbHeading" id="-spigot-yml-world-settings-default-nerf-spawner-mobs"><div style="text-align: justify"><b>spigot.yml/world-settings.default.nerf-spawner-mobs</b>​</div></h4><div style="text-align: justify"><code class="bbCodeInline">Đề xuất: true</code><br>
 Tùy chọn này giúp tắt não <img src="__BASE__media/source/094-ah-24edd27f.png" class="smilie" loading="lazy" alt=":ah:" title="Ahhhh :ah:" decoding="async"> của các thực thể được sinh ra từ lồng triệu hồi - <a href="https://minecraft.wiki/w/Monster_Spawner" target="_blank" class="link link--external" rel="noreferrer">Spawner</a>.​</div><div class="bbTable">
 <table style="width: 100%"><tbody><tr><td style="width: 39.23%"><div style="text-align: justify">Nếu máy chủ của bạn cho phép người chơi lượm được <code class="bbCodeInline">spawner</code> á, việc bật tùy chọn này sẽ góp phần giảm Lag đi đáng kể.<br>
-Đồng thời, quản trị viên cũng nên bật thêm <code class="bbCodeInline">spawner-nerfed-mobs-should-jump</code> trong tệp <code class="bbCodeInline">paper-world-defaults.yml</code> để quái vẫn có thể nhảy, giúp một số dạng Mob Farm tiếp tục hoạt động, tránh làm người chơi khóc lóc :t16:​</div><br>
-<div class="bbImageWrapper" title="1787884435984.webp">
+Đồng thời, quản trị viên cũng nên bật thêm <code class="bbCodeInline">spawner-nerfed-mobs-should-jump</code> trong tệp <code class="bbCodeInline">paper-world-defaults.yml</code> để quái vẫn có thể nhảy, giúp một số dạng Mob Farm tiếp tục hoạt động, tránh làm người chơi khóc lóc :t16:​</div><div class="bbImageWrapper" title="1787884435984.webp">
 <img src="__BASE__media/source/095-1787884435984-be0dc154.webp" class="bbImage" style="" alt="1787884435984.webp" title="1787884435984.webp" width="1054" height="994" loading="lazy" decoding="async">
 </div></td><td style="width: 60.6799%"><div style="text-align: justify"><b><span style="color: rgb(209, 72, 65)">[!?]</span></b> Việc dùng Silk Touch để lấy Spawner nghe thú vị thật, nhưng khi nhiều Spawner tập trung lại một chỗ, chúng rất dễ trở thành nguồn gây <b>Lag cực lớn</b> cho máy chủ. Để đảm bảo hiệu năng lâu dài, tốt nhất vẫn nên hạn chế số lượng trong một khu vực hoặc tắt hẳn tính năng này.​</div><div class="bbImageWrapper" title="1776699950887.webp">
 <img src="__BASE__media/source/096-1776699950887-746e5af4.webp" class="bbImage" style="width: 565px" alt="1776699950887.webp" title="1776699950887.webp" width="631" height="257" loading="lazy" decoding="async">
@@ -2018,14 +2026,14 @@ Mã:
 </div></td><td style="width: 33.3333%"><div class="bbImageWrapper" title="gTqK4cGi_o.gif">
 <img src="__BASE__media/source/165-gTqK4cGi_o-ac5176f8.gif" class="bbImage" style="" alt="gTqK4cGi_o.gif" title="" width="849" height="399" loading="lazy" decoding="async">
 </div></td></tr></tbody></table>
-</div><hr><h4 class="bbHeading" id="-viaversion-geyserreversion"><a href="https://modrinth.com/plugin/viaversion" target="_blank" class="link link--external" rel="noreferrer"><s>ViaVersion</s></a> / <a href="https://modrinth.com/mod/geyserreversion" target="_blank" class="link link--external" rel="noreferrer">GeyserReversion</a>​</h4><div style="text-align: justify"><div class="bbImageWrapper" title="maxresdefault.jpg">
+</div><hr><h4 class="bbHeading" id="-viaversion-geyserreversion"><a href="https://modrinth.com/plugin/viaversion" target="_blank" class="link link--external" rel="noreferrer"><s>ViaVersion</s></a> / <a href="https://modrinth.com/mod/geyserreversion" target="_blank" class="link link--external" rel="noreferrer"><s>GeyserReversion</s></a>​</h4><div style="text-align: justify"><div class="bbImageWrapper" title="maxresdefault.jpg">
 <img src="__BASE__media/source/166-maxresdefault-9b3e45c2.jpg" class="bbImage" style="width: 591px" alt="maxresdefault.jpg" title="" width="1280" height="720" loading="lazy" decoding="async">
 </div><br>
 <b><s>ViaVersion + </s></b><s><a href="https://modrinth.com/plugin/viabackwards" target="_blank" class="link link--external" rel="noreferrer"><b>Viabackwards</b></a> chính là chiếc "cầu nối vạn năng" giúp xóa bỏ khoảng cách thế hệ trong Minecraft. ViaVersion cho phép người chơi dùng phiên bản Minecraft mới hơn để tham gia vào một máy chủ chạy phiên bản cũ hơn. Cài cái này vào là Admin ngủ ngon, không sợ bị mấy ông cháu than phiền "<i>Anh ơi sao em không vào được máy chủ ToT</i>" mỗi khi Minecraft ra bản mới. 10 điểm uy tín! B-)</s>​</div>
 <blockquote class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--quote">
 <div class="bbCodeBlock-content">
 <div class="">
-<div style="text-align: justify"><span style="font-size: 22px">1.21.11 mà phải xách dai' đi hỗ trợ các phiên bản thấp chính là cực hình </span> <img src="__BASE__media/source/009-nice-dd548fd3.png" class="smilie" loading="lazy" alt=":nice:" title="Nice :nice:" decoding="async">​</div>
+<div style="text-align: justify"><span style="font-size: 22px"><span style="color: rgb(26, 188, 156)">26.x</span> mà phải xách dai' đi hỗ trợ các phiên bản thấp chính là cực hình </span> <img src="__BASE__media/source/009-nice-dd548fd3.png" class="smilie" loading="lazy" alt=":nice:" title="Nice :nice:" decoding="async">​</div>
 </div>
 
 </div>
@@ -2046,10 +2054,10 @@ Mã:
 <li><div style="text-align: justify"><a href="https://modrinth.com/plugin/boar" target="_blank" class="link link--external" rel="noreferrer">Boar</a> - Tiện ích mở rộng của Geyser, mã nguồn mở và chặn cực gắt người chơi Bedrock gian lận.​</div></li>
 <li><div style="text-align: justify"><a href="https://github.com/TawnyE/TruthfulAC" target="_blank" class="link link--external" rel="noreferrer">TruthfulAC</a> - Mã nguồn mở, Hỗ trợ Bedrock anticheat.​</div></li>
 <li><div style="text-align: justify"><a href="https://mlsac.net/" target="_blank" class="link link--external" rel="noreferrer">mlsac</a> - Gói miễn phí phù hợp cho máy chủ &lt;45 người chơi.​</div></li>
-<li><div style="text-align: justify"><a href="https://github.com/funkemunky/KauriV3" target="_blank" class="link link--external" rel="noreferrer">KauriV3</a> - Mã nguồn mở​</div></li>
-<li><div style="text-align: justify"><a href="https://github.com/KaelusAI/SlothAC" target="_blank" class="link link--external" rel="noreferrer">SlothAC</a> - Mã nguồn mở​</div></li>
-<li><div style="text-align: justify"><a href="https://github.com/oraxen/HackedServer" target="_blank" class="link link--external" rel="noreferrer">HackedServer</a> - có lượng proof cao và nhiều info về mod, list​</div></li>
-<li><div style="text-align: justify"><a href="http://https//github.com/intave/intave" target="_blank" class="link link--external" rel="noreferrer">Intave</a> - Mã nguồn mở​</div></li>
+<li><div style="text-align: justify"><a href="https://github.com/funkemunky/KauriV3" target="_blank" class="link link--external" rel="noreferrer">KauriV3</a> - Mã nguồn mở.​</div></li>
+<li><div style="text-align: justify"><a href="https://github.com/KaelusAI/SlothAC" target="_blank" class="link link--external" rel="noreferrer">SlothAC</a> - Mã nguồn mở.​</div></li>
+<li><div style="text-align: justify"><a href="https://github.com/oraxen/HackedServer" target="_blank" class="link link--external" rel="noreferrer">HackedServer</a> - có lượng proof cao và nhiều info về mod, list.​</div></li>
+<li><div style="text-align: justify"><a href="http://https//github.com/intave/intave" target="_blank" class="link link--external" rel="noreferrer">Intave</a> - Mã nguồn mở.​</div></li>
 <li><div style="text-align: justify"><a href="https://modrinth.com/plugin/totemguard" target="_blank" class="link link--external" rel="noreferrer">TotemGuard</a><br>
 <div class="bbImageWrapper" title="1783002318242.webp">
 <img src="__BASE__media/source/150-1783002318242-7b774bce.webp" class="bbImage" style="" alt="1783002318242.webp" title="1783002318242.webp" width="1481" height="98" loading="lazy" decoding="async">
@@ -2066,10 +2074,14 @@ Có thể kể tới như:​</div><ul>
 <div class="bbImageWrapper" title="gif.gif">
 <img src="__BASE__media/source/153-gif-ec00ff36.gif" class="bbImage" style="width: 542px" alt="gif.gif" title="gif.gif" width="480" height="326" loading="lazy" decoding="async">
 </div></div></li>
-<li><div style="text-align: justify"><a href="https://builtbybit.com/resources/coffee-protect.30202/" target="_blank" class="link link--external" rel="noreferrer">Coffee Protect</a><br>
+<li><div style="text-align: justify"><a href="https://builtbybit.com/resources/coffee-protect.30202/" target="_blank" class="link link--external" rel="noreferrer"><s>Coffee Protect</s></a><br>
 <div class="bbImageWrapper" title="1782493208250.webp">
 <img src="__BASE__media/source/154-1782493208250-6cdf3d93.webp" class="bbImage" style="" alt="1782493208250.webp" title="1782493208250.webp" width="540" height="132" loading="lazy" decoding="async">
 </div></div></li>
+<li><a href="https://builtbybit.com/resources/kratos-java-bedrock-anticheat-ai-power.118637/" target="_blank" class="link link--external" rel="noreferrer">Kratos</a><br>
+<div class="bbImageWrapper" title="1795492808297.webp">
+<img src="__BASE__media/source/163-1795492808297-260c50b3.webp" class="bbImage" style="width: 536px" alt="1795492808297.webp" title="1795492808297.webp" width="1920" height="1633" loading="lazy" decoding="async">
+</div></li>
 <li><div style="text-align: justify"><a href="https://builtbybit.com/resources/antispoof-pro-deep-probe-engine.69263/" target="_blank" class="link link--external" rel="noreferrer">AntiSpoof Pro</a><br>
 <div class="bbImageWrapper" title="1782493294833.webp">
 <img src="__BASE__media/source/155-1782493294833-6910a28c.webp" class="bbImage" style="width: 538px" alt="1782493294833.webp" title="1782493294833.webp" width="949" height="354" loading="lazy" decoding="async">
@@ -2611,9 +2623,9 @@ Học cách xử lý Khủng hoảng truyền thông, mình đề xuất <a href
 <a href="https://lkcreator.com/en" target="_blank" class="link link--external" rel="noreferrer">lkcreator</a> - Công cụ hỗ trợ chuyển đổi qua lại định dạng models của ItemsAdder / Nexo / Oraxen / CraftEngine / MythicCrucible / HMC<br>
 <a href="https://github.com/Owen1212055/mc-assets" target="_blank" class="link link--external" rel="noreferrer">mc-assets</a> - Toàn bộ tài nguyên đồ họa mặc định của Mojang<br>
 <h3 class="bbHeading" id="-4-5-tai-nguyen-ngau-nhien-minh-thay-ngau-det-trong-qua-trinh-xay-dung-bai-viet-nay-awesome-minecraft">4.5. Tài nguyên ngẫu nhiên mình thấy ngầu đét trong quá trình xây dựng bài viết này (<a href="https://github.com/bs-community/awesome-minecraft#servers" target="_blank" class="link link--external" rel="noreferrer">awesome-minecraft</a>)​</h3><ul>
-<li><a href="https://modrinth.com/mod/packforge" target="_blank" class="link link--external" rel="noreferrer">:D</a><a href="https://www.youtube.com/watch?v=RDzsrmMl48I" target="_blank" class="link link--external" rel="noreferrer">https://www.youtube.com/watch?v=RDzsrmMl48I</a> - Cách nắm nhanh một khái niệm khó bằng cách hiểu nó làm gì trước, chưa cần hiểu chi tiết cách nó hoạt động bên trong</li>
-</ul><a href="https://modrinth.com/mod/packforge" target="_blank" class="link link--external" rel="noreferrer">:-BPackForge</a> / <a href="https://modrinth.com/mod/quick-pack" target="_blank" class="link link--external" rel="noreferrer">Quick-Pack</a> + <a href="https://github.com/ComunidadAylas/PackSquash" target="_blank" class="link link--external" rel="noreferrer">https://github.com/ComunidadAylas/PackSquash</a><br>
-<span style="color: rgb(20, 20, 51)">Tối ưu models / texture gói tài nguyên. Giảm thời gian người chơi phải tải gói tài nguyên ItemsAdder / Nexo / CraftEngine cực nặng (</span><span style="color: rgb(209, 72, 65)"><b>~7 phút</b></span><span style="color: rgb(20, 20, 51)">). Tested with a large server resource pack containing about 28,000 entries, 9,800 textures, and 10,700 model files across 191 namespaces:</span><br>
+<li><a href="https://www.youtube.com/watch?v=RDzsrmMl48I" target="_blank" class="link link--external" rel="noreferrer">https://www.youtube.com/watch?v=RDzsrmMl48I</a> - Cách nắm nhanh một khái niệm khó bằng cách hiểu nó làm gì trước, chưa cần hiểu chi tiết cách nó hoạt động bên trong.</li>
+</ul>☄ <a href="https://modrinth.com/mod/packforge" target="_blank" class="link link--external" rel="noreferrer">PackForge</a> / <a href="https://modrinth.com/mod/quick-pack" target="_blank" class="link link--external" rel="noreferrer">Quick-Pack</a> + <a href="https://github.com/ComunidadAylas/PackSquash" target="_blank" class="link link--external" rel="noreferrer">https://github.com/ComunidadAylas/PackSquash</a><br>
+Tối ưu models / texture gói tài nguyên. Giảm thời gian người chơi phải tải gói tài nguyên ItemsAdder / Nexo / CraftEngine cực nặng (<b><span style="color: rgb(226, 80, 65)">~7 phút</span></b>). Tested with a large server resource pack containing about 28,000 entries, 9,800 textures, and 10,700 model files across 191 namespaces:<br>
 &gt; CPU: Intel I5-13500<br>
 &gt; Ram: 32GB (2GB allowcate to the game)<br>
 &gt; GPU: RTX 4070 SUPER<br>
@@ -2624,27 +2636,27 @@ Học cách xử lý Khủng hoảng truyền thông, mình đề xuất <a href
 - <a href="https://lkcreator.com/en" target="_blank" class="link link--external" rel="noreferrer">https://lkcreator.com/en</a><br>
 - <a href="https://github.com/Dove-Chen/Minecraft-Config-Converter" target="_blank" class="link link--external" rel="noreferrer">https://github.com/Dove-Chen/Minecraft-Config-Converter</a><br>
 <ul>
-<li>:D 3 đường dẫn này để chuyển ItemsAdder/Nexo models tuỳ chỉnh --&gt; <a href="https://modrinth.com/plugin/craftengine" target="_blank" class="link link--external" rel="noreferrer"><b>CraftEngine</b></a></li>
-</ul>:D <a href="https://github.com/theamusing/perfectPixel" target="_blank" class="link link--external" rel="noreferrer">Perfect Pixel</a> - Ảnh Pixel do AI tạo ra bị vỡ khi thu nhỏ, qua tay repo này là nét<br>
+<li>☄ 3 đường dẫn này để chuyển ItemsAdder/Nexo models tuỳ chỉnh --&gt; <a href="https://modrinth.com/plugin/craftengine" target="_blank" class="link link--external" rel="noreferrer"><b>CraftEngine</b></a></li>
+</ul>☄ <a href="https://github.com/theamusing/perfectPixel" target="_blank" class="link link--external" rel="noreferrer">Perfect Pixel</a> - Ảnh Pixel do A.I tạo ra bị vỡ khi thu nhỏ, qua tay repo này là nét<br>
 <div class="bbImageWrapper" title="1787280684253.webp">
 <img src="__BASE__media/source/250-1787280684253-3ec1ea7a.webp" class="bbImage" style="" alt="1787280684253.webp" title="1787280684253.webp" width="1536" height="863" loading="lazy" decoding="async">
 </div><br>
-<a href="https://github.com/mouse0w0/MinecraftDeveloperGuide" target="_blank" class="link link--external" rel="noreferrer">:-" Repo tổng hợp tài liệu Minecraft Dev</a> khá đầy đủ, từ Plugin/Mod đến Datapack bên <b>mcbbs</b><br>
-:D <a href="https://github.com/Katacr/KaMenu" target="_blank" class="link link--external" rel="noreferrer">https://github.com/Katacr/KaMenu</a> sử dụng Dialog API thay cho giao diện kho đồ truyền thống, hỗ trợ nhiều thành phần tương tác như ô nhập văn bản, thanh trượt, menu thả xuống và checkbox.<br>
+☄<a href="https://github.com/mouse0w0/MinecraftDeveloperGuide" target="_blank" class="link link--external" rel="noreferrer"> Repo tổng hợp tài liệu Minecraft Dev</a> khá đầy đủ, từ Plugin/Mod đến Datapack bên <b>mcbbs.</b><br>
+☄ <a href="https://github.com/Katacr/KaMenu" target="_blank" class="link link--external" rel="noreferrer">https://github.com/Katacr/KaMenu</a> sử dụng Dialog API thay cho giao diện kho đồ truyền thống, hỗ trợ nhiều thành phần tương tác như ô nhập văn bản, thanh trượt, menu thả xuống và checkbox.<br>
 <div class="bbImageWrapper" title="1787280929828.webp">
 <img src="__BASE__media/source/251-1787280929828-021b659c.webp" class="bbImage" style="" alt="1787280929828.webp" title="1787280929828.webp" width="1280" height="853" loading="lazy" decoding="async">
 </div><br>
-<a href="https://github.com/Ronal-SHEN/WorldTools-update" target="_blank" class="link link--external" rel="noreferrer">:D WorldTools</a> hoặc <a href="https://github.com/lambda-client/lambda" target="_blank" class="link link--external" rel="noreferrer">https://github.com/lambda-client/lambda</a> để <s>ăn cắp</s> tham khảo công trình máy chủ khác.<br>
-:-"Khôi phục địa hình về thời điểm ban đầu tại khu vực không có người chơi với: <a href="https://github.com/BrilliantTeam/NatureRevive-brilliant" target="_blank" class="link link--external" rel="noreferrer">https://github.com/BrilliantTeam/NatureRevive-brilliant</a><br>
-&lt;(") <a href="https://www.spigotmc.org/resources/realistic-survival-1-17-hardcore-modded-experience.93795/" target="_blank" class="link link--external" rel="noreferrer">Realistic Survival</a> - Sinh tồn thực tế<br>
+☄<a href="https://github.com/Ronal-SHEN/WorldTools-update" target="_blank" class="link link--external" rel="noreferrer"> WorldTools</a> hoặc <a href="https://github.com/lambda-client/lambda" target="_blank" class="link link--external" rel="noreferrer">https://github.com/lambda-client/lambda</a> để <s>ăn cắp</s> tham khảo công trình máy chủ khác.<br>
+☄ Khôi phục địa hình về thời điểm ban đầu tại khu vực không có người chơi với: <a href="https://github.com/BrilliantTeam/NatureRevive-brilliant" target="_blank" class="link link--external" rel="noreferrer">https://github.com/BrilliantTeam/NatureRevive-brilliant</a><br>
+☄ <a href="https://www.spigotmc.org/resources/realistic-survival-1-17-hardcore-modded-experience.93795/" target="_blank" class="link link--external" rel="noreferrer">Realistic Survival</a> - Sinh tồn thực tế<br>
 <div class="bbImageWrapper" title="1787286546950.webp">
 <img src="__BASE__media/source/252-1787286546950-c923d700.webp" class="bbImage" style="" alt="1787286546950.webp" title="1787286546950.webp" width="1920" height="974" loading="lazy" decoding="async">
 </div><br>
-:D <a href="https://files.catbox.moe/yqjqp7.zip" target="_blank" class="link link--external" rel="noreferrer">icon stats</a> của mmoitems chia sẻ độc quyền bên <a href="https://discord.com/invite/stellastudio" target="_blank" class="link link--external" rel="noreferrer">StellaStudio</a><br>
+☄ <a href="https://files.catbox.moe/yqjqp7.zip" target="_blank" class="link link--external" rel="noreferrer">icon stats</a> của mmoitems chia sẻ độc quyền bên <a href="https://discord.com/invite/stellastudio" target="_blank" class="link link--external" rel="noreferrer">StellaStudio</a><br>
 <div class="bbImageWrapper" title="1787281505978.webp">
 <img src="__BASE__media/source/253-1787281505978-c00ff601.webp" class="bbImage" style="" alt="1787281505978.webp" title="1787281505978.webp" width="372" height="752" loading="lazy" decoding="async">
 </div><br>
-:-B [Origin Realms GUI Revamp](https://modrinth.com/resourcepack/origin-realms-gui-revamp)<br>
+☄ <a href="https://modrinth.com/resourcepack/origin-realms-gui-revamp" target="_blank" class="link link--external" rel="noreferrer">Origin Realms GUI Revamp</a><br>
 <div class="bbTable">
 <table style="width: 100%"><tbody><tr><td style="width: 50.0000%"><div class="bbImageWrapper" title="1787281634661.webp">
 <img src="__BASE__media/source/254-1787281634661-83357849.webp" class="bbImage" style="" alt="1787281634661.webp" title="1787281634661.webp" width="1920" height="1929" loading="lazy" decoding="async">
@@ -2657,7 +2669,7 @@ Học cách xử lý Khủng hoảng truyền thông, mình đề xuất <a href
 <img src="__BASE__media/source/256-1787281857215-b2004c8d.webp" class="bbImage" style="" alt="1787281857215.webp" title="1787281857215.webp" width="1920" height="1080" loading="lazy" decoding="async">
 </div><br>
 <a href="https://rp.modrinth.black/" target="_blank" class="link link--external" rel="noreferrer">https://rp.modrinth.black/</a> + <a href="https://resourcedecrypt.cc/" target="_blank" class="link link--external" rel="noreferrer">https://resourcedecrypt.cc/</a> - Giải nén gói tài nguyên máy chủ bảo mật kém (thật ra, có bảo mật nguyên pack = ItemsAdder/ Nexo cũng hông chống được, hiện CraftEngine chưa bị phá).<br>
-<a href="https://github.com/HibiscusMC/HMCWraps" target="_blank" class="link link--external" rel="noreferrer">HMCWraps</a> - Thêm nhiều skin cho cùng một vật phẩm<br>
+<a href="https://github.com/HibiscusMC/HMCWraps" target="_blank" class="link link--external" rel="noreferrer">HMCWraps</a> - Thêm nhiều skin (trang phục) cho cùng 1 vật phẩm.<br>
 <a href="https://cloud.plugins.wiki/" target="_blank" class="link link--external" rel="noreferrer">CloudUI</a> - hệ sinh thái plugin, tập trung vào việc xây dựng giao diện RPG/MMORPG, hệ thống nhân vật, vật phẩm, thời trang, nhiệm vụ và các tính năng tương tác trên 40 loại Core Shader. Hiện đã hỗ trợ CraftEngine.<br>
 <div class="bbImageWrapper" title="1794738350163.webp">
 <img src="__BASE__media/source/259-1794738350163-76fafd32.webp" class="bbImage" style="" alt="1794738350163.webp" title="1794738350163.webp" width="1600" height="900" loading="lazy" decoding="async">
@@ -2666,24 +2678,100 @@ Học cách xử lý Khủng hoảng truyền thông, mình đề xuất <a href
 <div class="bbImageWrapper" title="1794738190605.gif">
 <img src="__BASE__media/source/260-1794738190605-a00a5b9c.gif" class="bbImage" style="" alt="1794738190605.gif" title="1794738190605.gif" width="640" height="360" loading="lazy" decoding="async">
 </div><br>
-:-BDành riêng cho dân chơi não to: <a href="https://github.com/ArubikU/craft-engine-polyfills" target="_blank" class="link link--external" rel="noreferrer">craft-engine-polyfills</a> / <a href="https://modrinth.com/plugin/minetorio" target="_blank" class="link link--external" rel="noreferrer">minetorio</a> / <a href="https://modrinth.com/plugin/nova-logistics" target="_blank" class="link link--external" rel="noreferrer">NovaLogistics</a> / <a href="https://github.com/Slimefun5/Slimefun5" target="_blank" class="link link--external" rel="noreferrer">Slimefun5</a> / <a href="https://github.com/pylonmc/pylon" target="_blank" class="link link--external" rel="noreferrer">pylon</a><br>
+<a href="https://github.com/sosadly/blockbench-mcp" target="_blank" class="link link--external" rel="noreferrer">https://github.com/sosadly/blockbench-mcp</a> / <a href="https://github.com/jasonjgardner/blockbench-mcp-plugin" target="_blank" class="link link--external" rel="noreferrer">https://github.com/jasonjgardner/blockbench-mcp-plugin</a>: Dành cho người nghèo muốn đốt token làm model Minecraft.<br>
+<div class="bbImageWrapper" title="1795355055726.webp">
+<img src="__BASE__media/source/268-1795355055726-165c7ff2.webp" class="bbImage" style="" alt="1795355055726.webp" title="1795355055726.webp" width="870" height="591" loading="lazy" decoding="async">
+</div><br>
+<br>
+☄ Port Mod --&gt; Paper Plugin: <a href="https://github.com/Nicoppara/KaleidoscopeCookery_Plugin" target="_blank" class="link link--external" rel="noreferrer">KaleidoscopeCookery_Plugin</a> / <a href="https://github.com/IOVEYOUMC0/BetterEnd-Plugin/blob/main/MIGRATION.md" target="_blank" class="link link--external" rel="noreferrer">https://github.com/IOVEYOUMC0/BetterEnd-Plugin/blob/main/MIGRATION.md</a><br>
+<br>
+☄ Dành riêng cho dân chơi não to: <a href="https://github.com/ArubikU/craft-engine-polyfills" target="_blank" class="link link--external" rel="noreferrer">craft-engine-polyfills</a> / <a href="https://modrinth.com/plugin/minetorio" target="_blank" class="link link--external" rel="noreferrer">minetorio</a> / <a href="https://modrinth.com/plugin/nova-logistics" target="_blank" class="link link--external" rel="noreferrer">NovaLogistics</a> / <a href="https://github.com/Slimefun5/Slimefun5" target="_blank" class="link link--external" rel="noreferrer">Slimefun5</a> / <a href="https://github.com/pylonmc/pylon" target="_blank" class="link link--external" rel="noreferrer">pylon</a><br>
 <div class="bbImageWrapper" title="1787287007823.webp">
 <img src="__BASE__media/source/257-1787287007823-00e6620f.webp" class="bbImage" style="" alt="1787287007823.webp" title="1787287007823.webp" width="635" height="702" loading="lazy" decoding="async">
 </div><br>
-<h2 class="bbHeading original-chapter-heading" id="free-options">5. Em không có tiền mua Plugins + thiết đặt xịn anh ơi! :((​</h2><div style="text-align: justify">Như một vị hiền triết trong Trang này đã từng nói: <div class="bbImageWrapper" title="1777469946516.webp">
+- <a href="https://github.com/PZDonny/DisplayEntityUtils" target="_blank" class="link link--external" rel="noreferrer">DisplayEntityUtils</a> - Hỗ trợ tạo mô hình, hiệu ứng và vật thể 3D tương tác = <code class="bbCodeInline">Display Entities</code>, không cần gói tài nguyên.<br>
+- <a href="https://bdengine.app/" target="_blank" class="link link--external" rel="noreferrer">BDEngine</a> là công cụ chỉnh sửa và tạo model 3D cho Minecraft ngay trên trình duyệt. Model hoạt động trực tiếp bằng <code class="bbCodeInline">Display Entities</code><br>
+<div class="bbImageWrapper" title="1795355792115.webp">
+<img src="__BASE__media/source/270-1795355792115-e61a0ffd.webp" class="bbImage" style="width: 634px" alt="1795355792115.webp" title="1795355792115.webp" width="999" height="712" loading="lazy" decoding="async">
+</div><br>
+<br>
+<h2 class="bbHeading original-chapter-heading" id="free-options">5. Em không có tiền mua Plugins + thiết đặt xịn anh ơi! :((​</h2><div style="text-align: justify">Như một vị hiền triết trong Trang này đã từng nói:<br>
+<div class="bbImageWrapper" title="1777469946516.webp">
 <img src="__BASE__media/source/258-1777469946516-affc172e.webp" class="bbImage" style="" alt="1777469946516.webp" title="1777469946516.webp" width="438" height="193" loading="lazy" decoding="async">
 </div><br>
 <img src="__BASE__media/source/135-sm-4e1a59d1.png" class="smilie" loading="lazy" alt=":sm:" title="Smile :sm:" decoding="async"> Bạn có thể mua tài nguyên chính hãng bằng việc tạo trực tuyến Visa / CreditCard tại các ngân hàng như <b><span style="font-size: 18px"><span style="color: rgb(235, 107, 86)">ACB / VCB / MB</span></span></b>, thông qua các nguồn uy tín như:​</div><ol>
 <li><div style="text-align: justify"><a href="https://www.spigotmc.org/" target="_blank" class="link link--external" rel="noreferrer">SpigotMC</a><br>
-Bên này qúa nhẹ nhàng cho việc tài nguyên bị leak, nên thường có thể mua được cả tài khoản SpigotMC thông qua gian thương.​</div></li>
+Bên này quá nhẹ nhàng cho việc tài nguyên bản quyền bị leak, nên thường có thể mua được cả tài khoản SpigotMC thông qua gian thương.​</div></li>
 <li><div style="text-align: justify"><a href="https://builtbybit.com/" target="_blank" class="link link--external" rel="noreferrer">BuildByBit</a><br>
 Tạo nhiều tài khoản BuildByBit là ăn cấm cửa oan, Tác giả nhiệt tình thường tặng mã giảm giá 90% -&gt; <b><span style="color: rgb(226, 80, 65)">100%</span></b> cho các bạn chịu khó đóng góp năng lực. Riêng mảng xây dựng công trình, thì mất giá thảm hại bên này.​</div></li>
 <li><div style="text-align: justify"><a href="https://voxel.shop/" target="_blank" class="link link--external" rel="noreferrer">polymart (voxelshop)</a><br>
 Bảo mật tài nguyên gắt.​</div></li>
-<li><div style="text-align: justify"><a href="https://mcmodels.net/" target="_blank" class="link link--external" rel="noreferrer">mcmodels</a> - Tương tự SpigotMC, chuyên tài nguyên Model / Texture, giá đặt Models riêng thường giao động $180 - $240​</div></li>
+<li><div style="text-align: justify"><a href="https://mcmodels.net/" target="_blank" class="link link--external" rel="noreferrer">mcmodels</a> - Tương tự SpigotMC, chuyên tài nguyên Model / Texture, giá đặt Models riêng thường giao động <code class="bbCodeInline">$180</code> - <code class="bbCodeInline">$240</code>​</div></li>
 <li><div style="text-align: justify"><a href="https://mineassets.com/" target="_blank" class="link link--external" rel="noreferrer">mineassets</a> / <a href="https://www.fab.com/" target="_blank" class="link link--external" rel="noreferrer">fab</a> ...​</div></li>
 <li><div style="text-align: justify">Web / Discord chính chủ Tác giả - Thoải mái tạo Ticket xin mã giảm giá :D​</div></li>
-</ol><div style="text-align: justify"><img src="__BASE__media/source/259-p24-33886dfc.gif" class="smilie" loading="lazy" alt=":p24:" title="Clown :p24:" decoding="async">Hông có tiền? Chỉ có xài lậu hoặc mua chùa thôi nhỉ?<br>
+</ol><div style="text-align: justify"><img src="__BASE__media/source/272-p18-1a8ab5dd.png" class="smilie" loading="lazy" alt=":p18:" title="Thinking :p18:" decoding="async">Vậy tiền mua tài nguyên bên ngoài do người VN bán thì sao? Giá thị trường sau 8 tháng mình tham khảo, hiện tại là:<br>
+<a href="https://minevn.net/chuyen-goi-do-hoa-java-sang-bedrock.t52434/#post-344021" class="link link--internal" target="_blank" rel="noreferrer">⋆. ̊  Tài nguyên chuyển đổi từ Java --&gt; Bedrock</a>: $1 hoặc 20k cho 1 gói tài nguyên đồ hoạ. Chuyển đổi đặt riêng vào tầm $0.1 - $0.5/model tuỳ độ khó.<br>
+Hoặc quản trị viên có thể mua vĩnh viễn với $17.5 - $22.5 hoặc 750k. Công cụ hiện tại đã có thể tự động ~100%<br>
+⋆. ̊  Gói thiết đặt máy chủ sẵn:<br>
+♡ Nếu mua từ bên <u>thứ 3</u>: 250 - 500k, số ít có thể lên ~1tr5 hoặc độc quyền với mức giá cao hơn. Thuận mua vừa bán~​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795361331246.webp">
+<img src="__BASE__media/source/273-1795361331246-9fe42bbd.webp" class="bbImage" style="" alt="1795361331246.webp" title="1795361331246.webp" width="685" height="836" loading="lazy" decoding="async">
+</div></div></td><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795361504857.webp">
+<img src="__BASE__media/source/274-1795361504857-dfc878ca.webp" class="bbImage" style="" alt="1795361504857.webp" title="1795361504857.webp" width="1234" height="926" loading="lazy" decoding="async">
+</div><div class="bbImageWrapper" title="1795361600101.webp">
+<img src="__BASE__media/source/275-1795361600101-e91969da.webp" class="bbImage" style="" alt="1795361600101.webp" title="1795361600101.webp" width="943" height="357" loading="lazy" decoding="async">
+</div></div></td><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795362131621.webp">
+<img src="__BASE__media/source/276-1795362131621-a5caa425.webp" class="bbImage" style="" alt="1795362131621.webp" title="1795362131621.webp" width="676" height="992" loading="lazy" decoding="async">
+</div></div></td></tr></tbody></table>
+</div><div style="text-align: justify"><u><b><span style="color: rgb(226, 80, 65)">Cẩn thận nha⁉</span></b></u> Người VN đa phần là học sinh sinh viên nên độ ảo giá là cực kỳ cao!!! Sẽ có thể là những tài nguyên <u>lậu </u>cài cắm bên trong, đem về Việt hoá rồi bán lại cho bạn; tài nguyên đồ hoạ do A.I tạo ra mà người bán cố tình đặt vào để thổi giá lên, drama chậm tiến độ... bla bla như:​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795359038771.webp">
+<img src="__BASE__media/source/277-1795359038771-42fe1c73.webp" class="bbImage" style="" alt="1795359038771.webp" title="1795359038771.webp" width="1170" height="2532" loading="lazy" decoding="async">
+</div></div></td><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795359593122.webp">
+<img src="__BASE__media/source/278-1795359593122-e21b6924.webp" class="bbImage" style="" alt="1795359593122.webp" title="1795359593122.webp" width="668" height="955" loading="lazy" decoding="async">
+</div><div class="bbImageWrapper" title="1f6cc.png">
+<img src="__BASE__media/source/279-1f6cc-3a7f93c3.png" class="bbImage" style="" alt="1f6cc.png" title="" width="32" height="32" loading="lazy" decoding="async">
+</div></div></td><td style="width: 33.3333%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795359924404.webp">
+<img src="__BASE__media/source/280-1795359924404-971f51cb.webp" class="bbImage" style="width: 382px" alt="1795359924404.webp" title="1795359924404.webp" width="692" height="900" loading="lazy" decoding="async">
+</div></div></td></tr></tbody></table>
+</div><div style="text-align: justify"><br>
+♡ Báo giá đặt riêng thông qua Studio bên nền tảng mạng xã hội như Discord / Mess: Hiển nhiên độ uy tín cao hơn hẳn các bên trên, thuận mua vừa bán nên mình không rõ mức giá trung bình của thị trường VN hiện tại có thể là bao nhiêu.<br>
+<div class="bbImageWrapper" title="1795362611029.webp">
+<img src="__BASE__media/source/281-1795362611029-ffeea2e1.webp" class="bbImage" style="" alt="1795362611029.webp" title="1795362611029.webp" width="1828" height="941" loading="lazy" decoding="async">
+</div><br>
+<div class="bbImageWrapper" title="1795492910246.webp">
+<img src="__BASE__media/source/282-1795492910246-7768fc49.webp" class="bbImage" style="" alt="1795492910246.webp" title="1795492910246.webp" width="1356" height="313" loading="lazy" decoding="async">
+</div><br>
+<br>
+⋆. ̊  Model hoạt ảnh đồ hoạ 2D / 3D: VN chưa phát triển mạnh mảng này, nếu đặt riêng là $180 - $240/model có hoạt ảnh; nếu tham khảo giá YSM có thể liên hệ <a href="https://mcmodels.net/vendors/307/mmixelart" target="_blank" class="link link--external" rel="noreferrer">NguyenDev</a>.<br>
+Hoặc xài ma thuật đen lấy từ gói tài nguyên đồ hoạ máy chủ nước ngoài / modpack / addons: 25k - 500k.​</div><div class="bbTable">
+<table style="width: 100%"><tbody><tr><td style="width: 50.0000%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795362760022.webp">
+<img src="__BASE__media/source/283-1795362760022-f4f16f79.webp" class="bbImage" style="" alt="1795362760022.webp" title="1795362760022.webp" width="720" height="1600" loading="lazy" decoding="async">
+</div></div></td><td style="width: 50.0000%"><div style="text-align: justify"><div class="bbImageWrapper" title="1795363109717.webp">
+<img src="__BASE__media/source/284-1795363109717-9eb2587c.webp" class="bbImage" style="" alt="1795363109717.webp" title="1795363109717.webp" width="529" height="472" loading="lazy" decoding="async">
+</div><br>
+<div class="bbImageWrapper" title="1795363227028.webp">
+<img src="__BASE__media/source/285-1795363227028-fef2a164.webp" class="bbImage" style="" alt="1795363227028.webp" title="1795363227028.webp" width="681" height="894" loading="lazy" decoding="async">
+</div></div></td></tr></tbody></table>
+</div><div style="text-align: justify"><br>
+⋆. ̊  Công trình xây dựng: VN chưa phát triển mạnh mảng này. Đặt riêng cũng đắt xắt ra miếng theo túi tiền người Việt Nam, chúc may mắn.<br>
+<br>
+⋆. ̊  Plugin đặt riêng:<br>
+120 CN¥ - 150 CN¥ là mức giá mình đặt bên TQ. VN dao động 120k - 500k; thường trọn gói như:​</div><ol>
+<li><div style="text-align: justify">port modpack / datapack sang Paper Plugin,​</div></li>
+<li><div style="text-align: justify">cập nhật Plugin lên phiên bản mới+ Paper plugin hỗ trợ Folia​</div></li>
+<li><div style="text-align: justify">Sửa lỗi hiện có + tối ưu hiệu năng Plugin​</div></li>
+</ol><div style="text-align: justify"><div class="bbImageWrapper" title="1795364278375.webp">
+<img src="__BASE__media/source/286-1795364278375-9b88b857.webp" class="bbImage" style="" alt="1795364278375.webp" title="1795364278375.webp" width="748" height="165" loading="lazy" decoding="async">
+</div><br>
+⋆. ̊  Config? Mình chưa đặt. Riêng về AntiCheat thì phải tham khảo bên KnuaShop, do đây là số ít bên VN chịu cập nhật thông tin về bảo mật máy chủ Minecraft liên tục.<br>
+<div class="bbImageWrapper" title="1795363510003.webp">
+<img src="__BASE__media/source/287-1795363510003-2d324eb0.webp" class="bbImage" style="" alt="1795363510003.webp" title="1795363510003.webp" width="1180" height="873" loading="lazy" decoding="async">
+</div>⋆. ̊ ⋆. ̊ GUI / UI / Hoạt hoạ máy chủ: Khó tìm, phần lớn nhân tài đều qua nước ngoài phát triển. Số còn lại ở VN:<br>
+<div class="bbImageWrapper" title="1795363768112.webp">
+<img src="__BASE__media/source/288-1795363768112-78ee32ee.webp" class="bbImage" style="" alt="1795363768112.webp" title="1795363768112.webp" width="602" height="166" loading="lazy" decoding="async">
+</div><br>
+<img src="__BASE__media/source/259-p24-33886dfc.gif" class="smilie" loading="lazy" alt=":p24:" title="Clown :p24:" decoding="async">Hông có tiền? Chỉ có xài lậu hoặc mua chùa thôi nhỉ?<br>
+<br>
 Mà khi bạn đã sử dụng hàng lậu rồi, mặc nhiên đồng ý với tất cả trách nhiệm đều thuộc về hành động đáng xấu hổ của bạn. Một khi đã có tiền, nhất định phải cảm ơn Dev + người chia sẻ tài nguyên nhé.<br>
 <div class="bbImageWrapper" title="1787281196698.webp">
 <img src="__BASE__media/source/260-1787281196698-8785d78d.webp" class="bbImage" style="" alt="1787281196698.webp" title="1787281196698.webp" width="802" height="120" loading="lazy" decoding="async">
@@ -2718,7 +2806,7 @@ Perfect World (Hoàn Mỹ Thế Giới – PC &amp; Mobile)<br>
 Justice Online (Nghịch Thủy Hàn – 逆水寒)<br>
 Moonlight Blade Online (Thiên Nhai Minh Nguyệt Đao)<br>
 JX Online 3 (剑网3 – Kiếm Võng 3)<br>
-GuardianTales​</div>
+GuardianTales...​</div>
 </div>
 
 </div>
@@ -2845,15 +2933,36 @@ https://www.youtube.com/watch?v=nDLb8_wgX50
 <div class="bbImageWrapper" title="1787279797305.webp">
 <img src="__BASE__media/source/270-1787279797305-0be25e59.webp" class="bbImage" style="" alt="1787279797305.webp" title="1787279797305.webp" width="1600" height="900" loading="lazy" decoding="async">
 </div></div></li>
-<li><div style="text-align: justify">Hỗ trợ cho thị trường Bedrock với <span style="font-size: 15px"><a href="https://youtube.com/playlist?list=PLu4XsMgGIrCrmO-E-jgZDzFpIG42z5vEA&amp;si=smgyhIfkvUyU1QgF" target="_blank" class="link link--external" rel="noreferrer">JSON UI Forms</a> / <a href="https://minevn.net/threads/chuyen-goi-do-hoa-java-sang-bedrock.52434/" class="link link--internal" target="_blank" rel="noreferrer">Bedrock Convert</a>. Vọc các addons của bên Trung Quốc và thị trường máy chủ nội địa bên họ. Tham khảo bài viết: <a href="https://minevn.net/threads/chuyen-goi-do-hoa-java-sang-bedrock.52434/#post-344021" class="link link--internal" target="_blank" rel="noreferrer">https://minevn.net/threads/chuyen-goi-do-hoa-java-sang-bedrock.52434/#post-344021</a></span><br>
+<li><div style="text-align: justify">Hỗ trợ cho thị trường Bedrock với <span style="font-size: 15px"><a href="https://youtube.com/playlist?list=PLu4XsMgGIrCrmO-E-jgZDzFpIG42z5vEA&amp;si=smgyhIfkvUyU1QgF" target="_blank" class="link link--external" rel="noreferrer">JSON UI Forms</a> / <a href="https://minevn.net/threads/chuyen-goi-do-hoa-java-sang-bedrock.52434/" class="link link--internal" target="_blank" rel="noreferrer">Bedrock Convert</a>. Vọc các addons của bên Trung Quốc và nguyên ngành công nghiệp Minecraft thị trường máy chủ nội địa bên họ. Tham khảo bài viết: <a href="https://minevn.net/threads/chuyen-goi-do-hoa-java-sang-bedrock.52434/#post-344021" class="link link--internal" target="_blank" rel="noreferrer">https://minevn.net/threads/chuyen-goi-do-hoa-java-sang-bedrock.52434/#post-344021</a></span><br>
 <div class="bbImageWrapper" title="1783266241378.webp">
 <img src="__BASE__media/source/271-1783266241378-5a3a5073.webp" class="bbImage" style="width: 1070px" alt="1783266241378.webp" title="1783266241378.webp" width="1608" height="743" loading="lazy" decoding="async">
 </div></div></li>
-<li><div style="text-align: justify">Vọc tối ưu máy chủ chuyên sâu cho 100+ người chơi, thứ mà mình sẽ hông để vào trong bài viết này vì kiểu nào cũng tranh chén cơm người khác  &lt;(")<br>
+<li><div style="text-align: justify">Vọc tối ưu máy chủ chuyên sâu cho 100+ người chơi, thứ mà mình sẽ hông để vào trong bài viết này vì kiểu nào cũng tranh chén cơm người khác  (¬_¬)<br>
 <div class="bbImageWrapper" title="1784116375907.webp">
 <img src="__BASE__media/source/272-1784116375907-c5e22ec9.webp" class="bbImage" style="" alt="1784116375907.webp" title="1784116375907.webp" width="1501" height="940" loading="lazy" decoding="async">
 </div></div></li>
 </ol><div style="text-align: justify">&gt; Nhiều nha, gắng nhé!<br>
+<div class="bbCodeBlock bbCodeBlock--unfurl fauxBlockLink">
+<div class="contentRow">
+<div class="contentRow-figure contentRow-figure--fixedSmall">
+<img src="__BASE__media/source/303-www.youtube-849d3874.jpg" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-image" decoding="async">
+</div>
+<div class="contentRow-main">
+<p class="contentRow-header">
+<a href="https://www.youtube.com/watch?v=aS8t08N5m4I" class="link link--external fauxBlockLink-blockLink" target="_blank" rel="noreferrer">
+Sẽ thế nào nếu như bạn trở thành OWNER SERVER MINECRAFT?
+</a>
+</p>
+<div class="contentRow-snippet">Có bao giờ bạn chơi Minecraft xong tự nghĩ: hay là mình tự mở một cái server riêng luôn ta?Trong tưởng tượng thì đứng giữa khu spawn mặc giáp siêu lấp lánh, ...</div>
+<div class="contentRow-minor contentRow-minor--hideLinks">
+<span>
+<img src="__BASE__media/source/304-www.youtube-64791a39.png" loading="lazy" alt="www.youtube.com" class="bbCodeBlockUnfurl-icon" decoding="async">
+</span>
+www.youtube.com
+</div>
+</div>
+</div>
+</div>
 <div class="bbImageWrapper" title="1719275638369">
 <img src="__BASE__media/source/267-1719275638369-3e69dfb9.png" class="bbImage" style="" alt="1719275638369" title="" width="1278" height="720" loading="lazy" decoding="async">
 </div></div><h2 class="bbHeading original-chapter-heading" id="references">8. Danh mục tài liệu tham khảo bổ sung​</h2><ol>
@@ -2864,7 +2973,7 @@ https://www.youtube.com/watch?v=nDLb8_wgX50
 <li><a href="https://discord.com/invite/geysermc" target="_blank" class="link link--external" rel="noreferrer">GeyserMC Discord</a></li>
 <li><a href="https://discord.com/invite/WVKdaUPR3S" target="_blank" class="link link--external" rel="noreferrer">XiaoMoMi Discord</a></li>
 <li><a href="https://discord.com/servers/stella-studios-894469438009651230" target="_blank" class="link link--external" rel="noreferrer">Stella Studios ✨ | - Discord Servers</a> - Hỗ trợ mình phát triển bài viết này, sẽ làm Docs/Website sau khi mình có thời gian.</li>
-<li>Mẹ bạn, nếu bạn DDoS máy chủ mình đang phát triển :3-_-</li>
+<li>Mẹ bạn, nếu bạn DDoS máy chủ mình đang phát triển (·•᷄‎ࡇ•᷅ )</li>
 </ol>
 <section class="original-attachments" aria-labelledby="original-attachments-title">
   <h2 id="original-attachments-title">Đính kèm</h2>
